@@ -30,8 +30,8 @@ int main() {
 		for( unsigned i = 2; i < sqrt(sum); i++ ) {
 			count += sum % i == 0 ? 2 : 0;
 		}
-		cout << sum << ", " << count << endl;
 		if( count > 500 ) {
+			cout << sum << endl;
 			return 0;
 		}
 	}
