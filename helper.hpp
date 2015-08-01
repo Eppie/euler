@@ -167,3 +167,44 @@ function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
 		return returnValue;
 	};
 }
+
+/*
+ * This is your standard greatest common denominator function.
+ * @param unsigned long long x
+ * @param unsigned long long y
+ * @returns unsigned long long
+ */
+ull gcd( ull x, ull y ) {
+	while( y != 0 ) {
+		ull t = x % y;
+		x = y;
+		y = t;
+	}
+	return x;
+}
+
+/*
+ * This is your standard n choose k function.
+ * @param unsigned long long n
+ * @param unsigned long long k
+ * @returns unsigned long long
+ */
+ull choose( ull n, ull k ) {
+	if( k > n ) {
+		throw invalid_argument("invalid argument in choose");
+	}
+
+	ull r = 1;
+
+	for( ull d = 1; d <= k; ++d, --n ) {
+		ull g = gcd(r, d);
+		r /= g;
+		ull t = n / (d / g);
+		if( r > numeric_limits<ull>::max() / t ) {
+			throw overflow_error("overflow in choose");
+		}
+		r *= t;
+	}
+
+	return r;
+}
