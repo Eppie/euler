@@ -21,6 +21,8 @@
 #include <algorithm>
 #include <vector>
 #include <numeric>
+#include <map>
+#include <functional>
 
 typedef unsigned long long ull;
 using namespace std;
@@ -80,7 +82,7 @@ vector<ull> sieve( ull n ) {
 			result.push_back( i );
 		}
 	}
-	
+
 	return result;
 }
 
@@ -111,6 +113,15 @@ T sum( vector<T> input ) {
 	return accumulate( input.begin(), input.end(), (T)0 );
 }
 
+/*
+ * @param vector<vector<T>> grid
+ * @param int x0
+ * @param int y0
+ * @param int dx
+ * @param int dy
+ * @param int steps
+ * @returns T
+ */
 template <typename T>
 T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, int steps ) {
 	if( !(
@@ -129,4 +140,30 @@ T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, in
 	}
 
 	return product;
+}
+
+/*
+ * Use this function on some function that you expect to call repeatedly
+ * with the same values. Define a std::function, pass it to this function, and
+ * then use the function returned instead of the original function.
+ * Does not work with recursive functions!
+ * @param function<outType(inType)> inFunc The function to memoize
+ * @returns function<outType(inType)> The memoized version of the function
+ */
+template<class inType, class outType>
+function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
+	// return a lambda function
+	return [inFunc](inType n) {
+		static map<inType,outType> memo;
+		outType returnValue;
+		auto memoized = memo.find( n );
+
+		if( memoized != memo.end() ) {
+			return memoized->second;
+		}
+
+		returnValue = inFunc( n );
+		memo[n] = returnValue;
+		return returnValue;
+	};
 }

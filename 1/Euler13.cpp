@@ -122,6 +122,6 @@ int main() {
 		208496039801,
 		535035342264,
 	};
-	cout << sum( input ) / 1e5 << endl;
+	cout << sum( input ) / 10000 << endl;
 	return 0;
 }
