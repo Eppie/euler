@@ -123,7 +123,7 @@ T sum( vector<T> input ) {
  * @returns T
  */
 template <typename T>
-T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, int steps ) {
+T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
 	if( !(
 		0 <= y0 && y0 < (int)grid.size() &&
 		0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < (int)grid.size() &&
@@ -146,7 +146,7 @@ T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, in
  * Use this function on some function that you expect to call repeatedly
  * with the same values. Define a std::function, pass it to this function, and
  * then use the function returned instead of the original function.
- * Does not work with recursive functions!
+ * Does not work with recursive functions unless you use a forward declaration!
  * @param function<outType(inType)> inFunc The function to memoize
  * @returns function<outType(inType)> The memoized version of the function
  */

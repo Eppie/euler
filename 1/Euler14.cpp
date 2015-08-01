@@ -36,8 +36,6 @@ ull collatz( ull start ) {
 }
 
 int main() {
-	function<ull(ull)> mCollatz = collatz;
-	mCollatz = memoize( mCollatz );
 	ull result;
 	ull best = 1;
 	ull temp;
