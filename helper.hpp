@@ -21,7 +21,7 @@
 #include <algorithm>
 #include <vector>
 #include <numeric>
-#include <map>
+#include <unordered_map>
 #include <functional>
 
 typedef unsigned long long ull;
@@ -154,7 +154,7 @@ template<class inType, class outType>
 function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
 	// return a lambda function
 	return [inFunc](inType n) {
-		static map<inType,outType> memo;
+		static unordered_map<inType,outType> memo;
 		outType returnValue;
 		auto memoized = memo.find( n );
 

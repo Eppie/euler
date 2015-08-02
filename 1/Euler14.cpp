@@ -22,25 +22,30 @@
 
 #include "../helper.hpp"
 
-ull collatz( ull start ) {
-	ull result = 1;
-	while( start != 1 ) {
-		if( start % 2 == 0 ) {
-			start /= 2;
-		} else {
-			start = ( start * 3 ) + 1;
-		}
-		result += 1;
+// Yes, the memoized / recursive version of the function is slower,
+// but I think the memoize wrapper is neat and I want to demonstrate
+// its usage.
+function<ull(ull)> mCollatz;
+
+ull rCollatz( ull start ) {
+	if( start == 1 ) {
+		return 1;
 	}
-	return result;
+	if( start % 2 == 0 ) {
+		return mCollatz( start / 2 ) + 1;
+	} else {
+		return mCollatz( ( start * 3 ) + 1 ) + 1;
+	}
 }
 
 int main() {
+	mCollatz = rCollatz;
+	mCollatz = memoize( mCollatz );
 	ull result;
 	ull best = 1;
 	ull temp;
 	for( ull i = 2; i <= 1000000; i++ ) {
-		temp = collatz( i );
+		temp = mCollatz( i );
 		if( temp > best ) {
 			best = temp;
 			result = i;
