@@ -208,3 +208,20 @@ ull choose( ull n, ull k ) {
 
 	return r;
 }
+
+/*
+ * Calculates the path through a triangle array with the largest sum.
+ * @param vector<vector<int> > rows
+ * @returns int
+ */
+int maxSumPath( vector<vector<int> > rows ) {
+	int bottom = rows.size() - 2;
+	for( int i = bottom; i >= 0; i-- ) {
+		for( int j = 0; j <= i; j++ ) {
+			rows[i][j] += max( rows[i+1][j], rows[i+1][j+1] );
+		}
+	}
+
+	return rows[0][0];
+}
+
