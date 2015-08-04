@@ -22,6 +22,7 @@
 #include <vector>
 #include <numeric>
 #include <unordered_map>
+#include <map>
 #include <functional>
 
 typedef unsigned long long ull;
@@ -225,3 +226,15 @@ int maxSumPath( vector<vector<int> > rows ) {
 	return rows[0][0];
 }
 
+/*
+ * Print out a vector with separator of your choice, \n by default.
+ * @param vector<T> v The vector print
+ * @param string sep optional, \n by default, gets printed after each element in v.
+ * @returns void
+ */
+template <typename T>
+void printVector( vector<T> v, string sep = "\n" ) {
+	for( auto it = v.begin(); it != v.end(); ++it ) {
+		cout << *it << sep;
+	}
+}
