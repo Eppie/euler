@@ -6,7 +6,7 @@
  *    Description:  Solution to Project Euler, Problem 19
  *
  *        Version:  1.0
- *        Created:  08/03/2015 09:38:51 PM
+ *        Created:  08/03/2015 09:38:51 AM
  *       Revision:  none
  *       Compiler:  g++
  *
