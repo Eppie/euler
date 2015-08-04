@@ -24,6 +24,8 @@
 #include <unordered_map>
 #include <map>
 #include <functional>
+#include <sstream>
+#include <fstream>
 
 typedef unsigned long long ull;
 using namespace std;
@@ -237,4 +239,33 @@ void printVector( vector<T> v, string sep = "\n" ) {
 	for( auto it = v.begin(); it != v.end(); ++it ) {
 		cout << *it << sep;
 	}
+}
+
+/*
+ * Read a comma delimited file.
+ * @param string filename
+ * @returns vector<string>
+ */
+vector<string> loadDataFromFile( string filename ) {
+	string line;
+	vector<string> data;
+	ifstream file( filename );
+
+	if( !file ) {
+		cout << "Error opening file!" << endl;
+		throw;
+	}
+
+	while( getline( file, line, ',' ) ) {
+		try {
+			data.push_back( line );
+		}
+
+		catch ( const invalid_argument& ia ) {
+			cerr << "Check your input file: " << filename << endl;
+			throw;
+		}
+	}
+
+	return data;
 }
