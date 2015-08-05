@@ -123,7 +123,7 @@ T sum( vector<T> input ) {
  * @param int dx
  * @param int dy
  * @param int steps
- * @returns T
+ * @return T
  */
 template <typename T>
 T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
@@ -151,7 +151,7 @@ T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, i
  * then use the function returned instead of the original function.
  * Does not work with recursive functions unless you use a forward declaration!
  * @param function<outType(inType)> inFunc The function to memoize
- * @returns function<outType(inType)> The memoized version of the function
+ * @return function<outType(inType)> The memoized version of the function
  */
 template<class inType, class outType>
 function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
@@ -175,7 +175,7 @@ function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
  * This is your standard greatest common denominator function.
  * @param unsigned long long x
  * @param unsigned long long y
- * @returns unsigned long long
+ * @return unsigned long long
  */
 ull gcd( ull x, ull y ) {
 	while( y != 0 ) {
@@ -190,7 +190,7 @@ ull gcd( ull x, ull y ) {
  * This is your standard n choose k function.
  * @param unsigned long long n
  * @param unsigned long long k
- * @returns unsigned long long
+ * @return unsigned long long
  */
 ull choose( ull n, ull k ) {
 	if( k > n ) {
@@ -215,7 +215,7 @@ ull choose( ull n, ull k ) {
 /*
  * Calculates the path through a triangle array with the largest sum.
  * @param vector<vector<int> > rows
- * @returns int
+ * @return int
  */
 int maxSumPath( vector<vector<int> > rows ) {
 	int bottom = rows.size() - 2;
@@ -232,7 +232,7 @@ int maxSumPath( vector<vector<int> > rows ) {
  * Print out a vector with separator of your choice, \n by default.
  * @param vector<T> v The vector print
  * @param string sep optional, \n by default, gets printed after each element in v.
- * @returns void
+ * @return void
  */
 template <typename T>
 void printVector( vector<T> v, string sep = "\n" ) {
@@ -244,7 +244,7 @@ void printVector( vector<T> v, string sep = "\n" ) {
 /*
  * Read a comma delimited file.
  * @param string filename
- * @returns vector<string>
+ * @return vector<string>
  */
 vector<string> loadDataFromFile( string filename ) {
 	string line;
