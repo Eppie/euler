@@ -33,7 +33,7 @@ using namespace std;
 /*
  * This function returns a vector of all the prime factors of an integer n.
  * Example: n = 1000 --> 2 * 2 * 2 * 5 * 5 * 5 == 8 * 125 == 1000
- * @param ull n
+ * @param unsigned long long n
  * @return vector<int>
  */
 vector<int> primeFactors( ull n ) {

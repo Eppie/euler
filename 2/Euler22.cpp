@@ -20,17 +20,25 @@
 
 #include "../helper.hpp"
 
+int score( string s ) {
+	int result = 0;
+	for( auto c : s ) {
+		result += (int)c - 64;
+	}
+	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
+	return result + 60;
+}
+
 int main() {
-	vector<int> scores;
-	int score;
+	int result = 0;
+	int thisScore;
 	vector<string> names = loadDataFromFile( "names.txt" );
 	sort( names.begin(), names.end() );
 	for( auto it = names.begin(); it != names.end(); ++it ) {
-		cout << it - names.begin() << endl;
-		score = 1;
-		score *= it - names.begin();
-		scores.push_back( score );
+		thisScore = score( *it );
+		thisScore *= it - names.begin() + 1;
+		result += thisScore;
 	}
-	cout << sum( scores ) << endl;
+	cout << result << endl;
 	return 0;
 }

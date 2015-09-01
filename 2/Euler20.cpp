@@ -22,10 +22,12 @@
 #include "../helper.hpp"
 
 vector<int> factorial( int n ) {
+	// Initialize a vector with NUMDIGITS 0's.
 	vector<int> digits(NUMDIGITS, 0);
 	int size = 1;
 	digits[0] = 1;
 
+	// This loop mimics multiplication by hand.
 	for( int i = 2; i <= n; i++ ) {
 		int carry = 0;
 
@@ -41,7 +43,6 @@ vector<int> factorial( int n ) {
 			size++;
 		}
 	}
-
 	return digits;
 }
 
