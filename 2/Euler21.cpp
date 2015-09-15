@@ -28,12 +28,13 @@ int d( int n ) {
 	for( int i = 2; i < sqrt(n); i++ ) {
 		if( n % i == 0 ) {
 			result += i;
-			result +=  n / i ;
+			result += n / i ;
 		}
 	}
 
 	return result;
 }
+
 int main() {
 	int b;
 	int result = 0;
