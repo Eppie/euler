@@ -230,13 +230,13 @@ int maxSumPath( vector<vector<int> > rows ) {
 }
 
 /*
- * Print out a vector with separator of your choice, \n by default.
- * @param vector<T> v The vector print
+ * Print out an iterable with separator of your choice, \n by default.
+ * @param I v The iterable to print
  * @param string sep optional, \n by default, gets printed after each element in v.
  * @return void
  */
-template <typename T>
-void printVector( vector<T> v, string sep = "\n" ) {
+template <typename I>
+void printIterable( I v, string sep = "\n" ) {
 	for( auto it = v.begin(); it != v.end(); ++it ) {
 		cout << *it << sep;
 	}
