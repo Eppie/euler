@@ -27,6 +27,8 @@
 #include <sstream>
 #include <fstream>
 #include <set>
+#include <typeinfo>
+#include <cxxabi.h>
 
 typedef unsigned long long ull;
 using namespace std;
@@ -75,7 +77,7 @@ vector<ull> sieve( ull n ) {
 
 	for( ull i = 2; i <= (ull)sqrt(n); i++ ) {
 		if( A[i] == 1 ) {
-			for( ull j = pow( i, 2 ); j < n; j+=i ) {
+			for( ull j = pow( i, 2 ); j < n; j += i ) {
 				A[j] = 0;
 			}
 		}
@@ -195,7 +197,7 @@ ull gcd( ull x, ull y ) {
  */
 ull choose( ull n, ull k ) {
 	if( k > n ) {
-		throw invalid_argument("invalid argument in choose");
+		throw invalid_argument( "invalid argument in choose" );
 	}
 
 	ull r = 1;
@@ -205,7 +207,7 @@ ull choose( ull n, ull k ) {
 		r /= g;
 		ull t = n / (d / g);
 		if( r > numeric_limits<ull>::max() / t ) {
-			throw overflow_error("overflow in choose");
+			throw overflow_error( "overflow in choose" );
 		}
 		r *= t;
 	}
@@ -233,7 +235,7 @@ int maxSumPath( vector<vector<int> > rows ) {
  * Print out an iterable with separator of your choice, \n by default.
  * @param I v The iterable to print
  * @param string sep optional, endl by default, gets printed after each element in v.
- * @param string end optional, "" by default, gets printed once after the entire vector has been printed.
+ * @param string end optional, "" by default, gets printed once after the entire iterable has been printed.
  * @return void
  */
 template <typename I>
@@ -255,7 +257,7 @@ vector<string> loadDataFromFile( string filename ) {
 	ifstream file( filename );
 
 	if( !file ) {
-		cout << "Error opening file!" << endl;
+		cerr << "Error opening file!" << endl;
 		throw;
 	}
 
@@ -264,12 +266,22 @@ vector<string> loadDataFromFile( string filename ) {
 			data.push_back( line );
 		}
 
-		catch ( const invalid_argument& ia ) {
+		catch( const invalid_argument& ia ) {
 			cerr << "Check your input file: " << filename << endl;
 			throw;
 		}
 	}
 
 	return data;
+}
+
+/*
+ * Return the type of a variable or function.
+ * @param T var
+ * @return char* The type of var.
+ */
+template<typename T>
+char* getType( T var ) {
+	return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
 }
 
