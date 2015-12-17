@@ -24,15 +24,18 @@ int main() {
 	int test;
 	string s;
 	int result = 0;
+
 	for( int i = 999; i >= 100; i-- ) {
 		for( int j = 999; j >= 100; j-- ) {
 			test = i * j;
 			s = to_string( test );
+
 			if( isPalindrome( s ) ) {
 				result = test > result ? test : result;
 			}
 		}
 	}
+
 	cout << result << endl;
 	return 0;
 }

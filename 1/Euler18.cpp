@@ -20,7 +20,7 @@
 #include "../helper.hpp"
 
 int main() {
-	vector< vector<int> > rows (15);
+	vector< vector<int> > rows( 15 );
 	rows[0] = { 75 };
 	rows[1] = { 95, 64 };
 	rows[2] = { 17, 47, 82 };

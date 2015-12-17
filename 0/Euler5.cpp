@@ -23,6 +23,7 @@
 int main() {
 	int test = 2520;
 	int sum;
+
 	while( 1 ) {
 		sum = 0;
 
@@ -35,6 +36,6 @@ int main() {
 			return 0;
 		}
 
-		test+=2520;
+		test += 2520;
 	}
 }

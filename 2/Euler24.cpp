@@ -31,7 +31,7 @@ inline void permutations( vector<char> s, unsigned step = 0 ) {
 	}
 
 	for( unsigned i = step; i < s.size(); i++ ) {
-		vector<char> sCopy(s);
+		vector<char> sCopy( s );
 		char tmp = sCopy[step];
 		sCopy[step] = sCopy[i];
 		sCopy[i] = tmp;
@@ -42,7 +42,6 @@ inline void permutations( vector<char> s, unsigned step = 0 ) {
 int main() {
 	permutations( stringToVector( "0123456789" ) );
 	sort( result.begin(), result.end() );
-	printVector( result[999999], "" );
-	cout << endl;
+	printIterable( result[999999], "", "\n" );
 	return 0;
 }

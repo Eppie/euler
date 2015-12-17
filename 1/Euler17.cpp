@@ -20,7 +20,7 @@
 #include "../helper.hpp"
 
 int main() {
-	unordered_map<int,int> letterCounts;
+	unordered_map<int, int> letterCounts;
 	letterCounts[1] = 3;
 	letterCounts[2] = 3;
 	letterCounts[3] = 5;
@@ -52,19 +52,21 @@ int main() {
 
 	for( int i = 21; i < 100; i++ ) {
 		int mod = i % 10;
+
 		if( mod == 0 ) {
 			continue;
 		} else {
-			letterCounts[i] = letterCounts[i-mod] + letterCounts[mod];
+			letterCounts[i] = letterCounts[i - mod] + letterCounts[mod];
 		}
 	}
 
 	for( int i = 100; i < 1000; i++ ) {
 		int mod = i % 100;
+
 		if( mod == 0 ) {
-			letterCounts[i] = letterCounts[i/100] + 7;
+			letterCounts[i] = letterCounts[i / 100] + 7;
 		} else {
-			letterCounts[i] = letterCounts[i-mod] + letterCounts[mod] + 3;
+			letterCounts[i] = letterCounts[i - mod] + letterCounts[mod] + 3;
 		}
 	}
 

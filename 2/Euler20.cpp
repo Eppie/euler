@@ -23,7 +23,7 @@
 
 vector<int> factorial( int n ) {
 	// Initialize a vector with NUMDIGITS 0's.
-	vector<int> digits(NUMDIGITS, 0);
+	vector<int> digits( NUMDIGITS, 0 );
 	int size = 1;
 	digits[0] = 1;
 
@@ -43,10 +43,11 @@ vector<int> factorial( int n ) {
 			size++;
 		}
 	}
+
 	return digits;
 }
 
 int main() {
-	cout << sum( factorial(100) ) << endl;
+	cout << sum( factorial( 100 ) ) << endl;
 	return 0;
 }

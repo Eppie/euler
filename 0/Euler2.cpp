@@ -25,20 +25,25 @@ int main() {
 	int term2 = 2;
 	int i = 0;
 	int result = 2;
+
 	while( term1 < 4e6 && term2 < 4e6 ) {
 		if( i % 2 == 0 ) {
 			term1 += term2;
+
 			if( term1 % 2 == 0 ) {
 				result += term1;
 			}
 		} else {
 			term2 += term1;
+
 			if( term2 % 2 == 0 ) {
 				result += term2;
 			}
 		}
+
 		i++;
 	}
+
 	cout << result << endl;
 	return 0;
 }

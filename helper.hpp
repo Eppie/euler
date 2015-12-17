@@ -30,6 +30,8 @@
 #include <typeinfo>
 #include <cxxabi.h>
 
+#define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
+
 typedef unsigned long long ull;
 using namespace std;
 

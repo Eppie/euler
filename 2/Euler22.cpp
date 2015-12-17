@@ -22,9 +22,11 @@
 
 int score( string s ) {
 	int result = 0;
+
 	for( auto c : s ) {
-		result += (int)c - 64;
+		result += ( int )c - 64;
 	}
+
 	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
 	return result + 60;
 }
@@ -34,11 +36,13 @@ int main() {
 	int thisScore;
 	vector<string> names = loadDataFromFile( "names.txt" );
 	sort( names.begin(), names.end() );
+
 	for( auto it = names.begin(); it != names.end(); ++it ) {
 		thisScore = score( *it );
 		thisScore *= it - names.begin() + 1;
 		result += thisScore;
 	}
+
 	cout << result << endl;
 	return 0;
 }

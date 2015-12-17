@@ -24,11 +24,13 @@ int main() {
 	for( int c = 0; c < 1000; c++ ) {
 		for( int b = 0; b < c; b++ ) {
 			int a = 1000 - b - c;
-			if ( pow( a, 2 ) + pow( b, 2 ) == pow( c, 2 ) ) {
-				cout << a * b * c << endl;
+
+			if( pow( a, 2 ) + pow( b, 2 ) == pow( c, 2 ) ) {
+				cout << a *b *c << endl;
 				return 0;
 			}
 		}
 	}
+
 	return 1;
 }

@@ -25,12 +25,13 @@
 // Yes, the memoized / recursive version of the function is slower,
 // but I think the memoize wrapper is neat and I want to demonstrate
 // its usage.
-function<ull(ull)> mCollatz;
+function<ull( ull )> mCollatz;
 
 ull rCollatz( ull start ) {
 	if( start == 1 ) {
 		return 1;
 	}
+
 	if( start % 2 == 0 ) {
 		return mCollatz( start / 2 ) + 1;
 	} else {
@@ -44,8 +45,10 @@ int main() {
 	ull result;
 	ull best = 1;
 	ull temp;
+
 	for( ull i = 2; i <= 1000000; i++ ) {
 		temp = mCollatz( i );
+
 		if( temp > best ) {
 			best = temp;
 			result = i;

@@ -19,10 +19,11 @@
 
 #include "../helper.hpp"
 
-void add( int* a, int* b, int* c ) {
+void add( int *a, int *b, int *c ) {
 	int tmp;
 	int newDigit;
 	int carry = 0;
+
 	for( int i = 0; i < 1000; i++ ) {
 		tmp = a[i] + b[i] + carry;
 		newDigit = tmp % 10;
@@ -33,30 +34,37 @@ void add( int* a, int* b, int* c ) {
 
 int main() {
 	int count = 2;
-	int* a = (int*) calloc( 1000, sizeof( int ) );
-	int* b = (int*) calloc( 1000, sizeof( int ) );
-	int* c = (int*) calloc( 1000, sizeof( int ) );
+	int *a = ( int * ) calloc( 1000, sizeof( int ) );
+	int *b = ( int * ) calloc( 1000, sizeof( int ) );
+	int *c = ( int * ) calloc( 1000, sizeof( int ) );
 	a[0] = 1;
 	b[0] = 1;
+
 	while( 1 ) {
 		add( a, b, c );
 		count += 1;
+
 		if( c[999] != 0 ) {
 			cout << count << endl;
 			return 0;
 		}
+
 		add( c, a, b );
 		count += 1;
+
 		if( b[999] != 0 ) {
 			cout << count << endl;
 			return 0;
 		}
+
 		add( b, c, a );
 		count += 1;
+
 		if( b[999] != 0 ) {
 			cout << count << endl;
 			return 0;
 		}
 	}
+
 	return -1;
 }

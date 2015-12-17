@@ -53,7 +53,7 @@ bool isLeapYear( int year ) {
 }
 
 int main() {
-	vector<int> daysPerMonth(12);
+	vector<int> daysPerMonth( 12 );
 	daysPerMonth[JAN] = 31;
 	daysPerMonth[FEB] = 28;
 	daysPerMonth[MAR] = 31;
@@ -83,9 +83,11 @@ int main() {
 
 		if( dayOfMonth > daysPerMonth[month] ) {
 			dayOfMonth = 1;
+
 			if( month == DEC ) {
 				month = JAN;
 				year += 1;
+
 				if( isLeapYear( year ) ) {
 					daysPerMonth[FEB] = 29;
 				} else {
@@ -96,6 +98,7 @@ int main() {
 			}
 		}
 	}
+
 	cout << result << endl;
 	return 0;
 }

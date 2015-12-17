@@ -23,17 +23,21 @@ int main() {
 	ull sum = 1;
 	ull n = 2;
 	int count;
+
 	while( 1 ) {
 		sum += n;
 		n++;
 		count = 2;
-		for( unsigned i = 2; i < sqrt(sum); i++ ) {
+
+		for( unsigned i = 2; i < sqrt( sum ); i++ ) {
 			count += sum % i == 0 ? 2 : 0;
 		}
+
 		if( count > 500 ) {
 			cout << sum << endl;
 			return 0;
 		}
 	}
+
 	return 0;
 }

@@ -21,7 +21,7 @@
 
 int main() {
 	int best = 0;
-	vector<vector<int>> g(20);
+	vector<vector<int>> g( 20 );
 
 	g[0] = { 8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8 };
 	g[1] = { 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0 };
@@ -50,7 +50,7 @@ int main() {
 				productInDirection( g, x, y, 1, 0, 4 ),
 				productInDirection( g, x, y, 0, 1, 4 ),
 				productInDirection( g, x, y, 1, 1, 4 ),
-				productInDirection( g, x, y+3, 1, -1, 4 ),
+				productInDirection( g, x, y + 3, 1, -1, 4 ),
 				best
 			} );
 		}

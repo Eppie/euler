@@ -27,9 +27,11 @@
 
 bool isAbundant( int n ) {
 	int result = 1;
-	for( int i = 2; i <= sqrt(n); i++ ) {
+
+	for( int i = 2; i <= sqrt( n ); i++ ) {
 		if( n % i == 0 ) {
 			result += i;
+
 			if( n / i > i ) {
 				result += n / i;
 			}
@@ -42,31 +44,39 @@ bool isAbundant( int n ) {
 int solve( set<int> values ) {
 	int result = 0;
 	int diff;
+
 	for( int i = 1; i <= 28123; i++ ) {
 		for( auto it = values.begin(); it != values.end(); ++it ) {
 			diff = i - *it;
+
 			if( diff < 0 ) {
 				continue;
 			}
+
 			auto got = values.find( diff );
+
 			if( got != values.end() ) {
 				result += i;
 				break;
 			}
 		}
 	}
+
 	return result;
 }
 
 int main() {
 	set<int> values;
 	int total = 0;
+
 	for( int i = 1; i <= 28123; i++ ) {
 		total += i;
+
 		if( isAbundant( i ) ) {
 			values.insert( i );
 		}
 	}
+
 	int result = solve( values );
 	cout << total - result << endl;
 	return 0;

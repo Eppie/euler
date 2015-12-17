@@ -23,7 +23,7 @@ int main() {
 	// Initialize space for a 400 digit number. Initially, it will be set to 1.
 	// I don't know exactly how many digits there are in the decimal representation of 2^1000,
 	// but I know it's less than 400.
-	vector<int> digits(400, 0);
+	vector<int> digits( 400, 0 );
 	digits[0] = 1;
 
 	// Double the number 1000 times.
@@ -32,7 +32,7 @@ int main() {
 
 		// Double digit, handling carrys as necessary.
 		for( int k = 1; k < 400; k++ ) {
-			digits[k] = 2 * digits[k] + digits[k-1] / 10;
+			digits[k] = 2 * digits[k] + digits[k - 1] / 10;
 		}
 
 		// Since the carrys have been handled, just drop them.
