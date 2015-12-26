@@ -23,12 +23,13 @@
 using namespace boost::multiprecision;
 
 int solve26() {
-	mpfr_float::default_precision(2000);
+	mpfr_float::default_precision( 2000 );
 	vector<mpfr_float> results;
+
 	for( int i = 1; i <= 1000; i++ ) {
 		mpfr_float a = 1;
 		mpfr_float b = i;
-		cout << setprecision(2000) << a / b << endl;
+		cout << setprecision( 2000 ) << a / b << endl;
 	}
 
 	return 0;
