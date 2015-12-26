@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-void add( int *a, int *b, int *c ) {
+void add( int* a, int* b, int* c ) {
 	int tmp;
 	int newDigit;
 	int carry = 0;
@@ -32,11 +32,11 @@ void add( int *a, int *b, int *c ) {
 	}
 }
 
-int main() {
+int solve25() {
 	int count = 2;
-	int *a = ( int * ) calloc( 1000, sizeof( int ) );
-	int *b = ( int * ) calloc( 1000, sizeof( int ) );
-	int *c = ( int * ) calloc( 1000, sizeof( int ) );
+	int* a = ( int* ) calloc( 1000, sizeof( int ) );
+	int* b = ( int* ) calloc( 1000, sizeof( int ) );
+	int* c = ( int* ) calloc( 1000, sizeof( int ) );
 	a[0] = 1;
 	b[0] = 1;
 
@@ -45,26 +45,21 @@ int main() {
 		count += 1;
 
 		if( c[999] != 0 ) {
-			cout << count << endl;
-			return 0;
+			return count;
 		}
 
 		add( c, a, b );
 		count += 1;
 
 		if( b[999] != 0 ) {
-			cout << count << endl;
-			return 0;
+			return count;
 		}
 
 		add( b, c, a );
 		count += 1;
 
 		if( b[999] != 0 ) {
-			cout << count << endl;
-			return 0;
+			return count;
 		}
 	}
-
-	return -1;
 }

@@ -47,7 +47,6 @@ vector<int> factorial( int n ) {
 	return digits;
 }
 
-int main() {
-	cout << sum( factorial( 100 ) ) << endl;
-	return 0;
+int solve20() {
+	return sum( factorial( 100 ) );
 }

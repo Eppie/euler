@@ -20,7 +20,6 @@
 
 #include "../helper.hpp"
 
-int main() {
-	cout << sieve( 105000 )[10000] << endl;
-	return 0;
+ull solve7() {
+	return sieve( 105000 )[10000];
 }

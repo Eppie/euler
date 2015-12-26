@@ -20,7 +20,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve6() {
 	int sumOfSquares = 0;
 	int squareOfSums = 0;
 
@@ -31,6 +31,5 @@ int main() {
 
 	squareOfSums = pow( squareOfSums, 2 );
 	int result = squareOfSums - sumOfSquares;
-	cout << result << endl;
-	return 0;
+	return result;
 }

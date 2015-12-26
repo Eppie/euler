@@ -31,7 +31,7 @@ int score( string s ) {
 	return result + 60;
 }
 
-int main() {
+int solve22() {
 	int result = 0;
 	int thisScore;
 	vector<string> names = loadDataFromFile( "names.txt" );
@@ -43,6 +43,5 @@ int main() {
 		result += thisScore;
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }

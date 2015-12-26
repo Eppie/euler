@@ -20,7 +20,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve5() {
 	int test = 2520;
 	int sum;
 
@@ -32,8 +32,7 @@ int main() {
 		}
 
 		if( sum == 0 ) {
-			cout << test << endl;
-			return 0;
+			return test;
 		}
 
 		test += 2520;

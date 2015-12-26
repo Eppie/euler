@@ -52,7 +52,7 @@ bool isLeapYear( int year ) {
 	}
 }
 
-int main() {
+int solve19() {
 	vector<int> daysPerMonth( 12 );
 	daysPerMonth[JAN] = 31;
 	daysPerMonth[FEB] = 28;
@@ -66,7 +66,6 @@ int main() {
 	daysPerMonth[OCT] = 31;
 	daysPerMonth[NOV] = 30;
 	daysPerMonth[DEC] = 31;
-
 	int dayOfMonth = 1;
 	int month = JAN;
 	int year = 1901;
@@ -99,6 +98,5 @@ int main() {
 		}
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }

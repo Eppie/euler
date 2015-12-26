@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve13() {
 	vector<ull> input = {
 		371072875339,
 		463769376774,
@@ -122,6 +122,5 @@ int main() {
 		208496039801,
 		535035342264,
 	};
-	cout << sum( input ) / 10000 << endl;
-	return 0;
+	return sum( input ) / 10000;
 }

@@ -39,7 +39,7 @@ ull rCollatz( ull start ) {
 	}
 }
 
-int main() {
+ull solve14() {
 	mCollatz = rCollatz;
 	mCollatz = memoize( mCollatz );
 	ull result;
@@ -55,6 +55,5 @@ int main() {
 		}
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }

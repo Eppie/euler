@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+ull solve8() {
 	ull best = 0;
 	ull temp;
 	string s =
@@ -54,6 +54,5 @@ int main() {
 		best = temp > best ? temp : best;
 	}
 
-	cout << best << endl;
-	return 0;
+	return best;
 }

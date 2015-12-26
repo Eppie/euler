@@ -20,7 +20,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve4() {
 	int test;
 	string s;
 	int result = 0;
@@ -36,6 +36,5 @@ int main() {
 		}
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }

@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve18() {
 	vector< vector<int> > rows( 15 );
 	rows[0] = { 75 };
 	rows[1] = { 95, 64 };
@@ -36,6 +36,5 @@ int main() {
 	rows[12] = { 91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48 };
 	rows[13] = { 63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31 };
 	rows[14] = { 4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23 };
-	cout << maxSumPath( rows ) << endl;
-	return 0;
+	return maxSumPath( rows );
 }

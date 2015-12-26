@@ -20,18 +20,15 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve3() {
 	long n = 600851475143;
 	int newN = ( int )sqrt( n ) + 1;
-	vector<int> primes = sieve( newN );
+	vector<ull> primes = sieve( newN );
 
 	for( auto it = primes.rbegin(); it != primes.rend(); ++it ) {
 		if( n % *it == 0 ) {
-			cout << *it << endl;
-			return 0;
+			return *it;
 		}
 	}
-
-	return 1;
 }
 

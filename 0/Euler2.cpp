@@ -18,9 +18,7 @@
  * =====================================================================================
  */
 
-#include "../helper.hpp"
-
-int main() {
+int solve2() {
 	int term1 = 1;
 	int term2 = 2;
 	int i = 0;
@@ -44,6 +42,5 @@ int main() {
 		i++;
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }

@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve17() {
 	unordered_map<int, int> letterCounts;
 	letterCounts[1] = 3;
 	letterCounts[2] = 3;
@@ -76,6 +76,5 @@ int main() {
 		sum += letterCounts[i];
 	}
 
-	cout << sum << endl;
-	return 0;
+	return sum;
 }

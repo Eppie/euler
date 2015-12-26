@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve16() {
 	// Initialize space for a 400 digit number. Initially, it will be set to 1.
 	// I don't know exactly how many digits there are in the decimal representation of 2^1000,
 	// but I know it's less than 400.
@@ -42,6 +42,5 @@ int main() {
 	}
 
 	// Actually sum the digits.
-	cout << sum( digits ) << endl;
-	return 0;
+	return sum( digits );
 }

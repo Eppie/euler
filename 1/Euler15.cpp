@@ -28,9 +28,9 @@
 // In a 3x3 grid, all the solutions must be of length 6, because you must go right exactly 3 times and down exactly 3 times.
 // One possible solution is RRRDDD. There are 6 slots and each slot can be filled with 1 of 2 values. (R or D).
 // Thus, we can calculate the number of routes as choose(6, 3).
+
 #include "../helper.hpp"
 
-int main() {
-	cout << choose( 40, 20 ) << endl;
-	return 0;
+ull solve15() {
+	return choose( 40, 20 );
 }

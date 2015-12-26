@@ -36,7 +36,7 @@ int d( int n ) {
 	return result;
 }
 
-int main() {
+int solve21() {
 	int b;
 	int result = 0;
 
@@ -48,7 +48,5 @@ int main() {
 		}
 	}
 
-	cout << result << endl;
-
-	return 0;
+	return result;
 }

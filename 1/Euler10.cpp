@@ -19,7 +19,6 @@
 
 #include "../helper.hpp"
 
-int main() {
-	cout << sum( sieve( 2e6 ) ) << endl;
-	return 0;
+int solve10() {
+	return sum( sieve( 2e6 ) );
 }

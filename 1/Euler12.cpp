@@ -19,7 +19,7 @@
 
 #include "../helper.hpp"
 
-int main() {
+ull solve12() {
 	ull sum = 1;
 	ull n = 2;
 	int count;
@@ -34,10 +34,7 @@ int main() {
 		}
 
 		if( count > 500 ) {
-			cout << sum << endl;
-			return 0;
+			return sum;
 		}
 	}
-
-	return 0;
 }

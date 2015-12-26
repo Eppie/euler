@@ -39,9 +39,9 @@ inline void permutations( vector<char> s, unsigned step = 0 ) {
 	}
 }
 
-int main() {
+auto solve24() {
 	permutations( stringToVector( "0123456789" ) );
 	sort( result.begin(), result.end() );
 	printIterable( result[999999], "", "\n" );
-	return 0;
+	return result[999999];
 }

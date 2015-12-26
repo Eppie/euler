@@ -16,6 +16,8 @@
  * =====================================================================================
  */
 
+#pragma once
+
 #include <iostream>
 #include <math.h>
 #include <algorithm>
@@ -43,6 +45,7 @@ using namespace std;
  */
 vector<int> primeFactors( ull n ) {
 	vector<int> result;
+
 	// Find the number of 2s that divide n
 	while( n % 2 == 0 ) {
 		result.push_back( 2 );
@@ -50,16 +53,16 @@ vector<int> primeFactors( ull n ) {
 	}
 
 	// n must be odd at this point, so we can count by 2's (Note i+=2)
-	for( int i = 3; i <= sqrt(n); i+=2 ) {
+	for( int i = 3; i <= sqrt( n ); i += 2 ) {
 		// While i divides n, store i and divide n
-		while ( n % i == 0 ) {
+		while( n % i == 0 ) {
 			result.push_back( i );
 			n = n / i;
 		}
 	}
 
 	// If n is > 2, it must be prime, so just add it to the list.
-	if ( n > 2 ) {
+	if( n > 2 ) {
 		result.push_back( n );
 	}
 
@@ -74,10 +77,10 @@ vector<int> primeFactors( ull n ) {
  */
 vector<ull> sieve( ull n ) {
 	vector<ull> result;
-	vector<ull> A (n);
+	vector<ull> A( n );
 	fill( A.begin(), A.end(), 1 );
 
-	for( ull i = 2; i <= (ull)sqrt(n); i++ ) {
+	for( ull i = 2; i <= ( ull )sqrt( n ); i++ ) {
 		if( A[i] == 1 ) {
 			for( ull j = pow( i, 2 ); j < n; j += i ) {
 				A[j] = 0;
@@ -86,7 +89,7 @@ vector<ull> sieve( ull n ) {
 	}
 
 	for( ull i = 2; i < n; i++ ) {
-		if ( A[i] == 1 ) {
+		if( A[i] == 1 ) {
 			result.push_back( i );
 		}
 	}
@@ -107,13 +110,17 @@ bool isPrime( long long n ) {
 	} else if( n % 2 == 0 || n % 3 == 0 ) {
 		return false;
 	}
+
 	long long i = 5;
+
 	while( i * i <= n ) {
 		if( n % i == 0 || n % ( i + 2 ) == 0 ) {
 			return false;
 		}
+
 		i += 6;
 	}
+
 	return true;
 }
 
@@ -125,6 +132,7 @@ bool isPrime( long long n ) {
 bool isPalindrome( string s ) {
 	string reverseS = s;
 	reverse( s.begin(), s.end() );
+
 	if( s == reverseS ) {
 		return true;
 	} else {
@@ -141,7 +149,7 @@ bool isPalindrome( string s ) {
  */
 template <typename T>
 T sum( vector<T> input ) {
-	return accumulate( input.begin(), input.end(), (T)0 );
+	return accumulate( input.begin(), input.end(), ( T )0 );
 }
 
 /*
@@ -156,10 +164,10 @@ T sum( vector<T> input ) {
 template <typename T>
 T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
 	if( !(
-		0 <= y0 && y0 < (int)grid.size() &&
-		0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < (int)grid.size() &&
-		0 <= x0 && x0 < (int)grid[y0].size() &&
-		0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < (int)grid[y0].size()
+		0 <= y0 && y0 < ( int )grid.size() &&
+		0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < ( int )grid.size() &&
+		0 <= x0 && x0 < ( int )grid[y0].size() &&
+		0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < ( int )grid[y0].size()
 	) ) {
 		return 0;
 	}
@@ -167,7 +175,7 @@ T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, i
 	T product = 1;
 
 	for( int n = 0; n < steps; n++ ) {
-		product *= grid[y0 + n*dy][x0 + n*dx];
+		product *= grid[y0 + n * dy][x0 + n * dx];
 	}
 
 	return product;
@@ -182,10 +190,10 @@ T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, i
  * @return function<outType(inType)> The memoized version of the function
  */
 template<class inType, class outType>
-function<outType(inType)> memoize( function<outType(inType)> inFunc ) {
+function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
 	// return a lambda function
-	return [inFunc](inType n) {
-		static unordered_map<inType,outType> memo;
+	return [inFunc]( inType n ) {
+		static unordered_map<inType, outType> memo;
 		outType returnValue;
 		auto memoized = memo.find( n );
 
@@ -211,6 +219,7 @@ ull gcd( ull x, ull y ) {
 		x = y;
 		y = t;
 	}
+
 	return x;
 }
 
@@ -228,12 +237,14 @@ ull choose( ull n, ull k ) {
 	ull r = 1;
 
 	for( ull d = 1; d <= k; ++d, --n ) {
-		ull g = gcd(r, d);
+		ull g = gcd( r, d );
 		r /= g;
-		ull t = n / (d / g);
+		ull t = n / ( d / g );
+
 		if( r > numeric_limits<ull>::max() / t ) {
 			throw overflow_error( "overflow in choose" );
 		}
+
 		r *= t;
 	}
 
@@ -247,9 +258,10 @@ ull choose( ull n, ull k ) {
  */
 int maxSumPath( vector<vector<int> > rows ) {
 	int bottom = rows.size() - 2;
+
 	for( int i = bottom; i >= 0; i-- ) {
 		for( int j = 0; j <= i; j++ ) {
-			rows[i][j] += max( rows[i+1][j], rows[i+1][j+1] );
+			rows[i][j] += max( rows[i + 1][j], rows[i + 1][j + 1] );
 		}
 	}
 
@@ -268,6 +280,7 @@ void printIterable( I v, string sep = endl, string end = "" ) {
 	for( auto it = v.begin(); it != v.end(); ++it ) {
 		cout << *it << sep;
 	}
+
 	cout << end;
 }
 
@@ -289,9 +302,7 @@ vector<string> loadDataFromFile( string filename ) {
 	while( getline( file, line, ',' ) ) {
 		try {
 			data.push_back( line );
-		}
-
-		catch( const invalid_argument& ia ) {
+		} catch( const invalid_argument &ia ) {
 			cerr << "Check your input file: " << filename << endl;
 			throw;
 		}

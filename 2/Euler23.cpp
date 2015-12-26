@@ -65,7 +65,7 @@ int solve( set<int> values ) {
 	return result;
 }
 
-int main() {
+int solve23() {
 	set<int> values;
 	int total = 0;
 
@@ -78,6 +78,5 @@ int main() {
 	}
 
 	int result = solve( values );
-	cout << total - result << endl;
-	return 0;
+	return total - result;
 }

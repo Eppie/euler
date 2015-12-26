@@ -19,6 +19,6 @@
 
 #include "../helper.hpp"
 
-int main() {
+int solve26() {
 	return -1;
 }

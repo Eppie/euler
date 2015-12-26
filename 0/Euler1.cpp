@@ -18,9 +18,7 @@
  * =====================================================================================
  */
 
-#include "../helper.hpp"
-
-int main() {
+int solve1() {
 	int result = 0;
 
 	for( int i = 0; i < 1000; i++ ) {
@@ -29,6 +27,5 @@ int main() {
 		}
 	}
 
-	cout << result << endl;
-	return 0;
+	return result;
 }
