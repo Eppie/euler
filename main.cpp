@@ -16,36 +16,8 @@
  * =====================================================================================
  */
 
+#include "main.h"
 #include "helper.hpp"
-#include "0/Euler1.cpp"
-#include "0/Euler2.cpp"
-#include "0/Euler3.cpp"
-#include "0/Euler4.cpp"
-#include "0/Euler5.cpp"
-#include "0/Euler6.cpp"
-#include "0/Euler7.cpp"
-#include "0/Euler8.cpp"
-#include "0/Euler9.cpp"
-#include "1/Euler10.cpp"
-#include "1/Euler11.cpp"
-#include "1/Euler12.cpp"
-#include "1/Euler13.cpp"
-#include "1/Euler14.cpp"
-#include "1/Euler15.cpp"
-#include "1/Euler16.cpp"
-#include "1/Euler17.cpp"
-#include "1/Euler18.cpp"
-#include "1/Euler19.cpp"
-#include "2/Euler20.cpp"
-#include "2/Euler21.cpp"
-#include "2/Euler22.cpp"
-#include "2/Euler23.cpp"
-#include "2/Euler24.cpp"
-#include "2/Euler25.cpp"
-#include "2/Euler26.cpp"
-#include "2/Euler27.cpp"
-//#include "2/Euler28.cpp"
-#include "2/Euler29.cpp"
 
 int main( int argc, char* argv[] ) {
 	if( argc < 2 ) {
@@ -163,7 +135,9 @@ int main( int argc, char* argv[] ) {
 			cout << solve27() << endl;
 			break;
 
-		//case 28: cout << solve28() << endl; break;
+		case 28:
+			cout << solve28() << endl;
+			break;
 		case 29:
 			cout << solve29() << endl;
 			break;

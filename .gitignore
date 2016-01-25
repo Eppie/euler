@@ -33,3 +33,7 @@ test/runTests
 test/cmake_install.cmake
 euler
 html/
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+Makefile
