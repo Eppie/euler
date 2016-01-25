@@ -276,7 +276,7 @@ int maxSumPath( vector<vector<int> > rows ) {
  * @return void
  */
 template <typename I>
-void printIterable( I v, string sep = endl, string end = "" ) {
+void printIterable( I v, string sep = "\n", string end = "" ) {
 	for( auto it = v.begin(); it != v.end(); ++it ) {
 		cout << *it << sep;
 	}

@@ -148,7 +148,9 @@ int main( int argc, char* argv[] ) {
 			cout << solve23() << endl;
 			break;
 
-		//case 24: cout << solve24() << endl; break;
+		case 24:
+			cout << solve24() << endl;
+			break;
 		case 25:
 			cout << solve25() << endl;
 			break;

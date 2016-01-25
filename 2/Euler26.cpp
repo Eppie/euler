@@ -17,21 +17,23 @@
  * =====================================================================================
  */
 
-#include "../helper.hpp"
-#include <boost/multiprecision/mpfr.hpp>
-
-using namespace boost::multiprecision;
-
 int solve26() {
-	mpfr_float::default_precision( 2000 );
-	vector<mpfr_float> results;
-
-	for( int i = 1; i <= 1000; i++ ) {
-		mpfr_float a = 1;
-		mpfr_float b = i;
-		cout << setprecision( 2000 ) << a / b << endl;
+	int max = 0;
+	int answer = 0;
+	for( int i = 1; i < 1000; i++ ) {
+		int counter = 0;
+		int value = 10 % i;
+		int z = 1000;
+		while( value != 1 && z > 0 ) {
+			value *= 10;
+			value %= i;
+			counter++;
+			z--;
+		}
+		if( counter > max && z > 1 ) {
+			max = counter;
+			answer = i;
+		}
 	}
-
-	return 0;
+	return answer;
 }
-
