@@ -34,7 +34,7 @@ int score( string s ) {
 int solve22() {
 	int result = 0;
 	int thisScore;
-	vector<string> names = loadDataFromFile( "names.txt" );
+	vector<string> names = loadDataFromFile( "2/names.txt" );
 	sort( names.begin(), names.end() );
 
 	for( auto it = names.begin(); it != names.end(); ++it ) {
