@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  2520 is the smallest number that can be divided by the numbers 1-10 without any remainder. What is the smallest positive number that is evenly divisible by all of the numbers 1-20?
  *         Answer:  232792560
  *

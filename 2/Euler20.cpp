@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  Find the sum of the digits in the number 100!
  *         Answer:  648
  * =====================================================================================

@@ -123,6 +123,7 @@ int main( int argc, char* argv[] ) {
 		case 24:
 			cout << solve24() << endl;
 			break;
+
 		case 25:
 			cout << solve25() << endl;
 			break;
@@ -138,6 +139,7 @@ int main( int argc, char* argv[] ) {
 		case 28:
 			cout << solve28() << endl;
 			break;
+
 		case 29:
 			cout << solve29() << endl;
 			break;

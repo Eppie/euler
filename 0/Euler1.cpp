@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  Find the sum of all the multiples of 3 or 5 below 1000.
  *         Answer:  233168
  *

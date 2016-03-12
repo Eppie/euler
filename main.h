@@ -3,15 +3,14 @@
  *
  *       Filename:  test.h
  *
- *    Description:  
+ *    Description:  Function declarations
  *
  *        Version:  1.0
  *        Created:  01/25/2016 04:59:00 PM
  *       Revision:  none
- *       Compiler:  gcc
+ *       Compiler:  g++
  *
- *         Author:  YOUR NAME (), 
- *   Organization:  
+ *         Author:  Andrew Epstein
  *
  * =====================================================================================
  */

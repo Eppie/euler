@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed.
  *                  What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
  *         Answer:  9183
@@ -21,6 +20,9 @@
 #include "../helper.hpp"
 
 int solve28() {
-	return 0;
+	int L = 1001;
+	int n = ( L - 1 ) / 2;
+	int result = ( ( 16 * pow( n, 3 ) ) + ( 30 * pow( n, 2 ) ) + ( 26 * n ) + 3 ) / 3;
+	return result;
 }
 

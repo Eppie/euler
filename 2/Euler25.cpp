@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
  *         Answer:  4782
  * =====================================================================================

@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *        Problem:  Find the maximum total from top to bottom of the triangle below.
  *         Answer:  1074
  * =====================================================================================
