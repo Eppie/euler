@@ -48,3 +48,4 @@ int solve27();
 int solve28();
 int solve29();
 int solve30();
+int solve31();
