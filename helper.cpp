@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *
  * =====================================================================================
  */
@@ -135,6 +134,19 @@ ull gcd( ull x, ull y ) {
 	}
 
 	return x;
+}
+
+/*
+ * Calculates the factorial of a number ( e.g. 5! == 120 )
+ * @param unsigned n
+ * @return unsigned long long
+ */
+ull factorial( ull n ) {
+	ull result = 1;
+	for( int i = 1; i <= n; i++ ) {
+		result *= i;
+	}
+	return result;
 }
 
 /*

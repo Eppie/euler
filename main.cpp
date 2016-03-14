@@ -155,6 +155,9 @@ int main( int argc, char* argv[] ) {
 		case 33:
 			cout << solve33() << endl;
 			break;
+		case 34:
+			cout << solve34() << endl;
+			break;
 	}
 
 	return 0;

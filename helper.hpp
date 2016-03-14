@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *
  * =====================================================================================
  */
@@ -141,6 +140,13 @@ function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
  * @return unsigned long long
  */
 ull gcd( ull x, ull y );
+
+/*
+ * Calculates the factorial of a number ( e.g. 5! == 120 )
+ * @param unsigned n
+ * @return unsigned long long
+ */
+ull factorial( ull n );
 
 /*
  * This is your standard n choose k function.
