@@ -38,7 +38,7 @@ inline void permutations( vector<char> s, unsigned step = 0 ) {
 	}
 }
 
-auto solve24() {
+string solve24() {
 	permutations( stringToVector( "0123456789" ) );
 	sort( result.begin(), result.end() );
 	return string( result[999999].begin(), result[999999].end() );
