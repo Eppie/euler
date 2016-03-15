@@ -53,3 +53,4 @@ int solve32();
 int solve33();
 int solve34();
 int solve35();
+int solve36();

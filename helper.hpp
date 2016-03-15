@@ -17,6 +17,7 @@
 
 #pragma once
 
+#include <bitset>
 #include <iostream>
 #include <math.h>
 #include <algorithm>
