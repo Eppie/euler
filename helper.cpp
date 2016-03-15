@@ -143,9 +143,11 @@ ull gcd( ull x, ull y ) {
  */
 ull factorial( ull n ) {
 	ull result = 1;
+
 	for( int i = 1; i <= n; i++ ) {
 		result *= i;
 	}
+
 	return result;
 }
 
@@ -195,22 +197,6 @@ int maxSumPath( vector<vector<int> > rows ) {
 }
 
 /*
- * Print out an iterable with separator of your choice, \n by default.
- * @param I v The iterable to print
- * @param string sep optional, endl by default, gets printed after each element in v.
- * @param string end optional, "" by default, gets printed once after the entire iterable has been printed.
- * @return void
- */
-template <typename I>
-void printIterable( I v, string sep, string end ) {
-	for( auto it = v.begin(); it != v.end(); ++it ) {
-		cout << *it << sep;
-	}
-
-	cout << end;
-}
-
-/*
  * Read a comma delimited file.
  * @param string filename
  * @return vector<string>
@@ -235,15 +221,5 @@ vector<string> loadDataFromFile( string filename ) {
 	}
 
 	return data;
-}
-
-/*
- * Return the type of a variable or function.
- * @param T var
- * @return char* The type of var.
- */
-template<typename T>
-char* getType( T var ) {
-	return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
 }
 

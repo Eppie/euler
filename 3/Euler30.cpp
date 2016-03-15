@@ -20,18 +20,22 @@
 
 int solve30() {
 	int result = 0;
+
 	for( int i = 2; i < 1000000; i++ ) {
 		int tmp = i;
 		int sum = 0;
+
 		while( tmp != 0 ) {
 			int digit = tmp % 10;
 			sum += pow( digit, 5 );
 			tmp /= 10;
 		}
+
 		if( sum == i ) {
 			result += i;
 		}
 	}
+
 	return result;
 }
 

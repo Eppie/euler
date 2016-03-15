@@ -26,16 +26,18 @@
 int solve33() {
 	int nums = 1;
 	int denoms = 1;
+
 	for( int i = 10; i < 100; i++ ) {
 		for( int j = i; j < 100; j++ ) {
 			// Avoid trivial cases like 77/99 = 7/9
 			if( i % 11 != 0 ) {
 				// Make sure the digits we're cancelling are the same
-				if( (i % 10) == (j / 10) ) {
-					double fraction = double(i) / double(j);
+				if( ( i % 10 ) == ( j / 10 ) ) {
+					double fraction = double( i ) / double( j );
 					int num = i / 10;
 					int denom = j % 10;
-					double result = double(num) / double(denom);
+					double result = double( num ) / double( denom );
+
 					// If the original fraction and the cancelled fraction are the same, update our product
 					if( fraction == result ) {
 						nums *= num;
@@ -45,6 +47,7 @@ int solve33() {
 			}
 		}
 	}
+
 	// Get the result in lowest common terms
 	int g = gcd( nums, denoms );
 	int result = denoms / g;

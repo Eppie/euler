@@ -171,7 +171,13 @@ int maxSumPath( vector<vector<int> > rows );
  * @return void
  */
 template <typename I>
-void printIterable( I v, string sep = "\n", string end = "" );
+void printIterable( I v, string sep = "\n", string end = "" ) {
+	for( auto it = v.begin(); it != v.end(); ++it ) {
+		cout << *it << sep;
+	}
+
+	cout << end;
+}
 
 /*
  * Read a comma delimited file.
@@ -186,5 +192,20 @@ vector<string> loadDataFromFile( string filename );
  * @return char* The type of var.
  */
 template<typename T>
-char* getType( T var );
+char* getType( T var ) {
+	return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
+}
+
+/*
+ * Returns true if predicate evaluates to true for all elements in container
+ * Example: all( isPrime, { 3, 5, 6 } ) == false
+ *          all( isPrime, { 3, 5, 7 } ) == true
+ * @param Predicate p
+ * @param Container& xs
+ * @return bool
+ */
+template <typename Predicate, typename Container>
+bool all( Predicate p, const Container &xs ) {
+	return all_of( begin( xs ), end( xs ), p );
+}
 

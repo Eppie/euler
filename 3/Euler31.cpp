@@ -25,11 +25,13 @@ int solve31() {
 	vector<int> coins = { 1, 2, 5, 10, 20, 50, 100, 200 };
 	vector<int> ways( target + 1, 0 );
 	ways[0] = 1;
+
 	for( int i = 0; i < coins.size(); i++ ) {
 		for( int j = coins[i]; j <= target; j++ ) {
 			ways[j] += ways[j - coins[i]];
 		}
 	}
+
 	return ways[200];
 }
 
