@@ -18,7 +18,7 @@
 
 #include "../helper.hpp"
 
-int solve13() {
+ull solve13() {
 	vector<ull> input = {
 		371072875339,
 		463769376774,

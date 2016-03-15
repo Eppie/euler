@@ -18,6 +18,6 @@
 
 #include "../helper.hpp"
 
-int solve10() {
+ull solve10() {
 	return sum( sieve( 2e6 ) );
 }

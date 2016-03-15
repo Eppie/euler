@@ -20,7 +20,7 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 36):
+for i in range(1, 38):
     # Because problem 24 returns a string, let's just leave it alone
     if i == 24:
         continue

@@ -170,6 +170,9 @@ int main( int argc, char* argv[] ) {
 		case 36:
 			cout << solve36() << endl;
 			break;
+		case 37:
+			cout << solve37() << endl;
+			break;
 	}
 
 	return 0;
