@@ -1,2 +1,24 @@
-# euler
-Project Euler solutions
+# Project Euler Solutions
+
+This repository contains all the solutions I've written so far to the [Project Euler](https://projecteuler.net/) problems.
+You can use the following commands to get and make my solutions:
+```
+git clone https://github.com/Eppie/euler.git
+cd euler
+cmake .
+make
+./euler 1
+```
+This will run the solution to problem 1. You'll notice that there is a folder called `test`. This folder contains a test case for each solution. In order to make the tests, you will require [Google Test](https://github.com/google/googletest). On Fedora, you can get it by running:
+```
+sudo dnf install gtest
+```
+Once you've obtained GTest, you can make and run the tests:
+```
+cd euler/test
+cmake .
+make
+cd ../
+test/runTests
+```
+Unfortunately, you can't run the tests from directly within the test directory at the present time. This is a bug that I intend to resolve in the future.
