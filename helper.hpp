@@ -18,6 +18,7 @@
 #pragma once
 
 #include <bitset>
+#include <chrono>
 #include <iostream>
 #include <math.h>
 #include <algorithm>
@@ -28,9 +29,11 @@
 #include <functional>
 #include <sstream>
 #include <fstream>
+#include <locale>
+#include <iomanip>
 #include <set>
-#include <typeinfo>
 #include <cxxabi.h>
+#include <typeinfo>
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
@@ -209,4 +212,22 @@ template <typename Predicate, typename Container>
 bool all( Predicate p, const Container &xs ) {
 	return all_of( begin( xs ), end( xs ), p );
 }
+
+/*
+ * Returns true if predicate evaluates to true for any element in container
+ * Example: any( isPrime, { 4, 6, 8 } ) == false
+ *          any( isPrime, { 4, 6, 7 } ) == true
+ * @param Predicate p
+ * @param Container& xs
+ * @return bool
+ */
+template <typename Predicate, typename Container>
+bool any( Predicate p, const Container &xs ) {
+	return any_of( begin( xs ), end( xs ), p );
+}
+
+/*
+ *
+ */
+bool isPandigital( vector<int> values );
 

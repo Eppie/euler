@@ -60,7 +60,7 @@ vector<ull> sieve( ull n ) {
 	vector<ull> A( n );
 	fill( A.begin(), A.end(), 1 );
 
-	for( ull i = 2; i <= ( ull )sqrt( n ); i++ ) {
+	for( ull i = 2; i <= static_cast< ull>( sqrt( n ) ); i++ ) {
 		if( A[i] == 1 ) {
 			for( ull j = pow( i, 2 ); j < n; j += i ) {
 				A[j] = 0;
@@ -113,11 +113,7 @@ bool isPalindrome( string s ) {
 	string reverseS = s;
 	reverse( s.begin(), s.end() );
 
-	if( s == reverseS ) {
-		return true;
-	} else {
-		return false;
-	}
+	return s == reverseS;
 }
 
 /*
@@ -138,13 +134,13 @@ ull gcd( ull x, ull y ) {
 
 /*
  * Calculates the factorial of a number ( e.g. 5! == 120 )
- * @param unsigned n
+ * @param unsigned long long n
  * @return unsigned long long
  */
 ull factorial( ull n ) {
 	ull result = 1;
 
-	for( int i = 1; i <= n; i++ ) {
+	for( ull i = 1; i <= n; i++ ) {
 		result *= i;
 	}
 
@@ -223,3 +219,27 @@ vector<string> loadDataFromFile( string filename ) {
 	return data;
 }
 
+/*
+ *
+ */
+bool isPandigital( vector<int> values ) {
+	set<int> digits = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+	for( auto val : values ) {
+		while( val != 0 ) {
+			int tmp = val % 10;
+
+			// We saw some digit twice
+			if( digits.find( tmp ) == digits.end() ) {
+				return false;
+			}
+
+			digits.erase( tmp );
+
+
+			val /= 10;
+		}
+	}
+
+	return digits.empty();
+}
