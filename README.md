@@ -9,7 +9,7 @@ cmake .
 make
 ./euler 1
 ```
-This will run the solution to problem 1. You'll notice that there is a folder called `test`. This folder contains a test case for each solution. In order to make the tests, you will require [Google Test](https://github.com/google/googletest) On Fedora, you can get it by running:
+This will run the solution to problem 1. You'll notice that there is a folder called `test`. This folder contains a test case for each solution. In order to make the tests, you will require [Google Test](https://github.com/google/googletest). On Fedora, you can get it by running:
 ```
 sudo dnf install gtest
 ```
