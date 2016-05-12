@@ -36,7 +36,7 @@ vector<int> factorial( int n ) {
 			carry = prod / 10;
 		}
 
-		while( carry ) {
+		while( carry != 0 ) {
 			digits[size] = carry % 10;
 			carry /= 10;
 			size++;

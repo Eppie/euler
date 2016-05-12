@@ -23,23 +23,28 @@
 int solve37() {
 	int result = 0;
 	auto primes = sieve( 1e6 );
+
 	for( auto prime : primes ) {
 		if( prime < 10 ) {
 			continue;
 		}
+
 		ull backup = prime;
 		ull primeCopy = prime;
+
 		while( isPrime( prime ) && isPrime( primeCopy ) ) {
 			// Take off the first digit
-			primeCopy %= (int)pow(10, (int)log10(primeCopy));
+			primeCopy %= static_cast<int>( pow( 10, static_cast<int>( log10( primeCopy ) ) ) );
 			// Take off the last digit
 			prime /= 10;
 		}
+
 		// If the number was prime the whole way through
 		if( prime == 0 ) {
 			result += backup;
 		}
 	}
+
 	return result;
 }
 

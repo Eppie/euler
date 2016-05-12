@@ -23,7 +23,7 @@ int score( string s ) {
 	int result = 0;
 
 	for( auto c : s ) {
-		result += ( int )c - 64;
+		result += static_cast<int>( c ) - 64;
 	}
 
 	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.

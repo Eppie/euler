@@ -23,7 +23,7 @@ ull solve12() {
 	ull n = 2;
 	int count;
 
-	while( 1 ) {
+	while( true ) {
 		sum += n;
 		n++;
 		count = 2;

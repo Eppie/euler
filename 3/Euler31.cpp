@@ -26,9 +26,9 @@ int solve31() {
 	vector<int> ways( target + 1, 0 );
 	ways[0] = 1;
 
-	for( int i = 0; i < coins.size(); i++ ) {
-		for( int j = coins[i]; j <= target; j++ ) {
-			ways[j] += ways[j - coins[i]];
+	for( int coin : coins ) {
+		for( int j = coin; j <= target; j++ ) {
+			ways[j] += ways[j - coin];
 		}
 	}
 

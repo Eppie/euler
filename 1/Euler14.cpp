@@ -33,17 +33,18 @@ ull rCollatz( ull start ) {
 
 	if( start % 2 == 0 ) {
 		return mCollatz( start / 2 ) + 1;
-	} else {
-		return mCollatz( ( start * 3 ) + 1 ) + 1;
 	}
+
+	return mCollatz( ( start * 3 ) + 1 ) + 1;
+
 }
 
 ull solve14() {
 	mCollatz = rCollatz;
 	mCollatz = memoize( mCollatz );
-	ull result;
+	ull result = 0;
 	ull best = 1;
-	ull temp;
+	ull temp = 0;
 
 	for( ull i = 2; i <= 1000000; i++ ) {
 		temp = mCollatz( i );

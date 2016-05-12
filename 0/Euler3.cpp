@@ -21,7 +21,7 @@
 
 int solve3() {
 	long n = 600851475143;
-	int newN = ( int )sqrt( n ) + 1;
+	int newN = static_cast<int>( sqrt( n ) ) + 1;
 	vector<ull> primes = sieve( newN );
 
 	for( auto it = primes.rbegin(); it != primes.rend(); ++it ) {

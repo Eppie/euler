@@ -23,7 +23,7 @@ int solve5() {
 	int test = 2520;
 	int sum;
 
-	while( 1 ) {
+	while( true ) {
 		sum = 0;
 
 		for( int i = 11; i <= 20; i++ ) {

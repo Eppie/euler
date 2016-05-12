@@ -31,7 +31,7 @@ int solve34() {
 		int tmp = i;
 		int sum = 0;
 
-		while( tmp ) {
+		while( tmp != 0 ) {
 			int digit = tmp % 10;
 			tmp /= 10;
 			sum += facs[digit];

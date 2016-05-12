@@ -21,31 +21,6 @@
 
 #include "../helper.hpp"
 
-bool isPandigital( vector<int> values ) {
-	set<int> digits = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-	for( auto val : values ) {
-		while( val ) {
-			int tmp = val % 10;
-
-			// We saw some digit twice
-			if( digits.find( tmp ) == digits.end() ) {
-				return false;
-			} else {
-				digits.erase( tmp );
-			}
-
-			val = val /= 10;
-		}
-	}
-
-	if( digits.size() == 0 ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 int solve32() {
 	set<int> products;
 

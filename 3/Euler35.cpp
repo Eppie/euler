@@ -39,7 +39,6 @@ int solve35() {
 
 	for( auto prime : primes ) {
 		auto rots = rotations( prime );
-		bool allPrime = true;
 
 		if( all( isPrime, rots ) ) {
 			result += 1;

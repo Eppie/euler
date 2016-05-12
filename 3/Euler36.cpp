@@ -24,7 +24,7 @@ string dec2bin( unsigned long n ) {
 
 	do {
 		result.push_back( '0' + ( n & 1 ) );
-	} while( n >>= 1 );
+	} while( n >>= 1 != 0u );
 
 	reverse( result.begin(), result.end() );
 	return result;

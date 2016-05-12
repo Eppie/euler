@@ -33,13 +33,13 @@ void add( int* a, int* b, int* c ) {
 
 int solve25() {
 	int count = 2;
-	int* a = ( int* ) calloc( 1000, sizeof( int ) );
-	int* b = ( int* ) calloc( 1000, sizeof( int ) );
-	int* c = ( int* ) calloc( 1000, sizeof( int ) );
+	int* a = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	int* b = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	int* c = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
 	a[0] = 1;
 	b[0] = 1;
 
-	while( 1 ) {
+	while( true ) {
 		add( a, b, c );
 		count += 1;
 
