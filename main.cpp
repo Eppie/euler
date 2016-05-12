@@ -11,7 +11,6 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *   Organization:  SevOne
  *
  * =====================================================================================
  */
@@ -26,6 +25,8 @@ int main( int argc, char* argv[] ) {
 	}
 
 	auto x = atoi( argv[1] );
+
+	auto begin = chrono::high_resolution_clock::now();
 
 	switch( x ) {
 		case 1:
@@ -167,13 +168,21 @@ int main( int argc, char* argv[] ) {
 		case 35:
 			cout << solve35() << endl;
 			break;
+
 		case 36:
 			cout << solve36() << endl;
 			break;
+
 		case 37:
 			cout << solve37() << endl;
 			break;
 	}
+
+	auto end = chrono::high_resolution_clock::now();
+	stringstream ss;
+	ss.imbue( locale( "" ) );
+	ss << fixed << chrono::duration_cast<chrono::microseconds>( end - begin ).count() << "μs";
+	cout << ss.str() << endl;
 
 	return 0;
 }

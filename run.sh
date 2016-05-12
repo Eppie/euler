@@ -1,10 +1,12 @@
 #!/bin/bash
 
+./cleanup.sh
 cmake .
-make clean
 make -j12
-for i in {1..34}; do
-	result=$(./euler $i)
-	echo "$i: $result"
+cat /dev/null > timings.txt
+for i in {1..37}; do
+	result=($(./euler $i))
+	echo "$i: ${result[0]}"
+	echo "$i: ${result[1]}" >> timings.txt
 done
 
