@@ -18,28 +18,29 @@
 
 #include "../helper.hpp"
 
-vector<vector<char>> result;
+ull permutation( vector<int> v, int n ) {
+	vector<int> perm;
 
-inline vector<char> stringToVector( string str ) {
-	return vector<char>( str.begin(), str.end() );
-}
-
-inline void permutations( vector<char> s, unsigned step = 0 ) {
-	if( s.size() == step ) {
-		result.push_back( s );
+	while( !v.empty() ) {
+		int div = factorial( v.size() - 1 );
+		int pos = n / div;
+		n = n % div;
+		perm.push_back( v[pos] );
+		v.erase( v.begin() + pos );
 	}
 
-	for( unsigned i = step; i < s.size(); i++ ) {
-		vector<char> sCopy( s );
-		char tmp = sCopy[step];
-		sCopy[step] = sCopy[i];
-		sCopy[i] = tmp;
-		permutations( sCopy, step + 1 );
+	ull result = 0;
+	ull mult = 1;
+
+	for( int i = 9; i >= 0; i-- ) {
+		result += mult * perm[i];
+		mult *= 10;
 	}
+
+	return result;
+
 }
 
-string solve24() {
-	permutations( stringToVector( "0123456789" ) );
-	sort( result.begin(), result.end() );
-	return string( result[999999].begin(), result[999999].end() );
+ull solve24() {
+	return permutation( vector<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
 }

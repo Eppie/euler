@@ -41,7 +41,7 @@ int solve20();
 int solve21();
 int solve22();
 int solve23();
-string solve24();
+ull solve24();
 int solve25();
 int solve26();
 int solve27();
