@@ -176,6 +176,14 @@ int main( int argc, char* argv[] ) {
 		case 37:
 			cout << solve37() << endl;
 			break;
+
+		case 38:
+			cout << solve38() << endl;
+			break;
+
+		default:
+			cout << "Oops, didn't solve that one yet!" << endl;
+			break;
 	}
 
 	auto end = chrono::high_resolution_clock::now();

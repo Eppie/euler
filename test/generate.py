@@ -20,10 +20,7 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 38):
-    # Because problem 24 returns a string, let's just leave it alone
-    if i == 24:
-        continue
+for i in range(1, 39):
     filename = 'test{}.cpp'.format(i)
     with open(filename, 'w') as f:
         f.write(s.format(i, i / 10, solutions[i]))

@@ -94,11 +94,11 @@ T sum( vector<T> input ) {
 template <typename T>
 T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
 	if( !(
-		0 <= y0 && y0 < ( int )grid.size() &&
-		0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < ( int )grid.size() &&
-		0 <= x0 && x0 < ( int )grid[y0].size() &&
-		0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < ( int )grid[y0].size()
-	) ) {
+				0 <= y0 && y0 < ( int )grid.size() &&
+				0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < ( int )grid.size() &&
+				0 <= x0 && x0 < ( int )grid[y0].size() &&
+				0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < ( int )grid[y0].size()
+			) ) {
 		return 0;
 	}
 
@@ -170,7 +170,7 @@ int maxSumPath( vector<vector<int> > rows );
 /*
  * Print out an iterable with separator of your choice, \n by default.
  * @param I v The iterable to print
- * @param string sep optional, endl by default, gets printed after each element in v.
+ * @param string sep optional, "\n" by default, gets printed after each element in v.
  * @param string end optional, "" by default, gets printed once after the entire iterable has been printed.
  * @return void
  */
@@ -231,3 +231,7 @@ bool any( Predicate p, const Container &xs ) {
  */
 bool isPandigital( vector<int> values );
 
+/*
+ * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
+ */
+int numDigits( unsigned int v );

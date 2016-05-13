@@ -236,10 +236,19 @@ bool isPandigital( vector<int> values ) {
 
 			digits.erase( tmp );
 
-
 			val /= 10;
 		}
 	}
 
 	return digits.empty();
+}
+
+/*
+ * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
+ */
+int numDigits( unsigned int v ) {
+	return ( v >= 1000000000 ) ? 9 : ( v >= 100000000 ) ? 8 : ( v >= 10000000 ) ? 7 :
+		   ( v >= 1000000 ) ? 6 : ( v >= 100000 ) ? 5 : ( v >= 10000 ) ? 4 :
+		   ( v >= 1000 ) ? 3 : ( v >= 100 ) ? 2 : ( v >= 10 ) ? 1 : 0;
+
 }
