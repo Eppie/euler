@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+from os.path import isfile
 
 s = """#include "../{1}/Euler{0}.cpp"
 #include <gtest/gtest.h>
@@ -20,7 +21,9 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 39):
+for i in range(1, 40):
     filename = 'test{}.cpp'.format(i)
+    if isfile(filename):
+        continue
     with open(filename, 'w') as f:
         f.write(s.format(i, i / 10, solutions[i]))
