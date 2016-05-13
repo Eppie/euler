@@ -6,7 +6,7 @@
  *    Description:  Solution to Project Euler, Problem 42
  *
  *        Version:  1.0
- *        Created:  5/13/2016 3:14:27 PM
+ *        Created:  5/13/2016 5:38:28 PM
  *       Revision:  none
  *       Compiler:  g++
  *
