@@ -40,7 +40,7 @@ int solve38() {
 
 				for( auto it = c.rbegin(); it != c.rend(); it++ ) {
 					tmp += *it * pow( 10, mul );
-					mul += numDigits( *it ) + 1;
+					mul += numDigits( *it );
 				}
 
 				result = max( result, tmp );
