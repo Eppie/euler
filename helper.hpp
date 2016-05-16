@@ -231,24 +231,33 @@ bool any( Predicate p, const Container &xs ) {
  *
  */
 template <typename I>
-bool isPandigital( I values ) {
-	set<int> digits = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	for( auto val : values ) {
-		while( val != 0 ) {
-			int tmp = val % 10;
+bool isPandigital( I values, int m = 1, int n = 9 ) {
+	unsigned int result = 0;
+	int digitCount = 0;
 
-			// We saw some digit twice
-			if( digits.find( tmp ) == digits.end() ) {
+	for( auto val : values ) {
+		if( val < m ) {
+			return false;
+		}
+		while( val != 0 ) {
+			digitCount++;
+			int tmp = val % 10;
+			if( tmp < m || tmp > n ) {
 				return false;
 			}
-
-			digits.erase( tmp );
-
+			result |= 1 << ( tmp - 1 );
 			val /= 10;
 		}
 	}
 
-	return digits.empty();
+	//if( result == ( 1 << n ) - 1 ) {
+		//printIterable( values );
+		//cout << "result: " << result << endl;
+		//cout << "digitCount - 1: " << ( 1 << n ) - 1 << endl;
+		//cout << "============" << endl;
+	//}
+
+	return result == ( 1 << n ) - 1 && digitCount == n;
 }
 
 /*

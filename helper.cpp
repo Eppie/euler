@@ -220,30 +220,6 @@ vector<string> loadDataFromFile( string filename ) {
 }
 
 /*
- *
- */
-bool isPandigital( vector<int> values ) {
-	set<int> digits = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-	for( auto val : values ) {
-		while( val != 0 ) {
-			int tmp = val % 10;
-
-			// We saw some digit twice
-			if( digits.find( tmp ) == digits.end() ) {
-				return false;
-			}
-
-			digits.erase( tmp );
-
-			val /= 10;
-		}
-	}
-
-	return digits.empty();
-}
-
-/*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
 int numDigits( unsigned int v ) {
