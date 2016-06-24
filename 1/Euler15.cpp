@@ -30,6 +30,6 @@
 
 #include "../helper.hpp"
 
-ull solve15() {
+uint64_t solve15() {
 	return choose( 40, 20 );
 }

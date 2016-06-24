@@ -19,6 +19,6 @@
 
 #include "../helper.hpp"
 
-ull solve7() {
+uint64_t solve7() {
 	return sieve( 105000 )[10000];
 }

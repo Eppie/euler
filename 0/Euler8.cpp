@@ -18,9 +18,9 @@
 
 #include "../helper.hpp"
 
-ull solve8() {
-	ull best = 0;
-	ull temp;
+uint64_t solve8() {
+	uint64_t best = 0;
+	uint64_t temp;
 	string s =
 		"73167176531330624919225119674426574742355349194934"
 		"96983520312774506326239578318016984801869478851843"

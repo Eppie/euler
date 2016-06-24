@@ -37,7 +37,8 @@ int solve41() {
 			if( isPrime( n ) ) {
 				return n;
 			}
-		// Using prev_permutation to check larger numbers first
+
+			// Using prev_permutation to check larger numbers first
 		} while( prev_permutation( a.begin(), a.end() ) );
 
 		a.pop_front();

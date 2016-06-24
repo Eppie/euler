@@ -24,9 +24,9 @@
 // Yes, the memoized / recursive version of the function is slower,
 // but I think the memoize wrapper is neat and I want to demonstrate
 // its usage.
-function<ull( ull )> mCollatz;
+function<uint64_t( uint64_t )> mCollatz;
 
-ull rCollatz( ull start ) {
+uint64_t rCollatz( uint64_t start ) {
 	if( start == 1 ) {
 		return 1;
 	}
@@ -39,14 +39,14 @@ ull rCollatz( ull start ) {
 
 }
 
-ull solve14() {
+uint64_t solve14() {
 	mCollatz = rCollatz;
 	mCollatz = memoize( mCollatz );
-	ull result = 0;
-	ull best = 1;
-	ull temp = 0;
+	uint64_t result = 0;
+	uint64_t best = 1;
+	uint64_t temp = 0;
 
-	for( ull i = 2; i <= 1000000; i++ ) {
+	for( uint64_t i = 2; i <= 1000000; i++ ) {
 		temp = mCollatz( i );
 
 		if( temp > best ) {

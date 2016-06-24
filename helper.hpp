@@ -38,7 +38,6 @@
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
-typedef unsigned long long ull;
 using namespace std;
 
 /*
@@ -47,7 +46,7 @@ using namespace std;
  * @param unsigned long long n
  * @return vector<int>
  */
-vector<int> primeFactors( ull n );
+vector<int> primeFactors( uint64_t n );
 
 /*
  * This is an implementation of the Sieve of Eratosthenes.
@@ -55,7 +54,7 @@ vector<int> primeFactors( ull n );
  * @param unsigned long long n
  * @return vector<unsigned long long>
  */
-vector<ull> sieve( ull n );
+vector<uint64_t> sieve( uint64_t n );
 
 /*
  * Return true if the given number is prime, and false otherwise.
@@ -144,14 +143,14 @@ function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
  * @param unsigned long long y
  * @return unsigned long long
  */
-ull gcd( ull x, ull y );
+uint64_t gcd( uint64_t x, uint64_t y );
 
 /*
  * Calculates the factorial of a number ( e.g. 5! == 120 )
  * @param unsigned n
  * @return unsigned long long
  */
-ull factorial( ull n );
+uint64_t factorial( uint64_t n );
 
 /*
  * This is your standard n choose k function.
@@ -159,7 +158,7 @@ ull factorial( ull n );
  * @param unsigned long long k
  * @return unsigned long long
  */
-ull choose( ull n, ull k );
+uint64_t choose( uint64_t n, uint64_t k );
 
 /*
  * Calculates the path through a triangle array with the largest sum.
@@ -228,7 +227,11 @@ bool any( Predicate p, const Container &xs ) {
 }
 
 /*
- *
+ * Returns true if the given iterable, considered as a single number, is m to n pandigital
+ * @param I values The values in this iterable are treated as a single number
+ * @param int m defaults to 1
+ * @param int n defaults to 9
+ * @return bool
  */
 template <typename I>
 bool isPandigital( I values, int m = 1, int n = 9 ) {
@@ -239,28 +242,35 @@ bool isPandigital( I values, int m = 1, int n = 9 ) {
 		if( val < m ) {
 			return false;
 		}
+
 		while( val != 0 ) {
 			digitCount++;
 			int tmp = val % 10;
+
+			// This check isn't necessary, but it lets us bail out early in some cases.
 			if( tmp < m || tmp > n ) {
 				return false;
 			}
+
 			result |= 1 << ( tmp - 1 );
 			val /= 10;
 		}
 	}
 
-	//if( result == ( 1 << n ) - 1 ) {
-		//printIterable( values );
-		//cout << "result: " << result << endl;
-		//cout << "digitCount - 1: " << ( 1 << n ) - 1 << endl;
-		//cout << "============" << endl;
-	//}
-
-	return result == ( 1 << n ) - 1 && digitCount == n;
+	return result == ( 1 << n ) - 1 && digitCount == ( n - m + 1 );
 }
+
+/*
+ *
+ */
+bool isPandigital( uint64_t val, int m, int n );
 
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
 int numDigits( unsigned int v );
+
+/*
+ *
+ */
+uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus );

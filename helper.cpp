@@ -23,7 +23,7 @@
  * @param unsigned long long n
  * @return vector<int>
  */
-vector<int> primeFactors( ull n ) {
+vector<int> primeFactors( uint64_t n ) {
 	vector<int> result;
 
 	// Find the number of 2s that divide n
@@ -55,20 +55,20 @@ vector<int> primeFactors( ull n ) {
  * @param unsigned long long n
  * @return vector<unsigned long long>
  */
-vector<ull> sieve( ull n ) {
-	vector<ull> result;
-	vector<ull> A( n );
+vector<uint64_t> sieve( uint64_t n ) {
+	vector<uint64_t> result;
+	vector<uint64_t> A( n );
 	fill( A.begin(), A.end(), 1 );
 
-	for( ull i = 2; i <= static_cast< ull>( sqrt( n ) ); i++ ) {
+	for( uint64_t i = 2; i <= static_cast< uint64_t>( sqrt( n ) ); i++ ) {
 		if( A[i] == 1 ) {
-			for( ull j = pow( i, 2 ); j < n; j += i ) {
+			for( uint64_t j = pow( i, 2 ); j < n; j += i ) {
 				A[j] = 0;
 			}
 		}
 	}
 
-	for( ull i = 2; i < n; i++ ) {
+	for( uint64_t i = 2; i < n; i++ ) {
 		if( A[i] == 1 ) {
 			result.push_back( i );
 		}
@@ -122,9 +122,9 @@ bool isPalindrome( string s ) {
  * @param unsigned long long y
  * @return unsigned long long
  */
-ull gcd( ull x, ull y ) {
+uint64_t gcd( uint64_t x, uint64_t y ) {
 	while( y != 0 ) {
-		ull t = x % y;
+		uint64_t t = x % y;
 		x = y;
 		y = t;
 	}
@@ -137,10 +137,10 @@ ull gcd( ull x, ull y ) {
  * @param unsigned long long n
  * @return unsigned long long
  */
-ull factorial( ull n ) {
-	ull result = 1;
+uint64_t factorial( uint64_t n ) {
+	uint64_t result = 1;
 
-	for( ull i = 1; i <= n; i++ ) {
+	for( uint64_t i = 1; i <= n; i++ ) {
 		result *= i;
 	}
 
@@ -153,19 +153,19 @@ ull factorial( ull n ) {
  * @param unsigned long long k
  * @return unsigned long long
  */
-ull choose( ull n, ull k ) {
+uint64_t choose( uint64_t n, uint64_t k ) {
 	if( k > n ) {
 		throw invalid_argument( "invalid argument in choose" );
 	}
 
-	ull r = 1;
+	uint64_t r = 1;
 
-	for( ull d = 1; d <= k; ++d, --n ) {
-		ull g = gcd( r, d );
+	for( uint64_t d = 1; d <= k; ++d, --n ) {
+		uint64_t g = gcd( r, d );
 		r /= g;
-		ull t = n / ( d / g );
+		uint64_t t = n / ( d / g );
 
-		if( r > numeric_limits<ull>::max() / t ) {
+		if( r > numeric_limits<uint64_t>::max() / t ) {
 			throw overflow_error( "overflow in choose" );
 		}
 
@@ -220,6 +220,34 @@ vector<string> loadDataFromFile( string filename ) {
 }
 
 /*
+ *
+ */
+bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
+	unsigned int result = 0;
+	int digitCount = 0;
+
+	if( val < m ) {
+		return false;
+	}
+
+	while( val != 0 ) {
+		digitCount++;
+		int tmp = val % 10;
+
+		// This check isn't necessary, but it lets us bail out early in some cases.
+		if( tmp < m || tmp > n ) {
+			return false;
+		}
+
+		result |= 1 << ( tmp - 1 );
+		val /= 10;
+	}
+
+	return result == ( 1 << n ) - 1 && digitCount == ( n - m + 1 );
+
+}
+
+/*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
 int numDigits( unsigned int v ) {
@@ -227,4 +255,22 @@ int numDigits( unsigned int v ) {
 		   ( v >= 1000000 ) ? 7 : ( v >= 100000 ) ? 6 : ( v >= 10000 ) ? 5 :
 		   ( v >= 1000 ) ? 4 : ( v >= 100 ) ? 3 : ( v >= 10 ) ? 2 : 1;
 
+}
+
+/*
+ * Efficiently calculate ( base ** exponent ) % modulus
+ */
+uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
+	uint64_t result = 1;
+
+	while( exponent ) {
+		if( exponent & 1 ) {
+			result = result * base % modulus;
+		}
+
+		exponent >>= 1;
+		base = base * base % modulus;
+	}
+
+	return result;
 }

@@ -18,7 +18,7 @@
 
 #include "../helper.hpp"
 
-ull permutation( vector<int> v, int n ) {
+uint64_t permutation( vector<int> v, int n ) {
 	vector<int> perm;
 
 	while( !v.empty() ) {
@@ -29,8 +29,8 @@ ull permutation( vector<int> v, int n ) {
 		v.erase( v.begin() + pos );
 	}
 
-	ull result = 0;
-	ull mult = 1;
+	uint64_t result = 0;
+	uint64_t mult = 1;
 
 	for( int i = 9; i >= 0; i-- ) {
 		result += mult * perm[i];
@@ -41,6 +41,6 @@ ull permutation( vector<int> v, int n ) {
 
 }
 
-ull solve24() {
+uint64_t solve24() {
 	return permutation( vector<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
 }

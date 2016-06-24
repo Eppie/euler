@@ -18,8 +18,8 @@
 
 #include "../helper.hpp"
 
-ull solve13() {
-	vector<ull> input = {
+uint64_t solve13() {
+	vector<uint64_t> input = {
 		371072875339,
 		463769376774,
 		743249861995,

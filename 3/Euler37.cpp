@@ -29,8 +29,8 @@ int solve37() {
 			continue;
 		}
 
-		ull backup = prime;
-		ull primeCopy = prime;
+		uint64_t backup = prime;
+		uint64_t primeCopy = prime;
 
 		while( isPrime( prime ) && isPrime( primeCopy ) ) {
 			// Take off the first digit

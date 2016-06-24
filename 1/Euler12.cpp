@@ -18,9 +18,9 @@
 
 #include "../helper.hpp"
 
-ull solve12() {
-	ull sum = 1;
-	ull n = 2;
+uint64_t solve12() {
+	uint64_t sum = 1;
+	uint64_t n = 2;
 	int count;
 
 	while( true ) {
