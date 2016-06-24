@@ -2,6 +2,6 @@
 #include <gtest/gtest.h>
 
 TEST( Problem23, Test1 ) {
-    ASSERT_EQ( 4179871, solve23() );
+	ASSERT_EQ( 4179871, solve23() );
 }
 

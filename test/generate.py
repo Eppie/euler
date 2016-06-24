@@ -6,7 +6,7 @@ s = """#include "../{1}/Euler{0}.cpp"
 #include <gtest/gtest.h>
 
 TEST( Problem{0}, Test1 ) {{
-    ASSERT_EQ( {2}, solve{0}() );
+	ASSERT_EQ( {2}, solve{0}() );
 }}
 
 """
@@ -21,7 +21,7 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 43):
+for i in range(1, 45):
     filename = 'test{}.cpp'.format(i)
     if isfile(filename):
         continue
