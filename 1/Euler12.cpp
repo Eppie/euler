@@ -18,22 +18,42 @@
 
 #include "../helper.hpp"
 
+int divisors( uint64_t n, int start = 2 ) {
+	if( n == 1 ) {
+		return 1;
+	}
+
+	for( int i = start; i < ceil( sqrt( n ) ) + 1; i++ ) {
+		if( n % i == 0 ) {
+			int count = 1;
+
+			while( n % i == 0 ) {
+				n /= i;
+				count += 1;
+			}
+
+			return divisors( n, i + 1 ) * count;
+		}
+	}
+
+	return 2;
+
+}
+
 uint64_t solve12() {
-	uint64_t sum = 1;
-	uint64_t n = 2;
 	int count;
 
-	while( true ) {
-		sum += n;
-		n++;
-		count = 2;
+	for( int n = 1; n < 20000; n++ ) {
+		uint64_t t = n * ( n + 1 ) / 2;
 
-		for( unsigned i = 2; i < sqrt( sum ); i++ ) {
-			count += sum % i == 0 ? 2 : 0;
+		if( n % 2 == 0 ) {
+			count = divisors( n / 2 ) * divisors( n + 1 );
+		} else {
+			count = divisors( n ) * divisors( ( n + 1 ) / 2 );
 		}
 
 		if( count > 500 ) {
-			return sum;
+			return t;
 		}
 	}
 }
