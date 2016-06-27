@@ -57,19 +57,18 @@ vector<int> primeFactors( uint64_t n ) {
  */
 vector<uint64_t> sieve( uint64_t n ) {
 	vector<uint64_t> result;
-	vector<uint64_t> A( n );
-	fill( A.begin(), A.end(), 1 );
+	vector<bool> A( n, true );
 
-	for( uint64_t i = 2; i <= static_cast< uint64_t>( sqrt( n ) ); i++ ) {
-		if( A[i] == 1 ) {
+	for( uint64_t i = 2; i <= static_cast<uint64_t>( sqrt( n ) ); i++ ) {
+		if( A[i] ) {
 			for( uint64_t j = pow( i, 2 ); j < n; j += i ) {
-				A[j] = 0;
+				A[j] = false;
 			}
 		}
 	}
 
 	for( uint64_t i = 2; i < n; i++ ) {
-		if( A[i] == 1 ) {
+		if( A[i] ) {
 			result.push_back( i );
 		}
 	}
@@ -261,7 +260,12 @@ int numDigits( unsigned int v ) {
  * Efficiently calculate ( base ** exponent ) % modulus
  */
 uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
+	if( modulus == 1 ) {
+		return 0;
+	}
+
 	uint64_t result = 1;
+	base = base % modulus;
 
 	while( exponent ) {
 		if( exponent & 1 ) {
