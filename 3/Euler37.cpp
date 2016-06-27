@@ -23,10 +23,15 @@
 int solve37() {
 	int result = 0;
 	auto primes = sieve( 1e6 );
+	int primesSoFar = 0;
 
 	for( auto prime : primes ) {
 		if( prime < 10 ) {
 			continue;
+		}
+
+		if( primesSoFar == 11 ) {
+			break;
 		}
 
 		uint64_t backup = prime;
@@ -42,6 +47,7 @@ int solve37() {
 		// If the number was prime the whole way through
 		if( prime == 0 ) {
 			result += backup;
+			primesSoFar += 1;
 		}
 	}
 
