@@ -21,7 +21,7 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 47):
+for i in range(1, 48):
     filename = 'test{}.cpp'.format(i)
     if isfile(filename):
         continue
