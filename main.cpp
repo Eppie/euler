@@ -15,7 +15,7 @@
  * =====================================================================================
  */
 
-#include "main.h"
+#include "main.hpp"
 #include "helper.hpp"
 
 int main( int argc, char* argv[] ) {
@@ -203,6 +203,10 @@ int main( int argc, char* argv[] ) {
 
 		case 44:
 			cout << solve44() << endl;
+			break;
+
+		case 45:
+			cout << solve45() << endl;
 			break;
 
 		default:

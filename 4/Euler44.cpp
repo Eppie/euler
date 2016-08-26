@@ -24,10 +24,6 @@
 // The 2394th pentagonal number is the largest we need to know about - it's Pk + Pj
 #define SIZE 2395
 
-int genPent( int n ) {
-	return ( n * ( ( 3 * n ) - 1 ) ) / 2;
-}
-
 int solve44() {
 	// We store the pentagonal numbers twice, once in a set for fast lookup, and once in a vector so that we can iterate through them
 	unordered_set<int> pentNumberSet;
