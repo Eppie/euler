@@ -6,7 +6,7 @@
  *    Description:  Solution to Project Euler, Problem 45
  *
  *        Version:  1.0
- *        Created:  8/26/2016 2:31:14 AM
+ *        Created:  8/26/2016 2:31:14 PM
  *       Revision:  none
  *       Compiler:  g++
  *
