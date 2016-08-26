@@ -25,6 +25,7 @@
 #include <vector>
 #include <list>
 #include <numeric>
+#include <unordered_set>
 #include <unordered_map>
 #include <map>
 #include <functional>
