@@ -1,7 +1,7 @@
 # Project Euler Solutions
 
 This repository contains all the solutions I've written so far to the [Project Euler](https://projecteuler.net/) problems.
-There is a file called `timing.txt`, which contains timings of each of the solutions. My goal is to solve each problem in under 1 second, and so far, I've been successful.
+There is a file called `timings.txt`, which contains timings of each of the solutions. My goal is to solve each problem in under 1 second, and so far, I've been successful.
 You can use the following commands to get and make my solutions:
 ```
 git clone https://github.com/Eppie/euler.git
@@ -10,7 +10,13 @@ cmake .
 make
 ./euler 1
 ```
-This will run the solution to problem 1. You'll notice that there is a folder called `test`. This folder contains a test case for each solution. In order to make the tests, you will require [Google Test](https://github.com/google/googletest). On Fedora, you can get it by running:
+This will run the solution to problem 1. If you want to run all the solutions, you can execute:
+```
+./run.sh
+```
+This will also overwrite the `timings.txt` file with your timings.
+
+You'll notice that there is a folder called `test`. This folder contains a test case for each solution. In order to make the tests, you will require [Google Test](https://github.com/google/googletest). On Fedora, you can get it by running:
 ```
 sudo dnf install gtest
 ```
