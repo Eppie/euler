@@ -1,6 +1,7 @@
 # Project Euler Solutions
 
 This repository contains all the solutions I've written so far to the [Project Euler](https://projecteuler.net/) problems.
+There is a file called `timing.txt`, which contains timings of each of the solutions. My goal is to solve each problem in under 1 second, and so far, I've been successful.
 You can use the following commands to get and make my solutions:
 ```
 git clone https://github.com/Eppie/euler.git
