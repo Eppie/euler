@@ -4,7 +4,7 @@
 cmake .
 make -j12
 cat /dev/null > timings.txt
-for i in {1..50}; do
+for i in {1..51}; do
 	result=($(./euler $i))
 	echo "$i: ${result[0]}"
 	echo "$i: ${result[1]}" >> timings.txt

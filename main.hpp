@@ -68,3 +68,4 @@ int solve47();
 uint64_t solve48();
 uint64_t solve49();
 int solve50();
+int solve51();
