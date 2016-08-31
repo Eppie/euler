@@ -154,12 +154,12 @@ uint64_t gcd( uint64_t x, uint64_t y );
 uint64_t factorial( uint64_t n );
 
 /*
- * This is your standard n choose k function.
- * @param uint64_t n
- * @param uint64_t k
+ * This is a memoized implementation of the recursive formula for n choose k.
+ * @param const uint64_t n
+ * @param const uint64_t k
  * @return uint64_t
  */
-uint64_t choose( uint64_t n, uint64_t k );
+uint64_t choose( const uint64_t &n, const uint64_t &k );
 
 /*
  * Calculates the path through a triangle array with the largest sum.

@@ -147,31 +147,64 @@ uint64_t factorial( uint64_t n ) {
 }
 
 /*
- * This is your standard n choose k function.
- * @param uint64_t n
- * @param uint64_t k
+ * This is a memoized implementation of the recursive formula for n choose k.
+ * @param const uint64_t n
+ * @param const uint64_t k
  * @return uint64_t
  */
-uint64_t choose( uint64_t n, uint64_t k ) {
-	if( k > n ) {
-		throw invalid_argument( "invalid argument in choose" );
+uint64_t choose( const uint64_t &n, const uint64_t &k ) {
+	if( n < k || n == 0 ) {
+		return 0;
 	}
 
-	uint64_t r = 1;
+	if( k == 0 || n == k ) {
+		return 1;
+	}
 
-	for( uint64_t d = 1; d <= k; ++d, --n ) {
-		uint64_t g = gcd( r, d );
-		r /= g;
-		uint64_t t = n / ( d / g );
+	if( k == 1 ) {
+		return n;
+	}
 
-		if( r > numeric_limits<uint64_t>::max() / t ) {
-			throw overflow_error( "overflow in choose" );
+	uint64_t* table = new uint64_t[static_cast<size_t>( n * n )];
+	fill_n( table, n * n, 0 );
+
+	class choose_impl {
+	public:
+		uint64_t* m_table;
+		uint64_t m_dimension;
+		choose_impl( uint64_t* table, const uint64_t &dimension ) {
+			m_table = table;
+			m_dimension = dimension;
 		}
 
-		r *= t;
-	}
+		uint64_t &lookup( const uint64_t &n, const uint64_t &k ) {
+			return m_table[m_dimension * n + k];
+		}
 
-	return r;
+		uint64_t compute( const uint64_t &n, const uint64_t &k ) {
+			if( ( k == 0 ) || ( n == k ) ) {
+				return 1;
+			}
+
+			uint64_t v1 = lookup( n - 1, k - 1 );
+
+			if( v1 == 0 ) {
+				v1 = lookup( n - 1, k - 1 ) = compute( n - 1, k - 1 );
+			}
+
+			uint64_t v2 = lookup( n - 1, k );
+
+			if( v2 == 0 ) {
+				v2 = lookup( n - 1, k ) = compute( n - 1, k );
+			}
+
+			return v1 + v2;
+		}
+	};
+
+	uint64_t result = choose_impl( table, n ).compute( n, k );
+	delete [] table;
+	return result;
 }
 
 /*
