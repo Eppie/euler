@@ -20,7 +20,7 @@
 /*
  * This function returns a vector of all the prime factors of an integer n.
  * Example: n = 1000 --> 2 * 2 * 2 * 5 * 5 * 5 == 8 * 125 == 1000
- * @param unsigned long long n
+ * @param uint64_t n
  * @return vector<int>
  */
 vector<int> primeFactors( uint64_t n ) {
@@ -52,8 +52,8 @@ vector<int> primeFactors( uint64_t n ) {
 /*
  * This is an implementation of the Sieve of Eratosthenes.
  * Returns a vector of all prime numbers less than n.
- * @param unsigned long long n
- * @return vector<unsigned long long>
+ * @param uint64_t n
+ * @return vector<uint64_t>
  */
 vector<uint64_t> sieve( uint64_t n ) {
 	vector<uint64_t> result;
@@ -117,9 +117,9 @@ bool isPalindrome( string s ) {
 
 /*
  * This is your standard greatest common denominator function.
- * @param unsigned long long x
- * @param unsigned long long y
- * @return unsigned long long
+ * @param uint64_t x
+ * @param uint64_t y
+ * @return uint64_t
  */
 uint64_t gcd( uint64_t x, uint64_t y ) {
 	while( y != 0 ) {
@@ -133,8 +133,8 @@ uint64_t gcd( uint64_t x, uint64_t y ) {
 
 /*
  * Calculates the factorial of a number ( e.g. 5! == 120 )
- * @param unsigned long long n
- * @return unsigned long long
+ * @param uint64_t n
+ * @return uint64_t
  */
 uint64_t factorial( uint64_t n ) {
 	uint64_t result = 1;
@@ -148,9 +148,9 @@ uint64_t factorial( uint64_t n ) {
 
 /*
  * This is your standard n choose k function.
- * @param unsigned long long n
- * @param unsigned long long k
- * @return unsigned long long
+ * @param uint64_t n
+ * @param uint64_t k
+ * @return uint64_t
  */
 uint64_t choose( uint64_t n, uint64_t k ) {
 	if( k > n ) {
