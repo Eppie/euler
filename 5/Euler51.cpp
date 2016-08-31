@@ -30,14 +30,18 @@ int solve51() {
 	int result = 1000000;
 	int primeCount = 0;
 	auto primes = sieve( 130000 );
-	for( auto&& prime : primes ) {
+
+	for( auto && prime : primes ) {
 		if( prime < 56003 ) {
 			continue;
 		}
+
 		int digitCount = numDigits( prime );
+
 		for( unsigned int mask = 1; mask < 1 << digitCount; ++mask ) {
 			for( int digit = 0; digit <= 9; ++digit ) {
 				int tmp = 0;
+
 				for( int i = 0; i < digitCount; ++i ) {
 					if( mask & 1 << i ) {
 						tmp += digit * pow( 10, i );
@@ -45,20 +49,25 @@ int solve51() {
 						tmp += ( ( prime / int( pow( 10, i ) ) ) % 10 ) * pow( 10, i );
 					}
 				}
+
 				if( numDigits( tmp ) == digitCount && isPrime( tmp ) ) {
 					if( tmp < result ) {
 						result = tmp;
 					}
+
 					primeCount += 1;
 				}
 			}
+
 			if( primeCount >= 8 ) {
 				return result;
 			}
+
 			primeCount = 0;
 			result = 1000000;
 		}
 	}
+
 	return result;
 }
 

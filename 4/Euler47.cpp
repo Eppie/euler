@@ -35,6 +35,7 @@ int solve47() {
 	// If its sum is ever 16, that means all four values are 4, which means that the i we just processed was the 4th consecutive
 	// with four distinct factors, so return i - 3.
 	vector<int> factorCount = { 0, 0, 0, 0 };
+
 	for( int i = 1; i < 200000; ++i ) {
 		vector<int> factorsVector = primeFactors( i );
 		set<int> factorsSet { factorsVector.begin(), factorsVector.end() };
@@ -45,6 +46,7 @@ int solve47() {
 		}
 
 	}
+
 	return 0;
 }
 
