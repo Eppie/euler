@@ -116,6 +116,24 @@ bool isPalindrome( string s ) {
 }
 
 /*
+ * Returns true if x is a palindrome in base b, and false otherwise.
+ * @param uint64_t x
+ * @param int b
+ * @return bool
+ */
+bool isPalindrome( uint64_t x, int b ) {
+	int reversed = 0;
+	int k = x;
+
+	while( k > 0 ) {
+		reversed = b * reversed + k % b;
+		k /= b;
+	}
+
+	return x == reversed;
+}
+
+/*
  * This is your standard greatest common denominator function.
  * @param uint64_t x
  * @param uint64_t y

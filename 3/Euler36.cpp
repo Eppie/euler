@@ -35,7 +35,7 @@ int solve36() {
 	int result = 0;
 
 	for( int i = 0; i < 1e6; i++ ) {
-		if( isPalindrome( dec2bin( i ) ) && isPalindrome( to_string( i ) ) ) {
+		if( isPalindrome( i, 10 ) && isPalindrome( i, 2 ) ) {
 			result += i;
 		}
 	}

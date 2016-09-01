@@ -27,9 +27,9 @@ int solve4() {
 	for( int i = 999; i >= 100; i-- ) {
 		for( int j = 999; j >= 100; j-- ) {
 			test = i * j;
-			s = to_string( test );
+			//s = to_string( test );
 
-			if( isPalindrome( s ) ) {
+			if( isPalindrome( test, 10 ) ) {
 				result = test > result ? test : result;
 			}
 		}

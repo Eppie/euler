@@ -72,6 +72,14 @@ bool isPrime( long long n );
 bool isPalindrome( string s );
 
 /*
+ * Returns true if x is a palindrome in base b, and false otherwise.
+ * @param uint64_t x
+ * @param int b
+ * @return bool
+ */
+bool isPalindrome( uint64_t x, int b );
+
+/*
  * Convenience wrapper around accumulate to hide the iterator stuff.
  * Templated, so it will accept a vector of anything. The return type
  * will match the "anything".
