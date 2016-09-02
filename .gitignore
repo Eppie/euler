@@ -1,10 +1,5 @@
 *.o
 *.out
-test/CMakeCache.txt
-test/CMakeFiles/
-test/Makefile
-test/runTests
-test/cmake_install.cmake
 euler
 html/
 CMakeCache.txt
@@ -14,3 +9,4 @@ Makefile
 .ycm_extra_conf.pyc
 *.swp
 compile_commands.json
+runTests
