@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_EXE_LINKER_FLAGS  ${CMAKE_EXE_LINKER_FLAGS} "-lgmpxx -lgmp")
 
 add_definitions(-std=c++14 -g -Ofast)
 
