@@ -73,3 +73,4 @@ int solve52();
 int solve53();
 int solve54();
 int solve55();
+int solve56();
