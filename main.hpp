@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  test.h
+ *       Filename:  main.hpp
  *
  *    Description:  Function declarations
  *
@@ -76,3 +76,4 @@ int solve55();
 int solve56();
 int solve57();
 int solve58();
+int solve59();
