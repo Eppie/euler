@@ -128,9 +128,9 @@ T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, i
  * @param function<outType(inType)> inFunc The function to memoize
  * @return function<outType(inType)> The memoized version of the function
  */
-template<class inType, class outType>
+template<typename inType, typename outType>
 function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
-	// return a lambda function
+	//return a lambda function
 	return [inFunc]( inType n ) {
 		static unordered_map<inType, outType> memo;
 		outType returnValue;
@@ -288,3 +288,8 @@ uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus );
  * Generate the nth pentagonal number. Given by the formula Pn = n(3n-1)/2
  */
 uint64_t genPent( uint64_t n );
+
+/*
+ *
+ */
+uint64_t figurateNumber( uint64_t r, uint64_t n );

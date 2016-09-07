@@ -334,5 +334,12 @@ uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
  * Generate the nth pentagonal number. Given by the formula Pn = n(3n-1)/2
  */
 uint64_t genPent( uint64_t n ) {
-	return ( n * ( ( 3 * n ) - 1 ) ) / 2;
+	return figurateNumber( 5, n );
+}
+
+/*
+ *
+ */
+uint64_t figurateNumber( uint64_t r, uint64_t n ) {
+	return n * ( ( r - 2 ) * n - ( r - 4 ) ) / 2;
 }
