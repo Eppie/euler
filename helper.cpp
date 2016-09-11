@@ -59,6 +59,9 @@ vector<uint64_t> sieve( uint64_t n ) {
 	vector<uint64_t> result;
 	vector<bool> A( n, true );
 
+	uint64_t primeCountEstimate = static_cast<uint64_t>( ( n / log( n ) ) * ( 1 + ( 1.2762 / log( n ) ) ) );
+	result.reserve( primeCountEstimate );
+
 	for( uint64_t i = 2; i <= static_cast<uint64_t>( sqrt( n ) ); i++ ) {
 		if( A[i] ) {
 			for( uint64_t j = pow( i, 2 ); j < n; j += i ) {
