@@ -25,11 +25,11 @@
 #include "../helper.hpp"
 
 uint64_t genTri( uint64_t n ) {
-	return ( n * ( n + 1 ) ) / 2;
+	return figurateNumber( 3, n );
 }
 
 uint64_t genHex( uint64_t n ) {
-	return n * ( ( 2 * n ) - 1 );
+	return figurateNumber( 6, n );
 }
 
 uint64_t solve45() {
