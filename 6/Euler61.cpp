@@ -32,18 +32,27 @@
 
 #include "../helper.hpp"
 
+// This will be a dictionary with keys of tuples, and values of vectors of tuples.
+// It will let us look up candidates for the next value in the chain
+// Example: ds[( 5, 1926 )] == { ( 8, 2640 ), ( 7, 2673 ), ( 3, 2628 ) }
 map<tuple<int, int>, vector<tuple<int, int>>> ds;
+
+// p is a list of ( type, data ) tuples where type is the type of number, and data is the number itself
 vector<tuple<int, int>> p;
 
 int next( vector<int> types, vector<int> data ) {
+	// We have 6 numbers and the chain is complete, so return
 	if( types.size() == 6 && data[0] / 100 == data.back() % 100 ) {
 		return sum( data );
 	}
 
-	for( auto && t : ds[make_tuple( types.back(), data.back() )] ) {
-		if( find( types.begin(), types.end(), get<0>( t ) ) == types.end() ) {
-			types.push_back( get<0>( t ) );
-			data.push_back( get<1>( t ) );
+	for( auto && tuple : ds[make_tuple( types.back(), data.back() )] ) {
+		// If we don't already have a number of this type in data,
+		// try adding this number to the chain, recursively
+		if( find( types.begin(), types.end(), get<0>( tuple ) ) == types.end() ) {
+			types.push_back( get<0>( tuple ) );
+			data.push_back( get<1>( tuple ) );
+			// Pass by value, i.e. create a copy
 			return next( types, data );
 		}
 	}
@@ -52,41 +61,43 @@ int next( vector<int> types, vector<int> data ) {
 }
 
 int solve61() {
-	int n = 19;
-
-	while( n < 141 ) {
+	// Construct p
+	for( int n = 19; n <= 141; ++n ) {
 		for( int i = 3; i <= 8; ++i ) {
 			int tmp = figurateNumber( i, n );
 
+			// discard if it's not a 4-digit number, or if it is of the form xx0x
 			if( 1000 <= tmp && tmp <= 10000 && tmp % 100 > 9 ) {
 				p.push_back( make_tuple( i, tmp ) );
 			}
 		}
-
-		n += 1;
 	}
 
-	for( auto && a : p ) {
-		int t1 = get<0>( a );
-		int d1 = get<1>( a );
+	// Construct ds
+	for( auto && tuple1 : p ) {
+		int type1 = get<0>( tuple1 );
+		int data1 = get<1>( tuple1 );
 
-		for( auto && b : p ) {
-			int t2 = get<0>( b );
-			int d2 = get<1>( b );
+		for( auto && tuple2 : p ) {
+			int type2 = get<0>( tuple2 );
+			int data2 = get<1>( tuple2 );
 
-			if( t1 != t2 && d1 % 100 == d2 / 100 ) {
-				ds[a].push_back( b );
+			if( type1 != type2 && data1 % 100 == data2 / 100 ) {
+				ds[tuple1].push_back( tuple2 );
 			}
 		}
 	}
 
-	for( auto && a : ds ) {
-		vector<int> type = { get<0>( get<0>( a ) ) };
-		vector<int> data = { get<1>( get<0>( a ) ) };
-		int b = next( type, data );
+	// tuple's type is pair<tuple<int, int> const, vector<tuple<int, int>>>
+	// it is a pair containing a key and a value
+	for( auto && tuple : ds ) {
+		vector<int> type = { get<0>( get<0>( tuple ) ) };
+		vector<int> data = { get<1>( get<0>( tuple ) ) };
+		int result = next( type, data );
 
-		if( b != 0 ) {
-			return b;
+		// next() will return 0 if it exhausts all the possible combinations that contain "data" as part of the chain
+		if( result != 0 ) {
+			return result;
 		}
 	}
 
