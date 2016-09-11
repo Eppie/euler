@@ -23,7 +23,6 @@
 
 bool singleCheck( uint64_t a, uint64_t b ) {
 	static vector<uint64_t> primes = sieve( 84000000 );
-	static unordered_set<uint64_t> primesSet( primes.begin(), primes.end() );
 
 	uint64_t pow = 10;
 
@@ -31,7 +30,7 @@ bool singleCheck( uint64_t a, uint64_t b ) {
 		pow *= 10;
 	}
 
-	return primesSet.find( a * pow + b ) != primesSet.end();
+	return binary_search( primes.begin(), primes.end(), a * pow + b );
 }
 
 bool check( vector<uint64_t> nums ) {
