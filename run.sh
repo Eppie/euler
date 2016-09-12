@@ -1,6 +1,9 @@
 #!/bin/bash
 
 ./cleanup.sh
+pushd "test"
+./generate.py
+popd
 cmake .
 cores=$(grep -c ^processor /proc/cpuinfo)
 make -j$cores

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-from os.path import isfile
+from os import listdir
+from os.path import isfile, join
+import re
 
 s = """#include "../{1}/Euler{0}.cpp"
 #include <gtest/gtest.h>
@@ -21,7 +23,29 @@ with open('../solutions.txt', 'r') as f:
             solutions.append(0)
 
 
-for i in range(1, 64):
+pattern = re.compile("Euler([0-9]{1,4})\.cpp")
+
+
+def filter_files(folder, f):
+    if isfile(join(folder, f)):
+        matches = pattern.search(f)
+        if matches is not None:
+            return matches.group(1)
+    return None
+
+
+onlyfolders = [f for f in listdir('../') if not isfile(join('../', f))]
+files = []
+
+for folder in onlyfolders:
+    folder = '../' + folder
+    for f in listdir(folder):
+        result = filter_files(folder, f)
+        if result is not None:
+            files.append(result)
+
+for f in files:
+    i = int(f)
     filename = 'test{}.cpp'.format(i)
     if isfile(filename):
         continue
