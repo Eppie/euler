@@ -277,7 +277,7 @@ bool isPandigital( uint64_t val, int m, int n );
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
-int numDigits( unsigned int v );
+unsigned int numDigits( uint64_t v );
 
 /*
  *

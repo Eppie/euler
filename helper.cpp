@@ -303,11 +303,11 @@ bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
-int numDigits( unsigned int v ) {
-	return ( v >= 1000000000 ) ? 10 : ( v >= 100000000 ) ? 9 : ( v >= 10000000 ) ? 8 :
-		   ( v >= 1000000 ) ? 7 : ( v >= 100000 ) ? 6 : ( v >= 10000 ) ? 5 :
-		   ( v >= 1000 ) ? 4 : ( v >= 100 ) ? 3 : ( v >= 10 ) ? 2 : 1;
-
+unsigned int numDigits( uint64_t v ) {
+	return ( v >= 100000000000 ) ? 12 : ( v >= 10000000000 ) ? 11 : ( v >= 1000000000 ) ? 10 :
+		( v >= 100000000 ) ? 9 : ( v >= 10000000 ) ? 8 : ( v >= 1000000 ) ? 7 :
+		( v >= 100000 ) ? 6 : ( v >= 10000 ) ? 5 : ( v >= 1000 ) ? 4 :
+		( v >= 100 ) ? 3 : ( v >= 10 ) ? 2 : 1;
 }
 
 /*
