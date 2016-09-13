@@ -36,6 +36,7 @@
 #include <set>
 #include <cxxabi.h>
 #include <typeinfo>
+#include <gmpxx.h>
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
@@ -293,3 +294,9 @@ uint64_t genPent( uint64_t n );
  *
  */
 uint64_t figurateNumber( uint64_t r, uint64_t n );
+
+/*
+ *
+ */
+mpz_class digitalSum( mpz_class x );
+

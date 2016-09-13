@@ -21,18 +21,6 @@
 #include "../helper.hpp"
 #include <gmpxx.h>
 
-mpz_class digitalSum( mpz_class x ) {
-	mpz_class result = 0;
-	unsigned long digit;
-
-	while( x != 0 ) {
-		digit = mpz_tdiv_q_ui( x.get_mpz_t(), x.get_mpz_t(), 10 );
-		result += digit;
-	}
-
-	return result;
-}
-
 int solve56() {
 	int best = 0;
 	mpz_class tmp;
