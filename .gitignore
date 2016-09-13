@@ -10,3 +10,4 @@ Makefile
 *.swp
 compile_commands.json
 runTests
+test/test[1-9]*.cpp
