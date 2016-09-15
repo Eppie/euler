@@ -27,13 +27,17 @@
 
 int solve53() {
 	int result = 0;
+	int C[100] = { 1, 1 };
 
-	for( int n = 1; n <= 100; ++n ) {
-		for( int r = 1; r < n; ++r ) {
-			uint64_t tmp = choose( n, r );
+	for( int n = 2; n <= 100; ++n ) {
+		C[n - 1] = 1;
 
-			if( tmp > 1000000 ) {
-				result += 1;
+		for( int r = n - 1; r >= 1; --r ) {
+			C[r] = C[r] + C[r - 1];
+
+			if( C[r] > 1000000 ) {
+				++result;
+				C[r] = 1000000;
 			}
 		}
 	}
