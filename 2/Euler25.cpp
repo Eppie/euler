@@ -44,6 +44,9 @@ int solve25() {
 		count += 1;
 
 		if( c[999] != 0 ) {
+			free( a );
+			free( b );
+			free( c );
 			return count;
 		}
 
@@ -51,6 +54,9 @@ int solve25() {
 		count += 1;
 
 		if( b[999] != 0 ) {
+			free( a );
+			free( b );
+			free( c );
 			return count;
 		}
 
@@ -58,6 +64,9 @@ int solve25() {
 		count += 1;
 
 		if( b[999] != 0 ) {
+			free( a );
+			free( b );
+			free( c );
 			return count;
 		}
 	}
