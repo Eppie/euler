@@ -22,50 +22,91 @@
 
 #include "../helper.hpp"
 
-/*
- * TODO: This one is _very_ inefficient, and while it runs in ~0.75s, it would be nice to get the runtime lower.
- */
-int solve51() {
-	// Idea: Keep track of which digits to replace by using a bitmask. The next permutation of replacements can be calculated by simply adding 1.
-	int result = 1000000;
-	int primeCount = 0;
-	auto primes = sieve( 130000 );
+int generateNumber( int repNumber, vector<int> filledPattern ) {
+	int temp = 0;
 
-	for( auto && prime : primes ) {
-		if( prime < 56003 ) {
+	for( int i = 0; i < filledPattern.size(); ++i ) {
+		temp *= 10;
+		temp += ( filledPattern[i] == -1 ) ? repNumber : filledPattern[i];
+	}
+
+	return temp;
+}
+
+vector<int> fillPattern( int pattern, int number, int patternLength ) {
+	vector<int> filledPattern( patternLength );
+	int temp = number;
+
+	for( int i = patternLength - 1; 0 <= i; --i ) {
+		if( ( ( pattern & ( 1 << i ) ) >> i ) == 1 ) {
+			filledPattern[i] = temp % 10;
+			temp /= 10;
+		} else {
+			filledPattern[i] = -1;
+		}
+	}
+
+	return filledPattern;
+}
+
+int solve51() {
+	vector<int> fiveDigitPatterns = {
+		0b10001,
+		0b10010,
+		0b10100,
+		0b11000
+	};
+
+	vector<int> sixDigitPatterns = {
+		0b100011,
+		0b100101,
+		0b101001,
+		0b110001,
+		0b100110,
+		0b101010,
+		0b110010,
+		0b101100,
+		0b110100,
+		0b111000
+	};
+
+	int result = 10000000;
+
+	for( int i = 11; i < 1000; i += 2 ) {
+		if( i % 5 == 0 ) {
 			continue;
 		}
 
-		int digitCount = numDigits( prime );
+		auto patterns = ( i < 100 ) ? fiveDigitPatterns : sixDigitPatterns;
+		int length = ( i < 100 ) ? 5 : 6;
 
-		for( unsigned int mask = 1; mask < 1 << digitCount; ++mask ) {
-			for( int digit = 0; digit <= 9; ++digit ) {
-				int tmp = 0;
-
-				for( int i = 0; i < digitCount; ++i ) {
-					if( mask & 1 << i ) {
-						tmp += digit * pow( 10, i );
-					} else {
-						tmp += ( ( prime / int( pow( 10, i ) ) ) % 10 ) * pow( 10, i );
-					}
+		for( int j = 0; j < length; ++j ) {
+			for( int k = 0; k <= 2; ++k ) {
+				if( ~( ( patterns[j] & ( 1 << length ) ) >> length ) && k == 0 ) {
+					continue;
 				}
 
-				if( numDigits( tmp ) == digitCount && isPrime( tmp ) ) {
-					if( tmp < result ) {
-						result = tmp;
+				vector<int> pattern = fillPattern( patterns[j], i, length );
+				int candidate = generateNumber( k, pattern );
+
+				if( candidate < result && isPrime( candidate ) ) {
+					int familySize = 1;
+
+					for( int l = k + 1; l < 10; ++l ) {
+						if( isPrime( generateNumber( l, pattern ) ) ) {
+							++familySize;
+						}
 					}
 
-					primeCount += 1;
+					if( familySize == 8 ) {
+						result = candidate;
+					}
 				}
+					break;
 			}
 
-			if( primeCount >= 8 ) {
-				return result;
-			}
-
-			primeCount = 0;
-			result = 1000000;
 		}
+
 	}
 
 	return result;
