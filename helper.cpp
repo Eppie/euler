@@ -233,7 +233,7 @@ uint64_t choose( const uint64_t &n, const uint64_t &k ) {
  * @param vector<vector<int> > rows
  * @return int
  */
-int maxSumPath( vector<vector<int> > rows ) {
+int maxSumPath( vector<vector<int>> rows ) {
 	int bottom = rows.size() - 2;
 
 	for( int i = bottom; i >= 0; i-- ) {

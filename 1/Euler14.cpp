@@ -21,36 +21,28 @@
 
 #include "../helper.hpp"
 
-// Yes, the memoized / recursive version of the function is slower,
-// but I think the memoize wrapper is neat and I want to demonstrate
-// its usage.
-function<uint64_t( uint64_t )> mCollatz;
+int solve14() {
+	int cache[1000001] = { 1, 1 };
+	int result = 0;
+	int best = 0;
 
-uint64_t rCollatz( uint64_t start ) {
-	if( start == 1 ) {
-		return 1;
-	}
+	for( int i = 2; i <= 1000000; ++i ) {
+		int length = 0;
+		uint64_t start = i;
+		while( start != 1 && start >= i ) {
+			if( ( start & 1 ) == 0 ) {
+				start >>= 1;
+			} else {
+				start = start * 3 + 1;
+			}
 
-	if( start % 2 == 0 ) {
-		return mCollatz( start / 2 ) + 1;
-	}
+			++length;
+		}
 
-	return mCollatz( ( start * 3 ) + 1 ) + 1;
+		cache[i] = length + cache[start];
 
-}
-
-uint64_t solve14() {
-	mCollatz = rCollatz;
-	mCollatz = memoize( mCollatz );
-	uint64_t result = 0;
-	uint64_t best = 1;
-	uint64_t temp = 0;
-
-	for( uint64_t i = 2; i <= 1000000; i++ ) {
-		temp = mCollatz( i );
-
-		if( temp > best ) {
-			best = temp;
+		if( cache[i] > best ) {
+			best = cache[i];
 			result = i;
 		}
 	}
