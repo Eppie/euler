@@ -84,3 +84,4 @@ int solve63();
 int solve64();
 int solve65();
 int solve66();
+int solve67();
