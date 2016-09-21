@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 69
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/21/2016 1:43:04 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -34,40 +34,22 @@
 
 #include "../helper.hpp"
 
-int phi( int n ) {
-	int result = n;
-
-	for( int p = 2; p * p <= n; ++p ) {
-		if( n % p == 0 ) {
-			while( n % p == 0 ) {
-				n /= p;
-			}
-
-			result -= result / p;
-		}
-	}
-
-	if( n > 1 ) {
-		result -= result / n;
-	}
-
-	return result;
-}
-
+// Idea: The n which will maximize n/φ(n) is the n with the most distinct prime factors.
+// Therefore, we can directly calculate it by multiplying small prime numbers until we exceed
+// our limit, 1,000,000
 int solve69() {
-	int result = 0;
-	float bestRatio = 0;
+	int result = 1;
+	int primeCandidate = 1;
 
-	for( int n = 2; n <= 1000000; ++n ) {
-		int totatives = phi( n );
-		float tmp = float( n ) / float( totatives );
+	while( result < 1000000 ) {
+		primeCandidate += 1;
 
-		if( tmp > bestRatio ) {
-			bestRatio = tmp;
-			result = n;
+		if( isPrime( primeCandidate ) ) {
+			result *= primeCandidate;
 		}
+
 	}
 
-	return result;
+	return result / primeCandidate;
 }
 
