@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 23
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  09/08/2015 04:14:09 PM
  *       Revision:  none
  *       Compiler:  g++
