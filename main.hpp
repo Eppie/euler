@@ -91,3 +91,4 @@ int solve70();
 int solve71();
 uint64_t solve72();
 int solve73();
+int solve74();
