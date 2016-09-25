@@ -25,4 +25,3 @@ You can then execute the tests by running:
 ```bash
 ./runTests
 ```
-testing
