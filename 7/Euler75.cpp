@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 75
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/25/2016 11:14:42 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -41,14 +41,12 @@ int solve75() {
 	static int cache[1500001];
 
 	for( int n = 2; n < 864; ++n ) {
-		for( int m = 1; m < n; ++m ) {
+		// To avoid generating non-primitive triples, m and n must not both be odd
+		int m_start = 1 + ( n & 1 );
+
+		for( int m = m_start; m < n; m += 2 ) {
 			// To avoid generating non-primitive triples, m and n must be coprime
 			if( gcd( m, n ) != 1 ) {
-				continue;
-			}
-
-			// To avoid generating non-primitive triples, m and n must not both be odd
-			if( m % 2 == 1 && n % 2 == 1 ) {
 				continue;
 			}
 
