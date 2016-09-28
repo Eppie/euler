@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 73
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/25/2016 1:27:05 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -25,20 +25,17 @@
 
 #include "../helper.hpp"
 
-/*
- * TODO: There's a more efficient solution to this one.
- */
 int solve73() {
-	int result = 0;
+	vector<int> n( 12001, 0 );
 
-	for( int d = 2; d <= 12000; ++d ) {
-		for( int n = ( d / 3.0 ) + 1; n < d / 2.0; ++n ) {
-			if( gcd( n, d ) == 1 ) {
-				++result;
-			}
+	for( int d = 1; d <= 12000; ++d ) {
+		n[d] += ( ( d + 1 ) / 2 ) - ( ( d + 2 ) / 3 ) - 1;
+		for( int i = d * 2; i <= 12000; i += d ) {
+			int k = n[i];
+			n[i] = k - n[d];
 		}
 	}
 
-	return result;
+	return sum( n );
 }
 
