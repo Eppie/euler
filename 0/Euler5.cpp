@@ -30,10 +30,11 @@ int solve5() {
 		int counter = 1;
 
 		while( counter <= limit + 1 && result % counter == 0 ) {
-			if ( counter > furthestDivisor ) {
+			if( counter > furthestDivisor ) {
 				furthestDivisor = counter;
 				increment = result;
 			}
+
 			++counter;
 		}
 

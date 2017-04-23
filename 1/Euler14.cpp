@@ -29,6 +29,7 @@ int solve14() {
 	for( int i = 2; i <= 1000000; ++i ) {
 		int length = 0;
 		uint64_t start = i;
+
 		while( start != 1 && start >= i ) {
 			if( ( start & 1 ) == 0 ) {
 				start >>= 1;

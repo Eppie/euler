@@ -66,7 +66,7 @@ int solve74() {
 			seen.push_back( test );
 			test = process( test );
 			++length;
-			
+
 			if( cache[test] != 0 ) {
 				length += cache[test];
 				break;

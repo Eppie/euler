@@ -102,7 +102,8 @@ int solve51() {
 						result = candidate;
 					}
 				}
-					break;
+
+				break;
 			}
 
 		}
