@@ -246,11 +246,12 @@ int maxSumPath( vector<vector<int>> rows ) {
 }
 
 /*
- * Read a comma delimited file.
+ * Read a delimited file.
  * @param string filename
+ * @param char delimiter
  * @return vector<string>
  */
-vector<string> loadDataFromFile( string filename ) {
+vector<string> loadDataFromFile( string filename, char delimiter ) {
 	string line;
 	vector<string> data;
 	ifstream file( filename );
@@ -260,7 +261,7 @@ vector<string> loadDataFromFile( string filename ) {
 		throw;
 	}
 
-	while( getline( file, line, ',' ) ) {
+	while( getline( file, line, delimiter ) ) {
 		try {
 			data.push_back( line );
 		} catch( const invalid_argument &ia ) {

@@ -198,7 +198,7 @@ void printIterable( I v, string sep = "\n", string end = "" ) {
  * @param string filename
  * @return vector<string>
  */
-vector<string> loadDataFromFile( string filename );
+vector<string> loadDataFromFile( string filename, char delimeter = ',' );
 
 /*
  * Return the type of a variable or function.

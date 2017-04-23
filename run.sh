@@ -6,9 +6,9 @@ pushd "test"
 popd
 cmake .
 cores=$(grep -c ^processor /proc/cpuinfo)
-make -j$cores
+make -j"$cores"
 cat /dev/null > timings.txt
-for i in {1..78}; do
+for i in {1..79}; do
 	result=($(./euler $i))
 	echo "$i: ${result[0]}"
 	echo "$i: ${result[1]}" >> timings.txt
