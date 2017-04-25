@@ -97,3 +97,5 @@ int solve76();
 int solve77();
 int solve78();
 int solve79();
+int solve80();
+int solve81();

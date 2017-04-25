@@ -345,6 +345,14 @@ int main( int argc, char* argv[] ) {
 			cout << solve79() << endl;
 			break;
 
+		case 80:
+			cout << solve80() << endl;
+			break;
+
+		case 81:
+			cout << solve81() << endl;
+			break;
+
 		default:
 			cout << "Oops, didn't solve that one yet!" << endl;
 			break;
