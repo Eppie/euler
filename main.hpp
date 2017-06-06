@@ -99,3 +99,7 @@ int solve78();
 int solve79();
 int solve80();
 int solve81();
+int solve82();
+int solve83();
+int solve84();
+int solve85();

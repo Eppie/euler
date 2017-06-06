@@ -37,6 +37,7 @@
 #include <cxxabi.h>
 #include <typeinfo>
 #include <gmpxx.h>
+#include <queue>
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
