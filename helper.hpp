@@ -301,3 +301,8 @@ uint64_t figurateNumber( uint64_t r, uint64_t n );
  */
 mpz_class digitalSum( mpz_class x );
 
+/*
+ * xorshift* algorithm
+ * See here: http://vigna.di.unimi.it/ftp/papers/xorshift.pdf
+ */
+uint64_t random_int();

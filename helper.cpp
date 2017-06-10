@@ -365,3 +365,16 @@ mpz_class digitalSum( mpz_class x ) {
 	return result;
 }
 
+uint64_t x = 0x8E588AFE51D8B00D;
+
+/*
+ * xorshift* algorithm
+ * See here: http://vigna.di.unimi.it/ftp/papers/xorshift.pdf
+ */
+uint64_t random_int() {
+	x ^= x >> 12;
+	x ^= x << 25;
+	x ^= x >> 27;
+	return x * 2685821657736338717ULL;
+}
+
