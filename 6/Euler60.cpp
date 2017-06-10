@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 60
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/3/2016 7:44:13 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -21,16 +21,16 @@
 
 #include "../helper.hpp"
 
-bool singleCheck( uint64_t a, uint64_t b ) {
-	static vector<uint64_t> primes = sieve( 84000000 );
+auto isPrime_m = memoize( function<bool( uint64_t )>( isPrime ) );
 
+bool singleCheck( uint64_t a, uint64_t b ) {
 	uint64_t pow = 10;
 
 	while( b >= pow ) {
 		pow *= 10;
 	}
 
-	return binary_search( primes.begin(), primes.end(), a * pow + b );
+	return isPrime_m( a * pow + b );
 }
 
 bool check( vector<uint64_t> nums ) {

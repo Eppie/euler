@@ -81,10 +81,10 @@ vector<uint64_t> sieve( uint64_t n ) {
 
 /*
  * Return true if the given number is prime, and false otherwise.
- * @param long long n The number to perform the primality test on.
+ * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
-bool isPrime( long long n ) {
+bool isPrime( uint64_t n ) {
 	if( n <= 1 ) {
 		return false;
 	} else if( n <= 3 ) {
