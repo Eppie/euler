@@ -21,6 +21,7 @@
 
 #include "../helper.hpp"
 
+namespace euler62 {
 bool arePermutations( uint64_t a, uint64_t b ) {
 	int counts[10] = { 0 };
 
@@ -42,6 +43,7 @@ bool arePermutations( uint64_t a, uint64_t b ) {
 
 	return true;
 }
+}
 
 uint64_t solve62() {
 	uint64_t cubes[8500] = { 0 };
@@ -59,7 +61,7 @@ uint64_t solve62() {
 				break;
 			}
 
-			if( arePermutations( cubes[i], cubes[j] ) ) {
+			if( euler62::arePermutations( cubes[i], cubes[j] ) ) {
 				permutationsCount++;
 			}
 		}

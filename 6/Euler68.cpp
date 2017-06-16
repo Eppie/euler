@@ -11,7 +11,7 @@
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *        Problem:
+ *        Problem:  The description for this one is rather long. See it here: https://projecteuler.net/problem=68
  *         Answer:  6531031914842725
  *
  * =====================================================================================

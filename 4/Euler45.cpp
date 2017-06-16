@@ -24,12 +24,14 @@
 
 #include "../helper.hpp"
 
+namespace euler45 {
 uint64_t genTri( uint64_t n ) {
 	return figurateNumber( 3, n );
 }
 
 uint64_t genHex( uint64_t n ) {
 	return figurateNumber( 6, n );
+}
 }
 
 uint64_t solve45() {
@@ -38,9 +40,9 @@ uint64_t solve45() {
 	unordered_set<uint64_t> hexNumbers;
 
 	for( int i = 0; i < 55386; ++i ) {
-		triNumbers.push_back( genTri( i ) );
+		triNumbers.push_back( euler45::genTri( i ) );
 		pentNumbers.insert( genPent( i ) );
-		hexNumbers.insert( genHex( i ) );
+		hexNumbers.insert( euler45::genHex( i ) );
 	}
 
 	for( auto num : triNumbers ) {

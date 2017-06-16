@@ -20,6 +20,7 @@
 
 #include "../helper.hpp"
 
+namespace euler39 {
 int solutions( int p ) {
 	int result = 0;
 
@@ -35,13 +36,14 @@ int solutions( int p ) {
 
 	return result;
 }
+}
 
 int solve39() {
 	int bestP = 0;
 	int bestT = 0;
 
 	for( int p = 1; p <= 1000; p++ ) {
-		int triangles = solutions( p );
+		int triangles = euler39::solutions( p );
 
 		if( triangles > bestT ) {
 			bestT = triangles;

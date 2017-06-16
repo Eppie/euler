@@ -19,18 +19,6 @@
 
 #include "../helper.hpp"
 
-string dec2bin( unsigned long n ) {
-	string result;
-
-	do {
-		result.push_back( '0' + ( n & 1 ) );
-	} while( n >>= 1 != 0u );
-
-	reverse( result.begin(), result.end() );
-	return result;
-}
-
-
 int solve36() {
 	int result = 0;
 

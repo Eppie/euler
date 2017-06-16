@@ -40,6 +40,7 @@ map<tuple<int, int>, vector<tuple<int, int>>> ds;
 // p is a list of ( type, data ) tuples where type is the type of number, and data is the number itself
 vector<tuple<int, int>> p;
 
+namespace euler61 {
 int next( vector<int> types, vector<int> data ) {
 	// We have 6 numbers and the chain is complete, so return
 	if( types.size() == 6 && data[0] / 100 == data.back() % 100 ) {
@@ -58,6 +59,7 @@ int next( vector<int> types, vector<int> data ) {
 	}
 
 	return 0;
+}
 }
 
 int solve61() {
@@ -93,7 +95,7 @@ int solve61() {
 	for( auto && tuple : ds ) {
 		vector<int> type = { get<0>( get<0>( tuple ) ) };
 		vector<int> data = { get<1>( get<0>( tuple ) ) };
-		int result = next( type, data );
+		int result = euler61::next( type, data );
 
 		// next() will return 0 if it exhausts all the possible combinations that contain "data" as part of the chain
 		if( result != 0 ) {

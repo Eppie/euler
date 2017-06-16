@@ -20,6 +20,7 @@
 
 #include "../helper.hpp"
 
+namespace euler20 {
 vector<int> factorial( int n ) {
 	// Initialize a vector with NUMDIGITS 0's.
 	vector<int> digits( NUMDIGITS, 0 );
@@ -45,7 +46,8 @@ vector<int> factorial( int n ) {
 
 	return digits;
 }
+}
 
 int solve20() {
-	return sum( factorial( 100 ) );
+	return sum( euler20::factorial( 100 ) );
 }

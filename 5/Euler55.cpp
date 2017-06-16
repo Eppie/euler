@@ -31,8 +31,8 @@
  */
 
 #include "../helper.hpp"
-#include <gmpxx.h>
 
+namespace euler55 {
 mpz_class reverseDecimal( mpz_class x ) {
 	mpz_class result = 0;
 
@@ -44,6 +44,7 @@ mpz_class reverseDecimal( mpz_class x ) {
 
 	return result;
 }
+}
 
 int solve55() {
 	int result = 10000;
@@ -52,9 +53,9 @@ int solve55() {
 		mpz_class num = i;
 
 		for( int j = 0; j < 50; ++j ) {
-			num += reverseDecimal( num );
+			num += euler55::reverseDecimal( num );
 
-			if( num == reverseDecimal( num ) ) {
+			if( num == euler55::reverseDecimal( num ) ) {
 				result--;
 				break;
 			}

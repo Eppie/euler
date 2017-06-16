@@ -28,12 +28,13 @@
 
 #include "../helper.hpp"
 
+namespace euler76 {
 /*
  * This is an implementation based on Euler's Pentagonal number theorem: https://en.wikipedia.org/wiki/Pentagonal_number_theorem
  * @param int n
  * @return int
  */
-int p76( int n ) {
+int p( int n ) {
 	static vector<int> cache( 102, 0 );
 	cache[1] = 1;
 
@@ -49,9 +50,9 @@ int p76( int n ) {
 
 	// k < 9 was determined empirically to be large enough to get an accurate result
 	for( int k = 1; k < 9; ++k ) {
-		result += pow( -1, k - 1 ) * p76( n - genPent( k ) );
+		result += pow( -1, k - 1 ) * p( n - genPent( k ) );
 		k *= -1;
-		result += pow( -1, k - 1 ) * p76( n - genPent( k ) );
+		result += pow( -1, k - 1 ) * p( n - genPent( k ) );
 		k *= -1;
 	}
 
@@ -59,8 +60,9 @@ int p76( int n ) {
 
 	return result;
 }
+}
 
 int solve76() {
-	return p76( 101 ) - 1;
+	return euler76::p( 101 ) - 1;
 }
 

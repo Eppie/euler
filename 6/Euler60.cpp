@@ -21,6 +21,7 @@
 
 #include "../helper.hpp"
 
+namespace euler60 {
 auto isPrime_m = memoize( function<bool( uint64_t )>( isPrime ) );
 
 bool singleCheck( uint64_t a, uint64_t b ) {
@@ -48,30 +49,31 @@ bool check( vector<uint64_t> nums ) {
 
 	return true;
 }
+}
 
 int solve60() {
 	vector<uint64_t> primes = sieve( 8390 );
 
 	for( int a = 0; a < primes.size(); ++a ) {
 		for( int b = a + 1; b < primes.size(); ++b ) {
-			if( !check( { primes[a], primes[b] } ) ) {
+			if( !euler60::check( { primes[a], primes[b] } ) ) {
 				continue;
 			}
 
 			for( int c = b + 1; c < primes.size(); ++c ) {
-				if( !check( { primes[a], primes[b], primes[c] } ) ) {
+				if( !euler60::check( { primes[a], primes[b], primes[c] } ) ) {
 					continue;
 				}
 
 				for( int d = c + 1; d < primes.size(); ++d ) {
-					if( !check( { primes[a], primes[b], primes[c], primes[d] } ) ) {
+					if( !euler60::check( { primes[a], primes[b], primes[c], primes[d] } ) ) {
 						continue;
 					}
 
 					for( int e = d + 1; e < primes.size(); ++e ) {
 						vector<uint64_t> tmp = { primes[a], primes[b], primes[c], primes[d], primes[e] };
 
-						if( check( tmp ) ) {
+						if( euler60::check( tmp ) ) {
 							return sum( tmp );
 						}
 					}

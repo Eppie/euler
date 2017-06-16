@@ -22,6 +22,7 @@
 
 #include "../helper.hpp"
 
+namespace euler21 {
 int d( int n ) {
 	int result = 1;
 
@@ -34,15 +35,16 @@ int d( int n ) {
 
 	return result;
 }
+}
 
 int solve21() {
 	int b;
 	int result = 0;
 
 	for( int a = 2; a < 10000; a++ ) {
-		b = d( a );
+		b = euler21::d( a );
 
-		if( d( b ) == a && a != b ) {
+		if( euler21::d( b ) == a && a != b ) {
 			result += b;
 		}
 	}

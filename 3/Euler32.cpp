@@ -24,8 +24,8 @@
 int solve32() {
 	set<int> products;
 
-	for( int i = 0; i <= 2000; i++ ) {
-		for( int j = i; j <= 2000; j++ ) {
+	for( int i = 1; i <= 48; i++ ) {
+		for( int j = i; j <= 1963; j++ ) {
 			int product = i * j;
 			vector<int> values = { i, j, product };
 

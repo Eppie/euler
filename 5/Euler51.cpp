@@ -22,6 +22,7 @@
 
 #include "../helper.hpp"
 
+namespace euler51 {
 int generateNumber( int repNumber, vector<int> filledPattern ) {
 	int temp = 0;
 
@@ -47,6 +48,7 @@ vector<int> fillPattern( int pattern, int number, int patternLength ) {
 	}
 
 	return filledPattern;
+}
 }
 
 int solve51() {
@@ -86,14 +88,14 @@ int solve51() {
 					continue;
 				}
 
-				vector<int> pattern = fillPattern( patterns[j], i, length );
-				int candidate = generateNumber( k, pattern );
+				vector<int> pattern = euler51::fillPattern( patterns[j], i, length );
+				int candidate = euler51::generateNumber( k, pattern );
 
 				if( candidate < result && isPrime( candidate ) ) {
 					int familySize = 1;
 
 					for( int l = k + 1; l < 10; ++l ) {
-						if( isPrime( generateNumber( l, pattern ) ) ) {
+						if( isPrime( euler51::generateNumber( l, pattern ) ) ) {
 							++familySize;
 						}
 					}

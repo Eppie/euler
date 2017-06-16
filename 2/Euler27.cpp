@@ -20,8 +20,10 @@
 
 #include "../helper.hpp"
 
+namespace euler27 {
 long long formula( int a, int b, int n ) {
 	return ( n * n ) + ( a * n ) + b;
+}
 }
 
 int solve27() {
@@ -33,10 +35,10 @@ int solve27() {
 	for( int a = -1000; a <= 1000; a++ ) {
 		for( int b = -1000; b <= 1000; b++ ) {
 			n = 0;
-			result = formula( a, b, n );
+			result = euler27::formula( a, b, n );
 
 			while( isPrime( result ) ) {
-				result = formula( a, b, n );
+				result = euler27::formula( a, b, n );
 				n++;
 			}
 

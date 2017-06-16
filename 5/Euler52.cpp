@@ -19,6 +19,7 @@
 
 #include "../helper.hpp"
 
+namespace euler52 {
 bool allSameDigits( vector<int> nums ) {
 	int c[10] = { 0 };
 	int mult = 1;
@@ -43,6 +44,7 @@ bool allSameDigits( vector<int> nums ) {
 
 	return result == 1 && digitCount % 6 == 0;
 }
+}
 
 int solve52() {
 	int x = 1;
@@ -50,7 +52,7 @@ int solve52() {
 	while( true ) {
 		vector<int> nums = { x, x * 2, x * 3, x * 4, x * 5, x * 6 };
 
-		if( allSameDigits( nums ) ) {
+		if( euler52::allSameDigits( nums ) ) {
 			return x;
 		}
 

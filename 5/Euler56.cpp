@@ -19,7 +19,6 @@
  */
 
 #include "../helper.hpp"
-#include <gmpxx.h>
 
 int solve56() {
 	int best = 0;

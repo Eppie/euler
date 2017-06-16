@@ -50,6 +50,7 @@
 
 #include "../helper.hpp"
 
+namespace euler54 {
 /*
  * Count how many of each card appears in the hand
  */
@@ -152,6 +153,7 @@ int score( vector<string> hand ) {
 
 	return result << 20 | baseScore;
 }
+}
 
 int solve54() {
 	int result = 0;
@@ -186,7 +188,7 @@ int solve54() {
 			++i;
 		}
 
-		if( score( hand1 ) > score( hand2 ) ) {
+		if( euler54::score( hand1 ) > euler54::score( hand2 ) ) {
 			result++;
 		}
 	}

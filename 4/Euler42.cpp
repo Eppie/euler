@@ -22,6 +22,7 @@
 
 #include "../helper.hpp"
 
+namespace euler42 {
 int wordValue( string word ) {
 	int result = 0;
 
@@ -32,6 +33,7 @@ int wordValue( string word ) {
 	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
 	return result + 60;
 
+}
 }
 
 int solve42() {
@@ -44,7 +46,7 @@ int solve42() {
 	}
 
 	for( auto word : words ) {
-		if( triangleNumbers.find( wordValue( word ) ) != triangleNumbers.end() ) {
+		if( triangleNumbers.find( euler42::wordValue( word ) ) != triangleNumbers.end() ) {
 			result += 1;
 		}
 	}

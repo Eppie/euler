@@ -39,6 +39,7 @@
 
 #include "../helper.hpp"
 
+namespace euler19 {
 bool isLeapYear( int year ) {
 	if( year % 400 == 0 ) {
 		return true;
@@ -49,6 +50,7 @@ bool isLeapYear( int year ) {
 	} else {
 		return false;
 	}
+}
 }
 
 int solve19() {
@@ -86,7 +88,7 @@ int solve19() {
 				month = JAN;
 				year += 1;
 
-				if( isLeapYear( year ) ) {
+				if( euler19::isLeapYear( year ) ) {
 					daysPerMonth[FEB] = 29;
 				} else {
 					daysPerMonth[FEB] = 28;

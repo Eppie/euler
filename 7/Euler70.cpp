@@ -23,6 +23,7 @@
 
 #include "../helper.hpp"
 
+namespace euler70 {
 bool isPermutation( int a, int b ) {
 	int counts[10] = { 0 };
 
@@ -44,6 +45,7 @@ bool isPermutation( int a, int b ) {
 
 	return true;
 }
+}
 
 int solve70() {
 	int result = 0;
@@ -62,7 +64,7 @@ int solve70() {
 			float ratio = float( n ) / float( totatives );
 
 			if( ratio < bestRatio ) {
-				if( isPermutation( n, totatives ) ) {
+				if( euler70::isPermutation( n, totatives ) ) {
 					result = n;
 					bestRatio = ratio;
 				}

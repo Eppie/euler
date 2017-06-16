@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 50
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/30/2016 4:17:22 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -27,7 +27,7 @@ int solve50() {
 	int bestLength = 0;
 	int tmpSum = 0;
 	int tmpLength = 0;
-	auto primes = sieve( 1000000 );
+	auto primes = sieve( 3932 );
 
 	for( int i = 0; i < primes.size(); ++i ) {
 		for( int j = i; j < primes.size(); ++j ) {

@@ -18,6 +18,7 @@
 
 #include "../helper.hpp"
 
+namespace euler12 {
 int divisors( uint64_t n, int start = 2 ) {
 	if( n == 1 ) {
 		return 1;
@@ -39,6 +40,7 @@ int divisors( uint64_t n, int start = 2 ) {
 	return 2;
 
 }
+}
 
 uint64_t solve12() {
 	int count;
@@ -47,9 +49,9 @@ uint64_t solve12() {
 		uint64_t t = n * ( n + 1 ) / 2;
 
 		if( n % 2 == 0 ) {
-			count = divisors( n / 2 ) * divisors( n + 1 );
+			count = euler12::divisors( n / 2 ) * euler12::divisors( n + 1 );
 		} else {
-			count = divisors( n ) * divisors( ( n + 1 ) / 2 );
+			count = euler12::divisors( n ) * euler12::divisors( ( n + 1 ) / 2 );
 		}
 
 		if( count > 500 ) {

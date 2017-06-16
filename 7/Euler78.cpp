@@ -30,12 +30,13 @@
 
 #include "../helper.hpp"
 
+namespace euler78 {
 /*
  * This is an implementation based on Euler's Pentagonal number theorem: https://en.wikipedia.org/wiki/Pentagonal_number_theorem
  * @param int n
  * @return int
  */
-int p78( int n ) {
+int p( int n ) {
 	static vector<int> cache( 100000, 0 );
 	cache[1] = 1;
 
@@ -59,9 +60,9 @@ int p78( int n ) {
 			mult *= -1;
 		}
 
-		result += mult * p78( n - genPent( k ) );
+		result += mult * p( n - genPent( k ) );
 		k *= -1;
-		result += mult * p78( n - genPent( k ) );
+		result += mult * p( n - genPent( k ) );
 		k *= -1;
 		++k;
 	}
@@ -75,12 +76,13 @@ int p78( int n ) {
 	cache[n] = result;
 	return result;
 }
+}
 
 int solve78() {
 	int i = 1;
 
 	while( true ) {
-		int result = p78( i );
+		int result = euler78::p( i );
 
 		if( result % 1000000 == 0 ) {
 			return i - 1;

@@ -19,6 +19,7 @@
 
 #include "../helper.hpp"
 
+namespace euler22 {
 int score( string s ) {
 	int result = 0;
 
@@ -29,6 +30,7 @@ int score( string s ) {
 	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
 	return result + 60;
 }
+}
 
 int solve22() {
 	int result = 0;
@@ -37,7 +39,7 @@ int solve22() {
 	sort( names.begin(), names.end() );
 
 	for( auto it = names.begin(); it != names.end(); ++it ) {
-		thisScore = score( *it );
+		thisScore = euler22::score( *it );
 		thisScore *= it - names.begin() + 1;
 		result += thisScore;
 	}

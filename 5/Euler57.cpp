@@ -26,7 +26,6 @@
  */
 
 #include "../helper.hpp"
-#include <gmpxx.h>
 
 int solve57() {
 	int result = 0;

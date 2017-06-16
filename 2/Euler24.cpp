@@ -18,6 +18,7 @@
 
 #include "../helper.hpp"
 
+namespace euler24 {
 uint64_t permutation( vector<int> v, int n ) {
 	vector<int> perm;
 
@@ -40,7 +41,8 @@ uint64_t permutation( vector<int> v, int n ) {
 	return result;
 
 }
+}
 
 uint64_t solve24() {
-	return permutation( vector<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
+	return euler24::permutation( vector<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
 }

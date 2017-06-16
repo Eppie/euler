@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 25
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  10/23/2015 03:12:49 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -18,6 +18,7 @@
 
 #include "../helper.hpp"
 
+namespace euler25 {
 void add( int* a, int* b, int* c ) {
 	int tmp;
 	int newDigit;
@@ -30,6 +31,7 @@ void add( int* a, int* b, int* c ) {
 		c[i] = newDigit;
 	}
 }
+}
 
 int solve25() {
 	int count = 2;
@@ -40,7 +42,7 @@ int solve25() {
 	b[0] = 1;
 
 	while( true ) {
-		add( a, b, c );
+		euler25::add( a, b, c );
 		count += 1;
 
 		if( c[999] != 0 ) {
@@ -50,7 +52,7 @@ int solve25() {
 			return count;
 		}
 
-		add( c, a, b );
+		euler25::add( c, a, b );
 		count += 1;
 
 		if( b[999] != 0 ) {
@@ -60,10 +62,10 @@ int solve25() {
 			return count;
 		}
 
-		add( b, c, a );
+		euler25::add( b, c, a );
 		count += 1;
 
-		if( b[999] != 0 ) {
+		if( a[999] != 0 ) {
 			free( a );
 			free( b );
 			free( c );

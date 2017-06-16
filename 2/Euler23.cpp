@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 23
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  09/08/2015 04:14:09 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -25,6 +25,7 @@
 
 #include "../helper.hpp"
 
+namespace euler23 {
 bool isAbundant( int n ) {
 	int result = 1;
 
@@ -40,27 +41,7 @@ bool isAbundant( int n ) {
 
 	return result > n;
 }
-
-int solve( const vector<int> &values ) {
-	int result = 0;
-	int diff;
-
-	for( int i = 1; i <= 28123; ++i ) {
-		for( auto && value : values ) {
-			diff = i - value;
-
-			if( diff < 0 ) {
-				continue;
-			}
-
-			if( binary_search( values.begin(), values.end(), diff ) ) {
-				result += i;
-				break;
-			}
-		}
-	}
-
-	return result;
+auto isAbundant_m = memoize( function<bool( int )>( isAbundant ) );
 }
 
 int solve23() {
@@ -70,11 +51,27 @@ int solve23() {
 	for( int i = 1; i <= 28123; ++i ) {
 		total += i;
 
-		if( isAbundant( i ) ) {
+		if( euler23::isAbundant_m( i ) ) {
 			values.push_back( i );
 		}
 	}
 
-	int result = solve( values );
-	return total - result;
+	int diff;
+
+	for( int i = 1; i <= 28123; ++i ) {
+		for( auto && value : values ) {
+			diff = i - value;
+
+			if( diff <= 0 ) {
+				continue;
+			}
+
+			if( euler23::isAbundant_m( diff ) ) {
+				total -= i;
+				break;
+			}
+		}
+	}
+
+	return total;
 }

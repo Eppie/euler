@@ -38,6 +38,7 @@
 
 #include "../helper.hpp"
 
+namespace euler74 {
 int process( int n ) {
 	// A similar caching method for this function was implemented, but it's faster to just recalculate the values
 	static int facs[10] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
@@ -50,6 +51,7 @@ int process( int n ) {
 	}
 
 	return result;
+}
 }
 
 int solve74() {
@@ -64,7 +66,7 @@ int solve74() {
 
 		while( find( seen.begin(), seen.end(), test ) == seen.end() ) {
 			seen.push_back( test );
-			test = process( test );
+			test = euler74::process( test );
 			++length;
 
 			if( cache[test] != 0 ) {

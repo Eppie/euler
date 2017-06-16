@@ -30,7 +30,6 @@
  */
 
 #include "../helper.hpp"
-#include <gmpxx.h>
 
 int solve58() {
 	int primeCount = 3;
