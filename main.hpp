@@ -103,3 +103,8 @@ int solve82();
 int solve83();
 int solve84();
 int solve85();
+int solve86();
+int solve87();
+int solve88();
+int solve89();
+int solve90();

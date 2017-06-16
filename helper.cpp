@@ -62,7 +62,7 @@ vector<uint64_t> sieve( uint64_t n ) {
 	uint64_t primeCountEstimate = static_cast<uint64_t>( ( n / log( n ) ) * ( 1 + ( 1.2762 / log( n ) ) ) );
 	result.reserve( primeCountEstimate );
 
-	for( uint64_t i = 2; i <= static_cast<uint64_t>( sqrt( n ) ); i++ ) {
+	for( uint64_t i = 2; i <= static_cast<uint64_t>( sqrt( n ) ); ++i ) {
 		if( A[i] ) {
 			for( uint64_t j = pow( i, 2 ); j < n; j += i ) {
 				A[j] = false;
@@ -70,7 +70,7 @@ vector<uint64_t> sieve( uint64_t n ) {
 		}
 	}
 
-	for( uint64_t i = 2; i < n; i++ ) {
+	for( uint64_t i = 2; i < n; ++i ) {
 		if( A[i] ) {
 			result.push_back( i );
 		}
@@ -84,7 +84,7 @@ vector<uint64_t> sieve( uint64_t n ) {
  * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
-bool isPrime( uint64_t n ) {
+bool isPrime( long long n ) {
 	if( n <= 1 ) {
 		return false;
 	} else if( n <= 3 ) {
@@ -101,6 +101,56 @@ bool isPrime( uint64_t n ) {
 		}
 
 		i += 6;
+	}
+
+	return true;
+}
+
+/*
+ * Miller-Rabin Probabilistic Primality Test
+ */
+bool isProbablyPrime( uint64_t n ) {
+	if( n <= 1 ) {
+		return false;
+	} else if( n <= 3 ) {
+		return true;
+	} else if( n % 2 == 0 || n % 3 == 0 ) {
+		return false;
+	}
+
+	uint32_t s = 0;
+	uint64_t d = n - 1;
+
+	while( d % 2 == 0 ) {
+		++s;
+		d >>= 1;
+	}
+
+	random_device rd;
+	mt19937 rng( rd() );
+	uniform_int_distribution<uint64_t> uni( 2, n - 2 );
+	int k = 3;
+
+	for( int i = 0; i < k; ++i ) {
+		uint64_t a = uni( rng );
+		uint64_t x = powMod( a, d, n );
+
+		if( x != 1 && x + 1 != n ) {
+			for( int r = 1; r < s; ++r ) {
+				x = powMod( x, 2, n );
+
+				if( x == 1 ) {
+					return false;
+				} else if( x + 1 == n ) {
+					a = 0;
+					break;
+				}
+			}
+
+			if( a != 0 ) {
+				return false;
+			}
+		}
 	}
 
 	return true;
@@ -378,3 +428,25 @@ uint64_t random_int() {
 	return x * 2685821657736338717ULL;
 }
 
+/*
+ *
+ */
+vector<vector<int>> combinations( vector<int> n, int r ) {
+	vector<vector<int>> result;
+	vector<bool> v( n.size() );
+	fill( v.end() - r, v.end(), true );
+
+	do {
+		vector<int> tmp;
+
+		for( int i = 0; i < n.size(); ++i ) {
+			if( v[i] ) {
+				tmp.push_back( n[i] );
+			}
+		}
+
+		result.push_back( tmp );
+	} while( next_permutation( v.begin(), v.end() ) );
+
+	return result;
+}

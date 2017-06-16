@@ -38,6 +38,7 @@
 #include <typeinfo>
 #include <gmpxx.h>
 #include <queue>
+#include <random>
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
@@ -64,7 +65,12 @@ vector<uint64_t> sieve( uint64_t n );
  * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
-bool isPrime( uint64_t n );
+bool isPrime( long long n );
+
+/*
+ *
+ */
+bool isProbablyPrime( uint64_t n );
 
 /*
  * Returns true if s is a palindrome, and false otherwise.
@@ -306,3 +312,8 @@ mpz_class digitalSum( mpz_class x );
  * See here: http://vigna.di.unimi.it/ftp/papers/xorshift.pdf
  */
 uint64_t random_int();
+
+/*
+ *
+ */
+vector<vector<int>> combinations( vector<int> n, int r );

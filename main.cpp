@@ -369,6 +369,26 @@ int main( int argc, char* argv[] ) {
 			cout << solve85() << endl;
 			break;
 
+		case 86:
+			cout << solve86() << endl;
+			break;
+
+		case 87:
+			cout << solve87() << endl;
+			break;
+
+		case 88:
+			cout << solve88() << endl;
+			break;
+
+		case 89:
+			cout << solve89() << endl;
+			break;
+
+		case 90:
+			cout << solve90() << endl;
+			break;
+
 		default:
 			cout << "Oops, didn't solve that one yet!" << endl;
 			break;
@@ -376,7 +396,7 @@ int main( int argc, char* argv[] ) {
 
 	auto end = chrono::high_resolution_clock::now();
 	stringstream ss;
-	ss.imbue( locale( "" ) );
+	//ss.imbue( locale( "" ) );
 	ss << fixed << chrono::duration_cast<chrono::microseconds>( end - begin ).count() << "μs";
 	cout << ss.str() << endl;
 
