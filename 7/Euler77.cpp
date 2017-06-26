@@ -33,7 +33,7 @@ int solve77() {
 	ways[0] = 1;
 
 	for( int prime : primes ) {
-		for( int j = prime; j <= limit; ++j ) {
+		for( int j = prime; j < limit; ++j ) {
 			ways[j] += ways[j - prime];
 		}
 	}

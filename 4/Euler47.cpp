@@ -37,7 +37,7 @@ int solve47() {
 	vector<int> factorCount = { 0, 0, 0, 0 };
 
 	for( int i = 1; i < 200000; ++i ) {
-		vector<int> factorsVector = primeFactors( i );
+		vector<uint64_t> factorsVector = primeFactors( i );
 		set<int> factorsSet { factorsVector.begin(), factorsVector.end() };
 		factorCount[i % 4] = factorsSet.size();
 
