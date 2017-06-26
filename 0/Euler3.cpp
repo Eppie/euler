@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 3
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/29/2015 05:58:57 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -20,8 +20,8 @@
 #include "../helper.hpp"
 
 int solve3() {
-	long n = 600851475143;
-	int newN = static_cast<int>( sqrt( n ) ) + 1;
+	uint64_t n = 600851475143;
+	uint32_t newN = static_cast<uint32_t>( sqrt( n ) ) + 1;
 	vector<uint64_t> primes = sieve( newN );
 
 	for( auto it = primes.rbegin(); it != primes.rend(); ++it ) {
@@ -29,5 +29,6 @@ int solve3() {
 			return *it;
 		}
 	}
+	return 0;
 }
 

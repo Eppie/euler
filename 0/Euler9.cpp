@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 9
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  07/30/2015 10:23:07 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -20,8 +20,8 @@
 #include "../helper.hpp"
 
 int solve9() {
-	for( int c = 0; c < 1000; c++ ) {
-		for( int b = 0; b < c; b++ ) {
+	for( int c = 0; c < 1000; ++c ) {
+		for( int b = 0; b < c; ++b ) {
 			int a = 1000 - b - c;
 
 			if( pow( a, 2 ) + pow( b, 2 ) == pow( c, 2 ) ) {
@@ -29,4 +29,5 @@ int solve9() {
 			}
 		}
 	}
+	return 0;
 }
