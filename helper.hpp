@@ -50,7 +50,7 @@ using namespace std;
  * @param uint64_t n
  * @return vector<int>
  */
-vector<int> primeFactors( uint64_t n );
+vector<uint64_t> primeFactors( uint64_t n );
 
 /*
  * This is an implementation of the Sieve of Eratosthenes.
@@ -65,7 +65,7 @@ vector<uint64_t> sieve( uint64_t n );
  * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
-bool isPrime( long long n );
+bool isPrime( uint64_t n );
 
 /*
  *
@@ -96,7 +96,7 @@ bool isPalindrome( uint64_t x, int b );
  */
 template <typename T>
 T sum( vector<T> input ) {
-	return accumulate( input.begin(), input.end(), ( T )0 );
+	return accumulate( input.begin(), input.end(), static_cast<T>( 0 ) );
 }
 
 /*
@@ -111,10 +111,10 @@ T sum( vector<T> input ) {
 template <typename T>
 T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
 	if( !(
-				0 <= y0 && y0 < ( int )grid.size() &&
-				0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < ( int )grid.size() &&
-				0 <= x0 && x0 < ( int )grid[y0].size() &&
-				0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < ( int )grid[y0].size()
+				0 <= y0 && y0 < static_cast<int>( grid.size() ) &&
+				0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < static_cast<int>( grid.size() ) &&
+				0 <= x0 && x0 < static_cast<int>( grid[y0].size() ) &&
+				0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < static_cast<int>( grid[y0].size() )
 			) ) {
 		return 0;
 	}

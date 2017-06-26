@@ -37,7 +37,7 @@ int solve27() {
 			n = 0;
 			result = euler27::formula( a, b, n );
 
-			while( isPrime( result ) ) {
+			while( result > 0 && isPrime( result ) ) {
 				result = euler27::formula( a, b, n );
 				n++;
 			}

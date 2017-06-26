@@ -16,26 +16,30 @@
  * =====================================================================================
  */
 
-#define JAN 0
-#define FEB 1
-#define MAR 2
-#define APR 3
-#define MAY 4
-#define JUN 5
-#define JUL 6
-#define AUG 7
-#define SEP 8
-#define OCT 9
-#define NOV 10
-#define DEC 11
+enum MONTHS {
+	JAN,
+	FEB,
+	MAR,
+	APR,
+	MAY,
+	JUN,
+	JUL,
+	AUG,
+	SEP,
+	OCT,
+	NOV,
+	DEC
+};
 
-#define MON 0
-#define TUE 1
-#define WED 2
-#define THU 3
-#define FRI 4
-#define SAT 5
-#define SUN 6
+enum DAYS {
+	MON,
+	TUE,
+	WED,
+	THU,
+	FRI,
+	SAT,
+	SUN
+};
 
 #include "../helper.hpp"
 
@@ -55,7 +59,7 @@ bool isLeapYear( int year ) {
 
 int solve19() {
 	vector<int> daysPerMonth( 12 );
-	daysPerMonth[JAN] = 31;
+	daysPerMonth[MONTHS::JAN] = 31;
 	daysPerMonth[FEB] = 28;
 	daysPerMonth[MAR] = 31;
 	daysPerMonth[APR] = 30;
@@ -68,13 +72,13 @@ int solve19() {
 	daysPerMonth[NOV] = 30;
 	daysPerMonth[DEC] = 31;
 	int dayOfMonth = 1;
-	int month = JAN;
+	uint32_t month = MONTHS::JAN;
 	int year = 1901;
-	int dayOfWeek = TUE;
+	int dayOfWeek = DAYS::TUE;
 	int result = 0;
 
 	while( year != 2001 ) {
-		if( dayOfWeek == SUN && dayOfMonth == 1 ) {
+		if( dayOfWeek == DAYS::SUN && dayOfMonth == 1 ) {
 			result += 1;
 		}
 
@@ -84,8 +88,8 @@ int solve19() {
 		if( dayOfMonth > daysPerMonth[month] ) {
 			dayOfMonth = 1;
 
-			if( month == DEC ) {
-				month = JAN;
+			if( month == MONTHS::DEC ) {
+				month = MONTHS::JAN;
 				year += 1;
 
 				if( euler19::isLeapYear( year ) ) {
