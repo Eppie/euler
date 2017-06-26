@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 1
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  07/29/2015 10:05:15 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -17,14 +17,19 @@
  * =====================================================================================
  */
 
+#include "../helper.hpp"
+
+namespace euler1 {
+int sumOfMultiplesBelowLimit( int L, int mod ) {
+	int n = ceil( double( L ) / double( mod ) ) - 1;
+	return ( ( n * n ) + n ) / 2 * mod;
+}
+}
+
 int solve1() {
-	int result = 0;
-
-	for( int i = 0; i < 1000; i++ ) {
-		if( i % 3 == 0 || i % 5 == 0 )  {
-			result += i;
-		}
-	}
-
+	int L = 1000;
+	int result = euler1::sumOfMultiplesBelowLimit( L, 3 );
+	result += euler1::sumOfMultiplesBelowLimit( L, 5 );
+	result -= euler1::sumOfMultiplesBelowLimit( L, 15 );
 	return result;
 }
