@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 81
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  4/23/2017 5:19:58 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -30,7 +30,6 @@
 #define SIZE 80
 
 int solve81() {
-	int result = 0;
 	vector<vector<int>> matrix;
 
 	for( auto && line : loadDataFromFile( "8/matrix.txt", '\n' ) ) {

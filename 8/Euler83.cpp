@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 83
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  5/31/2017 08:50:51 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -32,9 +32,9 @@
 struct Node {
 	uint32_t x;
 	uint32_t y;
-	uint64_t path_cost;
+	uint32_t path_cost;
 
-	Node( uint32_t x, uint32_t y, uint64_t path_cost ) : x( x ), y( y ), path_cost( path_cost ) {};
+	Node( uint32_t x_, uint32_t y_, uint32_t path_cost_ ) : x( x_ ), y( y_ ), path_cost( path_cost_ ) {}
 
 	bool operator>( const Node &node ) const {
 		return path_cost > node.path_cost;
