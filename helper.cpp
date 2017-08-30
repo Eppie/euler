@@ -375,7 +375,7 @@ uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
 	base = base % modulus;
 
 	while( exponent ) {
-		if( exponent & 1 ) {
+		if( exponent % 2 ) {
 			result = result * base % modulus;
 		}
 

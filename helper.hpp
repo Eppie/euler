@@ -317,3 +317,16 @@ uint64_t random_int();
  *
  */
 vector<vector<int>> combinations( vector<int> n, int r );
+
+/*
+ * Safely compare two floats
+ */
+template <typename T, typename U>
+bool floatCompare( T a, U b ) {
+	static double epsilon = 0.000001;
+	if( abs( a - b ) < epsilon ) {
+		return true;
+	} else {
+		return false;
+	}
+}

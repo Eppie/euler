@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 86
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/05/2017 12:59:12 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -30,7 +30,7 @@ int solve86() {
 		for( int wh = 3; wh <= 2 * l; ++wh ) {
 			double sq = sqrt( wh * wh + l * l );
 
-			if( sq == static_cast<int>( sq ) ) {
+			if( floatCompare( sq, static_cast<int>( sq ) ) ) {
 				if( wh < l ) {
 					count += wh / 2;
 				} else {
