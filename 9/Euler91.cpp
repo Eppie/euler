@@ -24,11 +24,13 @@
 int solve91() {
 	uint32_t n = 50;
 	uint32_t t = 0;
+
 	for( uint32_t x = 1; x <= n; ++x ) {
 		for( uint32_t y = 1; y < n; ++y ) {
 			uint32_t m = gcd( x, y );
 			t += min( x * m / y, m * ( n - y ) / x );
 		}
 	}
+
 	return t * 2 + n * n * 3;
 }

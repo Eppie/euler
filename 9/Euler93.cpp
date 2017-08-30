@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 93
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/19/2017 07:50:41 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -53,7 +53,7 @@ void eval( const vector<double> &numbers, vector<bool> &used ) {
 		int index = int( result + Epsilon );
 
 		// reject negative and very large results
-		if( index >= 0 && index < ( int )used.size() ) {
+		if( index >= 0 && index < static_cast<int>( used.size() ) ) {
 			used[index] = true;
 		}
 
@@ -84,12 +84,12 @@ void eval( const vector<double> &numbers, vector<bool> &used ) {
 			next.back() = a * b;   // multiply
 			eval( next, used );
 
-			if( b != 0 ) {
+			if( !floatCompare( b, 0 ) ) {
 				next.back() = a / b; // divide (I)
 				eval( next, used );
 			}
 
-			if( a != 0 ) {
+			if( !floatCompare( a, 0 ) ) {
 				next.back() = b / a; // divide (II)
 				eval( next, used );
 			}
@@ -104,9 +104,11 @@ uint32_t count( uint32_t a, uint32_t b, uint32_t c, uint32_t d ) {
 	const vector<double> numbers = { a_d, b_d, c_d, d_d };
 	vector<bool> used( 1000, false );
 	eval( numbers, used );
-        int result = 0;
-        while( used[++result] ){}
-        return result;
+	int result = 0;
+
+	while( used[++result] ) {}
+
+	return result;
 }
 }
 
@@ -119,6 +121,7 @@ int solve93() {
 			for( int c = b + 1; c <= 9; ++c ) {
 				for( int d = c + 1; d <= 9; ++d ) {
 					uint32_t thisLength = euler93::count( a, b, c, d );
+
 					if( thisLength > bestLength ) {
 						bestLength = thisLength;
 						result = a * 1000 + b * 100 + c * 10 + d;
@@ -127,5 +130,6 @@ int solve93() {
 			}
 		}
 	}
+
 	return result;
 }
