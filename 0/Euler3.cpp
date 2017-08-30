@@ -29,6 +29,7 @@ int solve3() {
 			return *it;
 		}
 	}
+
 	return 0;
 }
 

@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 9
  *
- *        Version:  1.2
+ *        Version:  1.3
  *        Created:  07/30/2015 10:23:07 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -17,17 +17,21 @@
  * =====================================================================================
  */
 
-#include "../helper.hpp"
-
 int solve9() {
-	for( int c = 0; c < 1000; ++c ) {
-		for( int b = 0; b < c; ++b ) {
-			int a = 1000 - b - c;
+	int L = 1000;
 
-			if( pow( a, 2 ) + pow( b, 2 ) == pow( c, 2 ) ) {
-				return a * b * c;
+	for( int a = 1; a < L / 2 - 2; ++a ) {
+		for( int b = a; b < L / 2 - 1; ++b ) {
+			int c = L - a - b;
+
+			if( ( c < L / 2 ) && ( b < c ) && ( a + b > c ) && ( a + c > b ) && ( b + c > a ) ) {
+				if( a * a + b * b == c * c ) {
+					return a * b * c;
+				}
 			}
 		}
 	}
+
 	return 0;
 }
+

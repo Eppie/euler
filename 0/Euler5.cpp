@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 5
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  07/29/2015 11:11:11 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -21,27 +21,14 @@
 #include "../helper.hpp"
 
 int solve5() {
-	int increment = 1;
-	int furthestDivisor = 1;
+	uint32_t limit = 20;
+	auto primes = sieve( limit + 1 );
 	int result = 1;
-	int limit = 20;
 
-	while( true ) {
-		int counter = 1;
-
-		while( counter <= limit + 1 && result % counter == 0 ) {
-			if( counter > furthestDivisor ) {
-				furthestDivisor = counter;
-				increment = result;
-			}
-
-			++counter;
-		}
-
-		if( counter == limit + 2 ) {
-			return result;
-		} else {
-			result += increment;
-		}
+	for( uint32_t i = 0; i < primes.size(); ++i ) {
+		int a = static_cast<int>( log( limit ) / log( primes[i] ) );
+		result *= static_cast<int>( pow( primes[i], a ) );
 	}
+
+	return result;
 }
