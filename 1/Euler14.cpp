@@ -30,8 +30,8 @@ int solve14() {
 		int length = 0;
 		uint64_t start = i;
 
-		while( start != 1 && start >= i ) {
-			if( ( start & 1 ) == 0 ) {
+		while( start >= i ) {
+			if( ( start % 2 ) == 0 ) {
 				start >>= 1;
 			} else {
 				start = start * 3 + 1;
