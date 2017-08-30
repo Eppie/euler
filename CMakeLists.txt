@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_EXE_LINKER_FLAGS  ${CMAKE_EXE_LINKER_FLAGS} "-lgmpxx -lgmp")
 
-add_definitions(-std=c++14 -g -Ofast)
+add_definitions(-std=c++14 -g -Ofast -Weverything -Wno-c++14-binary-literal -Wno-c++98-compat -Wno-header-hygiene -Wno-missing-prototypes -Wno-global-constructors -Wno-sign-compare -Wno-sign-conversion -Wno-shorten-64-to-32 -Wno-c++98-compat-pedantic -Wno-return-type -Wno-float-conversion -Wno-missing-variable-declarations -Wno-shadow -Wno-unused-exception-parameter)
 
 # Locate GTest
 find_package(GTest REQUIRED)
