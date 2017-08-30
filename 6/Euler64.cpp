@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 64
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/12/2016 8:47:20 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -23,7 +23,7 @@ int solve64() {
 	int result = 0;
 
 	for( int n = 2; n <= 10000; ++n ) {
-		int limit = ( int ) sqrt( n );
+		int limit = static_cast<int>( sqrt( n ) );
 		int r = limit;
 
 		if( limit * limit == n ) {
