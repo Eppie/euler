@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 54
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/31/2016 5:08:11 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -91,7 +91,7 @@ bool hasFlush( vector<string> hand ) {
 	return true;
 }
 
-int hasStraight( vector<string> hand, vector<int> counts ) {
+int hasStraight( vector<int> counts ) {
 	for( int i = 0; i <= 8; ++i ) {
 		if( counts[i] == 1 && counts[i + 1] == 1 && counts[i + 2] == 1 && counts[i + 3] == 1 && counts[i + 4] == 1 ) {
 			return true;
@@ -134,7 +134,7 @@ int score( vector<string> hand ) {
 
 	int baseScore = getBaseScore( counts );
 	bool flush = hasFlush( hand );
-	bool straight = hasStraight( hand, counts );
+	bool straight = hasStraight( counts );
 
 	// There are no royal flushes, straight flushes, or four of a kinds in the data, so no need to handle them.
 	if( countsHist[3] == 1 && countsHist[2] == 1 ) { // full house

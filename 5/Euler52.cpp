@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 52
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/30/2016 8:26:04 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -58,7 +58,5 @@ int solve52() {
 
 		++x;
 	}
-
-	return x;
 }
 
