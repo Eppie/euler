@@ -27,8 +27,6 @@
  * TODO: Implement a topological sort and solve this problem programmatically.
  */
 int solve79() {
-	int result = 0;
-
 	vector<string> attempts = loadDataFromFile( "7/keylog.txt", '\n' );
 	sort( attempts.begin(), attempts.end() );
 	attempts.erase( unique( attempts.begin(), attempts.end() ), attempts.end() );

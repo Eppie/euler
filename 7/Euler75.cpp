@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 75
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  9/25/2016 11:14:42 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -36,39 +36,35 @@
 
 #include "../helper.hpp"
 
-int solve75() {
-	int result = 0;
+uint32_t solve75() {
+	uint32_t result = 0;
 	static int cache[1500001];
 
-	for( int n = 2; n < 864; ++n ) {
+	for( uint32_t n = 2; n < 864; ++n ) {
 		// To avoid generating non-primitive triples, m and n must not both be odd
-		int m_start = 1 + ( n & 1 );
+		uint32_t m_start = 1 + ( n % 2 );
 
-		for( int m = m_start; m < n; m += 2 ) {
+		for( uint32_t m = m_start; m < n; m += 2 ) {
 			// To avoid generating non-primitive triples, m and n must be coprime
 			if( gcd( m, n ) != 1 ) {
 				continue;
 			}
 
-			int a = ( n * n ) - ( m * m );
-			int b = 2 * n * m;
-			int c = ( n * n ) + ( m * m );
-			int L = a + b + c;
-			int i = 2;
+			uint32_t a = ( n * n ) - ( m * m );
+			uint32_t b = 2 * n * m;
+			uint32_t c = ( n * n ) + ( m * m );
+			uint32_t L = a + b + c;
+			uint32_t i = 1;
 
 			// Iterate over the multiples of this triple
-			while( L <= 1500000 ) {
-				++cache[L];
-				int new_a = a * i;
-				int new_b = b * i;
-				int new_c = c * i;
-				L = new_a + new_b + new_c;
+			while( L * i <= 1500000 ) {
+				++cache[L * i];
 				++i;
 			}
 		}
 	}
 
-	for( int i = 0; i < 1500000; ++i ) {
+	for( int i = 0; i <= 1500000; ++i ) {
 		if( cache[i] == 1 ) {
 			++result;
 		}
