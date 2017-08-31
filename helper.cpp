@@ -364,23 +364,44 @@ unsigned int numDigits( uint64_t v ) {
 }
 
 /*
+ * Efficiently calculate ( a * b ) % m
+ */
+uint64_t mulMod( uint64_t a, uint64_t b, uint64_t m ) {
+	if( m == 0 ) {
+		return a * b;
+	}
+
+	uint64_t r = 0;
+
+	while( a > 0 ) {
+		if( a % 2 )
+			if( ( r += b ) > m ) {
+				r %= m;
+			}
+
+		a >>= 1;
+
+		if( ( b <<= 1 ) > m ) {
+			b %= m;
+		}
+	}
+
+	return r;
+}
+
+/*
  * Efficiently calculate ( base ** exponent ) % modulus
  */
 uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
-	if( modulus == 1 ) {
-		return 0;
-	}
-
 	uint64_t result = 1;
-	base = base % modulus;
 
-	while( exponent ) {
+	while( exponent > 0 ) {
 		if( exponent % 2 ) {
-			result = result * base % modulus;
+			result = mulMod( result, base, modulus );
 		}
 
+		base = mulMod( base, base, modulus );
 		exponent >>= 1;
-		base = base * base % modulus;
 	}
 
 	return result;
