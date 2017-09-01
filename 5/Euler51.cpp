@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 51
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/30/2016 6:21:31 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -26,7 +26,7 @@ namespace euler51 {
 int generateNumber( int repNumber, vector<int> filledPattern ) {
 	int temp = 0;
 
-	for( int i = 0; i < filledPattern.size(); ++i ) {
+	for( uint32_t i = 0; i < filledPattern.size(); ++i ) {
 		temp *= 10;
 		temp += ( filledPattern[i] == -1 ) ? repNumber : filledPattern[i];
 	}

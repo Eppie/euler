@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 90
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/12/2017 07:50:38 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -45,8 +45,8 @@ int solve90() {
 	vector<int> nums = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 6 };
 	auto combs = combinations( nums, 6 );
 
-	for( int i = 0; i < combs.size(); ++i ) {
-		for( int j = i + 1; j < combs.size(); ++j ) {
+	for( uint32_t i = 0; i < combs.size(); ++i ) {
+		for( uint32_t j = i + 1; j < combs.size(); ++j ) {
 			auto c1 = combs[i];
 			auto c2 = combs[j];
 

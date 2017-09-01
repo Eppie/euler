@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 14
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  08/01/2015 11:42:39 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -26,7 +26,7 @@ int solve14() {
 	int result = 0;
 	int best = 0;
 
-	for( int i = 2; i <= 1000000; ++i ) {
+	for( uint32_t i = 2; i <= 1000000; ++i ) {
 		int length = 0;
 		uint64_t start = i;
 

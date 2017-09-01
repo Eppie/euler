@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 59
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/2/2016 5:26:37 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -34,7 +34,7 @@
 
 // Percentage frequencies of characters a-z and space in a large corpus of English text.
 // The idea is to compare the frequency of these characters in the decrypted message,
-// and the message that is the least the different is probably the correct decryption.
+// and the message that is the least different is probably the correct decryption.
 vector<double> freqs = {
 	6.550482415792841,
 	1.2187227913955478,
@@ -89,7 +89,7 @@ int solve59() {
 				vector<int> key = { a, b, c };
 				message.clear();
 
-				for( int i = 0; i < data.size(); ++i ) {
+				for( uint32_t i = 0; i < data.size(); ++i ) {
 					message.push_back( data[i] ^ key[i % 3] );
 				}
 

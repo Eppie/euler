@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 74
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/25/2016 1:40:19 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -79,7 +79,7 @@ int solve74() {
 			++result;
 		}
 
-		for( int j = 0; j < seen.size(); ++j ) {
+		for( uint32_t j = 0; j < seen.size(); ++j ) {
 			cache[seen[j]] = length;
 			--length;
 		}

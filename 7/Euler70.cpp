@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 70
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/21/2016 5:21:54 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -52,8 +52,8 @@ int solve70() {
 	float bestRatio = 10;
 	auto primes = sieve( 5000 );
 
-	for( int i = 0; i < primes.size(); ++i ) {
-		for( int j = i + 1; j < primes.size(); ++j ) {
+	for( uint32_t i = 0; i < primes.size(); ++i ) {
+		for( uint32_t j = i + 1; j < primes.size(); ++j ) {
 			int n = primes[i] * primes[j];
 
 			if( n > 10000000 ) {

@@ -136,7 +136,7 @@ bool isProbablyPrime( uint64_t n ) {
 		uint64_t x = powMod( a, d, n );
 
 		if( x != 1 && x + 1 != n ) {
-			for( int r = 1; r < s; ++r ) {
+			for( uint32_t r = 1; r < s; ++r ) {
 				x = powMod( x, 2, n );
 
 				if( x == 1 ) {
@@ -175,7 +175,7 @@ bool isPalindrome( string s ) {
  * @return bool
  */
 bool isPalindrome( uint64_t x, int b ) {
-	int reversed = 0;
+	uint64_t reversed = 0;
 	int k = x;
 
 	while( k > 0 ) {
@@ -325,13 +325,13 @@ vector<string> loadDataFromFile( string filename, char delimiter ) {
 
 /*
  * @param uint64_t val
- * @param int m
- * @param int n
+ * @param uint32_t m
+ * @param uint32_t n
  * @return bool
  */
-bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
-	unsigned int result = 0;
-	int digitCount = 0;
+bool isPandigital( uint64_t val, uint32_t m = 1, uint32_t n = 9 ) {
+	uint32_t result = 0;
+	uint32_t digitCount = 0;
 
 	if( val < m ) {
 		return false;
@@ -339,7 +339,7 @@ bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
 
 	while( val != 0 ) {
 		digitCount++;
-		int tmp = val % 10;
+		uint32_t tmp = val % 10;
 
 		// This check isn't necessary, but it lets us bail out early in some cases.
 		if( tmp < m || tmp > n ) {
@@ -476,7 +476,7 @@ vector<vector<int>> combinations( vector<int> n, int r ) {
 	do {
 		vector<int> tmp;
 
-		for( int i = 0; i < n.size(); ++i ) {
+		for( uint32_t i = 0; i < n.size(); ++i ) {
 			if( v[i] ) {
 				tmp.push_back( n[i] );
 			}

@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 43
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  5/17/2016 7:16:28 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -41,7 +41,7 @@ uint64_t solve43() {
 		next_permutation( perm.begin(), perm.end() );
 		bool divisible = true;
 
-		for( int k = 1; k < divisors.size(); k++ ) {
+		for( uint32_t k = 1; k < divisors.size(); k++ ) {
 			int num = 100 * perm[k] + 10 * perm[k + 1] + perm[k + 2];
 
 			if( num % divisors[k] != 0 ) {
@@ -54,7 +54,7 @@ uint64_t solve43() {
 			// Convert from vector of digits to number
 			uint64_t num = 0;
 
-			for( int k = 0; k < perm.size(); k++ ) {
+			for( uint32_t k = 0; k < perm.size(); k++ ) {
 				num = 10 * num + perm[k];
 			}
 

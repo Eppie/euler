@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 46
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/26/2016 3:02:57 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -31,14 +31,14 @@
 int solve46() {
 	auto primes = sieve( 4500 );
 
-	for( int i = 9; i < 10000; i += 2 ) {
+	for( uint32_t i = 9; i < 10000; i += 2 ) {
 		if( isPrime( i ) ) {
 			continue;
 		}
 
 		bool isGood = true;
 
-		for( auto prime : primes ) {
+		for( auto && prime : primes ) {
 			for( int j = 0; j < 100; ++j ) {
 				if( prime + ( 2 * ( j * j ) ) == i ) {
 					isGood = false;
