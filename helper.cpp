@@ -93,7 +93,7 @@ bool isPrime( uint64_t n ) {
 		return false;
 	}
 
-	long long i = 5;
+	uint64_t i = 5;
 
 	while( i * i <= n ) {
 		if( n % i == 0 || n % ( i + 2 ) == 0 ) {
@@ -219,8 +219,8 @@ uint64_t factorial( uint64_t n ) {
 
 /*
  * This is a memoized implementation of the recursive formula for n choose k.
- * @param const uint64_t n
- * @param const uint64_t k
+ * @param const uint64_t& n
+ * @param const uint64_t& k
  * @return uint64_t
  */
 uint64_t choose( const uint64_t &n, const uint64_t &k ) {
@@ -243,30 +243,30 @@ uint64_t choose( const uint64_t &n, const uint64_t &k ) {
 	public:
 		uint64_t* m_table;
 		uint64_t m_dimension;
-		choose_impl( uint64_t* table, const uint64_t &dimension ) {
-			m_table = table;
+		choose_impl( uint64_t* p_table, const uint64_t &dimension ) {
+			m_table = p_table;
 			m_dimension = dimension;
 		}
 
-		uint64_t &lookup( const uint64_t &n, const uint64_t &k ) {
-			return m_table[m_dimension * n + k];
+		uint64_t &lookup( const uint64_t &p_n, const uint64_t &p_k ) {
+			return m_table[m_dimension * p_n + p_k];
 		}
 
-		uint64_t compute( const uint64_t &n, const uint64_t &k ) {
-			if( ( k == 0 ) || ( n == k ) ) {
+		uint64_t compute( const uint64_t &p_n, const uint64_t &p_k ) {
+			if( ( p_k == 0 ) || ( p_n == p_k ) ) {
 				return 1;
 			}
 
-			uint64_t v1 = lookup( n - 1, k - 1 );
+			uint64_t v1 = lookup( p_n - 1, p_k - 1 );
 
 			if( v1 == 0 ) {
-				v1 = lookup( n - 1, k - 1 ) = compute( n - 1, k - 1 );
+				v1 = lookup( p_n - 1, p_k - 1 ) = compute( p_n - 1, p_k - 1 );
 			}
 
-			uint64_t v2 = lookup( n - 1, k );
+			uint64_t v2 = lookup( p_n - 1, p_k );
 
 			if( v2 == 0 ) {
-				v2 = lookup( n - 1, k ) = compute( n - 1, k );
+				v2 = lookup( p_n - 1, p_k ) = compute( p_n - 1, p_k );
 			}
 
 			return v1 + v2;
@@ -324,7 +324,10 @@ vector<string> loadDataFromFile( string filename, char delimiter ) {
 }
 
 /*
- *
+ * @param uint64_t val
+ * @param int m
+ * @param int n
+ * @return bool
  */
 bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
 	unsigned int result = 0;
@@ -353,6 +356,8 @@ bool isPandigital( uint64_t val, int m = 1, int n = 9 ) {
 
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
+ * @param uint64_t v
+ * @return unsigned int
  */
 unsigned int numDigits( uint64_t v ) {
 	return ( v >= 100000000000000000 ) ? 18 : ( v >= 10000000000000000 ) ? 17 : ( v >= 1000000000000000 ) ? 16 :
@@ -364,10 +369,14 @@ unsigned int numDigits( uint64_t v ) {
 }
 
 /*
- * Efficiently calculate ( a * b ) % m
+ * Efficiently calculate ( a * b ) % modulus
+ * @param uint64_t a
+ * @param uint64_t b
+ * @param uint64_t modulus
+ * @return uint64_t
  */
-uint64_t mulMod( uint64_t a, uint64_t b, uint64_t m ) {
-	if( m == 0 ) {
+uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus ) {
+	if( modulus == 0 ) {
 		return a * b;
 	}
 
@@ -375,14 +384,14 @@ uint64_t mulMod( uint64_t a, uint64_t b, uint64_t m ) {
 
 	while( a > 0 ) {
 		if( a % 2 )
-			if( ( r += b ) > m ) {
-				r %= m;
+			if( ( r += b ) > modulus ) {
+				r %= modulus;
 			}
 
 		a >>= 1;
 
-		if( ( b <<= 1 ) > m ) {
-			b %= m;
+		if( ( b <<= 1 ) > modulus ) {
+			b %= modulus;
 		}
 	}
 
@@ -391,6 +400,10 @@ uint64_t mulMod( uint64_t a, uint64_t b, uint64_t m ) {
 
 /*
  * Efficiently calculate ( base ** exponent ) % modulus
+ * @param uint64_t base
+ * @param uint64_t exponent
+ * @param uint64_t modulus
+ * @return uint64_t
  */
 uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
 	uint64_t result = 1;
@@ -409,20 +422,22 @@ uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) {
 
 /*
  * Generate the nth pentagonal number. Given by the formula Pn = n(3n-1)/2
+ * @param uint64_t n
+ * @return uint64_t
  */
 uint64_t genPent( uint64_t n ) {
 	return figurateNumber( 5, n );
 }
 
 /*
- *
+ * TODO
  */
 uint64_t figurateNumber( uint64_t r, uint64_t n ) {
 	return n * ( ( r - 2 ) * n - ( r - 4 ) ) / 2;
 }
 
 /*
- *
+ * TODO
  */
 mpz_class digitalSum( mpz_class x ) {
 	mpz_class result = 0;
@@ -441,6 +456,7 @@ uint64_t x = 0x8E588AFE51D8B00D;
 /*
  * xorshift* algorithm
  * See here: http://vigna.di.unimi.it/ftp/papers/xorshift.pdf
+ * @return uint64_t The generated random number
  */
 uint64_t random_int() {
 	x ^= x >> 12;
@@ -450,7 +466,7 @@ uint64_t random_int() {
 }
 
 /*
- *
+ * TODO
  */
 vector<vector<int>> combinations( vector<int> n, int r ) {
 	vector<vector<int>> result;

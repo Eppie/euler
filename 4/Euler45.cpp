@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 45
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  8/26/2016 2:31:14 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -45,7 +45,7 @@ uint64_t solve45() {
 		hexNumbers.insert( euler45::genHex( i ) );
 	}
 
-	for( auto num : triNumbers ) {
+	for( auto && num : triNumbers ) {
 		if( num > 40755 && pentNumbers.find( num ) != pentNumbers.end() && hexNumbers.find( num ) != hexNumbers.end() ) {
 			return num;
 		}
