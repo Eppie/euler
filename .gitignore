@@ -14,3 +14,6 @@ test/test[1-9]*.cpp
 tags
 euler.DSYM
 googletest
+id_rsa
+id_rsa.pub
+slow.txt
