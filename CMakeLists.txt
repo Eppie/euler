@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.9)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_EXE_LINKER_FLAGS  ${CMAKE_EXE_LINKER_FLAGS} "-lgmpxx -lgmp")
 
-add_definitions(-std=c++14 -g -Ofast -Weverything -Wno-c++14-binary-literal -Wno-c++98-compat -Wno-header-hygiene -Wno-missing-prototypes -Wno-global-constructors -Wno-sign-conversion -Wno-shorten-64-to-32 -Wno-c++98-compat-pedantic -Wno-return-type -Wno-float-conversion -Wno-missing-variable-declarations -Wno-unused-exception-parameter -Wno-exit-time-destructors)
+add_definitions(-std=c++14 -g -Ofast -Weverything -march=native -mtune=native -Wno-c++14-binary-literal -Wno-c++98-compat -Wno-header-hygiene -Wno-missing-prototypes -Wno-global-constructors -Wno-sign-conversion -Wno-shorten-64-to-32 -Wno-c++98-compat-pedantic -Wno-return-type -Wno-missing-variable-declarations -Wno-unused-exception-parameter -Wno-exit-time-destructors -Wno-zero-as-null-pointer-constant)
 
 # Locate GTest
 find_package(GTest REQUIRED)
@@ -16,6 +16,6 @@ add_executable(euler ${euler_source})
 add_executable(runTests ${test_source})
 
 # Link runTests with what we want to test and the GTest and pthread library
-target_compile_features(runTests PUBLIC cxx_auto_type)
+#target_compile_features(runTests PUBLIC cxx_auto_type)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)
 

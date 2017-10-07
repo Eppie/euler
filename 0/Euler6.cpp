@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 6
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  07/29/2015 5:52:32 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -19,16 +19,16 @@
 
 #include "../helper.hpp"
 
-int solve6() {
-	int sumOfSquares = 0;
-	int squareOfSums = 0;
+uint32_t solve6() {
+	uint32_t sumOfSquares = 0;
+	uint32_t squareOfSums = 0;
 
-	for( int i = 1; i <= 100; i++ ) {
+	for( auto i = 1; i <= 100; i++ ) {
 		sumOfSquares += pow( i, 2 );
 		squareOfSums += i;
 	}
 
-	squareOfSums = pow( squareOfSums, 2 );
-	int result = squareOfSums - sumOfSquares;
+	squareOfSums = static_cast<uint32_t>( pow( squareOfSums, 2 ) );
+	uint32_t result = squareOfSums - sumOfSquares;
 	return result;
 }

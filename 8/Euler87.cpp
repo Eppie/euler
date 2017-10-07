@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 87
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/06/2017 05:43:06 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -33,7 +33,7 @@ int solve87() {
 	for( auto && square : primes ) {
 		for( auto && cube : primes ) {
 			for( auto && fourth : primes ) {
-				tmp = pow( square, 2 ) + pow( cube, 3 ) + pow( fourth, 4 );
+				tmp = static_cast<uint64_t>( pow( square, 2 ) + pow( cube, 3 ) + pow( fourth, 4 ) );
 
 				if( tmp < 50000000 ) {
 					results.push_back( tmp );

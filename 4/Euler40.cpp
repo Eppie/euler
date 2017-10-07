@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 40
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  5/13/2016 3:04:27 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -34,7 +34,7 @@ int solve40() {
 	// Access that string at positions 10⁰, 10¹, 10²...
 	for( int p = 0; p <= 6; p++ ) {
 		// Convert the char to an int and multiply the result
-		result *= s[ pow( 10, p ) - 1 ] - '0';
+		result *= s[ static_cast<uint64_t>( pow( 10, p ) - 1 ) ] - '0';
 	}
 
 	return result;

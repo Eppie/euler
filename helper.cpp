@@ -64,7 +64,7 @@ vector<uint64_t> sieve( uint64_t n ) {
 
 	for( uint64_t i = 2; i <= static_cast<uint64_t>( sqrt( n ) ); ++i ) {
 		if( A[i] ) {
-			for( uint64_t j = pow( i, 2 ); j < n; j += i ) {
+			for( uint64_t j = i * i; j < n; j += i ) {
 				A[j] = false;
 			}
 		}

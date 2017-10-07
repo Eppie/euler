@@ -324,9 +324,23 @@ vector<vector<int>> combinations( vector<int> n, int r );
 template <typename T, typename U>
 bool floatCompare( T a, U b ) {
 	static double epsilon = 0.000001;
+
 	if( abs( a - b ) < epsilon ) {
 		return true;
 	} else {
 		return false;
 	}
 }
+
+namespace functional {
+/*
+ *
+ */
+template <typename Collection, typename unop>
+Collection map( Collection c, unop op ) {
+	transform( c.begin(), c.end(), c.begin(), op );
+	return c;
+}
+}
+
+uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );

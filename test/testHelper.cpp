@@ -28,3 +28,22 @@ TEST( numDigits, Test8 ) {
 		ASSERT_EQ( 8, digitCount );
 	}
 }
+
+TEST( mulMod, ModZero ) {
+	for( int i = 0; i <= 1000; ++i ) {
+		for( int j = 0; j <= 1000; ++j ) {
+			ASSERT_EQ( i * j, mulMod( i, j, 0 ) );
+		}
+	}
+}
+
+TEST( mulMod, HigherMod ) {
+	for( int i = 0; i <= 1000; ++i ) {
+		for( int j = 0; j <= 1000; ++j ) {
+			for( int m = 1; m <= 1000; ++m ) {
+				//cout << i << ", " << j << ", " << m << endl;
+				ASSERT_EQ( ( i * j ) % m, mulMod( i, j, m ) );
+			}
+		}
+	}
+}

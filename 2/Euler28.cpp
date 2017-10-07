@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 28
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  1/25/2016 01:17:38 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -22,7 +22,7 @@
 int solve28() {
 	int L = 1001;
 	int n = ( L - 1 ) / 2;
-	int result = ( ( 16 * pow( n, 3 ) ) + ( 30 * pow( n, 2 ) ) + ( 26 * n ) + 3 ) / 3;
+	int result = static_cast<int>( ( ( 16 * pow( n, 3 ) ) + ( 30 * pow( n, 2 ) ) + ( 26 * n ) + 3 ) / 3 );
 	return result;
 }
 
