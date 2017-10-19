@@ -332,6 +332,8 @@ bool floatCompare( T a, U b ) {
 	}
 }
 
+uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );
+
 namespace functional {
 /*
  *
@@ -341,6 +343,15 @@ Collection map( Collection c, unop op ) {
 	transform( c.begin(), c.end(), c.begin(), op );
 	return c;
 }
+
+/*
+ * start to end INCLUSIVE
+ */
+template <typename T>
+vector<T> range( T start, T end ) {
+	vector<T> result( end - start + 1 );
+	iota( result.begin(), result.end(), start );
+	return result;
 }
 
-uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );
+}
