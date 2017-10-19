@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 33
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  3/13/2016 2:18:31 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -36,12 +36,14 @@ int solve33() {
 					double fraction = double( i ) / double( j );
 					int num = i / 10;
 					int denom = j % 10;
-					double result = double( num ) / double( denom );
+					if( denom != 0 ) {
+						double result = double( num ) / double( denom );
 
-					// If the original fraction and the cancelled fraction are the same, update our product
-					if( floatCompare( fraction, result ) ) {
-						nums *= num;
-						denoms *= denom;
+						// If the original fraction and the cancelled fraction are the same, update our product
+						if( floatCompare( fraction, result ) ) {
+							nums *= num;
+							denoms *= denom;
+						}
 					}
 				}
 			}
