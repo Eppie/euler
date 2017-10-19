@@ -29,7 +29,7 @@ uint64_t solve8();
 uint32_t solve9();
 uint64_t solve10();
 uint32_t solve11();
-uint64_t solve12();
+uint32_t solve12();
 uint64_t solve13();
 uint32_t solve14();
 uint64_t solve15();

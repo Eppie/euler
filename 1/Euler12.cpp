@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 12
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  07/31/2015 10:58:50 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -42,7 +42,7 @@ int divisors( uint64_t n, int start = 2 ) {
 }
 }
 
-uint64_t solve12() {
+uint32_t solve12() {
 	int count;
 
 	for( int n = 1; n < 20000; n++ ) {
@@ -58,4 +58,6 @@ uint64_t solve12() {
 			return t;
 		}
 	}
+
+	return 0;
 }
