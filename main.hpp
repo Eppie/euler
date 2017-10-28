@@ -120,3 +120,4 @@ uint32_t solve99();
 uint64_t solve100();
 uint64_t solve101();
 uint32_t solve102();
+uint64_t solve103();
