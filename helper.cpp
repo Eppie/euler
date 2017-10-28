@@ -325,15 +325,13 @@ vector<string> loadDataFromFile( string filename, char delimiter ) {
 
 /*
  * @param uint64_t val
- * @param uint32_t m
- * @param uint32_t n
  * @return bool
  */
-bool isPandigital( uint64_t val, uint32_t m = 1, uint32_t n = 9 ) {
+bool isPandigital( uint64_t val ) {
 	uint32_t result = 0;
 	uint32_t digitCount = 0;
 
-	if( val < m ) {
+	if( val < 1 ) {
 		return false;
 	}
 
@@ -342,7 +340,7 @@ bool isPandigital( uint64_t val, uint32_t m = 1, uint32_t n = 9 ) {
 		uint32_t tmp = val % 10;
 
 		// This check isn't necessary, but it lets us bail out early in some cases.
-		if( tmp < m || tmp > n ) {
+		if( tmp < 1 || tmp > 9 ) {
 			return false;
 		}
 
@@ -350,7 +348,7 @@ bool isPandigital( uint64_t val, uint32_t m = 1, uint32_t n = 9 ) {
 		val /= 10;
 	}
 
-	return result == ( 1 << n ) - 1 && digitCount == ( n - m + 1 );
+	return result == ( 1 << 9 ) - 1 && digitCount == 9;
 
 }
 

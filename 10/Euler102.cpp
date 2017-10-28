@@ -32,9 +32,9 @@ int32_t area( int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_
 
 bool containsOrigin( int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3 ) {
 	return area( x1, y1, x2, y2, x3, y3 ) ==
-		area( x1, y1, x2, y2, 0, 0 ) +
-		area( x1, y1, 0, 0, x3, y3 ) +
-		area( 0, 0, x2, y2, x3, y3 );
+		   area( x1, y1, x2, y2, 0, 0 ) +
+		   area( x1, y1, 0, 0, x3, y3 ) +
+		   area( 0, 0, x2, y2, x3, y3 );
 }
 }
 

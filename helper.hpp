@@ -39,6 +39,7 @@
 #include <gmpxx.h>
 #include <queue>
 #include <random>
+#include "prettyprint.hpp"
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
@@ -244,19 +245,20 @@ bool any( Predicate p, const Container &xs ) {
 }
 
 /*
- * Returns true if the given iterable, considered as a single number, is m to n pandigital
- * @param I values The values in this iterable are treated as a single number
+ * Returns true if the given container, considered as a single number, is m to n pandigital
+ * @param T values The values in this container are treated as a single number
  * @param int m defaults to 1
  * @param int n defaults to 9
  * @return bool
  */
-template <typename I>
-bool isPandigital( I values, int m = 1, int n = 9 ) {
+template <typename T>
+typename enable_if<is_container<T>::value, bool>::type
+isPandigital( T values ) {
 	unsigned int result = 0;
 	int digitCount = 0;
 
 	for( auto val : values ) {
-		if( val < m ) {
+		if( val < 1 ) {
 			return false;
 		}
 
@@ -265,7 +267,7 @@ bool isPandigital( I values, int m = 1, int n = 9 ) {
 			int tmp = val % 10;
 
 			// This check isn't necessary, but it lets us bail out early in some cases.
-			if( tmp < m || tmp > n ) {
+			if( tmp < 1 || tmp > 9 ) {
 				return false;
 			}
 
@@ -274,13 +276,13 @@ bool isPandigital( I values, int m = 1, int n = 9 ) {
 		}
 	}
 
-	return result == ( 1 << n ) - 1 && digitCount == ( n - m + 1 );
+	return result == ( 1 << 9 ) - 1 && digitCount == 9;
 }
 
 /*
  *
  */
-bool isPandigital( uint64_t val, int m, int n );
+bool isPandigital( uint64_t val );
 
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
