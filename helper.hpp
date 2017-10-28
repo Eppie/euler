@@ -39,7 +39,7 @@
 #include <gmpxx.h>
 #include <queue>
 #include <random>
-#include "prettyprint.hpp"
+#include "is_container.hpp"
 
 #define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
 
