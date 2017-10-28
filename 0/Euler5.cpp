@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 5
  *
- *        Version:  1.2
+ *        Version:  1.3
  *        Created:  07/29/2015 11:11:11 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -20,14 +20,14 @@
 
 #include "../helper.hpp"
 
-int solve5() {
+uint32_t solve5() {
 	uint32_t limit = 20;
 	auto primes = sieve( limit + 1 );
-	int result = 1;
+	uint32_t result = 1;
 
-	for( uint32_t i = 0; i < primes.size(); ++i ) {
-		int a = static_cast<int>( log( limit ) / log( primes[i] ) );
-		result *= static_cast<int>( pow( primes[i], a ) );
+	for( auto && prime : primes ) {
+		auto a = static_cast<int>( log(limit ) / log(prime) );
+		result *= static_cast<int>( pow(prime, a ) );
 	}
 
 	return result;

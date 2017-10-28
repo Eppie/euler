@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 25
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  10/23/2015 03:12:49 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -19,7 +19,7 @@
 #include "../helper.hpp"
 
 namespace euler25 {
-void add( int* a, int* b, int* c ) {
+void add( const int* a, const int* b, int* c ) {
 	int tmp;
 	int newDigit;
 	int carry = 0;
@@ -33,11 +33,11 @@ void add( int* a, int* b, int* c ) {
 }
 }
 
-int solve25() {
-	int count = 2;
-	int* a = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
-	int* b = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
-	int* c = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+uint32_t solve25() {
+	uint32_t count = 2;
+	auto * a = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	auto * b = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	auto * c = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
 	a[0] = 1;
 	b[0] = 1;
 

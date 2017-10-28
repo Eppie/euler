@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 1
  *
- *        Version:  1.2
+ *        Version:  1.3
  *        Created:  07/29/2015 10:05:15 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -21,7 +21,7 @@
 
 namespace euler1 {
 int sumOfMultiplesBelowLimit( int L, int mod ) {
-	int n = static_cast<int>( ceil( double( L ) / double( mod ) ) - 1 );
+	auto n = static_cast<int>( ceil( double( L ) / double( mod ) ) - 1 );
 	return ( ( n * n ) + n ) / 2 * mod;
 }
 }

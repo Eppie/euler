@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 93
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  06/19/2017 07:50:41 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -50,7 +50,7 @@ void eval( const vector<double> &numbers, vector<bool> &used ) {
 			return;
 		}
 
-		int index = int( result + Epsilon );
+		auto index = int( result + Epsilon );
 
 		// reject negative and very large results
 		if( index >= 0 && index < static_cast<int>( used.size() ) ) {
@@ -97,14 +97,14 @@ void eval( const vector<double> &numbers, vector<bool> &used ) {
 }
 
 uint32_t count( uint32_t a, uint32_t b, uint32_t c, uint32_t d ) {
-	double a_d = static_cast<double>( a );
-	double b_d = static_cast<double>( b );
-	double c_d = static_cast<double>( c );
-	double d_d = static_cast<double>( d );
+	auto a_d = static_cast<double>( a );
+	auto b_d = static_cast<double>( b );
+	auto c_d = static_cast<double>( c );
+	auto d_d = static_cast<double>( d );
 	const vector<double> numbers = { a_d, b_d, c_d, d_d };
 	vector<bool> used( 1000, false );
 	eval( numbers, used );
-	int result = 0;
+	uint32_t result = 0;
 
 	while( used[++result] ) {}
 

@@ -20,7 +20,7 @@
 
 #include "../helper.hpp"
 
-int solve4() {
+uint32_t solve4() {
 	uint32_t test;
 	uint32_t result = 0;
 

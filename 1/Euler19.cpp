@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 19
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  08/03/2015 09:38:51 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -49,15 +49,13 @@ bool isLeapYear( int year ) {
 		return true;
 	} else if( year % 100 == 0 ) {
 		return false;
-	} else if( year % 4 == 0 ) {
-		return true;
 	} else {
-		return false;
+		return year % 4 == 0;
 	}
 }
 }
 
-int solve19() {
+uint32_t solve19() {
 	vector<int> daysPerMonth( 12 );
 	daysPerMonth[MONTHS::JAN] = 31;
 	daysPerMonth[FEB] = 28;
@@ -75,7 +73,7 @@ int solve19() {
 	uint32_t month = MONTHS::JAN;
 	int year = 1901;
 	int dayOfWeek = DAYS::TUE;
-	int result = 0;
+	uint32_t result = 0;
 
 	while( year != 2001 ) {
 		if( dayOfWeek == DAYS::SUN && dayOfMonth == 1 ) {

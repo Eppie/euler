@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 103
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  10/20/2017 08:39:15 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -22,7 +22,7 @@
 #define N 7
 
 namespace euler103 {
-void makeSubsetSums( int* a, int* b ) {
+void makeSubsetSums( const int* a, int* b ) {
 	int sum;
 	int m;
 
@@ -57,7 +57,7 @@ void perturb( int* a, int min, int max ) {
 	}
 }
 
-int indexOf( int* array, int value, int startIndex ) {
+int indexOf( const int* array, int value, int startIndex ) {
 	for( auto i = startIndex; i < 128; ++i ) {
 		if( array[i] == value ) {
 			return i;
@@ -89,7 +89,7 @@ bool rule1( int* a ) {
 	return true;
 }
 
-bool rule2( int* a ) {
+bool rule2( const int* a ) {
 	int sum1 = a[0];
 	int sum2 = 0;
 
@@ -105,7 +105,7 @@ bool rule2( int* a ) {
 	return true;
 }
 
-uint64_t arrayToInteger( int* array ) {
+uint64_t arrayToInteger( const int* array ) {
 	uint64_t result = array[6];
 	result += array[5] * 100;
 	result += array[4] * 10000;
@@ -125,9 +125,9 @@ uint64_t solve103() {
 	int min = -3;
 	int max = 3;
 
-	int* t = new int[N];
-	int* subsets = new int[128];
-	int* c = new int[N];
+	auto* t = new int[N];
+	auto* subsets = new int[128];
+	auto* c = new int[N];
 
 	for( int i = 0; i < N; ++i ) {
 		c[i] = min;
