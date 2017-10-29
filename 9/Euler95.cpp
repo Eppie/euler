@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 95
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  06/30/2017 11:07:18 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -32,7 +32,7 @@ uint32_t solve95() {
 	const uint32_t limit = 1000000;
 	uint32_t result = 0;
 	uint32_t bestLength = 0;
-	bool seen[limit + 1] = { 0 };
+	bool seen[limit + 1] = { false };
 	vector<uint32_t> sumOfFactors( limit + 1, 1 );
 
 	for( uint32_t i = 2; i <= limit / 2; ++i ) {

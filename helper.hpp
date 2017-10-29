@@ -5,7 +5,7 @@
  *
  *    Description:  Helper functions for Project Euler problems.
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  07/29/2015 11:08:34 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -20,7 +20,7 @@
 #include <bitset>
 #include <chrono>
 #include <iostream>
-#include <math.h>
+#include <cmath>
 #include <algorithm>
 #include <vector>
 #include <list>
@@ -193,7 +193,7 @@ int maxSumPath( vector<vector<int> > rows );
  * @return void
  */
 template <typename I>
-void printIterable( I v, string sep = "\n", string end = "" ) {
+void printIterable( I v, string sep = "\n", const string &end = "" ) {
 	for( auto it = v.begin(); it != v.end(); ++it ) {
 		cout << *it << sep;
 	}

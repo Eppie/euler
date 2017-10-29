@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 42
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  5/13/2016 5:38:28 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -45,7 +45,7 @@ int solve42() {
 		triangleNumbers.insert( ( i * ( i + 1 ) ) / 2 );
 	}
 
-	for( auto word : words ) {
+	for( auto && word : words ) {
 		if( triangleNumbers.find( euler42::wordValue( word ) ) != triangleNumbers.end() ) {
 			result += 1;
 		}

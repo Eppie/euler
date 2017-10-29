@@ -26,8 +26,8 @@ uint32_t solve5() {
 	uint32_t result = 1;
 
 	for( auto && prime : primes ) {
-		auto a = static_cast<int>( log(limit ) / log(prime) );
-		result *= static_cast<int>( pow(prime, a ) );
+		auto a = static_cast<int>( log( limit ) / log( prime ) );
+		result *= static_cast<int>( pow( prime, a ) );
 	}
 
 	return result;

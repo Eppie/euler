@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 40
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  5/13/2016 3:04:27 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -24,7 +24,7 @@
 
 int solve40() {
 	int result = 1;
-	string s = "";
+	string s;
 
 	// Create the string with 1,000,005 digits
 	for( int i = 1; i <= 185185; i++ ) {

@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 52
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  8/30/2016 8:26:04 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -38,8 +38,8 @@ bool allSameDigits( vector<int> nums ) {
 
 	int result = 1;
 
-	for( int i = 0; i < 10; ++i ) {
-		result &= c[i] == 0;
+	for( auto && i : c ) {
+		result &= i == 0;
 	}
 
 	return result == 1 && digitCount % 6 == 0;

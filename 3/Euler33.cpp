@@ -36,6 +36,7 @@ int solve33() {
 					double fraction = double( i ) / double( j );
 					int num = i / 10;
 					int denom = j % 10;
+
 					if( denom != 0 ) {
 						double result = double( num ) / double( denom );
 

@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 98
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  08/31/2017 03:25:33 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -77,8 +77,8 @@ uint32_t solve( string a, string b, vector<uint32_t> &squares ) {
 		if( m[b[0]] == 0 ) {
 			match = false;
 		} else {
-			for( uint32_t j = 0; j < b.size(); ++j ) {
-				bvalue = bvalue * 10 + m[b[j]];
+			for( auto && j : b ) {
+				bvalue = bvalue * 10 + m[j];
 			}
 		}
 

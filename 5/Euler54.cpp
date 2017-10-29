@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 54
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  8/31/2016 5:08:11 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -91,7 +91,7 @@ bool hasFlush( vector<string> hand ) {
 	return true;
 }
 
-int hasStraight( vector<int> counts ) {
+bool hasStraight( vector<int> counts ) {
 	for( int i = 0; i <= 8; ++i ) {
 		if( counts[i] == 1 && counts[i + 1] == 1 && counts[i + 2] == 1 && counts[i + 3] == 1 && counts[i + 4] == 1 ) {
 			return true;
@@ -121,7 +121,7 @@ int getBaseScore( vector<int> ranks ) {
 	return result;
 }
 
-int score( vector<string> hand ) {
+int score( const vector<string> &hand ) {
 	int result = 0;
 	auto counts = rankCounts( hand );
 

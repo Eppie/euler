@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 62
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/11/2016 12:36:19 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -35,8 +35,8 @@ bool arePermutations( uint64_t a, uint64_t b ) {
 		b /= 10;
 	}
 
-	for( int i = 0; i < 10; ++i ) {
-		if( counts[i] != 0 ) {
+	for( auto && count : counts ) {
+		if( count != 0 ) {
 			return false;
 		}
 	}

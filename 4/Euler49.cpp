@@ -41,7 +41,7 @@ uint64_t solve49() {
 		} while( next_permutation( s.begin(), s.end() ) );
 
 		if( perms.size() == 3 && perms[0] + 3330 == perms[1] && perms[1] + 3330 == perms[2] ) {
-			uint64_t result = static_cast<uint64_t>( perms[0] * 1e8 + perms[1] * 1e4 + perms[2] );
+			auto result = static_cast<uint64_t>( perms[0] * 1e8 + perms[1] * 1e4 + perms[2] );
 			return result;
 		}
 

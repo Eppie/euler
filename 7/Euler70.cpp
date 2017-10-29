@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 70
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  9/21/2016 5:21:54 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -37,8 +37,8 @@ bool isPermutation( int a, int b ) {
 		b /= 10;
 	}
 
-	for( int i = 0; i < 10; ++i ) {
-		if( counts[i] != 0 ) {
+	for( auto && count : counts ) {
+		if( count != 0 ) {
 			return false;
 		}
 	}

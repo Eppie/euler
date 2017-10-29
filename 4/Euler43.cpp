@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 43
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  5/17/2016 7:16:28 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -54,8 +54,8 @@ uint64_t solve43() {
 			// Convert from vector of digits to number
 			uint64_t num = 0;
 
-			for( uint32_t k = 0; k < perm.size(); k++ ) {
-				num = 10 * num + perm[k];
+			for( auto && k : perm ) {
+				num = 10 * num + k;
 			}
 
 			result += num;

@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 83
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  5/31/2017 08:50:51 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -58,7 +58,7 @@ uint32_t solve83() {
 	}
 
 	// pass in std::greater as the comparison function, so that next.top() will return the minimum element
-	priority_queue<Node, vector<Node>, greater<Node>> next;
+	priority_queue<Node, vector<Node>, greater<>> next;
 	vector<vector<bool>> processed( SIZE, vector<bool>( SIZE, false ) );
 
 	next.push( Node( 0, 0, matrix[0][0] ) );

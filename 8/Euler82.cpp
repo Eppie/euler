@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 82
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  4/24/2017 11:48:26 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -31,6 +31,7 @@
 int solve82() {
 	vector<vector<int>> matrix;
 	vector<int> solution;
+	solution.reserve( SIZE );
 
 	for( auto && line : loadDataFromFile( "8/matrix.txt", '\n' ) ) {
 		vector<int> elems;
@@ -63,4 +64,5 @@ int solve82() {
 
 	return *min_element( solution.begin(), solution.end() );
 }
+#undef SIZE
 

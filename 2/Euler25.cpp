@@ -35,9 +35,9 @@ void add( const int* a, const int* b, int* c ) {
 
 uint32_t solve25() {
 	uint32_t count = 2;
-	auto * a = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
-	auto * b = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
-	auto * c = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	auto* a = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	auto* b = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
+	auto* c = reinterpret_cast<int*>( calloc( 1000, sizeof( int ) ) );
 	a[0] = 1;
 	b[0] = 1;
 
