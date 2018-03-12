@@ -206,7 +206,7 @@ void printIterable( I v, string sep = "\n", const string &end = "" ) {
  * @param string filename
  * @return vector<string>
  */
-vector<string> loadDataFromFile( string filename, char delimeter = ',' );
+vector<string> loadDataFromFile( string filename, char delimiter = ',' );
 
 /*
  * Return the type of a variable or function.
