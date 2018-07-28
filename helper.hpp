@@ -62,26 +62,29 @@ vector<uint64_t> primeFactors( uint64_t n );
 vector<uint64_t> sieve( uint64_t n );
 
 /*
- * Return true if the given number is prime, and false otherwise.
+ * Return true if the given number is prime.
  * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
 bool isPrime( uint64_t n );
 
 /*
- *
+ * Return true if the given number is probably prime.
+ * This is an implementation of the Miller-Rabin Probabilistic primality test.
+ * @param uint64_t n The number to perform the probabilistic primality test on.
+ * @return bool Whether or not n is prime.
  */
 bool isProbablyPrime( uint64_t n );
 
 /*
- * Returns true if s is a palindrome, and false otherwise.
+ * Returns true if s is a palindrome.
  * @param string s
  * @return bool
  */
 bool isPalindrome( string s );
 
 /*
- * Returns true if x is a palindrome in base b, and false otherwise.
+ * Returns true if x is a palindrome in base b.
  * @param uint64_t x
  * @param int b
  * @return bool
@@ -89,15 +92,25 @@ bool isPalindrome( string s );
 bool isPalindrome( uint64_t x, int b );
 
 /*
+ * Return the sum of all numbers in a vector.
  * Convenience wrapper around accumulate to hide the iterator stuff.
- * Templated, so it will accept a vector of anything. The return type
- * will match the "anything".
  * @param vector<T> input
  * @return T
  */
 template <typename T>
 T sum( vector<T> input ) {
 	return accumulate( input.begin(), input.end(), static_cast<T>( 0 ) );
+}
+
+/*
+ * Return the product of all numbers in a vector
+ * Convenience wrapper around accumulate to hide the iterator stuff.
+ * @param vector<T> input
+ * @return T
+ */
+template <typename T>
+T product( vector<T> input ) {
+	return accumulate( input.begin(), input.end(), static_cast<T>( 1 ), multiplies<>() );
 }
 
 /*
@@ -280,7 +293,7 @@ isPandigital( T values ) {
 }
 
 /*
- *
+ * TODO
  */
 bool isPandigital( uint64_t val );
 
@@ -290,7 +303,7 @@ bool isPandigital( uint64_t val );
 unsigned int numDigits( uint64_t v );
 
 /*
- *
+ * TODO
  */
 uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus );
 
@@ -300,12 +313,12 @@ uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus );
 uint64_t genPent( uint64_t n );
 
 /*
- *
+ * TODO
  */
 uint64_t figurateNumber( uint64_t r, uint64_t n );
 
 /*
- *
+ * TODO
  */
 mpz_class digitalSum( mpz_class x );
 
@@ -316,16 +329,35 @@ mpz_class digitalSum( mpz_class x );
 uint64_t random_int();
 
 /*
- *
+ * TODO
  */
-vector<vector<int>> combinations( vector<int> n, int r );
+template <typename T>
+vector<vector<T>> combinations( vector<T> n, int r ) {
+	vector<vector<T>> result;
+	vector<bool> v( n.size() );
+	fill( v.end() - r, v.end(), true );
+
+	do {
+		vector<T> tmp;
+
+		for( uint32_t i = 0; i < n.size(); ++i ) {
+			if( v[i] ) {
+				tmp.push_back( n[i] );
+			}
+		}
+
+		result.push_back( tmp );
+	} while( next_permutation( v.begin(), v.end() ) );
+
+	return result;
+}
 
 /*
  * Safely compare two floats
  */
 template <typename T, typename U>
 bool floatCompare( T a, U b ) {
-	static double epsilon = 0.000001;
+	static double epsilon = 0.000000001;
 
 	if( abs( a - b ) < epsilon ) {
 		return true;
@@ -336,9 +368,11 @@ bool floatCompare( T a, U b ) {
 
 uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );
 
+double logBaseN( uint64_t x, uint64_t n );
+
 namespace functional {
 /*
- *
+ * TODO
  */
 template <typename Collection, typename unop>
 Collection map( Collection c, unop op ) {
@@ -355,5 +389,4 @@ vector<T> range( T start, T end ) {
 	iota( result.begin(), result.end(), start );
 	return result;
 }
-
 }

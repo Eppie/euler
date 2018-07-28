@@ -466,22 +466,7 @@ uint64_t random_int() {
 /*
  * TODO
  */
-vector<vector<int>> combinations( vector<int> n, int r ) {
-	vector<vector<int>> result;
-	vector<bool> v( n.size() );
-	fill( v.end() - r, v.end(), true );
-
-	do {
-		vector<int> tmp;
-
-		for( uint32_t i = 0; i < n.size(); ++i ) {
-			if( v[i] ) {
-				tmp.push_back( n[i] );
-			}
-		}
-
-		result.push_back( tmp );
-	} while( next_permutation( v.begin(), v.end() ) );
-
-	return result;
+double logBaseN( uint64_t x, uint64_t n ) {
+	return log( x ) / log( n );
 }
+

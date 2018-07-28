@@ -51,6 +51,8 @@ void prodsum( int product, int sum, int num_factors, int start ) {
 }
 }
 
+#undef KMAX
+
 int solve88() {
 	euler88::prodsum( 1, 1, 1, 2 );
 	sort( n.begin(), n.end() );

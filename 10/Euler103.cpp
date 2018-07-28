@@ -36,7 +36,7 @@
 #define N 7
 
 namespace euler103 {
-void makeSubsetSums( const int* a, int* b ) {
+void makeSubsetSums( const int64_t* a, int* b ) {
 	int sum;
 	int m;
 
@@ -103,7 +103,7 @@ bool rule1( int* a ) {
 	return true;
 }
 
-bool rule2( const int* a ) {
+bool rule2( const int64_t* a ) {
 	int sum1 = a[0];
 	int sum2 = 0;
 
@@ -119,7 +119,7 @@ bool rule2( const int* a ) {
 	return true;
 }
 
-uint64_t arrayToInteger( const int* array ) {
+uint64_t arrayToInteger( const int64_t* array ) {
 	uint64_t result = array[6];
 	result += array[5] * 100;
 	result += array[4] * 10000;
@@ -139,7 +139,7 @@ uint64_t solve103() {
 	int min = -3;
 	int max = 3;
 
-	auto* t = new int[N];
+	auto* t = new int64_t[N];
 	auto* subsets = new int[128];
 	auto* c = new int[N];
 
