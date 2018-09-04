@@ -34,34 +34,33 @@
 
 namespace euler55 {
 mpz_class reverseDecimal( mpz_class x ) {
-	mpz_class result = 0;
+  mpz_class result = 0;
 
-	while( x != 0 ) {
-		result *= 10;
-		result += x % 10;
-		x /= 10;
-	}
+  while( x != 0 ) {
+    result *= 10;
+    result += x % 10;
+    x /= 10;
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler55
 
 int solve55() {
-	int result = 10000;
+  int result = 10000;
 
-	for( int i = 0; i < 10000; ++i ) {
-		mpz_class num = i;
+  for( int i = 0; i < 10000; ++i ) {
+    mpz_class num = i;
 
-		for( int j = 0; j < 50; ++j ) {
-			num += euler55::reverseDecimal( num );
+    for( int j = 0; j < 50; ++j ) {
+      num += euler55::reverseDecimal( num );
 
-			if( num == euler55::reverseDecimal( num ) ) {
-				result--;
-				break;
-			}
-		}
-	}
+      if( num == euler55::reverseDecimal( num ) ) {
+        result--;
+        break;
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

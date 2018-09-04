@@ -24,94 +24,76 @@
 
 namespace euler51 {
 int generateNumber( int repNumber, vector<int> filledPattern ) {
-	int temp = 0;
+  int temp = 0;
 
-	for( auto && i : filledPattern ) {
-		temp *= 10;
-		temp += ( i == -1 ) ? repNumber : i;
-	}
+  for( auto &&i: filledPattern ) {
+    temp *= 10;
+    temp += ( i == -1 ) ? repNumber : i;
+  }
 
-	return temp;
+  return temp;
 }
 
 vector<int> fillPattern( int pattern, int number, int patternLength ) {
-	vector<int> filledPattern( patternLength );
-	int temp = number;
+  vector<int> filledPattern( patternLength );
+  int temp = number;
 
-	for( int i = patternLength - 1; 0 <= i; --i ) {
-		if( ( ( pattern & ( 1 << i ) ) >> i ) == 1 ) {
-			filledPattern[i] = temp % 10;
-			temp /= 10;
-		} else {
-			filledPattern[i] = -1;
-		}
-	}
+  for( int i = patternLength - 1; 0 <= i; --i ) {
+    if( ( ( pattern & ( 1 << i ) ) >> i ) == 1 ) {
+      filledPattern[i] = temp % 10;
+      temp /= 10;
+    } else {
+      filledPattern[i] = -1;
+    }
+  }
 
-	return filledPattern;
+  return filledPattern;
 }
-}
+} // namespace euler51
 
 int solve51() {
-	vector<int> fiveDigitPatterns = {
-		0b10001,
-		0b10010,
-		0b10100,
-		0b11000
-	};
+  vector<int> fiveDigitPatterns = {0b10001, 0b10010, 0b10100, 0b11000};
 
-	vector<int> sixDigitPatterns = {
-		0b100011,
-		0b100101,
-		0b101001,
-		0b110001,
-		0b100110,
-		0b101010,
-		0b110010,
-		0b101100,
-		0b110100,
-		0b111000
-	};
+  vector<int> sixDigitPatterns = {0b100011, 0b100101, 0b101001, 0b110001, 0b100110,
+                                  0b101010, 0b110010, 0b101100, 0b110100, 0b111000};
 
-	int result = 10000000;
+  int result = 10000000;
 
-	for( int i = 11; i < 1000; i += 2 ) {
-		if( i % 5 == 0 ) {
-			continue;
-		}
+  for( int i = 11; i < 1000; i += 2 ) {
+    if( i % 5 == 0 ) {
+      continue;
+    }
 
-		auto patterns = ( i < 100 ) ? fiveDigitPatterns : sixDigitPatterns;
-		int length = ( i < 100 ) ? 5 : 6;
+    auto patterns = ( i < 100 ) ? fiveDigitPatterns : sixDigitPatterns;
+    int length = ( i < 100 ) ? 5 : 6;
 
-		for( int j = 0; j < length; ++j ) {
-			for( int k = 0; k <= 2; ++k ) {
-				if( ~( ( patterns[j] & ( 1 << length ) ) >> length ) && k == 0 ) {
-					continue;
-				}
+    for( int j = 0; j < length; ++j ) {
+      for( int k = 0; k <= 2; ++k ) {
+        if( ~( ( patterns[j] & ( 1 << length ) ) >> length ) && k == 0 ) {
+          continue;
+        }
 
-				vector<int> pattern = euler51::fillPattern( patterns[j], i, length );
-				int candidate = euler51::generateNumber( k, pattern );
+        vector<int> pattern = euler51::fillPattern( patterns[j], i, length );
+        int candidate = euler51::generateNumber( k, pattern );
 
-				if( candidate < result && isPrime( candidate ) ) {
-					int familySize = 1;
+        if( candidate < result && isPrime( candidate ) ) {
+          int familySize = 1;
 
-					for( int l = k + 1; l < 10; ++l ) {
-						if( isPrime( euler51::generateNumber( l, pattern ) ) ) {
-							++familySize;
-						}
-					}
+          for( int l = k + 1; l < 10; ++l ) {
+            if( isPrime( euler51::generateNumber( l, pattern ) ) ) {
+              ++familySize;
+            }
+          }
 
-					if( familySize == 8 ) {
-						result = candidate;
-					}
-				}
+          if( familySize == 8 ) {
+            result = candidate;
+          }
+        }
 
-				break;
-			}
+        break;
+      }
+    }
+  }
 
-		}
-
-	}
-
-	return result;
+  return result;
 }
-

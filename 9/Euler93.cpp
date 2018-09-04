@@ -36,100 +36,101 @@ namespace euler93 {
 const double Epsilon = 0.00001;
 // try all arithmetic operations of any two elements of "numbers", set their result in "used" to true
 void eval( const vector<double> &numbers, vector<bool> &used ) {
-	// 1. if array holds just one element, add it to the "used" list and we are done
-	// 2. pick any two numbers
-	// 3. loop through all operators
-	// 4. add result to the array and call eval() recursively
+  // 1. if array holds just one element, add it to the "used" list and we are done
+  // 2. pick any two numbers
+  // 3. loop through all operators
+  // 4. add result to the array and call eval() recursively
 
-	// step 1
-	if( numbers.size() == 1 ) {
-		auto result = numbers.front() + Epsilon;
+  // step 1
+  if( numbers.size() == 1 ) {
+    auto result = numbers.front() + Epsilon;
 
-		// reject non-integer result (caused by division)
-		if( fmod( result, 1 ) > 10 * Epsilon ) {
-			return;
-		}
+    // reject non-integer result (caused by division)
+    if( fmod( result, 1 ) > 10 * Epsilon ) {
+      return;
+    }
 
-		auto index = int( result + Epsilon );
+    auto index = int( result + Epsilon );
 
-		// reject negative and very large results
-		if( index >= 0 && index < static_cast<int>( used.size() ) ) {
-			used[index] = true;
-		}
+    // reject negative and very large results
+    if( index >= 0 && index < static_cast<int>( used.size() ) ) {
+      used[index] = true;
+    }
 
-		return;
-	}
+    return;
+  }
 
-	// step 2
-	auto next = numbers;
+  // step 2
+  auto next = numbers;
 
-	for( size_t i = 0; i < numbers.size(); i++ )
-		for( size_t j = i + 1; j < numbers.size(); j++ ) {
-			// fetch two numbers
-			double a = numbers[i];
-			double b = numbers[j];
+  for( size_t i = 0; i < numbers.size(); i++ )
+    for( size_t j = i + 1; j < numbers.size(); j++ ) {
+      // fetch two numbers
+      double a = numbers[i];
+      double b = numbers[j];
 
-			// prepare for next recursive step
-			next = numbers;
-			next.erase( next.begin() + j ); // delete the higher index first
-			next.erase( next.begin() + i );
+      // prepare for next recursive step
+      next = numbers;
+      next.erase( next.begin() + j ); // delete the higher index first
+      next.erase( next.begin() + i );
 
-			// steps 3 and 4 (unrolled)
-			next.push_back( a + b ); // add
-			eval( next, used );
-			next.back() = a - b;   // subtract (I)
-			eval( next, used );
-			next.back() = b - a;   // subtract (II)
-			eval( next, used );
-			next.back() = a * b;   // multiply
-			eval( next, used );
+      // steps 3 and 4 (unrolled)
+      next.push_back( a + b ); // add
+      eval( next, used );
+      next.back() = a - b; // subtract (I)
+      eval( next, used );
+      next.back() = b - a; // subtract (II)
+      eval( next, used );
+      next.back() = a * b; // multiply
+      eval( next, used );
 
-			if( !floatCompare( b, 0 ) ) {
-				next.back() = a / b; // divide (I)
-				eval( next, used );
-			}
+      if( !floatCompare( b, 0 ) ) {
+        next.back() = a / b; // divide (I)
+        eval( next, used );
+      }
 
-			if( !floatCompare( a, 0 ) ) {
-				next.back() = b / a; // divide (II)
-				eval( next, used );
-			}
-		}
+      if( !floatCompare( a, 0 ) ) {
+        next.back() = b / a; // divide (II)
+        eval( next, used );
+      }
+    }
 }
 
 uint32_t count( uint32_t a, uint32_t b, uint32_t c, uint32_t d ) {
-	auto a_d = static_cast<double>( a );
-	auto b_d = static_cast<double>( b );
-	auto c_d = static_cast<double>( c );
-	auto d_d = static_cast<double>( d );
-	const vector<double> numbers = { a_d, b_d, c_d, d_d };
-	vector<bool> used( 1000, false );
-	eval( numbers, used );
-	uint32_t result = 0;
+  auto a_d = static_cast<double>( a );
+  auto b_d = static_cast<double>( b );
+  auto c_d = static_cast<double>( c );
+  auto d_d = static_cast<double>( d );
+  const vector<double> numbers = {a_d, b_d, c_d, d_d};
+  vector<bool> used( 1000, false );
+  eval( numbers, used );
+  uint32_t result = 0;
 
-	while( used[++result] ) {}
+  while( used[++result] ) {
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler93
 
 int solve93() {
-	uint32_t bestLength = 0;
-	uint32_t result = 0;
+  uint32_t bestLength = 0;
+  uint32_t result = 0;
 
-	for( int a = 1; a <= 9; ++a ) {
-		for( int b = a + 1; b <= 9; ++b ) {
-			for( int c = b + 1; c <= 9; ++c ) {
-				for( int d = c + 1; d <= 9; ++d ) {
-					uint32_t thisLength = euler93::count( a, b, c, d );
+  for( int a = 1; a <= 9; ++a ) {
+    for( int b = a + 1; b <= 9; ++b ) {
+      for( int c = b + 1; c <= 9; ++c ) {
+        for( int d = c + 1; d <= 9; ++d ) {
+          uint32_t thisLength = euler93::count( a, b, c, d );
 
-					if( thisLength > bestLength ) {
-						bestLength = thisLength;
-						result = a * 1000 + b * 100 + c * 10 + d;
-					}
-				}
-			}
-		}
-	}
+          if( thisLength > bestLength ) {
+            bestLength = thisLength;
+            result = a * 1000 + b * 100 + c * 10 + d;
+          }
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }

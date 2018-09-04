@@ -22,19 +22,18 @@
 #include "../helper.hpp"
 
 int solve32() {
-	set<int> products;
+  set<int> products;
 
-	for( int i = 1; i <= 48; i++ ) {
-		for( int j = i; j <= 1963; j++ ) {
-			int product = i * j;
-			vector<int> values = { i, j, product };
+  for( int i = 1; i <= 48; i++ ) {
+    for( int j = i; j <= 1963; j++ ) {
+      int product = i * j;
+      vector<int> values = {i, j, product};
 
-			if( isPandigital( values ) ) {
-				products.insert( product );
-			}
-		}
-	}
+      if( isPandigital( values ) ) {
+        products.insert( product );
+      }
+    }
+  }
 
-	return accumulate( products.begin(), products.end(), 0 );
+  return accumulate( products.begin(), products.end(), 0 );
 }
-

@@ -38,18 +38,16 @@
 // Therefore, we can directly calculate it by multiplying small prime numbers until we exceed
 // our limit, 1,000,000
 int solve69() {
-	int result = 1;
-	int primeCandidate = 1;
+  int result = 1;
+  int primeCandidate = 1;
 
-	while( result < 1000000 ) {
-		primeCandidate += 1;
+  while( result < 1000000 ) {
+    primeCandidate += 1;
 
-		if( isPrime( primeCandidate ) ) {
-			result *= primeCandidate;
-		}
+    if( isPrime( primeCandidate ) ) {
+      result *= primeCandidate;
+    }
+  }
 
-	}
-
-	return result / primeCandidate;
+  return result / primeCandidate;
 }
-

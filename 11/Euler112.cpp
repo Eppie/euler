@@ -27,52 +27,52 @@
 
 namespace euler112 {
 bool isIncreasing( uint64_t x ) {
-	uint8_t currentDigit = 9;
+  uint8_t currentDigit = 9;
 
-	while( x ) {
-		if( x % 10 > currentDigit ) {
-			return false;
-		} else {
-			currentDigit = x % 10;
-			x /= 10;
-		}
-	}
+  while( x ) {
+    if( x % 10 > currentDigit ) {
+      return false;
+    } else {
+      currentDigit = x % 10;
+      x /= 10;
+    }
+  }
 
-	return true;
+  return true;
 }
 
 bool isDecreasing( uint64_t x ) {
-	uint8_t currentDigit = 0;
+  uint8_t currentDigit = 0;
 
-	while( x ) {
-		if( x % 10 < currentDigit ) {
-			return false;
-		} else {
-			currentDigit = x % 10;
-			x /= 10;
-		}
-	}
+  while( x ) {
+    if( x % 10 < currentDigit ) {
+      return false;
+    } else {
+      currentDigit = x % 10;
+      x /= 10;
+    }
+  }
 
-	return true;
+  return true;
 }
 
 bool isBouncy( uint64_t x ) {
-	return !isIncreasing( x ) && !isDecreasing( x );
+  return !isIncreasing( x ) && !isDecreasing( x );
 }
-}
+} // namespace euler112
 
 uint32_t solve112() {
-	uint32_t bouncyCount = 0;
-	uint32_t i = 0;
-	while( true ) {
-		++i;
+  uint32_t bouncyCount = 0;
+  uint32_t i = 0;
+  while( true ) {
+    ++i;
 
-		if( euler112::isBouncy( i ) ) {
-			++bouncyCount;
-		}
+    if( euler112::isBouncy( i ) ) {
+      ++bouncyCount;
+    }
 
-		if( bouncyCount * 100 / i == 99 ) {
-			return i;
-		}
-	}
+    if( bouncyCount * 100 / i == 99 ) {
+      return i;
+    }
+  }
 }

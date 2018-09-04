@@ -21,21 +21,20 @@
 #include "../helper.hpp"
 
 int solve56() {
-	int best = 0;
-	mpz_class tmp;
-	mpz_class result;
+  int best = 0;
+  mpz_class tmp;
+  mpz_class result;
 
-	for( int i = 0; i < 100; ++i ) {
-		for( int j = 0; j < 100; ++j ) {
-			mpz_ui_pow_ui( result.get_mpz_t(), i, j );
-			tmp = digitalSum( result );
+  for( int i = 0; i < 100; ++i ) {
+    for( int j = 0; j < 100; ++j ) {
+      mpz_ui_pow_ui( result.get_mpz_t(), i, j );
+      tmp = digitalSum( result );
 
-			if( tmp > best ) {
-				best = tmp.get_ui();
-			}
-		}
-	}
+      if( tmp > best ) {
+        best = tmp.get_ui();
+      }
+    }
+  }
 
-	return best;
+  return best;
 }
-

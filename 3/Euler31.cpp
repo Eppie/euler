@@ -21,17 +21,16 @@
 #include "../helper.hpp"
 
 int solve31() {
-	int target = 200;
-	vector<int> coins = { 1, 2, 5, 10, 20, 50, 100, 200 };
-	vector<int> ways( target + 1, 0 );
-	ways[0] = 1;
+  int target = 200;
+  vector<int> coins = {1, 2, 5, 10, 20, 50, 100, 200};
+  vector<int> ways( target + 1, 0 );
+  ways[0] = 1;
 
-	for( int coin : coins ) {
-		for( int j = coin; j <= target; j++ ) {
-			ways[j] += ways[j - coin];
-		}
-	}
+  for( int coin: coins ) {
+    for( int j = coin; j <= target; j++ ) {
+      ways[j] += ways[j - coin];
+    }
+  }
 
-	return ways[200];
+  return ways[200];
 }
-

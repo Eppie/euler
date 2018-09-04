@@ -24,31 +24,29 @@
 #include "../helper.hpp"
 
 int solve38() {
-	int result = 0;
+  int result = 0;
 
-	for( int n = 2; n < 10; n++ ) {
-		for( int i = 1; i < pow( 10, 9 / n ); i++ ) {
-			vector<int> c;
+  for( int n = 2; n < 10; n++ ) {
+    for( int i = 1; i < pow( 10, 9 / n ); i++ ) {
+      vector<int> c;
 
-			for( int j = 1; j <= n; j++ ) {
-				c.push_back( i * j );
-			}
+      for( int j = 1; j <= n; j++ ) {
+        c.push_back( i * j );
+      }
 
-			if( isPandigital( c ) ) {
-				int mul = 0;
-				int tmp = 0;
+      if( isPandigital( c ) ) {
+        int mul = 0;
+        int tmp = 0;
 
-				for( auto it = c.rbegin(); it != c.rend(); it++ ) {
-					tmp += *it * pow( 10, mul );
-					mul += numDigits( *it );
-				}
+        for( auto it = c.rbegin(); it != c.rend(); it++ ) {
+          tmp += *it * pow( 10, mul );
+          mul += numDigits( *it );
+        }
 
-				result = max( result, tmp );
-			}
+        result = max( result, tmp );
+      }
+    }
+  }
 
-		}
-	}
-
-	return result;
+  return result;
 }
-

@@ -21,32 +21,31 @@
 
 namespace euler35 {
 void rotations( int n, vector<int> &rots ) {
-	rots.clear();
-	rots.push_back( n );
-	int r = ( n >= 100000 ) ? 5 : ( n >= 10000 ) ? 4 : ( n >= 1000 ) ? 3 : ( n >= 100 ) ? 2 : ( n >= 10 ) ? 1 : 0;
+  rots.clear();
+  rots.push_back( n );
+  int r = ( n >= 100000 ) ? 5 : ( n >= 10000 ) ? 4 : ( n >= 1000 ) ? 3 : ( n >= 100 ) ? 2 : ( n >= 10 ) ? 1 : 0;
 
-	for( int i = 0; i < r; ++i ) {
-		int lastDigit = n % 10;
-		n /= 10;
-		n += ( lastDigit * pow( 10, r ) );
-		rots.push_back( n );
-	}
+  for( int i = 0; i < r; ++i ) {
+    int lastDigit = n % 10;
+    n /= 10;
+    n += ( lastDigit * pow( 10, r ) );
+    rots.push_back( n );
+  }
 }
-}
+} // namespace euler35
 
 int solve35() {
-	int result = 0;
-	auto primes = sieve( 1e6 );
-	vector<int> rots;
+  int result = 0;
+  auto primes = sieve( 1e6 );
+  vector<int> rots;
 
-	for( auto && prime : primes ) {
-		euler35::rotations( prime, rots );
+  for( auto &&prime: primes ) {
+    euler35::rotations( prime, rots );
 
-		if( all( isPrime, rots ) ) {
-			result += 1;
-		}
-	}
+    if( all( isPrime, rots ) ) {
+      result += 1;
+    }
+  }
 
-	return result;
+  return result;
 }
-

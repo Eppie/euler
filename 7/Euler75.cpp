@@ -37,39 +37,38 @@
 #include "../helper.hpp"
 
 uint32_t solve75() {
-	uint32_t result = 0;
-	static int cache[1500001];
+  uint32_t result = 0;
+  static int cache[1500001];
 
-	for( uint32_t n = 2; n < 864; ++n ) {
-		// To avoid generating non-primitive triples, m and n must not both be odd
-		uint32_t m_start = 1 + ( n % 2 );
+  for( uint32_t n = 2; n < 864; ++n ) {
+    // To avoid generating non-primitive triples, m and n must not both be odd
+    uint32_t m_start = 1 + ( n % 2 );
 
-		for( uint32_t m = m_start; m < n; m += 2 ) {
-			// To avoid generating non-primitive triples, m and n must be coprime
-			if( gcd( m, n ) != 1 ) {
-				continue;
-			}
+    for( uint32_t m = m_start; m < n; m += 2 ) {
+      // To avoid generating non-primitive triples, m and n must be coprime
+      if( gcd( m, n ) != 1 ) {
+        continue;
+      }
 
-			uint32_t a = ( n * n ) - ( m * m );
-			uint32_t b = 2 * n * m;
-			uint32_t c = ( n * n ) + ( m * m );
-			uint32_t L = a + b + c;
-			uint32_t i = 1;
+      uint32_t a = ( n * n ) - ( m * m );
+      uint32_t b = 2 * n * m;
+      uint32_t c = ( n * n ) + ( m * m );
+      uint32_t L = a + b + c;
+      uint32_t i = 1;
 
-			// Iterate over the multiples of this triple
-			while( L * i <= 1500000 ) {
-				++cache[L * i];
-				++i;
-			}
-		}
-	}
+      // Iterate over the multiples of this triple
+      while( L * i <= 1500000 ) {
+        ++cache[L * i];
+        ++i;
+      }
+    }
+  }
 
-	for( int i = 0; i <= 1500000; ++i ) {
-		if( cache[i] == 1 ) {
-			++result;
-		}
-	}
+  for( int i = 0; i <= 1500000; ++i ) {
+    if( cache[i] == 1 ) {
+      ++result;
+    }
+  }
 
-	return result;
+  return result;
 }
-

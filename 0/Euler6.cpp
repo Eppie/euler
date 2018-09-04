@@ -20,15 +20,15 @@
 #include "../helper.hpp"
 
 uint32_t solve6() {
-	uint32_t sumOfSquares = 0;
-	uint32_t squareOfSums = 0;
+  uint32_t sumOfSquares = 0;
+  uint32_t squareOfSums = 0;
 
-	for( auto i = 1; i <= 100; i++ ) {
-		sumOfSquares += pow( i, 2 );
-		squareOfSums += i;
-	}
+  for( auto i = 1; i <= 100; i++ ) {
+    sumOfSquares += pow( i, 2 );
+    squareOfSums += i;
+  }
 
-	squareOfSums = static_cast<uint32_t>( pow( squareOfSums, 2 ) );
-	uint32_t result = squareOfSums - sumOfSquares;
-	return result;
+  squareOfSums = static_cast<uint32_t>( pow( squareOfSums, 2 ) );
+  uint32_t result = squareOfSums - sumOfSquares;
+  return result;
 }

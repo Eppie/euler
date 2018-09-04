@@ -20,5 +20,5 @@
 #include "../helper.hpp"
 
 uint64_t solve7() {
-	return sieve( 105000 )[10000];
+  return sieve( 105000 )[10000];
 }

@@ -27,23 +27,22 @@
 #include "../helper.hpp"
 
 int solve77() {
-	int limit = 100;
-	auto primes = sieve( 100 );
-	vector<int> ways( limit, 0 );
-	ways[0] = 1;
+  int limit = 100;
+  auto primes = sieve( 100 );
+  vector<int> ways( limit, 0 );
+  ways[0] = 1;
 
-	for( int prime : primes ) {
-		for( int j = prime; j < limit; ++j ) {
-			ways[j] += ways[j - prime];
-		}
-	}
+  for( int prime: primes ) {
+    for( int j = prime; j < limit; ++j ) {
+      ways[j] += ways[j - prime];
+    }
+  }
 
-	for( int i = 0; i < limit; ++i ) {
-		if( ways[i] > 5000 ) {
-			return i;
-		}
-	}
+  for( int i = 0; i < limit; ++i ) {
+    if( ways[i] > 5000 ) {
+      return i;
+    }
+  }
 
-	return -1;
+  return -1;
 }
-

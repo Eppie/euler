@@ -32,25 +32,24 @@
 #include "../helper.hpp"
 
 int solve58() {
-	int primeCount = 3;
-	int sideLength = 2;
-	int currentNumber = 9;
+  int primeCount = 3;
+  int sideLength = 2;
+  int currentNumber = 9;
 
-	while( double( primeCount ) / ( 2 * sideLength + 1 ) > 0.10 ) {
-		sideLength += 2;
+  while( double( primeCount ) / ( 2 * sideLength + 1 ) > 0.10 ) {
+    sideLength += 2;
 
-		for( int i = 0; i < 3; ++i ) {
-			currentNumber += sideLength;
+    for( int i = 0; i < 3; ++i ) {
+      currentNumber += sideLength;
 
-			// mpz_probab_prime_p is an implementation of the Miller-Rabin probabilistic primality test
-			if( mpz_probab_prime_p( mpz_class( currentNumber ).get_mpz_t(), 15 ) ) {
-				primeCount++;
-			}
-		}
+      // mpz_probab_prime_p is an implementation of the Miller-Rabin probabilistic primality test
+      if( mpz_probab_prime_p( mpz_class( currentNumber ).get_mpz_t(), 15 ) ) {
+        primeCount++;
+      }
+    }
 
-		currentNumber += sideLength;
-	}
+    currentNumber += sideLength;
+  }
 
-	return sideLength + 1;
+  return sideLength + 1;
 }
-

@@ -23,18 +23,17 @@
 #include "../helper.hpp"
 
 uint64_t solve100() {
-	uint64_t b = 3;
-	uint64_t n = 4;
-	uint64_t btemp;
-	uint64_t ntemp;
+  uint64_t b = 3;
+  uint64_t n = 4;
+  uint64_t btemp;
+  uint64_t ntemp;
 
-	while( n <= 1000000000000 ) {
-		btemp = 3 * b + 2 * n - 2;
-		ntemp = 4 * b + 3 * n - 3;
-		b = btemp;
-		n = ntemp;
-	}
+  while( n <= 1000000000000 ) {
+    btemp = 3 * b + 2 * n - 2;
+    ntemp = 4 * b + 3 * n - 3;
+    b = btemp;
+    n = ntemp;
+  }
 
-	return b;
+  return b;
 }
-

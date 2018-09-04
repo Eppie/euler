@@ -27,118 +27,117 @@
 
 namespace euler98 {
 uint32_t solve( string a, string b, vector<uint32_t> &squares ) {
-	uint32_t result = 0;
+  uint32_t result = 0;
 
-	for( uint32_t i = 0; i < squares.size(); ++i ) {
-		uint32_t squareLength = numDigits( squares[i] );
+  for( uint32_t i = 0; i < squares.size(); ++i ) {
+    uint32_t squareLength = numDigits( squares[i] );
 
-		if( squareLength < a.size() ) {
-			continue;
-		}
+    if( squareLength < a.size() ) {
+      continue;
+    }
 
-		if( squareLength > a.size() ) {
-			break;
-		}
+    if( squareLength > a.size() ) {
+      break;
+    }
 
-		bool match = true;
-		uint32_t square = squares[i];
-		map<char, uint32_t> m;
-		vector<uint32_t> digits;
+    bool match = true;
+    uint32_t square = squares[i];
+    map<char, uint32_t> m;
+    vector<uint32_t> digits;
 
-		for( int32_t j = a.size() - 1; j >= 0; --j ) {
-			uint32_t digit = square % 10;
-			square /= 10;
-			auto it = m.find( a[j] );
+    for( int32_t j = a.size() - 1; j >= 0; --j ) {
+      uint32_t digit = square % 10;
+      square /= 10;
+      auto it = m.find( a[j] );
 
-			if( it != m.end() ) {
-				if( m[a[j]] == digit ) {
-					continue;
-				} else {
-					match = false;
-					break;
-				}
-			}
+      if( it != m.end() ) {
+        if( m[a[j]] == digit ) {
+          continue;
+        } else {
+          match = false;
+          break;
+        }
+      }
 
-			if( find( digits.begin(), digits.end(), digit ) != digits.end() ) {
-				match = false;
-				break;
-			}
+      if( find( digits.begin(), digits.end(), digit ) != digits.end() ) {
+        match = false;
+        break;
+      }
 
-			m[a[j]] = digit;
-			digits.push_back( digit );
-		}
+      m[a[j]] = digit;
+      digits.push_back( digit );
+    }
 
-		if( !match ) {
-			continue;
-		}
+    if( !match ) {
+      continue;
+    }
 
-		uint32_t bvalue = 0;
+    uint32_t bvalue = 0;
 
-		if( m[b[0]] == 0 ) {
-			match = false;
-		} else {
-			for( auto && j : b ) {
-				bvalue = bvalue * 10 + m[j];
-			}
-		}
+    if( m[b[0]] == 0 ) {
+      match = false;
+    } else {
+      for( auto &&j: b ) {
+        bvalue = bvalue * 10 + m[j];
+      }
+    }
 
-		if( !match ) {
-			continue;
-		}
+    if( !match ) {
+      continue;
+    }
 
-		if( binary_search( squares.begin(), squares.end(), bvalue ) ) {
-			uint32_t maxpair = max( bvalue, square );
-			result = max( result, maxpair );
-		}
-	}
+    if( binary_search( squares.begin(), squares.end(), bvalue ) ) {
+      uint32_t maxpair = max( bvalue, square );
+      result = max( result, maxpair );
+    }
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler98
 
 uint32_t solve98() {
-	uint32_t result = 0;
-	vector<string> words = loadDataFromFile( "9/words.txt" );
-	map<string, vector<string>> anagrams;
+  uint32_t result = 0;
+  vector<string> words = loadDataFromFile( "9/words.txt" );
+  map<string, vector<string>> anagrams;
 
-	for( auto && w : words ) {
-		w.erase( 0, 1 );
-		w.erase( w.size() - 1 );
-		string key = w;
-		sort( key.begin(), key.end() );
-		auto it = anagrams.find( key );
+  for( auto &&w: words ) {
+    w.erase( 0, 1 );
+    w.erase( w.size() - 1 );
+    string key = w;
+    sort( key.begin(), key.end() );
+    auto it = anagrams.find( key );
 
-		if( it != anagrams.end() ) {
-			anagrams[key].push_back( w );
-		} else {
-			anagrams[key] = { w };
-		}
-	}
+    if( it != anagrams.end() ) {
+      anagrams[key].push_back( w );
+    } else {
+      anagrams[key] = {w};
+    }
+  }
 
-	vector<uint32_t> squares;
+  vector<uint32_t> squares;
 
-	for( uint32_t i = 2; i < 31700; ++i ) {
-		squares.push_back( i * i );
-	}
+  for( uint32_t i = 2; i < 31700; ++i ) {
+    squares.push_back( i * i );
+  }
 
-	for( auto && k : anagrams ) {
-		// Skip all the words that don't have any anagrams
-		if( k.second.size() < 2 ) {
-			continue;
-		}
+  for( auto &&k: anagrams ) {
+    // Skip all the words that don't have any anagrams
+    if( k.second.size() < 2 ) {
+      continue;
+    }
 
-		// Check each pair of anagrams
-		for( uint32_t i = 0; i < k.second.size(); ++i ) {
-			for( uint32_t j = i + 1; j < k.second.size(); ++j ) {
-				uint32_t value = euler98::solve( k.second[i], k.second[j], squares );
+    // Check each pair of anagrams
+    for( uint32_t i = 0; i < k.second.size(); ++i ) {
+      for( uint32_t j = i + 1; j < k.second.size(); ++j ) {
+        uint32_t value = euler98::solve( k.second[i], k.second[j], squares );
 
-				if( value > result ) {
-					result = value;
-				}
-			}
-		}
-	}
+        if( value > result ) {
+          result = value;
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

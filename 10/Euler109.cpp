@@ -47,46 +47,46 @@
 #include "../helper.hpp"
 
 uint32_t solve109() {
-	int limit = 100;
-	int result = 0;
-	vector<int> scores;
-	vector<int> doubles;
-	for( int i = 1; i <= 20; ++i ) {
-		scores.push_back(i);
-		scores.push_back(i * 2);
-		scores.push_back(i * 3);
-		doubles.push_back(i * 2);
-	}
-	scores.push_back(25);
-	scores.push_back(50);
-	doubles.push_back(50);
+  int limit = 100;
+  int result = 0;
+  vector<int> scores;
+  vector<int> doubles;
+  for( int i = 1; i <= 20; ++i ) {
+    scores.push_back( i );
+    scores.push_back( i * 2 );
+    scores.push_back( i * 3 );
+    doubles.push_back( i * 2 );
+  }
+  scores.push_back( 25 );
+  scores.push_back( 50 );
+  doubles.push_back( 50 );
 
-	// Two misses and a double
-	for( auto && third : doubles ) {
-		if( third < limit ) {
-			++result;
-		}
-	}
+  // Two misses and a double
+  for( auto &&third: doubles ) {
+    if( third < limit ) {
+      ++result;
+    }
+  }
 
-	// A miss, a hit, and a double
-	for( size_t i = 0; i < scores.size(); ++i ) {
-		for( auto && third : doubles ) {
-			if( scores[i] + third < limit ) {
-				++ result;
-			}
-		}
-	}
+  // A miss, a hit, and a double
+  for( size_t i = 0; i < scores.size(); ++i ) {
+    for( auto &&third: doubles ) {
+      if( scores[i] + third < limit ) {
+        ++result;
+      }
+    }
+  }
 
-	// Two hits and a double
-	for( size_t i = 0; i < scores.size(); ++i ) {
-		for( size_t j = i; j < scores.size(); ++j ) {
-			for( auto && third : doubles ) {
-				if( scores[i] + scores[j] + third < limit ) {
-					++ result;
-				}
-			}
-		}
-	}
+  // Two hits and a double
+  for( size_t i = 0; i < scores.size(); ++i ) {
+    for( size_t j = i; j < scores.size(); ++j ) {
+      for( auto &&third: doubles ) {
+        if( scores[i] + scores[j] + third < limit ) {
+          ++result;
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }

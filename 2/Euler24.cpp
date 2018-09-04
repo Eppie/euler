@@ -20,29 +20,28 @@
 
 namespace euler24 {
 uint64_t permutation( vector<int> v, int n ) {
-	vector<int> perm;
+  vector<int> perm;
 
-	while( !v.empty() ) {
-		int div = factorial( v.size() - 1 );
-		int pos = n / div;
-		n = n % div;
-		perm.push_back( v[pos] );
-		v.erase( v.begin() + pos );
-	}
+  while( !v.empty() ) {
+    int div = factorial( v.size() - 1 );
+    int pos = n / div;
+    n = n % div;
+    perm.push_back( v[pos] );
+    v.erase( v.begin() + pos );
+  }
 
-	uint64_t result = 0;
-	uint64_t mult = 1;
+  uint64_t result = 0;
+  uint64_t mult = 1;
 
-	for( int i = 9; i >= 0; i-- ) {
-		result += mult * perm[i];
-		mult *= 10;
-	}
+  for( int i = 9; i >= 0; i-- ) {
+    result += mult * perm[i];
+    mult *= 10;
+  }
 
-	return result;
-
+  return result;
 }
-}
+} // namespace euler24
 
 uint64_t solve24() {
-	return euler24::permutation( vector<int> {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
+  return euler24::permutation( vector<int>{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 999999 );
 }

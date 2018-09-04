@@ -34,30 +34,30 @@
 
 namespace euler89 {
 void replace( string &subject, const string &search, const string &replace ) {
-	size_t pos = 0;
+  size_t pos = 0;
 
-	while( ( pos = subject.find( search, pos ) ) != string::npos ) {
-		subject.replace( pos, search.length(), replace );
-		pos += replace.length();
-	}
+  while( ( pos = subject.find( search, pos ) ) != string::npos ) {
+    subject.replace( pos, search.length(), replace );
+    pos += replace.length();
+  }
 }
-}
+} // namespace euler89
 
 int solve89() {
-	vector<string> replacements = { "DCCCC", "LXXXX", "VIIII", "IIII", "XXXX", "CCCC" };
-	auto strings = loadDataFromFile( "8/roman.txt" );
-	int original_length = 0;
-	int new_length = 0;
+  vector<string> replacements = {"DCCCC", "LXXXX", "VIIII", "IIII", "XXXX", "CCCC"};
+  auto strings = loadDataFromFile( "8/roman.txt" );
+  int original_length = 0;
+  int new_length = 0;
 
-	for( auto && string : strings ) {
-		original_length += string.size();
+  for( auto &&string: strings ) {
+    original_length += string.size();
 
-		for( auto && replacement : replacements ) {
-			euler89::replace( string, replacement, "  " );
-		}
+    for( auto &&replacement: replacements ) {
+      euler89::replace( string, replacement, "  " );
+    }
 
-		new_length += string.size();
-	}
+    new_length += string.size();
+  }
 
-	return original_length - new_length;
+  return original_length - new_length;
 }

@@ -20,28 +20,27 @@
 #include "../helper.hpp"
 
 int solve34() {
-	int result = 0;
-	vector<int> facs( 10, 0 );
+  int result = 0;
+  vector<int> facs( 10, 0 );
 
-	for( int i = 0; i < 10; i++ ) {
-		facs[i] = factorial( i );
-	}
+  for( int i = 0; i < 10; i++ ) {
+    facs[i] = factorial( i );
+  }
 
-	for( int i = 10; i < 100000; i++ ) {
-		int tmp = i;
-		int sum = 0;
+  for( int i = 10; i < 100000; i++ ) {
+    int tmp = i;
+    int sum = 0;
 
-		while( tmp != 0 ) {
-			int digit = tmp % 10;
-			tmp /= 10;
-			sum += facs[digit];
-		}
+    while( tmp != 0 ) {
+      int digit = tmp % 10;
+      tmp /= 10;
+      sum += facs[digit];
+    }
 
-		if( sum == i ) {
-			result += sum;
-		}
-	}
+    if( sum == i ) {
+      result += sum;
+    }
+  }
 
-	return result;
+  return result;
 }
-

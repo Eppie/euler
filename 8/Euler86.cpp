@@ -20,25 +20,25 @@
 #include "../helper.hpp"
 
 int solve86() {
-	int l = 2;
-	int count = 0;
-	int target = 1000000;
+  int l = 2;
+  int count = 0;
+  int target = 1000000;
 
-	while( count < target ) {
-		++l;
+  while( count < target ) {
+    ++l;
 
-		for( int wh = 3; wh <= 2 * l; ++wh ) {
-			double sq = sqrt( wh * wh + l * l );
+    for( int wh = 3; wh <= 2 * l; ++wh ) {
+      double sq = sqrt( wh * wh + l * l );
 
-			if( floatCompare( sq, static_cast<int>( sq ) ) ) {
-				if( wh < l ) {
-					count += wh / 2;
-				} else {
-					count += 1 + ( l - ( wh + 1 ) / 2 );
-				}
-			}
-		}
-	}
+      if( floatCompare( sq, static_cast<int>( sq ) ) ) {
+        if( wh < l ) {
+          count += wh / 2;
+        } else {
+          count += 1 + ( l - ( wh + 1 ) / 2 );
+        }
+      }
+    }
+  }
 
-	return l;
+  return l;
 }

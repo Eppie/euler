@@ -29,56 +29,56 @@
 #include "../helper.hpp"
 
 uint32_t solve95() {
-	const uint32_t limit = 1000000;
-	uint32_t result = 0;
-	uint32_t bestLength = 0;
-	bool seen[limit + 1] = { false };
-	vector<uint32_t> sumOfFactors( limit + 1, 1 );
+  const uint32_t limit = 1000000;
+  uint32_t result = 0;
+  uint32_t bestLength = 0;
+  bool seen[limit + 1] = {false};
+  vector<uint32_t> sumOfFactors( limit + 1, 1 );
 
-	for( uint32_t i = 2; i <= limit / 2; ++i ) {
-		for( uint32_t j = 2 * i; j <= limit; j += i ) {
-			sumOfFactors[j] += i;
-		}
-	}
+  for( uint32_t i = 2; i <= limit / 2; ++i ) {
+    for( uint32_t j = 2 * i; j <= limit; j += i ) {
+      sumOfFactors[j] += i;
+    }
+  }
 
-	vector<uint32_t> chain;
+  vector<uint32_t> chain;
 
-	for( uint32_t i = 2; i <= limit; ++i ) {
-		uint32_t newNumber = i;
-		// Could be invalid because went over 1 million, or because it contains a number we've seen before
-		bool chainIsValid = true;
-		chain.clear();
+  for( uint32_t i = 2; i <= limit; ++i ) {
+    uint32_t newNumber = i;
+    // Could be invalid because went over 1 million, or because it contains a number we've seen before
+    bool chainIsValid = true;
+    chain.clear();
 
-		while( find( chain.begin(), chain.end(), newNumber ) == chain.end() ) {
-			chain.push_back( newNumber );
-			newNumber = sumOfFactors[newNumber];
+    while( find( chain.begin(), chain.end(), newNumber ) == chain.end() ) {
+      chain.push_back( newNumber );
+      newNumber = sumOfFactors[newNumber];
 
-			if( newNumber > limit || seen[newNumber] ) {
-				chainIsValid = false;
-				break;
-			}
-		}
+      if( newNumber > limit || seen[newNumber] ) {
+        chainIsValid = false;
+        break;
+      }
+    }
 
-		if( chainIsValid ) {
-			uint32_t smallest = numeric_limits<uint32_t>::max();
-			auto first = find( chain.begin(), chain.end(), newNumber );
+    if( chainIsValid ) {
+      uint32_t smallest = numeric_limits<uint32_t>::max();
+      auto first = find( chain.begin(), chain.end(), newNumber );
 
-			if( chain.end() - first > bestLength ) {
-				for( auto it = first; it != chain.end(); ++it ) {
-					if( *it < smallest ) {
-						smallest = *it;
-					}
-				}
+      if( chain.end() - first > bestLength ) {
+        for( auto it = first; it != chain.end(); ++it ) {
+          if( *it < smallest ) {
+            smallest = *it;
+          }
+        }
 
-				bestLength = chain.end() - first;
-				result = smallest;
-			}
-		}
+        bestLength = chain.end() - first;
+        result = smallest;
+      }
+    }
 
-		for( auto && chainNumber : chain ) {
-			seen[chainNumber] = true;
-		}
-	}
+    for( auto &&chainNumber: chain ) {
+      seen[chainNumber] = true;
+    }
+  }
 
-	return result;
+  return result;
 }

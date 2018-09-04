@@ -30,23 +30,21 @@
 #include "../helper.hpp"
 
 int solve47() {
-	// factorCount will store the counts of distinct factors for the previous four i's.
-	// We will index it by i % 4, essentially treating it as a rotating array.
-	// If its sum is ever 16, that means all four values are 4, which means that the i we just processed was the 4th consecutive
-	// with four distinct factors, so return i - 3.
-	vector<int> factorCount = { 0, 0, 0, 0 };
+  // factorCount will store the counts of distinct factors for the previous four i's.
+  // We will index it by i % 4, essentially treating it as a rotating array.
+  // If its sum is ever 16, that means all four values are 4, which means that the i we just processed was the 4th consecutive
+  // with four distinct factors, so return i - 3.
+  vector<int> factorCount = {0, 0, 0, 0};
 
-	for( int i = 1; i < 200000; ++i ) {
-		vector<uint64_t> factorsVector = primeFactors( i );
-		set<int> factorsSet { factorsVector.begin(), factorsVector.end() };
-		factorCount[i % 4] = factorsSet.size();
+  for( int i = 1; i < 200000; ++i ) {
+    vector<uint64_t> factorsVector = primeFactors( i );
+    set<int> factorsSet{factorsVector.begin(), factorsVector.end()};
+    factorCount[i % 4] = factorsSet.size();
 
-		if( sum( factorCount ) == 16 ) {
-			return i - 3;
-		}
+    if( sum( factorCount ) == 16 ) {
+      return i - 3;
+    }
+  }
 
-	}
-
-	return 0;
+  return 0;
 }
-

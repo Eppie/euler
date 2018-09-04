@@ -25,31 +25,30 @@
 #define SIZE 2395
 
 int solve44() {
-	// We store the pentagonal numbers twice, once in a set for fast lookup, and once in a vector so that we can iterate through them
-	unordered_set<int> pentNumberSet;
-	vector<int> pentNumberVector;
-	int result = 9999999;
+  // We store the pentagonal numbers twice, once in a set for fast lookup, and once in a vector so that we can iterate through them
+  unordered_set<int> pentNumberSet;
+  vector<int> pentNumberVector;
+  int result = 9999999;
 
-	for( int i = 1; i <= SIZE; ++i ) {
-		int pent = genPent( i );
-		pentNumberSet.insert( pent );
-		pentNumberVector.push_back( pent );
-	}
+  for( int i = 1; i <= SIZE; ++i ) {
+    int pent = genPent( i );
+    pentNumberSet.insert( pent );
+    pentNumberVector.push_back( pent );
+  }
 
-	for( int i = 0; i < SIZE; ++i ) {
-		for( int j = i + 1; j < SIZE; ++j ) {
-			int sum = pentNumberVector[i] + pentNumberVector[j];
-			int D = pentNumberVector[j] - pentNumberVector[i];
+  for( int i = 0; i < SIZE; ++i ) {
+    for( int j = i + 1; j < SIZE; ++j ) {
+      int sum = pentNumberVector[i] + pentNumberVector[j];
+      int D = pentNumberVector[j] - pentNumberVector[i];
 
-			// Check that the sum and difference are both pentagonal
-			if( pentNumberSet.find( sum ) != pentNumberSet.end() && pentNumberSet.find( D ) != pentNumberSet.end() ) {
-				if( D < result ) {
-					result = D;
-				}
-			}
-		}
-	}
+      // Check that the sum and difference are both pentagonal
+      if( pentNumberSet.find( sum ) != pentNumberSet.end() && pentNumberSet.find( D ) != pentNumberSet.end() ) {
+        if( D < result ) {
+          result = D;
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

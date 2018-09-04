@@ -28,22 +28,21 @@
 #include "../helper.hpp"
 
 int solve57() {
-	int result = 0;
-	mpz_class num = 3;
-	mpz_class den = 2;
-	char oneChar;
+  int result = 0;
+  mpz_class num = 3;
+  mpz_class den = 2;
+  char oneChar;
 
-	for( int i = 1; i < 1000; ++i ) {
-		num += 2 * den;
-		den = num - den;
-		int numSize = gmp_snprintf( &oneChar, 1, "%Zd", num.get_mpz_t() );
-		int denSize = gmp_snprintf( &oneChar, 1, "%Zd", den.get_mpz_t() );
+  for( int i = 1; i < 1000; ++i ) {
+    num += 2 * den;
+    den = num - den;
+    int numSize = gmp_snprintf( &oneChar, 1, "%Zd", num.get_mpz_t() );
+    int denSize = gmp_snprintf( &oneChar, 1, "%Zd", den.get_mpz_t() );
 
-		if( numSize > denSize ) {
-			result++;
-		}
-	}
+    if( numSize > denSize ) {
+      result++;
+    }
+  }
 
-	return result;
+  return result;
 }
-

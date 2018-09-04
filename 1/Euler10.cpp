@@ -19,5 +19,5 @@
 #include "../helper.hpp"
 
 uint64_t solve10() {
-	return sum( sieve( 2e6 ) );
+  return sum( sieve( 2e6 ) );
 }

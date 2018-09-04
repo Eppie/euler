@@ -35,48 +35,46 @@
 #include "../helper.hpp"
 
 int solve66() {
-	int result = 0;
-	mpz_class pmax = 0;
+  int result = 0;
+  mpz_class pmax = 0;
 
-	for( int D = 2; D <= 1000; D++ ) {
-		mpz_class limit = sqrt( D );
+  for( int D = 2; D <= 1000; D++ ) {
+    mpz_class limit = sqrt( D );
 
-		// Skip perfect squares
-		if( D == limit * limit ) {
-			continue;
-		}
+    // Skip perfect squares
+    if( D == limit * limit ) {
+      continue;
+    }
 
-		mpz_class m = 0;
-		mpz_class d = 1;
-		mpz_class a = limit;
+    mpz_class m = 0;
+    mpz_class d = 1;
+    mpz_class a = limit;
 
-		mpz_class numm1 = 1;
-		mpz_class num = a;
+    mpz_class numm1 = 1;
+    mpz_class num = a;
 
-		mpz_class denm1 = 0;
-		mpz_class den = 1;
+    mpz_class denm1 = 0;
+    mpz_class den = 1;
 
+    while( ( num * num ) - ( D * ( den * den ) ) != 1 ) {
+      m = d * a - m;
+      d = ( D - m * m ) / d;
+      a = ( limit + m ) / d;
 
-		while( ( num * num ) - ( D * ( den * den ) ) != 1 ) {
-			m = d * a - m;
-			d = ( D - m * m ) / d;
-			a = ( limit + m ) / d;
+      mpz_class numm2 = numm1;
+      numm1 = num;
+      mpz_class denm2 = denm1;
+      denm1 = den;
 
-			mpz_class numm2 = numm1;
-			numm1 = num;
-			mpz_class denm2 = denm1;
-			denm1 = den;
+      num = a * numm1 + numm2;
+      den = a * denm1 + denm2;
+    }
 
-			num = a * numm1 + numm2;
-			den = a * denm1 + denm2;
-		}
+    if( num > pmax ) {
+      pmax = num;
+      result = D;
+    }
+  }
 
-		if( num > pmax ) {
-			pmax = num;
-			result = D;
-		}
-	}
-
-	return result;
+  return result;
 }
-

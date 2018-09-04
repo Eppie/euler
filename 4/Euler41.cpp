@@ -21,29 +21,28 @@
 #include "../helper.hpp"
 
 int solve41() {
-	list<int> a = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+  list<int> a = {9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-	while( !a.empty() ) {
-		do {
-			int n = 0;
-			int j = 0;
+  while( !a.empty() ) {
+    do {
+      int n = 0;
+      int j = 0;
 
-			// Convert from list of digits to int
-			for( auto it = a.rbegin(); it != a.rend(); it++ ) {
-				n += *it * pow( 10, j );
-				j++;
-			}
+      // Convert from list of digits to int
+      for( auto it = a.rbegin(); it != a.rend(); it++ ) {
+        n += *it * pow( 10, j );
+        j++;
+      }
 
-			if( isPrime( n ) ) {
-				return n;
-			}
+      if( isPrime( n ) ) {
+        return n;
+      }
 
-			// Using prev_permutation to check larger numbers first
-		} while( prev_permutation( a.begin(), a.end() ) );
+      // Using prev_permutation to check larger numbers first
+    } while( prev_permutation( a.begin(), a.end() ) );
 
-		a.pop_front();
-	}
+    a.pop_front();
+  }
 
-	return 0;
+  return 0;
 }
-

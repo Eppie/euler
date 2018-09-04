@@ -20,21 +20,20 @@
 #include "../helper.hpp"
 
 uint64_t solve48() {
-	uint64_t result = 0;
-	uint64_t mod = 1e10;
+  uint64_t result = 0;
+  uint64_t mod = 1e10;
 
-	for( int i = 1; i <= 1000; ++i ) {
-		uint64_t tmp = i;
+  for( int i = 1; i <= 1000; ++i ) {
+    uint64_t tmp = i;
 
-		for( int j = 1; j < i; ++j ) {
-			tmp *= i;
-			tmp %= mod;
-		}
+    for( int j = 1; j < i; ++j ) {
+      tmp *= i;
+      tmp %= mod;
+    }
 
-		result += tmp;
-		result %= mod;
-	}
+    result += tmp;
+    result %= mod;
+  }
 
-	return result;
+  return result;
 }
-

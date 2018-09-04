@@ -36,92 +36,72 @@
 // The idea is to compare the frequency of these characters in the decrypted message,
 // and the message that is the least different is probably the correct decryption.
 vector<double> freqs = {
-	6.550482415792841,
-	1.2187227913955478,
-	2.6312471550434267,
-	2.9633170270486247,
-	9.641983820907871,
-	1.7133292982101174,
-	1.6230135496241458,
-	3.8630164354748753,
-	6.033153565383931,
-	0.14319075522289199,
-	0.584919923588381,
-	3.334145114873345,
-	2.052310661457927,
-	5.710019197576333,
-	6.012435414341218,
-	1.7252681764699587,
-	0.10031106141034855,
-	4.806753282451171,
-	5.30320658449656,
-	7.454606437792929,
-	2.4304093395979174,
-	0.8479366761897098,
-	1.3724393467092453,
-	0.1963782246892691,
-	1.5495859506078813,
-	0.09214622113166994,
-	20.04567157251186 // space
+    6.550482415792841,   1.2187227913955478,  2.6312471550434267, 2.9633170270486247, 9.641983820907871,
+    1.7133292982101174,  1.6230135496241458,  3.8630164354748753, 6.033153565383931,  0.14319075522289199,
+    0.584919923588381,   3.334145114873345,   2.052310661457927,  5.710019197576333,  6.012435414341218,
+    1.7252681764699587,  0.10031106141034855, 4.806753282451171,  5.30320658449656,   7.454606437792929,
+    2.4304093395979174,  0.8479366761897098,  1.3724393467092453, 0.1963782246892691, 1.5495859506078813,
+    0.09214622113166994,
+    20.04567157251186 // space
 };
 
 int solve59() {
-	double bestDiff = 100000;
-	int result = 0;
-	string line;
-	vector<int> data;
-	vector<int> message;
-	ifstream file( "5/cipher.txt" );
+  double bestDiff = 100000;
+  int result = 0;
+  string line;
+  vector<int> data;
+  vector<int> message;
+  ifstream file( "5/cipher.txt" );
 
-	while( getline( file, line, ',' ) ) {
-		try {
-			data.push_back( stoi( line ) );
-		} catch( const invalid_argument &ia ) {
-			cerr << "Check your input file: " << "5/cipher.txt" << endl;
-			throw;
-		}
-	}
+  while( getline( file, line, ',' ) ) {
+    try {
+      data.push_back( stoi( line ) );
+    } catch( const invalid_argument &ia ) {
+      cerr << "Check your input file: "
+           << "5/cipher.txt" << endl;
+      throw;
+    }
+  }
 
-	// 'a' is 97, 'z' is 122
-	for( int a = 97; a <= 122; ++a ) {
-		for( int b = 97; b <= 122; ++b ) {
-			for( int c = 97; c <= 122; ++c ) {
-				vector<int> key = { a, b, c };
-				message.clear();
+  // 'a' is 97, 'z' is 122
+  for( int a = 97; a <= 122; ++a ) {
+    for( int b = 97; b <= 122; ++b ) {
+      for( int c = 97; c <= 122; ++c ) {
+        vector<int> key = {a, b, c};
+        message.clear();
 
-				for( uint32_t i = 0; i < data.size(); ++i ) {
-					message.push_back( data[i] ^ key[i % 3] );
-				}
+        for( uint32_t i = 0; i < data.size(); ++i ) {
+          message.push_back( data[i] ^ key[i % 3] );
+        }
 
-				vector<int> counts( 27, 0 );
+        vector<int> counts( 27, 0 );
 
-				for( auto && m : message ) {
-					// lower case letters
-					if( m >= 97 && m <= 122 ) {
-						counts[m - 97]++;
-						// upper case letters
-					} else if( m >= 65 && m <= 90 ) {
-						counts[m - 65]++;
-						// space
-					} else if( m == 32 ) {
-						counts[26]++;
-					}
-				}
+        for( auto &&m: message ) {
+          // lower case letters
+          if( m >= 97 && m <= 122 ) {
+            counts[m - 97]++;
+            // upper case letters
+          } else if( m >= 65 && m <= 90 ) {
+            counts[m - 65]++;
+            // space
+          } else if( m == 32 ) {
+            counts[26]++;
+          }
+        }
 
-				double diff = 0;
+        double diff = 0;
 
-				for( int i = 0; i < 27; ++i ) {
-					diff += abs( freqs[i] - ( double( counts[i] ) / double( data.size() ) * 100 ) );
-				}
+        for( int i = 0; i < 27; ++i ) {
+          diff += abs( freqs[i] - ( double( counts[i] ) / double( data.size() ) * 100 ) );
+        }
 
-				if( diff < bestDiff ) {
-					bestDiff = diff;
-					result = sum( message );
-				}
-			}
-		}
-	}
+        if( diff < bestDiff ) {
+          bestDiff = diff;
+          result = sum( message );
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

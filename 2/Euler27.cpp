@@ -22,32 +22,32 @@
 
 namespace euler27 {
 long long formula( int a, int b, int n ) {
-	return ( n * n ) + ( a * n ) + b;
+  return ( n * n ) + ( a * n ) + b;
 }
-}
+} // namespace euler27
 
 int solve27() {
-	int n;
-	int best = 0;
-	long long result;
-	int answer = 0;
+  int n;
+  int best = 0;
+  long long result;
+  int answer = 0;
 
-	for( int a = -1000; a <= 1000; a++ ) {
-		for( int b = -1000; b <= 1000; b++ ) {
-			n = 0;
-			result = euler27::formula( a, b, n );
+  for( int a = -1000; a <= 1000; a++ ) {
+    for( int b = -1000; b <= 1000; b++ ) {
+      n = 0;
+      result = euler27::formula( a, b, n );
 
-			while( result > 0 && isPrime( result ) ) {
-				result = euler27::formula( a, b, n );
-				n++;
-			}
+      while( result > 0 && isPrime( result ) ) {
+        result = euler27::formula( a, b, n );
+        n++;
+      }
 
-			if( n > best ) {
-				best = n;
-				answer = a * b;
-			}
-		}
-	}
+      if( n > best ) {
+        best = n;
+        answer = a * b;
+      }
+    }
+  }
 
-	return answer;
+  return answer;
 }

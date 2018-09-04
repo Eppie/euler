@@ -21,28 +21,28 @@
 
 namespace euler22 {
 int score( string s ) {
-	int result = 0;
+  int result = 0;
 
-	for( auto c : s ) {
-		result += static_cast<int>( c ) - 64;
-	}
+  for( auto c: s ) {
+    result += static_cast<int>( c ) - 64;
+  }
 
-	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
-	return result + 60;
+  // ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
+  return result + 60;
 }
-}
+} // namespace euler22
 
 int solve22() {
-	int result = 0;
-	int thisScore;
-	vector<string> names = loadDataFromFile( "2/names.txt" );
-	sort( names.begin(), names.end() );
+  int result = 0;
+  int thisScore;
+  vector<string> names = loadDataFromFile( "2/names.txt" );
+  sort( names.begin(), names.end() );
 
-	for( auto it = names.begin(); it != names.end(); ++it ) {
-		thisScore = euler22::score( *it );
-		thisScore *= it - names.begin() + 1;
-		result += thisScore;
-	}
+  for( auto it = names.begin(); it != names.end(); ++it ) {
+    thisScore = euler22::score( *it );
+    thisScore *= it - names.begin() + 1;
+    result += thisScore;
+  }
 
-	return result;
+  return result;
 }

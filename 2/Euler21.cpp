@@ -24,30 +24,30 @@
 
 namespace euler21 {
 int d( int n ) {
-	int result = 1;
+  int result = 1;
 
-	for( int i = 2; i < sqrt( n ); i++ ) {
-		if( n % i == 0 ) {
-			result += i;
-			result += n / i ;
-		}
-	}
+  for( int i = 2; i < sqrt( n ); i++ ) {
+    if( n % i == 0 ) {
+      result += i;
+      result += n / i;
+    }
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler21
 
 int solve21() {
-	int b;
-	int result = 0;
+  int b;
+  int result = 0;
 
-	for( int a = 2; a < 10000; a++ ) {
-		b = euler21::d( a );
+  for( int a = 2; a < 10000; a++ ) {
+    b = euler21::d( a );
 
-		if( euler21::d( b ) == a && a != b ) {
-			result += b;
-		}
-	}
+    if( euler21::d( b ) == a && a != b ) {
+      result += b;
+    }
+  }
 
-	return result;
+  return result;
 }

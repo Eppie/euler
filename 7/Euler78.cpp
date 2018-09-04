@@ -37,58 +37,57 @@ namespace euler78 {
  * @return int
  */
 int p( int n ) {
-	static vector<int> cache( 100000, 0 );
-	cache[1] = 1;
+  static vector<int> cache( 100000, 0 );
+  cache[1] = 1;
 
-	if( n <= 0 ) {
-		return 0;
-	}
+  if( n <= 0 ) {
+    return 0;
+  }
 
-	if( cache[n] != 0 ) {
-		return cache[n];
-	}
+  if( cache[n] != 0 ) {
+    return cache[n];
+  }
 
-	int result = 0;
-	int old_result = 1;
-	int k = 1;
+  int result = 0;
+  int old_result = 1;
+  int k = 1;
 
-	while( old_result != result ) {
-		old_result = result;
-		int mult = 1;
+  while( old_result != result ) {
+    old_result = result;
+    int mult = 1;
 
-		if( k % 2 == 0 ) {
-			mult *= -1;
-		}
+    if( k % 2 == 0 ) {
+      mult *= -1;
+    }
 
-		result += mult * p( n - genPent( k ) );
-		k *= -1;
-		result += mult * p( n - genPent( k ) );
-		k *= -1;
-		++k;
-	}
+    result += mult * p( n - genPent( k ) );
+    k *= -1;
+    result += mult * p( n - genPent( k ) );
+    k *= -1;
+    ++k;
+  }
 
-	result %= 1000000;
+  result %= 1000000;
 
-	if( result < 0 ) {
-		result += 1000000;
-	}
+  if( result < 0 ) {
+    result += 1000000;
+  }
 
-	cache[n] = result;
-	return result;
+  cache[n] = result;
+  return result;
 }
-}
+} // namespace euler78
 
 int solve78() {
-	int i = 1;
+  int i = 1;
 
-	while( true ) {
-		int result = euler78::p( i );
+  while( true ) {
+    int result = euler78::p( i );
 
-		if( result % 1000000 == 0 ) {
-			return i - 1;
-		}
+    if( result % 1000000 == 0 ) {
+      return i - 1;
+    }
 
-		++i;
-	}
+    ++i;
+  }
 }
-

@@ -21,42 +21,41 @@
 
 namespace euler52 {
 bool allSameDigits( vector<int> nums ) {
-	int c[10] = { 0 };
-	int mult = 1;
-	int digitCount = 0;
+  int c[10] = {0};
+  int mult = 1;
+  int digitCount = 0;
 
-	for( auto && num : nums ) {
-		digitCount += numDigits( num );
+  for( auto &&num: nums ) {
+    digitCount += numDigits( num );
 
-		while( num ) {
-			c[num % 10] += mult;
-			num /= 10;
-		}
+    while( num ) {
+      c[num % 10] += mult;
+      num /= 10;
+    }
 
-		mult *= -1;
-	}
+    mult *= -1;
+  }
 
-	int result = 1;
+  int result = 1;
 
-	for( auto && i : c ) {
-		result &= i == 0;
-	}
+  for( auto &&i: c ) {
+    result &= i == 0;
+  }
 
-	return result == 1 && digitCount % 6 == 0;
+  return result == 1 && digitCount % 6 == 0;
 }
-}
+} // namespace euler52
 
 int solve52() {
-	int x = 1;
+  int x = 1;
 
-	while( true ) {
-		vector<int> nums = { x, x * 2, x * 3, x * 4, x * 5, x * 6 };
+  while( true ) {
+    vector<int> nums = {x, x * 2, x * 3, x * 4, x * 5, x * 6};
 
-		if( euler52::allSameDigits( nums ) ) {
-			return x;
-		}
+    if( euler52::allSameDigits( nums ) ) {
+      return x;
+    }
 
-		++x;
-	}
+    ++x;
+  }
 }
-

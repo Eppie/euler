@@ -24,22 +24,22 @@
 #include "../helper.hpp"
 
 int solve94() {
-	uint32_t side0 = 1;
-	uint32_t side = 1;
-	uint32_t s = 0;
-	uint32_t p = 0;
-	uint32_t tmp = 0;
-	int32_t m = 1;
-	uint32_t L = 1e9;
+  uint32_t side0 = 1;
+  uint32_t side = 1;
+  uint32_t s = 0;
+  uint32_t p = 0;
+  uint32_t tmp = 0;
+  int32_t m = 1;
+  uint32_t L = 1e9;
 
-	while( p <= L ) {
-		tmp = side;
-		side = 4 * side - side0 + 2 * m;
-		side0 = tmp;
-		m = -m;
-		s += p;
-		p = 3 * side - m;
-	}
+  while( p <= L ) {
+    tmp = side;
+    side = 4 * side - side0 + 2 * m;
+    side0 = tmp;
+    m = -m;
+    s += p;
+    p = 3 * side - m;
+  }
 
-	return s;
+  return s;
 }

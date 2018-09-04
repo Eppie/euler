@@ -25,53 +25,52 @@
 
 namespace euler70 {
 bool isPermutation( int a, int b ) {
-	int counts[10] = { 0 };
+  int counts[10] = {0};
 
-	while( a != 0 ) {
-		counts[a % 10]++;
-		a /= 10;
-	}
+  while( a != 0 ) {
+    counts[a % 10]++;
+    a /= 10;
+  }
 
-	while( b != 0 ) {
-		counts[b % 10]--;
-		b /= 10;
-	}
+  while( b != 0 ) {
+    counts[b % 10]--;
+    b /= 10;
+  }
 
-	for( auto && count : counts ) {
-		if( count != 0 ) {
-			return false;
-		}
-	}
+  for( auto &&count: counts ) {
+    if( count != 0 ) {
+      return false;
+    }
+  }
 
-	return true;
+  return true;
 }
-}
+} // namespace euler70
 
 int solve70() {
-	int result = 0;
-	float bestRatio = 10;
-	auto primes = sieve( 5000 );
+  int result = 0;
+  float bestRatio = 10;
+  auto primes = sieve( 5000 );
 
-	for( uint32_t i = 0; i < primes.size(); ++i ) {
-		for( uint32_t j = i + 1; j < primes.size(); ++j ) {
-			int n = primes[i] * primes[j];
+  for( uint32_t i = 0; i < primes.size(); ++i ) {
+    for( uint32_t j = i + 1; j < primes.size(); ++j ) {
+      int n = primes[i] * primes[j];
 
-			if( n > 10000000 ) {
-				break;
-			}
+      if( n > 10000000 ) {
+        break;
+      }
 
-			int totatives = ( primes[i] - 1 ) * ( primes[j] - 1 );
-			float ratio = float( n ) / float( totatives );
+      int totatives = ( primes[i] - 1 ) * ( primes[j] - 1 );
+      float ratio = float( n ) / float( totatives );
 
-			if( ratio < bestRatio ) {
-				if( euler70::isPermutation( n, totatives ) ) {
-					result = n;
-					bestRatio = ratio;
-				}
-			}
-		}
-	}
+      if( ratio < bestRatio ) {
+        if( euler70::isPermutation( n, totatives ) ) {
+          result = n;
+          bestRatio = ratio;
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

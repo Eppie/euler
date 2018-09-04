@@ -46,55 +46,55 @@
 namespace euler111 {
 int number[10];
 uint64_t recurse( uint8_t baseDigit, uint8_t startPos, uint8_t level, bool fill ) {
-	if( level == 0 ) {
-		if( number[0] == 0 ) {
-			return 0;
-		}
+  if( level == 0 ) {
+    if( number[0] == 0 ) {
+      return 0;
+    }
 
-		uint64_t n = 0;
-		
-		for( uint8_t i = 0; i < 10; ++i ) {
-			n = n * 10 + number[i];
-		}
+    uint64_t n = 0;
 
-		if( isPrime( n ) ) {
-			return n;
-		} else {
-			return 0;
-		}
-	}
+    for( uint8_t i = 0; i < 10; ++i ) {
+      n = n * 10 + number[i];
+    }
 
-	uint64_t result = 0;
-	
-	if( fill ) {
-		for( uint8_t pos = 0; pos < 10; ++pos ) {
-			number[pos] = baseDigit;
-		}
-	}
+    if( isPrime( n ) ) {
+      return n;
+    } else {
+      return 0;
+    }
+  }
 
-	for( uint8_t pos = startPos; pos < 10; ++pos ) {
-		for( int val = 0; val < 10; ++ val ) {
-			number[pos] = val;
-			result += recurse( baseDigit, pos + 1, level - 1, false );
-			number[pos] = baseDigit;
-		}
-	}
-	
-	return result;
+  uint64_t result = 0;
+
+  if( fill ) {
+    for( uint8_t pos = 0; pos < 10; ++pos ) {
+      number[pos] = baseDigit;
+    }
+  }
+
+  for( uint8_t pos = startPos; pos < 10; ++pos ) {
+    for( int val = 0; val < 10; ++val ) {
+      number[pos] = val;
+      result += recurse( baseDigit, pos + 1, level - 1, false );
+      number[pos] = baseDigit;
+    }
+  }
+
+  return result;
 }
 
-}
+} // namespace euler111
 
 uint64_t solve111() {
-	uint64_t result = 0;
-	for( uint8_t d = 0; d < 10; ++d ) {
-		for( uint8_t i = 1; i < 10; ++i ) {
-			uint64_t sum = euler111::recurse( d, 0, i, true );
-			if( sum > 0 ) {
-				result += sum;
-				break;
-			}
-		}
-	}
-	return result;
+  uint64_t result = 0;
+  for( uint8_t d = 0; d < 10; ++d ) {
+    for( uint8_t i = 1; i < 10; ++i ) {
+      uint64_t sum = euler111::recurse( d, 0, i, true );
+      if( sum > 0 ) {
+        result += sum;
+        break;
+      }
+    }
+  }
+  return result;
 }

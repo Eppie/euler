@@ -19,14 +19,13 @@
 #include "../helper.hpp"
 
 int solve29() {
-	set<double> results;
+  set<double> results;
 
-	for( int a = 2; a <= 100; a++ ) {
-		for( int b = 2; b <= 100; b++ ) {
-			results.insert( pow( a, b ) );
-		}
-	}
+  for( int a = 2; a <= 100; a++ ) {
+    for( int b = 2; b <= 100; b++ ) {
+      results.insert( pow( a, b ) );
+    }
+  }
 
-	return results.size();
+  return results.size();
 }
-

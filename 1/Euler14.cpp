@@ -22,31 +22,31 @@
 #include "../helper.hpp"
 
 int solve14() {
-	int cache[1000001] = { 1, 1 };
-	int result = 0;
-	int best = 0;
+  int cache[1000001] = {1, 1};
+  int result = 0;
+  int best = 0;
 
-	for( uint32_t i = 2; i <= 1000000; ++i ) {
-		int length = 0;
-		uint64_t start = i;
+  for( uint32_t i = 2; i <= 1000000; ++i ) {
+    int length = 0;
+    uint64_t start = i;
 
-		while( start >= i ) {
-			if( ( start % 2 ) == 0 ) {
-				start >>= 1;
-			} else {
-				start = start * 3 + 1;
-			}
+    while( start >= i ) {
+      if( ( start % 2 ) == 0 ) {
+        start >>= 1;
+      } else {
+        start = start * 3 + 1;
+      }
 
-			++length;
-		}
+      ++length;
+    }
 
-		cache[i] = length + cache[start];
+    cache[i] = length + cache[start];
 
-		if( cache[i] > best ) {
-			best = cache[i];
-			result = i;
-		}
-	}
+    if( cache[i] > best ) {
+      best = cache[i];
+      result = i;
+    }
+  }
 
-	return result;
+  return result;
 }

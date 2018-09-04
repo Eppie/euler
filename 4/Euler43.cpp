@@ -29,41 +29,40 @@
 #include "../helper.hpp"
 
 uint64_t solve43() {
-	uint64_t result = 0;
-	// Vector of digits
-	vector<int> perm = { 1, 0, 2, 3, 4, 5, 6, 7, 8, 9 };
-	vector<int> divisors = { 1, 2, 3, 5, 7, 11, 13, 17 };
+  uint64_t result = 0;
+  // Vector of digits
+  vector<int> perm = {1, 0, 2, 3, 4, 5, 6, 7, 8, 9};
+  vector<int> divisors = {1, 2, 3, 5, 7, 11, 13, 17};
 
-	int count = 1;
-	int numPerm = 3265920; // 9! * 9
+  int count = 1;
+  int numPerm = 3265920; // 9! * 9
 
-	while( count < numPerm ) {
-		next_permutation( perm.begin(), perm.end() );
-		bool divisible = true;
+  while( count < numPerm ) {
+    next_permutation( perm.begin(), perm.end() );
+    bool divisible = true;
 
-		for( uint32_t k = 1; k < divisors.size(); k++ ) {
-			int num = 100 * perm[k] + 10 * perm[k + 1] + perm[k + 2];
+    for( uint32_t k = 1; k < divisors.size(); k++ ) {
+      int num = 100 * perm[k] + 10 * perm[k + 1] + perm[k + 2];
 
-			if( num % divisors[k] != 0 ) {
-				divisible = false;
-				break;
-			}
-		}
+      if( num % divisors[k] != 0 ) {
+        divisible = false;
+        break;
+      }
+    }
 
-		if( divisible ) {
-			// Convert from vector of digits to number
-			uint64_t num = 0;
+    if( divisible ) {
+      // Convert from vector of digits to number
+      uint64_t num = 0;
 
-			for( auto && k : perm ) {
-				num = 10 * num + k;
-			}
+      for( auto &&k: perm ) {
+        num = 10 * num + k;
+      }
 
-			result += num;
-		}
+      result += num;
+    }
 
-		count++;
-	}
+    count++;
+  }
 
-	return result;
+  return result;
 }
-

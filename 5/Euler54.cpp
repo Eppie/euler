@@ -55,144 +55,131 @@ namespace euler54 {
  * Count how many of each card appears in the hand
  */
 vector<int> rankCounts( vector<string> hand ) {
-	static unordered_map<char, int> ranks = {
-		{'2', 0},
-		{'3', 1},
-		{'4', 2},
-		{'5', 3},
-		{'6', 4},
-		{'7', 5},
-		{'8', 6},
-		{'9', 7},
-		{'T', 8},
-		{'J', 9},
-		{'Q', 10},
-		{'K', 11},
-		{'A', 12}
-	};
-	vector<int> counts( 13, 0 );
+  static unordered_map<char, int> ranks = {{'2', 0}, {'3', 1}, {'4', 2}, {'5', 3},  {'6', 4},  {'7', 5}, {'8', 6},
+                                           {'9', 7}, {'T', 8}, {'J', 9}, {'Q', 10}, {'K', 11}, {'A', 12}};
+  vector<int> counts( 13, 0 );
 
-	for( auto && card : hand ) {
-		counts[ranks[card[0]]]++;
-	}
+  for( auto &&card: hand ) {
+    counts[ranks[card[0]]]++;
+  }
 
-	return counts;
+  return counts;
 }
 
 bool hasFlush( vector<string> hand ) {
-	char c = hand[0][1];
+  char c = hand[0][1];
 
-	for( auto && card : hand ) {
-		if( c != card[1] ) {
-			return false;
-		}
-	}
+  for( auto &&card: hand ) {
+    if( c != card[1] ) {
+      return false;
+    }
+  }
 
-	return true;
+  return true;
 }
 
 bool hasStraight( vector<int> counts ) {
-	for( int i = 0; i <= 8; ++i ) {
-		if( counts[i] == 1 && counts[i + 1] == 1 && counts[i + 2] == 1 && counts[i + 3] == 1 && counts[i + 4] == 1 ) {
-			return true;
-		}
-	}
+  for( int i = 0; i <= 8; ++i ) {
+    if( counts[i] == 1 && counts[i + 1] == 1 && counts[i + 2] == 1 && counts[i + 3] == 1 && counts[i + 4] == 1 ) {
+      return true;
+    }
+  }
 
-	return false;
+  return false;
 }
 
 int getBaseScore( vector<int> ranks ) {
-	int result = 0;
+  int result = 0;
 
-	// Iterate from more occurrences to fewer (four of a kind, three of a kind, pair, etc)
-	for( int i = 4; i > 0; --i ) {
-		// Iterate from ace down to two
-		for( int j = 12; j >= 0; --j ) {
-			// If there are i occurrences of card with rank j in the hand
-			if( ranks[j] == i ) {
-				// Shift j into the lower 4 bits i times.
-				for( int k = 0; k < i; ++k ) {
-					result = result << 4 | j;
-				}
-			}
-		}
-	}
+  // Iterate from more occurrences to fewer (four of a kind, three of a kind, pair, etc)
+  for( int i = 4; i > 0; --i ) {
+    // Iterate from ace down to two
+    for( int j = 12; j >= 0; --j ) {
+      // If there are i occurrences of card with rank j in the hand
+      if( ranks[j] == i ) {
+        // Shift j into the lower 4 bits i times.
+        for( int k = 0; k < i; ++k ) {
+          result = result << 4 | j;
+        }
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
 
 int score( const vector<string> &hand ) {
-	int result = 0;
-	auto counts = rankCounts( hand );
+  int result = 0;
+  auto counts = rankCounts( hand );
 
-	// Count the number of pairs, three of a kind, etc. E.g. if there are two pairs, countsHist[2] == 2.
-	vector<int> countsHist( 5, 0 );
+  // Count the number of pairs, three of a kind, etc. E.g. if there are two pairs, countsHist[2] == 2.
+  vector<int> countsHist( 5, 0 );
 
-	for( auto && count : counts ) {
-		countsHist[count]++;
-	}
+  for( auto &&count: counts ) {
+    countsHist[count]++;
+  }
 
-	int baseScore = getBaseScore( counts );
-	bool flush = hasFlush( hand );
-	bool straight = hasStraight( counts );
+  int baseScore = getBaseScore( counts );
+  bool flush = hasFlush( hand );
+  bool straight = hasStraight( counts );
 
-	// There are no royal flushes, straight flushes, or four of a kinds in the data, so no need to handle them.
-	if( countsHist[3] == 1 && countsHist[2] == 1 ) { // full house
-		result = 6;
-	} else if( flush ) { // flush
-		result = 5;
-	} else if( straight ) { // straight
-		result = 4;
-	} else if( countsHist[3] == 1 ) { // three of a kind
-		result = 3;
-	} else if( countsHist[2] == 2 ) { // two pairs
-		result = 2;
-	} else if( countsHist[2] == 1 ) { // one pair
-		result = 1;
-	}
+  // There are no royal flushes, straight flushes, or four of a kinds in the data, so no need to handle them.
+  if( countsHist[3] == 1 && countsHist[2] == 1 ) { // full house
+    result = 6;
+  } else if( flush ) { // flush
+    result = 5;
+  } else if( straight ) { // straight
+    result = 4;
+  } else if( countsHist[3] == 1 ) { // three of a kind
+    result = 3;
+  } else if( countsHist[2] == 2 ) { // two pairs
+    result = 2;
+  } else if( countsHist[2] == 1 ) { // one pair
+    result = 1;
+  }
 
-	return result << 20 | baseScore;
+  return result << 20 | baseScore;
 }
-}
+} // namespace euler54
 
 int solve54() {
-	int result = 0;
-	string line;
-	vector<string> data;
-	ifstream file( "5/poker.txt" );
+  int result = 0;
+  string line;
+  vector<string> data;
+  ifstream file( "5/poker.txt" );
 
-	while( getline( file, line, '\n' ) ) {
-		try {
-			data.push_back( line );
-		} catch( const invalid_argument &ia ) {
-			cerr << "Check your input file: " << "5/poker.txt" << endl;
-			throw;
-		}
-	}
+  while( getline( file, line, '\n' ) ) {
+    try {
+      data.push_back( line );
+    } catch( const invalid_argument &ia ) {
+      cerr << "Check your input file: "
+           << "5/poker.txt" << endl;
+      throw;
+    }
+  }
 
-	for( auto && s : data ) {
-		stringstream ss;
-		ss.str( s );
-		string item;
-		int i = 0;
-		vector<string> hand1;
-		vector<string> hand2;
+  for( auto &&s: data ) {
+    stringstream ss;
+    ss.str( s );
+    string item;
+    int i = 0;
+    vector<string> hand1;
+    vector<string> hand2;
 
-		while( getline( ss, item, ' ' ) ) {
-			if( i < 5 ) {
-				hand1.push_back( item );
-			} else {
-				hand2.push_back( item );
-			}
+    while( getline( ss, item, ' ' ) ) {
+      if( i < 5 ) {
+        hand1.push_back( item );
+      } else {
+        hand2.push_back( item );
+      }
 
-			++i;
-		}
+      ++i;
+    }
 
-		if( euler54::score( hand1 ) > euler54::score( hand2 ) ) {
-			result++;
-		}
-	}
+    if( euler54::score( hand1 ) > euler54::score( hand2 ) ) {
+      result++;
+    }
+  }
 
-	return result;
+  return result;
 }
-

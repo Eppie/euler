@@ -27,21 +27,20 @@
 #include "../helper.hpp"
 
 int solve71() {
-	int result = 0;
-	double best = 0.4;
+  int result = 0;
+  double best = 0.4;
 
-	for( int d = 1; d < 1000000; ++d ) {
-		int n = d * 3 / 7 - 1;
-		double frac = double( n ) / double( d );
+  for( int d = 1; d < 1000000; ++d ) {
+    int n = d * 3 / 7 - 1;
+    double frac = double( n ) / double( d );
 
-		if( frac > best ) {
-			if( gcd( n, d ) == 1 ) {
-				best = frac;
-				result = n;
-			}
-		}
-	}
+    if( frac > best ) {
+      if( gcd( n, d ) == 1 ) {
+        best = frac;
+        result = n;
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-

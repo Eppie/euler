@@ -21,44 +21,43 @@
 
 namespace euler12 {
 int divisors( uint64_t n, int start = 2 ) {
-	if( n == 1 ) {
-		return 1;
-	}
+  if( n == 1 ) {
+    return 1;
+  }
 
-	for( int i = start; i < ceil( sqrt( n ) ) + 1; i++ ) {
-		if( n % i == 0 ) {
-			int count = 1;
+  for( int i = start; i < ceil( sqrt( n ) ) + 1; i++ ) {
+    if( n % i == 0 ) {
+      int count = 1;
 
-			while( n % i == 0 ) {
-				n /= i;
-				count += 1;
-			}
+      while( n % i == 0 ) {
+        n /= i;
+        count += 1;
+      }
 
-			return divisors( n, i + 1 ) * count;
-		}
-	}
+      return divisors( n, i + 1 ) * count;
+    }
+  }
 
-	return 2;
-
+  return 2;
 }
-}
+} // namespace euler12
 
 uint32_t solve12() {
-	int count;
+  int count;
 
-	for( int n = 1; n < 20000; n++ ) {
-		uint64_t t = n * ( n + 1 ) / 2;
+  for( int n = 1; n < 20000; n++ ) {
+    uint64_t t = n * ( n + 1 ) / 2;
 
-		if( n % 2 == 0 ) {
-			count = euler12::divisors( n / 2 ) * euler12::divisors( n + 1 );
-		} else {
-			count = euler12::divisors( n ) * euler12::divisors( ( n + 1 ) / 2 );
-		}
+    if( n % 2 == 0 ) {
+      count = euler12::divisors( n / 2 ) * euler12::divisors( n + 1 );
+    } else {
+      count = euler12::divisors( n ) * euler12::divisors( ( n + 1 ) / 2 );
+    }
 
-		if( count > 500 ) {
-			return t;
-		}
-	}
+    if( count > 500 ) {
+      return t;
+    }
+  }
 
-	return 0;
+  return 0;
 }

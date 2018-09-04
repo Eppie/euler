@@ -27,27 +27,26 @@
  * TODO: Implement a topological sort and solve this problem programmatically.
  */
 int solve79() {
-	vector<string> attempts = loadDataFromFile( "7/keylog.txt", '\n' );
-	sort( attempts.begin(), attempts.end() );
-	attempts.erase( unique( attempts.begin(), attempts.end() ), attempts.end() );
+  vector<string> attempts = loadDataFromFile( "7/keylog.txt", '\n' );
+  sort( attempts.begin(), attempts.end() );
+  attempts.erase( unique( attempts.begin(), attempts.end() ), attempts.end() );
 
-	set<char> chars;
-	map<char, set<char>> before;
-	//map<char, set<char>> after;
+  set<char> chars;
+  map<char, set<char>> before;
+  //map<char, set<char>> after;
 
-	for( auto && attempt : attempts ) {
-		chars.insert( attempt[0] );
-		chars.insert( attempt[1] );
-		chars.insert( attempt[2] );
+  for( auto &&attempt: attempts ) {
+    chars.insert( attempt[0] );
+    chars.insert( attempt[1] );
+    chars.insert( attempt[2] );
 
-		//after[attempt[0]].insert( attempt[1] );
-		//after[attempt[0]].insert( attempt[2] );
-		//after[attempt[1]].insert( attempt[2] );
-		before[attempt[2]].insert( attempt[1] );
-		before[attempt[2]].insert( attempt[0] );
-		before[attempt[1]].insert( attempt[0] );
-	}
+    //after[attempt[0]].insert( attempt[1] );
+    //after[attempt[0]].insert( attempt[2] );
+    //after[attempt[1]].insert( attempt[2] );
+    before[attempt[2]].insert( attempt[1] );
+    before[attempt[2]].insert( attempt[0] );
+    before[attempt[1]].insert( attempt[0] );
+  }
 
-	return 73162890;
+  return 73162890;
 }
-

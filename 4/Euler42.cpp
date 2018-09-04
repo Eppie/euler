@@ -24,33 +24,31 @@
 
 namespace euler42 {
 int wordValue( string word ) {
-	int result = 0;
+  int result = 0;
 
-	for( auto c : word ) {
-		result += c - 64;
-	}
+  for( auto c: word ) {
+    result += c - 64;
+  }
 
-	// ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
-	return result + 60;
-
+  // ASCII code for '"' is 34, so subtract 68. Also, add 128 for the two extra 64's we subtracted earlier.
+  return result + 60;
 }
-}
+} // namespace euler42
 
 int solve42() {
-	int result = 0;
-	vector<string> words = loadDataFromFile( "4/words.txt" );
-	set<int> triangleNumbers;
+  int result = 0;
+  vector<string> words = loadDataFromFile( "4/words.txt" );
+  set<int> triangleNumbers;
 
-	for( int i = 1; i <= 18; i++ ) {
-		triangleNumbers.insert( ( i * ( i + 1 ) ) / 2 );
-	}
+  for( int i = 1; i <= 18; i++ ) {
+    triangleNumbers.insert( ( i * ( i + 1 ) ) / 2 );
+  }
 
-	for( auto && word : words ) {
-		if( triangleNumbers.find( euler42::wordValue( word ) ) != triangleNumbers.end() ) {
-			result += 1;
-		}
-	}
+  for( auto &&word: words ) {
+    if( triangleNumbers.find( euler42::wordValue( word ) ) != triangleNumbers.end() ) {
+      result += 1;
+    }
+  }
 
-	return result;
+  return result;
 }
-

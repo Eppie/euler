@@ -29,24 +29,23 @@
 #include "../helper.hpp"
 
 int solve67() {
-	vector<vector<int>> rows;
-	ifstream input( "6/triangle.txt" );
+  vector<vector<int>> rows;
+  ifstream input( "6/triangle.txt" );
 
-	for( string line; getline( input, line ); ) {
-		vector<int> newRow;
-		stringstream ss;
-		ss.str( line );
-		string item;
+  for( string line; getline( input, line ); ) {
+    vector<int> newRow;
+    stringstream ss;
+    ss.str( line );
+    string item;
 
-		while( getline( ss, item, ' ' ) ) {
-			if( !item.empty() ) {
-				newRow.push_back( stoi( item ) );
-			}
-		}
+    while( getline( ss, item, ' ' ) ) {
+      if( !item.empty() ) {
+        newRow.push_back( stoi( item ) );
+      }
+    }
 
-		rows.push_back( newRow );
-	}
+    rows.push_back( newRow );
+  }
 
-	return maxSumPath( rows );
+  return maxSumPath( rows );
 }
-

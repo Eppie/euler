@@ -25,23 +25,22 @@
  * an array.
  */
 int solve65() {
-	mpz_class current;
-	mpz_class n_minus_2 = 1;
-	mpz_class n_minus_1 = 2;
+  mpz_class current;
+  mpz_class n_minus_2 = 1;
+  mpz_class n_minus_1 = 2;
 
-	for( int n = 3; n <= 101; ++n ) {
-		if( n % 3 == 0 ) {
-			current = n_minus_1 + n_minus_2;
-		} else if( n % 3 == 1 ) {
-			current = 2 * ( n - 1 ) * n_minus_1 / 3 + n_minus_2;
-		} else {
-			current = n_minus_1 + n_minus_2;
-		}
+  for( int n = 3; n <= 101; ++n ) {
+    if( n % 3 == 0 ) {
+      current = n_minus_1 + n_minus_2;
+    } else if( n % 3 == 1 ) {
+      current = 2 * ( n - 1 ) * n_minus_1 / 3 + n_minus_2;
+    } else {
+      current = n_minus_1 + n_minus_2;
+    }
 
-		n_minus_2 = n_minus_1;
-		n_minus_1 = current;
-	}
+    n_minus_2 = n_minus_1;
+    n_minus_1 = current;
+  }
 
-	return digitalSum( current ).get_ui();
+  return digitalSum( current ).get_ui();
 }
-

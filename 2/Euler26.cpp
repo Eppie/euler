@@ -17,26 +17,26 @@
  */
 
 int solve26() {
-	int max = 0;
-	int answer = 0;
+  int max = 0;
+  int answer = 0;
 
-	for( int i = 1; i < 1000; i++ ) {
-		int counter = 0;
-		int value = 10 % i;
-		int z = 1000;
+  for( int i = 1; i < 1000; i++ ) {
+    int counter = 0;
+    int value = 10 % i;
+    int z = 1000;
 
-		while( value != 1 && z > 0 ) {
-			value *= 10;
-			value %= i;
-			counter++;
-			z--;
-		}
+    while( value != 1 && z > 0 ) {
+      value *= 10;
+      value %= i;
+      counter++;
+      z--;
+    }
 
-		if( counter > max && z > 1 ) {
-			max = counter;
-			answer = i;
-		}
-	}
+    if( counter > max && z > 1 ) {
+      max = counter;
+      answer = i;
+    }
+  }
 
-	return answer;
+  return answer;
 }

@@ -21,12 +21,11 @@
 #include "../helper.hpp"
 
 int solve63() {
-	int result = 0;
+  int result = 0;
 
-	for( int n = 1; n < 10; ++n ) {
-		result += 1.0 / ( 1.0 - log10( n ) );
-	}
+  for( int n = 1; n < 10; ++n ) {
+    result += 1.0 / ( 1.0 - log10( n ) );
+  }
 
-	return result;
+  return result;
 }
-

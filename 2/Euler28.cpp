@@ -20,9 +20,8 @@
 #include "../helper.hpp"
 
 uint32_t solve28() {
-	int L = 1001;
-	int n = ( L - 1 ) / 2;
-	auto result = static_cast<uint32_t>( ( ( 16 * pow( n, 3 ) ) + ( 30 * pow( n, 2 ) ) + ( 26 * n ) + 3 ) / 3 );
-	return result;
+  int L = 1001;
+  int n = ( L - 1 ) / 2;
+  auto result = static_cast<uint32_t>( ( ( 16 * pow( n, 3 ) ) + ( 30 * pow( n, 2 ) ) + ( 26 * n ) + 3 ) / 3 );
+  return result;
 }
-

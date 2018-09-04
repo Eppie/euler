@@ -30,32 +30,31 @@
 #define SIZE 80
 
 int solve81() {
-	vector<vector<int>> matrix;
+  vector<vector<int>> matrix;
 
-	for( auto && line : loadDataFromFile( "8/matrix.txt", '\n' ) ) {
-		vector<int> elems;
-		stringstream ss;
-		ss.str( line );
-		string item;
+  for( auto &&line: loadDataFromFile( "8/matrix.txt", '\n' ) ) {
+    vector<int> elems;
+    stringstream ss;
+    ss.str( line );
+    string item;
 
-		while( getline( ss, item, ',' ) ) {
-			elems.push_back( stoi( item ) );
-		}
+    while( getline( ss, item, ',' ) ) {
+      elems.push_back( stoi( item ) );
+    }
 
-		matrix.push_back( elems );
-	}
+    matrix.push_back( elems );
+  }
 
-	for( int i = SIZE - 2; i >= 0; --i ) {
-		matrix[SIZE - 1][i] += matrix[SIZE - 1][i + 1];
-		matrix[i][SIZE - 1] += matrix[i + 1][SIZE - 1];
-	}
+  for( int i = SIZE - 2; i >= 0; --i ) {
+    matrix[SIZE - 1][i] += matrix[SIZE - 1][i + 1];
+    matrix[i][SIZE - 1] += matrix[i + 1][SIZE - 1];
+  }
 
-	for( int i = SIZE - 2; i >= 0; --i ) {
-		for( int j = SIZE - 2; j >= 0; --j ) {
-			matrix[i][j] += min( matrix[i + 1][j], matrix[i][j + 1] );
-		}
-	}
+  for( int i = SIZE - 2; i >= 0; --i ) {
+    for( int j = SIZE - 2; j >= 0; --j ) {
+      matrix[i][j] += min( matrix[i + 1][j], matrix[i][j + 1] );
+    }
+  }
 
-	return matrix[0][0];
+  return matrix[0][0];
 }
-

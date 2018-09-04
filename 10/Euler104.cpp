@@ -25,35 +25,35 @@
 #include "../helper.hpp"
 
 uint32_t solve104() {
-	uint32_t fn2 = 1;
-	uint32_t fn1 = 1;
-	uint32_t tail = 1000000000;
+  uint32_t fn2 = 1;
+  uint32_t fn1 = 1;
+  uint32_t tail = 1000000000;
 
-	uint32_t n = 2;
-	bool found = false;
-	uint32_t fn;
-	double t;
+  uint32_t n = 2;
+  bool found = false;
+  uint32_t fn;
+  double t;
 
-	// See Binet's formula: https://en.wikipedia.org/wiki/Fibonacci_number#Closed-form_expression
-	auto sqrt5 = sqrt( 5 );
-	auto phi = ( 1 + sqrt5 ) / 2;
-	auto logsqrt5 = log10( sqrt5 );
-	auto logphi = log10( phi );
+  // See Binet's formula: https://en.wikipedia.org/wiki/Fibonacci_number#Closed-form_expression
+  auto sqrt5 = sqrt( 5 );
+  auto phi = ( 1 + sqrt5 ) / 2;
+  auto logsqrt5 = log10( sqrt5 );
+  auto logphi = log10( phi );
 
-	while( !found ) {
-		++n;
-		fn = ( fn1 + fn2 ) % tail;
-		fn2 = fn1;
-		fn1 = fn;
+  while( !found ) {
+    ++n;
+    fn = ( fn1 + fn2 ) % tail;
+    fn2 = fn1;
+    fn1 = fn;
 
-		if( isPandigital( fn ) ) {
-			t = ( n * logphi - logsqrt5 );
+    if( isPandigital( fn ) ) {
+      t = ( n * logphi - logsqrt5 );
 
-			if( isPandigital( uint64_t( pow( 10, t - int( t ) + 8 ) ) ) ) {
-				found = true;
-			}
-		}
-	}
+      if( isPandigital( uint64_t( pow( 10, t - int( t ) + 8 ) ) ) ) {
+        found = true;
+      }
+    }
+  }
 
-	return n;
+  return n;
 }

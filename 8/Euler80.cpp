@@ -24,24 +24,24 @@
 #include "../helper.hpp"
 
 int solve80() {
-	mpz_class multiplier;
-	mpz_ui_pow_ui( multiplier.get_mpz_t(), 10, 198 );
-	mpz_class result = 0;
-	mpz_class x;
-	mpz_class root_sum;
-	uint32_t int_sqrt = 1;
+  mpz_class multiplier;
+  mpz_ui_pow_ui( multiplier.get_mpz_t(), 10, 198 );
+  mpz_class result = 0;
+  mpz_class x;
+  mpz_class root_sum;
+  uint32_t int_sqrt = 1;
 
-	for( uint32_t i = 1; i <= 100; ++i ) {
-		// Skip perfect squares
-		if( int_sqrt * int_sqrt == i ) {
-			++int_sqrt;
-			continue;
-		}
+  for( uint32_t i = 1; i <= 100; ++i ) {
+    // Skip perfect squares
+    if( int_sqrt * int_sqrt == i ) {
+      ++int_sqrt;
+      continue;
+    }
 
-		x = sqrt( i * multiplier );
-		root_sum = digitalSum( x );
-		result += root_sum;
-	}
+    x = sqrt( i * multiplier );
+    root_sum = digitalSum( x );
+    result += root_sum;
+  }
 
-	return result.get_ui();
+  return result.get_ui();
 }

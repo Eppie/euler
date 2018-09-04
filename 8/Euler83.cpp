@@ -30,71 +30,71 @@
 #define SIZE 80
 
 struct Node {
-	uint32_t x;
-	uint32_t y;
-	uint32_t path_cost;
+  uint32_t x;
+  uint32_t y;
+  uint32_t path_cost;
 
-	Node( uint32_t x_, uint32_t y_, uint32_t path_cost_ ) : x( x_ ), y( y_ ), path_cost( path_cost_ ) {}
+  Node( uint32_t x_, uint32_t y_, uint32_t path_cost_ ) : x( x_ ), y( y_ ), path_cost( path_cost_ ) {}
 
-	bool operator>( const Node &node ) const {
-		return path_cost > node.path_cost;
-	}
+  bool operator>( const Node &node ) const {
+    return path_cost > node.path_cost;
+  }
 };
 
 uint32_t solve83() {
-	vector<vector<uint32_t>> matrix;
+  vector<vector<uint32_t>> matrix;
 
-	for( auto && line : loadDataFromFile( "8/matrix.txt", '\n' ) ) {
-		vector<uint32_t> elems;
-		stringstream ss;
-		ss.str( line );
-		string item;
+  for( auto &&line: loadDataFromFile( "8/matrix.txt", '\n' ) ) {
+    vector<uint32_t> elems;
+    stringstream ss;
+    ss.str( line );
+    string item;
 
-		while( getline( ss, item, ',' ) ) {
-			elems.push_back( stoi( item ) );
-		}
+    while( getline( ss, item, ',' ) ) {
+      elems.push_back( stoi( item ) );
+    }
 
-		matrix.push_back( elems );
-	}
+    matrix.push_back( elems );
+  }
 
-	// pass in std::greater as the comparison function, so that next.top() will return the minimum element
-	priority_queue<Node, vector<Node>, greater<>> next;
-	vector<vector<bool>> processed( SIZE, vector<bool>( SIZE, false ) );
+  // pass in std::greater as the comparison function, so that next.top() will return the minimum element
+  priority_queue<Node, vector<Node>, greater<>> next;
+  vector<vector<bool>> processed( SIZE, vector<bool>( SIZE, false ) );
 
-	next.push( Node( 0, 0, matrix[0][0] ) );
+  next.push( Node( 0, 0, matrix[0][0] ) );
 
-	while( !next.empty() ) {
-		Node node = next.top();
-		next.pop();
+  while( !next.empty() ) {
+    Node node = next.top();
+    next.pop();
 
-		if( processed[node.y][node.x] ) {
-			continue;
-		}
+    if( processed[node.y][node.x] ) {
+      continue;
+    }
 
-		processed[node.y][node.x] = true;
+    processed[node.y][node.x] = true;
 
-		// At the goal node
-		if( node.x == SIZE - 1 && node.y == SIZE - 1 ) {
-			return node.path_cost;
-		}
+    // At the goal node
+    if( node.x == SIZE - 1 && node.y == SIZE - 1 ) {
+      return node.path_cost;
+    }
 
-		// Add the four surrounding nodes to the queue
-		if( node.x + 1 < SIZE ) {
-			next.push( Node( node.x + 1, node.y, node.path_cost + matrix[node.y][node.x + 1] ) );
-		}
+    // Add the four surrounding nodes to the queue
+    if( node.x + 1 < SIZE ) {
+      next.push( Node( node.x + 1, node.y, node.path_cost + matrix[node.y][node.x + 1] ) );
+    }
 
-		if( node.y + 1 < SIZE ) {
-			next.push( Node( node.x, node.y + 1, node.path_cost + matrix[node.y + 1][node.x] ) );
-		}
+    if( node.y + 1 < SIZE ) {
+      next.push( Node( node.x, node.y + 1, node.path_cost + matrix[node.y + 1][node.x] ) );
+    }
 
-		if( node.y > 0 ) {
-			next.push( Node( node.x, node.y - 1, node.path_cost + matrix[node.y - 1][node.x] ) );
-		}
+    if( node.y > 0 ) {
+      next.push( Node( node.x, node.y - 1, node.path_cost + matrix[node.y - 1][node.x] ) );
+    }
 
-		if( node.x > 0 ) {
-			next.push( Node( node.x - 1, node.y, node.path_cost + matrix[node.y][node.x - 1] ) );
-		}
-	}
+    if( node.x > 0 ) {
+      next.push( Node( node.x - 1, node.y, node.path_cost + matrix[node.y][node.x - 1] ) );
+    }
+  }
 
-	return 0;
+  return 0;
 }

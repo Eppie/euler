@@ -18,20 +18,19 @@
  */
 
 int solve9() {
-	int L = 1000;
+  int L = 1000;
 
-	for( int a = 1; a < L / 2 - 2; ++a ) {
-		for( int b = a; b < L / 2 - 1; ++b ) {
-			int c = L - a - b;
+  for( int a = 1; a < L / 2 - 2; ++a ) {
+    for( int b = a; b < L / 2 - 1; ++b ) {
+      int c = L - a - b;
 
-			if( ( c < L / 2 ) && ( b < c ) && ( a + b > c ) && ( a + c > b ) && ( b + c > a ) ) {
-				if( a * a + b * b == c * c ) {
-					return a * b * c;
-				}
-			}
-		}
-	}
+      if( ( c < L / 2 ) && ( b < c ) && ( a + b > c ) && ( a + c > b ) && ( b + c > a ) ) {
+        if( a * a + b * b == c * c ) {
+          return a * b * c;
+        }
+      }
+    }
+  }
 
-	return 0;
+  return 0;
 }
-

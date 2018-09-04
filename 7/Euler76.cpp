@@ -35,34 +35,33 @@ namespace euler76 {
  * @return int
  */
 int p( int n ) {
-	static vector<int> cache( 102, 0 );
-	cache[1] = 1;
+  static vector<int> cache( 102, 0 );
+  cache[1] = 1;
 
-	if( n <= 0 ) {
-		return 0;
-	}
+  if( n <= 0 ) {
+    return 0;
+  }
 
-	if( cache[n] != 0 ) {
-		return cache[n];
-	}
+  if( cache[n] != 0 ) {
+    return cache[n];
+  }
 
-	int result = 0;
+  int result = 0;
 
-	// k < 9 was determined empirically to be large enough to get an accurate result
-	for( int k = 1; k < 9; ++k ) {
-		result += pow( -1, k - 1 ) * p( n - genPent( k ) );
-		k *= -1;
-		result += pow( -1, k - 1 ) * p( n - genPent( k ) );
-		k *= -1;
-	}
+  // k < 9 was determined empirically to be large enough to get an accurate result
+  for( int k = 1; k < 9; ++k ) {
+    result += pow( -1, k - 1 ) * p( n - genPent( k ) );
+    k *= -1;
+    result += pow( -1, k - 1 ) * p( n - genPent( k ) );
+    k *= -1;
+  }
 
-	cache[n] = result;
+  cache[n] = result;
 
-	return result;
+  return result;
 }
-}
+} // namespace euler76
 
 int solve76() {
-	return euler76::p( 101 ) - 1;
+  return euler76::p( 101 ) - 1;
 }
-

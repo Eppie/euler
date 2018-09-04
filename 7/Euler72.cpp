@@ -26,27 +26,26 @@
 #include "../helper.hpp"
 
 uint64_t solve72() {
-	// We're looking for all numerators that are both relatively prime to each d, as well as smaller than each d
-	// Thus, we can use Euler's totient function
+  // We're looking for all numerators that are both relatively prime to each d, as well as smaller than each d
+  // Thus, we can use Euler's totient function
 
-	uint64_t result = 0;
+  uint64_t result = 0;
 
-	// Fill the vector with sequentially increasing values, starting from 0
-	vector<int> phi( 1000001 );
-	iota( phi.begin(), phi.end(), 0 );
+  // Fill the vector with sequentially increasing values, starting from 0
+  vector<int> phi( 1000001 );
+  iota( phi.begin(), phi.end(), 0 );
 
-	for( int d = 2; d <= 1000000; ++d ) {
-		// if d is prime
-		if( phi[d] == d ) {
-			// for every multiple of d, update the value
-			for( int i = d; i <= 1000000; i += d ) {
-				phi[i] -= phi[i] / d;
-			}
-		}
+  for( int d = 2; d <= 1000000; ++d ) {
+    // if d is prime
+    if( phi[d] == d ) {
+      // for every multiple of d, update the value
+      for( int i = d; i <= 1000000; i += d ) {
+        phi[i] -= phi[i] / d;
+      }
+    }
 
-		result += phi[d];
-	}
+    result += phi[d];
+  }
 
-	return result;
+  return result;
 }
-

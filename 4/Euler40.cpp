@@ -23,20 +23,19 @@
 #include "../helper.hpp"
 
 int solve40() {
-	int result = 1;
-	string s;
+  int result = 1;
+  string s;
 
-	// Create the string with 1,000,005 digits
-	for( int i = 1; i <= 185185; i++ ) {
-		s += to_string( i );
-	}
+  // Create the string with 1,000,005 digits
+  for( int i = 1; i <= 185185; i++ ) {
+    s += to_string( i );
+  }
 
-	// Access that string at positions 10⁰, 10¹, 10²...
-	for( int p = 0; p <= 6; p++ ) {
-		// Convert the char to an int and multiply the result
-		result *= s[ static_cast<uint64_t>( pow( 10, p ) - 1 ) ] - '0';
-	}
+  // Access that string at positions 10⁰, 10¹, 10²...
+  for( int p = 0; p <= 6; p++ ) {
+    // Convert the char to an int and multiply the result
+    result *= s[static_cast<uint64_t>( pow( 10, p ) - 1 )] - '0';
+  }
 
-	return result;
+  return result;
 }
-

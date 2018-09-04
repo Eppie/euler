@@ -27,11 +27,11 @@
 #include "../helper.hpp"
 
 uint32_t solve106() {
-	uint32_t result = 0;
-	uint32_t n = 12;
-	for( uint32_t i = 2; i <= 6; ++i ) {
-		result += choose( n, i ) * choose( n - i, i ) / 2;
-		result -= choose( n, 2 * i ) * ( choose( 2 * i, i ) / ( i + 1 ) );
-	}
-	return result;
+  uint32_t result = 0;
+  uint32_t n = 12;
+  for( uint32_t i = 2; i <= 6; ++i ) {
+    result += choose( n, i ) * choose( n - i, i ) / 2;
+    result -= choose( n, 2 * i ) * ( choose( 2 * i, i ) / ( i + 1 ) );
+  }
+  return result;
 }

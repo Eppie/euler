@@ -20,16 +20,15 @@
 #include "../helper.hpp"
 
 int solve3() {
-	uint64_t n = 600851475143;
-	uint32_t newN = static_cast<uint32_t>( sqrt( n ) ) + 1;
-	vector<uint64_t> primes = sieve( newN );
+  uint64_t n = 600851475143;
+  uint32_t newN = static_cast<uint32_t>( sqrt( n ) ) + 1;
+  vector<uint64_t> primes = sieve( newN );
 
-	for( auto it = primes.rbegin(); it != primes.rend(); ++it ) {
-		if( n % *it == 0 ) {
-			return *it;
-		}
-	}
+  for( auto it = primes.rbegin(); it != primes.rend(); ++it ) {
+    if( n % *it == 0 ) {
+      return *it;
+    }
+  }
 
-	return 0;
+  return 0;
 }
-

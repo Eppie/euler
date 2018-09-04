@@ -21,15 +21,15 @@
 
 namespace euler1 {
 int sumOfMultiplesBelowLimit( int L, int mod ) {
-	auto n = static_cast<int>( ceil( double( L ) / double( mod ) ) - 1 );
-	return ( ( n * n ) + n ) / 2 * mod;
+  auto n = static_cast<int>( ceil( double( L ) / double( mod ) ) - 1 );
+  return ( ( n * n ) + n ) / 2 * mod;
 }
-}
+} // namespace euler1
 
 int solve1() {
-	int L = 1000;
-	int result = euler1::sumOfMultiplesBelowLimit( L, 3 );
-	result += euler1::sumOfMultiplesBelowLimit( L, 5 );
-	result -= euler1::sumOfMultiplesBelowLimit( L, 15 );
-	return result;
+  int L = 1000;
+  int result = euler1::sumOfMultiplesBelowLimit( L, 3 );
+  result += euler1::sumOfMultiplesBelowLimit( L, 5 );
+  result -= euler1::sumOfMultiplesBelowLimit( L, 15 );
+  return result;
 }

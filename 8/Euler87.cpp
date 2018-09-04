@@ -26,24 +26,24 @@
 #include "../helper.hpp"
 
 int solve87() {
-	auto primes = sieve( 7070 );
-	vector<uint64_t> results;
-	uint64_t tmp = 0;
+  auto primes = sieve( 7070 );
+  vector<uint64_t> results;
+  uint64_t tmp = 0;
 
-	for( auto && square : primes ) {
-		for( auto && cube : primes ) {
-			for( auto && fourth : primes ) {
-				tmp = static_cast<uint64_t>( pow( square, 2 ) + pow( cube, 3 ) + pow( fourth, 4 ) );
+  for( auto &&square: primes ) {
+    for( auto &&cube: primes ) {
+      for( auto &&fourth: primes ) {
+        tmp = static_cast<uint64_t>( pow( square, 2 ) + pow( cube, 3 ) + pow( fourth, 4 ) );
 
-				if( tmp < 50000000 ) {
-					results.push_back( tmp );
-				} else {
-					break;
-				}
-			}
-		}
-	}
+        if( tmp < 50000000 ) {
+          results.push_back( tmp );
+        } else {
+          break;
+        }
+      }
+    }
+  }
 
-	sort( results.begin(), results.end() );
-	return unique( results.begin(), results.end() ) - results.begin();
+  sort( results.begin(), results.end() );
+  return unique( results.begin(), results.end() ) - results.begin();
 }

@@ -31,5 +31,5 @@
 #include "../helper.hpp"
 
 uint64_t solve15() {
-	return choose( 40, 20 );
+  return choose( 40, 20 );
 }

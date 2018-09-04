@@ -26,31 +26,30 @@
 
 namespace euler45 {
 uint64_t genTri( uint64_t n ) {
-	return figurateNumber( 3, n );
+  return figurateNumber( 3, n );
 }
 
 uint64_t genHex( uint64_t n ) {
-	return figurateNumber( 6, n );
+  return figurateNumber( 6, n );
 }
-}
+} // namespace euler45
 
 uint64_t solve45() {
-	vector<uint64_t> triNumbers;
-	unordered_set<uint64_t> pentNumbers;
-	unordered_set<uint64_t> hexNumbers;
+  vector<uint64_t> triNumbers;
+  unordered_set<uint64_t> pentNumbers;
+  unordered_set<uint64_t> hexNumbers;
 
-	for( int i = 0; i < 55386; ++i ) {
-		triNumbers.push_back( euler45::genTri( i ) );
-		pentNumbers.insert( genPent( i ) );
-		hexNumbers.insert( euler45::genHex( i ) );
-	}
+  for( int i = 0; i < 55386; ++i ) {
+    triNumbers.push_back( euler45::genTri( i ) );
+    pentNumbers.insert( genPent( i ) );
+    hexNumbers.insert( euler45::genHex( i ) );
+  }
 
-	for( auto && num : triNumbers ) {
-		if( num > 40755 && pentNumbers.find( num ) != pentNumbers.end() && hexNumbers.find( num ) != hexNumbers.end() ) {
-			return num;
-		}
-	}
+  for( auto &&num: triNumbers ) {
+    if( num > 40755 && pentNumbers.find( num ) != pentNumbers.end() && hexNumbers.find( num ) != hexNumbers.end() ) {
+      return num;
+    }
+  }
 
-	return 0;
+  return 0;
 }
-

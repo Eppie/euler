@@ -20,17 +20,17 @@
 #include "../helper.hpp"
 
 int solve2() {
-	uint32_t term1 = 2;
-	uint32_t term2 = 0;
-	uint32_t tmp = 0;
-	uint32_t result = 0;
+  uint32_t term1 = 2;
+  uint32_t term2 = 0;
+  uint32_t tmp = 0;
+  uint32_t result = 0;
 
-	while( term1 < 4e6 ) {
-		result += term1;
-		tmp = ( 4 * term1 ) + term2;
-		term2 = term1;
-		term1 = tmp;
-	}
+  while( term1 < 4e6 ) {
+    result += term1;
+    tmp = ( 4 * term1 ) + term2;
+    term2 = term1;
+    term1 = tmp;
+  }
 
-	return result;
+  return result;
 }

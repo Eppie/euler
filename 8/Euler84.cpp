@@ -31,137 +31,137 @@
 #include "../helper.hpp"
 
 int solve84() {
-	uint32_t rolls = 500000;
-	uint32_t num_squares = 40;
-	uint32_t community_squares[3] = { 2, 17, 33 };
-	uint32_t chance_squares[3] = { 7, 22, 36 };
-	uint32_t next_railway[3] = { 15, 25,  5 }; // index x corresponds to chance_squares[x]
-	uint32_t next_utility[3] = { 12, 28, 12 }; // index x corresponds to chance_squares[x]
-	uint32_t chance_index = 0;
-	uint32_t community_index = 0;
+  uint32_t rolls = 500000;
+  uint32_t num_squares = 40;
+  uint32_t community_squares[3] = {2, 17, 33};
+  uint32_t chance_squares[3] = {7, 22, 36};
+  uint32_t next_railway[3] = {15, 25, 5};  // index x corresponds to chance_squares[x]
+  uint32_t next_utility[3] = {12, 28, 12}; // index x corresponds to chance_squares[x]
+  uint32_t chance_index = 0;
+  uint32_t community_index = 0;
 
-	uint32_t current = 0;
-	uint32_t doubles_count = 0;
-	vector<uint32_t> count( num_squares, 0 );
+  uint32_t current = 0;
+  uint32_t doubles_count = 0;
+  vector<uint32_t> count( num_squares, 0 );
 
-	for( uint32_t r = 0; r < rolls; ++r ) {
-		uint32_t die1 = ( random_int() % 4 ) + 1;
-		uint32_t die2 = ( random_int() % 4 ) + 1;
-		uint32_t next = ( current + die1 + die2 ) % num_squares;
+  for( uint32_t r = 0; r < rolls; ++r ) {
+    uint32_t die1 = ( random_int() % 4 ) + 1;
+    uint32_t die2 = ( random_int() % 4 ) + 1;
+    uint32_t next = ( current + die1 + die2 ) % num_squares;
 
-		// Rolled doubles?
-		if( die1 == die2 ) {
-			++doubles_count;
-		} else {
-			doubles_count = 0;
-		}
+    // Rolled doubles?
+    if( die1 == die2 ) {
+      ++doubles_count;
+    } else {
+      doubles_count = 0;
+    }
 
-		// Three doubles_count in a row?
-		if( doubles_count == 3 ) {
-			next = 10;
-			doubles_count = 0;
-		}
+    // Three doubles_count in a row?
+    if( doubles_count == 3 ) {
+      next = 10;
+      doubles_count = 0;
+    }
 
-		// Landed on a chance square
-		if( next == chance_squares[0] || next == chance_squares[1] || next == chance_squares[2] ) {
-			int id = 0;
+    // Landed on a chance square
+    if( next == chance_squares[0] || next == chance_squares[1] || next == chance_squares[2] ) {
+      int id = 0;
 
-			if( next == chance_squares[1] ) {
-				id = 1;
-			}
+      if( next == chance_squares[1] ) {
+        id = 1;
+      }
 
-			if( next == chance_squares[2] ) {
-				id = 2;
-			}
+      if( next == chance_squares[2] ) {
+        id = 2;
+      }
 
-			// Draw a chance card
-			switch( chance_index ) {
-				case 0:
-					next = 0;
-					break;
+      // Draw a chance card
+      switch( chance_index ) {
+        case 0:
+          next = 0;
+          break;
 
-				case 1:
-					next = 10;
-					break;
+        case 1:
+          next = 10;
+          break;
 
-				case 2:
-					next = 11;
-					break;
+        case 2:
+          next = 11;
+          break;
 
-				case 3:
-					next = 24;
-					break;
+        case 3:
+          next = 24;
+          break;
 
-				case 4:
-					next = 39;
-					break;
+        case 4:
+          next = 39;
+          break;
 
-				case 5:
-					next =  5;
-					break;
+        case 5:
+          next = 5;
+          break;
 
-				case 6:
-					next = ( next + num_squares - 3 ) % num_squares;
-					break;
+        case 6:
+          next = ( next + num_squares - 3 ) % num_squares;
+          break;
 
-				case 7:
-					next = next_railway[id];
-					break;
+        case 7:
+          next = next_railway[id];
+          break;
 
-				case 8:
-					next = next_utility[id];
-					break;
+        case 8:
+          next = next_utility[id];
+          break;
 
-				default:
-					break;
-			}
+        default:
+          break;
+      }
 
-			chance_index = ++chance_index % 16;
-		}
+      chance_index = ++chance_index % 16;
+    }
 
-		// Landed on a community square
-		if( next == community_squares[0] || next == community_squares[1] || next == community_squares[2] ) {
-			// Draw a community card
-			switch( community_index ) {
-				case 0:
-					next = 0;
-					break;
+    // Landed on a community square
+    if( next == community_squares[0] || next == community_squares[1] || next == community_squares[2] ) {
+      // Draw a community card
+      switch( community_index ) {
+        case 0:
+          next = 0;
+          break;
 
-				case 1:
-					next = 10;
-					break;
+        case 1:
+          next = 10;
+          break;
 
-				default:
-					break;
-			}
+        default:
+          break;
+      }
 
-			community_index = ++community_index % 16;
-		}
+      community_index = ++community_index % 16;
+    }
 
-		if( next == 30 ) {
-			next = 10;
-		}
+    if( next == 30 ) {
+      next = 10;
+    }
 
-		// Count the fact that we landed on this square
-		count[next]++;
-		current = next;
-	}
+    // Count the fact that we landed on this square
+    count[next]++;
+    current = next;
+  }
 
-	// Construct the result
-	map<uint32_t, uint32_t> sorted;
+  // Construct the result
+  map<uint32_t, uint32_t> sorted;
 
-	for( uint32_t i = 0; i < num_squares; i++ ) {
-		sorted.insert( make_pair( count[i], i ) );
-	}
+  for( uint32_t i = 0; i < num_squares; i++ ) {
+    sorted.insert( make_pair( count[i], i ) );
+  }
 
-	int result = 0;
-	int multiplier = 10000; // Used to shift the numbers to the correct places
-	auto i = sorted.rbegin();
+  int result = 0;
+  int multiplier = 10000; // Used to shift the numbers to the correct places
+  auto i = sorted.rbegin();
 
-	for( int j = 0; j < 3; ++i, ++j ) {
-		result += i->second * multiplier;
-		multiplier /= 100;
-	}
+  for( int j = 0; j < 3; ++i, ++j ) {
+    result += i->second * multiplier;
+    multiplier /= 100;
+  }
 
-	return result;
+  return result;
 }

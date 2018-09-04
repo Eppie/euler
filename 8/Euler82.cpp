@@ -29,40 +29,39 @@
 #define SIZE 80
 
 int solve82() {
-	vector<vector<int>> matrix;
-	vector<int> solution;
-	solution.reserve( SIZE );
+  vector<vector<int>> matrix;
+  vector<int> solution;
+  solution.reserve( SIZE );
 
-	for( auto && line : loadDataFromFile( "8/matrix.txt", '\n' ) ) {
-		vector<int> elems;
-		stringstream ss;
-		ss.str( line );
-		string item;
+  for( auto &&line: loadDataFromFile( "8/matrix.txt", '\n' ) ) {
+    vector<int> elems;
+    stringstream ss;
+    ss.str( line );
+    string item;
 
-		while( getline( ss, item, ',' ) ) {
-			elems.push_back( stoi( item ) );
-		}
+    while( getline( ss, item, ',' ) ) {
+      elems.push_back( stoi( item ) );
+    }
 
-		matrix.push_back( elems );
-	}
+    matrix.push_back( elems );
+  }
 
-	for( int i = 0; i < SIZE; ++i ) {
-		solution.push_back( matrix[i][SIZE - 1] );
-	}
+  for( int i = 0; i < SIZE; ++i ) {
+    solution.push_back( matrix[i][SIZE - 1] );
+  }
 
-	for( int i = SIZE - 2; i >= 0; --i ) {
-		solution[0] += matrix[0][i];
+  for( int i = SIZE - 2; i >= 0; --i ) {
+    solution[0] += matrix[0][i];
 
-		for( int j = 1; j < SIZE; ++j ) {
-			solution[j] = min( solution[j - 1] + matrix[j][i], solution[j] + matrix[j][i] );
-		}
+    for( int j = 1; j < SIZE; ++j ) {
+      solution[j] = min( solution[j - 1] + matrix[j][i], solution[j] + matrix[j][i] );
+    }
 
-		for( int j = SIZE - 2; j >= 0; --j ) {
-			solution[j] = min( solution[j], solution[j + 1] + matrix[j][i] );
-		}
-	}
+    for( int j = SIZE - 2; j >= 0; --j ) {
+      solution[j] = min( solution[j], solution[j + 1] + matrix[j][i] );
+    }
+  }
 
-	return *min_element( solution.begin(), solution.end() );
+  return *min_element( solution.begin(), solution.end() );
 }
 #undef SIZE
-

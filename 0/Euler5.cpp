@@ -21,14 +21,14 @@
 #include "../helper.hpp"
 
 uint32_t solve5() {
-	uint32_t limit = 20;
-	auto primes = sieve( limit + 1 );
-	uint32_t result = 1;
+  uint32_t limit = 20;
+  auto primes = sieve( limit + 1 );
+  uint32_t result = 1;
 
-	for( auto && prime : primes ) {
-		auto a = static_cast<int>( log( limit ) / log( prime ) );
-		result *= static_cast<int>( pow( prime, a ) );
-	}
+  for( auto &&prime: primes ) {
+    auto a = static_cast<int>( log( limit ) / log( prime ) );
+    result *= static_cast<int>( pow( prime, a ) );
+  }
 
-	return result;
+  return result;
 }

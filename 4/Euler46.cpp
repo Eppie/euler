@@ -29,32 +29,31 @@
 #include "../helper.hpp"
 
 int solve46() {
-	auto primes = sieve( 4500 );
+  auto primes = sieve( 4500 );
 
-	for( uint32_t i = 9; i < 10000; i += 2 ) {
-		if( isPrime( i ) ) {
-			continue;
-		}
+  for( uint32_t i = 9; i < 10000; i += 2 ) {
+    if( isPrime( i ) ) {
+      continue;
+    }
 
-		bool isGood = true;
+    bool isGood = true;
 
-		for( auto && prime : primes ) {
-			for( int j = 0; j < 100; ++j ) {
-				if( prime + ( 2 * ( j * j ) ) == i ) {
-					isGood = false;
-				}
-			}
+    for( auto &&prime: primes ) {
+      for( int j = 0; j < 100; ++j ) {
+        if( prime + ( 2 * ( j * j ) ) == i ) {
+          isGood = false;
+        }
+      }
 
-			if( !isGood ) {
-				break;
-			}
-		}
+      if( !isGood ) {
+        break;
+      }
+    }
 
-		if( isGood ) {
-			return i;
-		}
-	}
+    if( isGood ) {
+      return i;
+    }
+  }
 
-	return 0;
+  return 0;
 }
-

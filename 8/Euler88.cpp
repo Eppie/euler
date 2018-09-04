@@ -37,25 +37,25 @@ vector<int> n( KMAX, 2 * KMAX );
 
 namespace euler88 {
 void prodsum( int product, int sum, int num_factors, int start ) {
-	int k = product - sum + num_factors;
+  int k = product - sum + num_factors;
 
-	if( k < KMAX ) {
-		if( product < n[k] ) {
-			n[k] = product;
-		}
+  if( k < KMAX ) {
+    if( product < n[k] ) {
+      n[k] = product;
+    }
 
-		for( int i = start; i < ( KMAX / product * 2 ) + 1; ++i ) {
-			prodsum( product * i, sum + i, num_factors + 1, i );
-		}
-	}
+    for( int i = start; i < ( KMAX / product * 2 ) + 1; ++i ) {
+      prodsum( product * i, sum + i, num_factors + 1, i );
+    }
+  }
 }
-}
+} // namespace euler88
 
 #undef KMAX
 
 int solve88() {
-	euler88::prodsum( 1, 1, 1, 2 );
-	sort( n.begin(), n.end() );
-	auto itr = unique( n.begin(), n.end() );
-	return accumulate( n.begin() + 1, itr - 1, 0 );
+  euler88::prodsum( 1, 1, 1, 2 );
+  sort( n.begin(), n.end() );
+  auto itr = unique( n.begin(), n.end() );
+  return accumulate( n.begin() + 1, itr - 1, 0 );
 }

@@ -28,46 +28,46 @@
 namespace euler110 {
 static auto primes = sieve( 50 );
 uint32_t countDivisors( vector<uint32_t> primeFactorCounts ) {
-	uint32_t result = 1;
-	for( auto && i : primeFactorCounts ) {
-		if( i != 0 ) {
-			result *= ( 2 * i ) + 1;
-		}
-	}
-	return ( result + 1 ) / 2;
+  uint32_t result = 1;
+  for( auto &&i: primeFactorCounts ) {
+    if( i != 0 ) {
+      result *= ( 2 * i ) + 1;
+    }
+  }
+  return ( result + 1 ) / 2;
 }
 
 uint64_t calculateN( vector<uint32_t> primeFactorCounts ) {
-	uint64_t result = 1;
-	for( uint32_t i = 0; i < primeFactorCounts.size(); ++i ) {
-		if( primeFactorCounts[i] != 0 ) {
-			result *= static_cast<uint64_t>( pow( primes[i], primeFactorCounts[i] ) );
-		}
-	}
-	return result;
+  uint64_t result = 1;
+  for( uint32_t i = 0; i < primeFactorCounts.size(); ++i ) {
+    if( primeFactorCounts[i] != 0 ) {
+      result *= static_cast<uint64_t>( pow( primes[i], primeFactorCounts[i] ) );
+    }
+  }
+  return result;
 }
-}
+} // namespace euler110
 
 uint64_t solve110() {
-	uint64_t bestN = numeric_limits<uint64_t>::max();
-	auto numPrimes = static_cast<uint32_t>( logBaseN( ( 4000000 * 2 ) + 1, 3 ) + 1 );
-	uint32_t maxCount = 4;
-	vector<uint32_t> primeFactorCounts( numPrimes, 0 );
-	while( sum( primeFactorCounts ) < numPrimes * maxCount ) {
-		primeFactorCounts[0] += 1;
-		for( uint32_t i = 0; i < numPrimes - 1; ++i ) {
-			if( primeFactorCounts[i] > maxCount ) {
-				for( uint32_t j = 0; j <= i; ++j ) {
-					primeFactorCounts[j] = primeFactorCounts[i + 1] + 1;
-				}
-				primeFactorCounts[i+1] += 1;
-			}
-		}
-		auto d = euler110::countDivisors( primeFactorCounts );
-		auto n = euler110::calculateN( primeFactorCounts );
-		if( d > 4000000 && n < bestN ) {
-			bestN = n;
-		}
-	}
-	return bestN;
+  uint64_t bestN = numeric_limits<uint64_t>::max();
+  auto numPrimes = static_cast<uint32_t>( logBaseN( ( 4000000 * 2 ) + 1, 3 ) + 1 );
+  uint32_t maxCount = 4;
+  vector<uint32_t> primeFactorCounts( numPrimes, 0 );
+  while( sum( primeFactorCounts ) < numPrimes * maxCount ) {
+    primeFactorCounts[0] += 1;
+    for( uint32_t i = 0; i < numPrimes - 1; ++i ) {
+      if( primeFactorCounts[i] > maxCount ) {
+        for( uint32_t j = 0; j <= i; ++j ) {
+          primeFactorCounts[j] = primeFactorCounts[i + 1] + 1;
+        }
+        primeFactorCounts[i + 1] += 1;
+      }
+    }
+    auto d = euler110::countDivisors( primeFactorCounts );
+    auto n = euler110::calculateN( primeFactorCounts );
+    if( d > 4000000 && n < bestN ) {
+      bestN = n;
+    }
+  }
+  return bestN;
 }

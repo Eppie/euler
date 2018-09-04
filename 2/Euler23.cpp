@@ -27,51 +27,51 @@
 
 namespace euler23 {
 bool isAbundant( int n ) {
-	int result = 1;
+  int result = 1;
 
-	for( int i = 2; i <= sqrt( n ); ++i ) {
-		if( n % i == 0 ) {
-			result += i;
+  for( int i = 2; i <= sqrt( n ); ++i ) {
+    if( n % i == 0 ) {
+      result += i;
 
-			if( n / i > i ) {
-				result += n / i;
-			}
-		}
-	}
+      if( n / i > i ) {
+        result += n / i;
+      }
+    }
+  }
 
-	return result > n;
+  return result > n;
 }
 auto isAbundant_m = memoize( function<bool( int )>( isAbundant ) );
-}
+} // namespace euler23
 
 int solve23() {
-	vector<int> values;
-	int total = 0;
+  vector<int> values;
+  int total = 0;
 
-	for( int i = 1; i <= 28123; ++i ) {
-		total += i;
+  for( int i = 1; i <= 28123; ++i ) {
+    total += i;
 
-		if( euler23::isAbundant_m( i ) ) {
-			values.push_back( i );
-		}
-	}
+    if( euler23::isAbundant_m( i ) ) {
+      values.push_back( i );
+    }
+  }
 
-	int diff;
+  int diff;
 
-	for( int i = 1; i <= 28123; ++i ) {
-		for( auto && value : values ) {
-			diff = i - value;
+  for( int i = 1; i <= 28123; ++i ) {
+    for( auto &&value: values ) {
+      diff = i - value;
 
-			if( diff <= 0 ) {
-				continue;
-			}
+      if( diff <= 0 ) {
+        continue;
+      }
 
-			if( euler23::isAbundant_m( diff ) ) {
-				total -= i;
-				break;
-			}
-		}
-	}
+      if( euler23::isAbundant_m( diff ) ) {
+        total -= i;
+        break;
+      }
+    }
+  }
 
-	return total;
+  return total;
 }

@@ -22,35 +22,34 @@
 
 namespace euler39 {
 int solutions( int p ) {
-	int result = 0;
+  int result = 0;
 
-	for( int a = 1; a <= p; a++ ) {
-		for( int b = a; b <= p; b++ ) {
-			int c = p - a - b;
+  for( int a = 1; a <= p; a++ ) {
+    for( int b = a; b <= p; b++ ) {
+      int c = p - a - b;
 
-			if( b <= c && a * a + b * b == c * c ) {
-				result++;
-			}
-		}
-	}
+      if( b <= c && a * a + b * b == c * c ) {
+        result++;
+      }
+    }
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler39
 
 int solve39() {
-	int bestP = 0;
-	int bestT = 0;
+  int bestP = 0;
+  int bestT = 0;
 
-	for( int p = 1; p <= 1000; p++ ) {
-		int triangles = euler39::solutions( p );
+  for( int p = 1; p <= 1000; p++ ) {
+    int triangles = euler39::solutions( p );
 
-		if( triangles > bestT ) {
-			bestT = triangles;
-			bestP = p;
-		}
-	}
+    if( triangles > bestT ) {
+      bestT = triangles;
+      bestP = p;
+    }
+  }
 
-	return bestP;
+  return bestP;
 }
-

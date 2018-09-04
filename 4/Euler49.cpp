@@ -24,30 +24,29 @@
 #include "../helper.hpp"
 
 uint64_t solve49() {
-	vector<int> perms;
-	auto primes = sieve( 10000 );
+  vector<int> perms;
+  auto primes = sieve( 10000 );
 
-	for( auto && prime : primes ) {
-		if( prime < 1000 ) {
-			continue;
-		}
+  for( auto &&prime: primes ) {
+    if( prime < 1000 ) {
+      continue;
+    }
 
-		string s = to_string( prime );
+    string s = to_string( prime );
 
-		do {
-			if( isPrime( stoi( s ) ) ) {
-				perms.push_back( stoi( s ) );
-			}
-		} while( next_permutation( s.begin(), s.end() ) );
+    do {
+      if( isPrime( stoi( s ) ) ) {
+        perms.push_back( stoi( s ) );
+      }
+    } while( next_permutation( s.begin(), s.end() ) );
 
-		if( perms.size() == 3 && perms[0] + 3330 == perms[1] && perms[1] + 3330 == perms[2] ) {
-			auto result = static_cast<uint64_t>( perms[0] * 1e8 + perms[1] * 1e4 + perms[2] );
-			return result;
-		}
+    if( perms.size() == 3 && perms[0] + 3330 == perms[1] && perms[1] + 3330 == perms[2] ) {
+      auto result = static_cast<uint64_t>( perms[0] * 1e8 + perms[1] * 1e4 + perms[2] );
+      return result;
+    }
 
-		perms.clear();
-	}
+    perms.clear();
+  }
 
-	return 0;
+  return 0;
 }
-

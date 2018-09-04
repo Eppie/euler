@@ -26,17 +26,16 @@
 #include "../helper.hpp"
 
 int solve73() {
-	vector<int> n( 12001, 0 );
+  vector<int> n( 12001, 0 );
 
-	for( int d = 1; d <= 12000; ++d ) {
-		n[d] += ( ( d + 1 ) / 2 ) - ( ( d + 2 ) / 3 ) - 1;
+  for( int d = 1; d <= 12000; ++d ) {
+    n[d] += ( ( d + 1 ) / 2 ) - ( ( d + 2 ) / 3 ) - 1;
 
-		for( int i = d * 2; i <= 12000; i += d ) {
-			int k = n[i];
-			n[i] = k - n[d];
-		}
-	}
+    for( int i = d * 2; i <= 12000; i += d ) {
+      int k = n[i];
+      n[i] = k - n[d];
+    }
+  }
 
-	return sum( n );
+  return sum( n );
 }
-

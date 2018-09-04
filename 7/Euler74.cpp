@@ -40,53 +40,52 @@
 
 namespace euler74 {
 int process( int n ) {
-	// A similar caching method for this function was implemented, but it's faster to just recalculate the values
-	static int facs[10] = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
-	int result = 0;
+  // A similar caching method for this function was implemented, but it's faster to just recalculate the values
+  static int facs[10] = {1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880};
+  int result = 0;
 
-	while( n > 0 ) {
-		int digit = n % 10;
-		result += facs[digit];
-		n /= 10;
-	}
+  while( n > 0 ) {
+    int digit = n % 10;
+    result += facs[digit];
+    n /= 10;
+  }
 
-	return result;
+  return result;
 }
-}
+} // namespace euler74
 
 int solve74() {
-	int result = 0;
-	// largest observed value is 2177280
-	static int cache[2177281];
-	vector<int> seen;
+  int result = 0;
+  // largest observed value is 2177280
+  static int cache[2177281];
+  vector<int> seen;
 
-	for( int i = 1; i < 1000000; ++i ) {
-		int test = i;
-		int length = 0;
+  for( int i = 1; i < 1000000; ++i ) {
+    int test = i;
+    int length = 0;
 
-		while( find( seen.begin(), seen.end(), test ) == seen.end() ) {
-			seen.push_back( test );
-			test = euler74::process( test );
-			++length;
+    while( find( seen.begin(), seen.end(), test ) == seen.end() ) {
+      seen.push_back( test );
+      test = euler74::process( test );
+      ++length;
 
-			if( cache[test] != 0 ) {
-				length += cache[test];
-				break;
-			}
-		}
+      if( cache[test] != 0 ) {
+        length += cache[test];
+        break;
+      }
+    }
 
-		if( length == 60 ) {
-			++result;
-		}
+    if( length == 60 ) {
+      ++result;
+    }
 
-		for( auto && j : seen ) {
-			cache[j] = length;
-			--length;
-		}
+    for( auto &&j: seen ) {
+      cache[j] = length;
+      --length;
+    }
 
-		seen.clear();
-	}
+    seen.clear();
+  }
 
-	return result;
+  return result;
 }
-
