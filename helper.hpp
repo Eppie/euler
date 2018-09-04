@@ -17,31 +17,33 @@
 
 #pragma once
 
+#include "is_container.hpp"
+#include "memoizer.hpp"
+#include <algorithm>
 #include <bitset>
 #include <chrono>
-#include <iostream>
 #include <cmath>
-#include <algorithm>
-#include <vector>
-#include <list>
-#include <numeric>
-#include <unordered_set>
-#include <unordered_map>
-#include <map>
-#include <functional>
-#include <sstream>
-#include <fstream>
-#include <locale>
-#include <iomanip>
-#include <set>
 #include <cxxabi.h>
-#include <typeinfo>
+#include <fstream>
+#include <functional>
 #include <gmpxx.h>
+#include <iomanip>
+#include <iostream>
+#include <list>
+#include <locale>
+#include <map>
+#include <numeric>
 #include <queue>
 #include <random>
-#include "is_container.hpp"
+#include <set>
+#include <sstream>
+#include <typeinfo>
+#include <unordered_map>
+#include <unordered_set>
+#include <vector>
 
-#define printVariable(a) cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << (a) << " (line " << __LINE__ << ")" << endl
+#define printVariable( a )                                                                                             \
+  cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << ( a ) << " (line " << __LINE__ << ")" << endl
 
 using namespace std;
 
@@ -99,7 +101,7 @@ bool isPalindrome( uint64_t x, int b );
  */
 template <typename T>
 T sum( vector<T> input ) {
-	return accumulate( input.begin(), input.end(), static_cast<T>( 0 ) );
+  return accumulate( input.begin(), input.end(), static_cast<T>( 0 ) );
 }
 
 /*
@@ -110,7 +112,7 @@ T sum( vector<T> input ) {
  */
 template <typename T>
 T product( vector<T> input ) {
-	return accumulate( input.begin(), input.end(), static_cast<T>( 1 ), multiplies<>() );
+  return accumulate( input.begin(), input.end(), static_cast<T>( 1 ), multiplies<>() );
 }
 
 /*
@@ -123,23 +125,21 @@ T product( vector<T> input ) {
  * @return T
  */
 template <typename T>
-T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, int steps ) {
-	if( !(
-				0 <= y0 && y0 < static_cast<int>( grid.size() ) &&
-				0 <= y0 + ( steps - 1 ) * dy && y0 + ( steps - 1 ) * dy < static_cast<int>( grid.size() ) &&
-				0 <= x0 && x0 < static_cast<int>( grid[y0].size() ) &&
-				0 <= x0 + ( steps - 1 ) * dx && x0 + ( steps - 1 ) * dx < static_cast<int>( grid[y0].size() )
-			) ) {
-		return 0;
-	}
+T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, int steps ) {
+  if( !( 0 <= y0 && y0 < static_cast<int>( grid.size() ) && 0 <= y0 + ( steps - 1 ) * dy
+         && y0 + ( steps - 1 ) * dy < static_cast<int>( grid.size() ) && 0 <= x0
+         && x0 < static_cast<int>( grid[y0].size() ) && 0 <= x0 + ( steps - 1 ) * dx
+         && x0 + ( steps - 1 ) * dx < static_cast<int>( grid[y0].size() ) ) ) {
+    return 0;
+  }
 
-	T product = 1;
+  T product = 1;
 
-	for( int n = 0; n < steps; n++ ) {
-		product *= grid[y0 + n * dy][x0 + n * dx];
-	}
+  for( int n = 0; n < steps; n++ ) {
+    product *= grid[y0 + n * dy][x0 + n * dx];
+  }
 
-	return product;
+  return product;
 }
 
 /*
@@ -150,22 +150,22 @@ T productInDirection( vector<vector<T> > grid, int x0, int y0, int dx, int dy, i
  * @param function<outType(inType)> inFunc The function to memoize
  * @return function<outType(inType)> The memoized version of the function
  */
-template<typename inType, typename outType>
+template <typename inType, typename outType>
 function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
-	//return a lambda function
-	return [inFunc]( inType n ) {
-		static unordered_map<inType, outType> memo;
-		outType returnValue;
-		auto memoized = memo.find( n );
+  //return a lambda function
+  return [inFunc]( inType n ) {
+    static unordered_map<inType, outType> memo;
+    outType returnValue;
+    auto memoized = memo.find( n );
 
-		if( memoized != memo.end() ) {
-			return memoized->second;
-		}
+    if( memoized != memo.end() ) {
+      return memoized->second;
+    }
 
-		returnValue = inFunc( n );
-		memo[n] = returnValue;
-		return returnValue;
-	};
+    returnValue = inFunc( n );
+    memo[n] = returnValue;
+    return returnValue;
+  };
 }
 
 /*
@@ -196,7 +196,7 @@ uint64_t choose( const uint64_t &n, const uint64_t &k );
  * @param vector<vector<int> > rows
  * @return int
  */
-int maxSumPath( vector<vector<int> > rows );
+int maxSumPath( vector<vector<int>> rows );
 
 /*
  * Print out an iterable with separator of your choice, \n by default.
@@ -207,11 +207,11 @@ int maxSumPath( vector<vector<int> > rows );
  */
 template <typename I>
 void printIterable( I v, string sep = "\n", const string &end = "" ) {
-	for( auto it = v.begin(); it != v.end(); ++it ) {
-		cout << *it << sep;
-	}
+  for( auto it = v.begin(); it != v.end(); ++it ) {
+    cout << *it << sep;
+  }
 
-	cout << end;
+  cout << end;
 }
 
 /*
@@ -226,9 +226,9 @@ vector<string> loadDataFromFile( string filename, char delimiter = ',' );
  * @param T var
  * @return char* The type of var.
  */
-template<typename T>
-char* getType( T var ) {
-	return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
+template <typename T>
+char *getType( T var ) {
+  return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
 }
 
 /*
@@ -241,7 +241,7 @@ char* getType( T var ) {
  */
 template <typename Predicate, typename Container>
 bool all( Predicate p, const Container &xs ) {
-	return all_of( begin( xs ), end( xs ), p );
+  return all_of( begin( xs ), end( xs ), p );
 }
 
 /*
@@ -254,7 +254,7 @@ bool all( Predicate p, const Container &xs ) {
  */
 template <typename Predicate, typename Container>
 bool any( Predicate p, const Container &xs ) {
-	return any_of( begin( xs ), end( xs ), p );
+  return any_of( begin( xs ), end( xs ), p );
 }
 
 /*
@@ -265,31 +265,30 @@ bool any( Predicate p, const Container &xs ) {
  * @return bool
  */
 template <typename T>
-typename enable_if<is_container<T>::value, bool>::type
-isPandigital( T values ) {
-	unsigned int result = 0;
-	int digitCount = 0;
+typename enable_if<is_container<T>::value, bool>::type isPandigital( T values ) {
+  unsigned int result = 0;
+  int digitCount = 0;
 
-	for( auto val : values ) {
-		if( val < 1 ) {
-			return false;
-		}
+  for( auto val: values ) {
+    if( val < 1 ) {
+      return false;
+    }
 
-		while( val != 0 ) {
-			digitCount++;
-			int tmp = val % 10;
+    while( val != 0 ) {
+      digitCount++;
+      int tmp = val % 10;
 
-			// This check isn't necessary, but it lets us bail out early in some cases.
-			if( tmp < 1 || tmp > 9 ) {
-				return false;
-			}
+      // This check isn't necessary, but it lets us bail out early in some cases.
+      if( tmp < 1 || tmp > 9 ) {
+        return false;
+      }
 
-			result |= 1 << ( tmp - 1 );
-			val /= 10;
-		}
-	}
+      result |= 1 << ( tmp - 1 );
+      val /= 10;
+    }
+  }
 
-	return result == ( 1 << 9 ) - 1 && digitCount == 9;
+  return result == ( 1 << 9 ) - 1 && digitCount == 9;
 }
 
 /*
@@ -321,6 +320,7 @@ uint64_t figurateNumber( uint64_t r, uint64_t n );
  * TODO
  */
 mpz_class digitalSum( mpz_class x );
+uint32_t digitalSum( uint64_t x );
 
 /*
  * xorshift* algorithm
@@ -333,23 +333,23 @@ uint64_t random_int();
  */
 template <typename T>
 vector<vector<T>> combinations( vector<T> n, int r ) {
-	vector<vector<T>> result;
-	vector<bool> v( n.size() );
-	fill( v.end() - r, v.end(), true );
+  vector<vector<T>> result;
+  vector<bool> v( n.size() );
+  fill( v.end() - r, v.end(), true );
 
-	do {
-		vector<T> tmp;
+  do {
+    vector<T> tmp;
 
-		for( uint32_t i = 0; i < n.size(); ++i ) {
-			if( v[i] ) {
-				tmp.push_back( n[i] );
-			}
-		}
+    for( uint32_t i = 0; i < n.size(); ++i ) {
+      if( v[i] ) {
+        tmp.push_back( n[i] );
+      }
+    }
 
-		result.push_back( tmp );
-	} while( next_permutation( v.begin(), v.end() ) );
+    result.push_back( tmp );
+  } while( next_permutation( v.begin(), v.end() ) );
 
-	return result;
+  return result;
 }
 
 /*
@@ -357,13 +357,13 @@ vector<vector<T>> combinations( vector<T> n, int r ) {
  */
 template <typename T, typename U>
 bool floatCompare( T a, U b ) {
-	static double epsilon = 0.000000001;
+  static double epsilon = 0.000000001;
 
-	if( abs( a - b ) < epsilon ) {
-		return true;
-	} else {
-		return false;
-	}
+  if( abs( a - b ) < epsilon ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );
@@ -376,8 +376,8 @@ namespace functional {
  */
 template <typename Collection, typename unop>
 Collection map( Collection c, unop op ) {
-	transform( c.begin(), c.end(), c.begin(), op );
-	return c;
+  transform( c.begin(), c.end(), c.begin(), op );
+  return c;
 }
 
 /*
@@ -385,8 +385,24 @@ Collection map( Collection c, unop op ) {
  */
 template <typename T>
 vector<T> range( T start, T end ) {
-	vector<T> result( end - start + 1 );
-	iota( result.begin(), result.end(), start );
-	return result;
+  vector<T> result( end - start + 1 );
+  iota( result.begin(), result.end(), start );
+  return result;
 }
-}
+} // namespace functional
+
+auto fill_count = memo::memoize<uint64_t( int, int )>( []( auto &fill_count_internal, int m, int n ) -> uint64_t {
+  uint64_t result = 1;
+
+  for( int s = 0; s <= m - n; ++s ) {
+    for( int b = n; b <= m - s; ++b ) {
+      if( m - s - b - 1 < n ) {
+        result += 1;
+      } else {
+        result += fill_count_internal( m - s - b - 1, n );
+      }
+    }
+  }
+
+  return result;
+} );

@@ -22,7 +22,7 @@
 #include "../helper.hpp"
 
 namespace euler60 {
-auto isPrime_m = memoize( function<bool( uint64_t )>( isPrime ) );
+auto isPrime_m = memo::memoize( isPrime );
 
 bool singleCheck( uint64_t a, uint64_t b ) {
 	uint64_t pow = 10;

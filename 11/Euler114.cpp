@@ -30,28 +30,6 @@
 
 #include "../helper.hpp"
 
-namespace euler114 {
-function<uint64_t( int )> F_m;
-uint64_t F( int m ) {
-	uint64_t result = 1;
-
-	for( int s = 0; s <= m - 3; ++s ) {
-		for( int b = 3; b <= m - s; ++b ) {
-			if( m - s - b - 1 < 3 ) {
-				result += 1;
-			} else {
-				result += F_m( m - s - b - 1 );
-			}
-		}
-	}
-
-	return result;
-}
-}
-
 uint64_t solve114() {
-	euler114::F_m = euler114::F;
-	euler114::F_m = memoize( euler114::F_m );
-	return euler114::F_m( 50 );
+  return fill_count( 50, 3 );
 }
-
