@@ -137,3 +137,4 @@ uint64_t solve116();
 uint64_t solve117();
 uint32_t solve118();
 uint64_t solve119();
+uint32_t solve120();

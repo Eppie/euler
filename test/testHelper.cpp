@@ -29,18 +29,10 @@ TEST( numDigits, Test8 ) {
   }
 }
 
-TEST( mulMod, ModZero ) {
-  for( int i = 0; i <= 1000; ++i ) {
-    for( int j = 0; j <= 1000; ++j ) {
-      ASSERT_EQ( i * j, mulMod( i, j, 0 ) );
-    }
-  }
-}
-
 TEST( mulMod, HigherMod ) {
-  for( int i = 0; i <= 1000; ++i ) {
-    for( int j = 0; j <= 1000; ++j ) {
-      for( int m = 1; m <= 1000; ++m ) {
+  for( int i = 0; i <= 100; ++i ) {
+    for( int j = 0; j <= 100; ++j ) {
+      for( int m = 1; m <= 100; ++m ) {
         //cout << i << ", " << j << ", " << m << endl;
         ASSERT_EQ( ( i * j ) % m, mulMod( i, j, m ) );
       }

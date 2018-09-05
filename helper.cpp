@@ -432,26 +432,14 @@ unsigned int numDigits( uint64_t v ) {
  * @return uint64_t
  */
 uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus ) {
-  if( modulus == 0 ) {
-    return a * b;
-  }
-
-  uint64_t r = 0;
-
-  while( a > 0 ) {
-    if( a % 2 )
-      if( ( r += b ) > modulus ) {
-        r %= modulus;
-      }
-
-    a >>= 1;
-
-    if( ( b <<= 1 ) > modulus ) {
-      b %= modulus;
-    }
-  }
-
-  return r;
+  uint64_t result;
+  uint64_t unused; // dummy output, unused, to tell GCC that RAX register is modified by this snippet
+  asm( "mulq %3\n\t"
+       "divq %4"
+       : "=a"( unused ), "=&d"( result )
+       : "a"( a ), "rm"( b ), "rm"( modulus )
+       : "cc" );
+  return result;
 }
 
 /*

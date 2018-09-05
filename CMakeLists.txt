@@ -9,7 +9,7 @@ add_definitions(-std=c++14 -g -Ofast -Weverything -march=native -mtune=native -W
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-file(GLOB_RECURSE euler_source [0-9]/*.cpp 10/*.cpp 11/*.cpp main.cpp helper.cpp is_container.hpp)
+file(GLOB_RECURSE euler_source [0-9]/*.cpp 1[0-9]/*.cpp main.cpp helper.cpp is_container.hpp)
 file(GLOB test_source test/*.cpp helper.cpp)
 
 add_executable(euler ${euler_source})
