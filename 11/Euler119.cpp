@@ -6,15 +6,15 @@
  *    Description:  Solution to Project Euler, Problem 119
  *
  *        Version:  1.0
- *        Created:  9/04/2018 8:015:16 AM
+ *        Created:  9/04/2018 8:15:16 AM
  *       Revision:  none
  *       Compiler:  g++
  *
  *         Author:  Andrew Epstein
- *        Problem:  The number 512 is interesting because it is equal to the sum of its digits raised to some power: 5 + 1 + 2 = 8, and 83 = 512.
- *                  Another example of a number with this property is 614656 = 284.
- *                  We shall define an to be the nth term of this sequence and insist that a number must contain at least two digits to have a sum.
- *                  You are given that a2 = 512 and a10 = 614656. Find a30.
+ *        Problem:  The number 512 is interesting because it is equal to the sum of its digits raised to some power: 5 + 1 + 2 = 8, and 8³ = 512.
+ *                  Another example of a number with this property is 614656 = 28⁴.
+ *                  We shall define aₙ to be the nth term of this sequence and insist that a number must contain at least two digits to have a sum.
+ *                  You are given that a₂ = 512 and a₁₀ = 614656. Find a₃₀.
  *         Answer:  248155780267521
  *
  * =====================================================================================
