@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 120
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  9/04/2018 11:49:36 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -25,12 +25,7 @@
 uint32_t solve120() {
   uint32_t result = 0;
   for( uint64_t a = 3; a <= 1000; ++a ) {
-    uint64_t bestR = 0;
-    for( uint64_t n = 1; n <= 1495; n += 2 ) {
-      uint64_t r = ( powMod( a - 1, n, a * a ) + powMod( a + 1, n, a * a ) ) % ( a * a );
-      bestR = max( bestR, r );
-    }
-    result += bestR;
+    result += 2 * a * ( ( a - 1 ) / 2 );
   }
 
   return result;
