@@ -24,7 +24,7 @@
 
 uint32_t solve120() {
   uint32_t result = 0;
-  for( uint64_t a = 3; a <= 1000; ++a ) {
+  for( uint32_t a = 3; a <= 1000; ++a ) {
     result += 2 * a * ( ( a - 1 ) / 2 );
   }
 
