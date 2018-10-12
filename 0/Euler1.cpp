@@ -26,7 +26,7 @@ int sumOfMultiplesBelowLimit( int L, int mod ) {
 }
 } // namespace euler1
 
-int solve1() {
+uint32_t solve1() {
   int L = 1000;
   int result = euler1::sumOfMultiplesBelowLimit( L, 3 );
   result += euler1::sumOfMultiplesBelowLimit( L, 5 );
