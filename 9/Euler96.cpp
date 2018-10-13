@@ -21,6 +21,8 @@
 
 #include "../helper.hpp"
 
+using std::ifstream;
+
 #define NUM_PUZZLES 50
 
 namespace euler96 {

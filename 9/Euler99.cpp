@@ -19,6 +19,10 @@
 
 #include "../helper.hpp"
 
+using std::ifstream;
+using std::istringstream;
+using std::string;
+
 uint32_t solve99() {
   double best = 0;
   uint32_t result = 0;

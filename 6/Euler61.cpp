@@ -32,6 +32,11 @@
 
 #include "../helper.hpp"
 
+using std::make_tuple;
+using std::map;
+using std::tuple;
+using std::vector;
+
 // This will be a dictionary with keys of tuples, and values of vectors of tuples.
 // It will let us look up candidates for the next value in the chain
 // Example: ds[( 5, 1926 )] == { ( 8, 2640 ), ( 7, 2673 ), ( 3, 2628 ) }

@@ -45,7 +45,12 @@
 #define printVariable( a )                                                                                             \
   cout << __PRETTY_FUNCTION__ << ":" << #a << ": " << ( a ) << " (line " << __LINE__ << ")" << endl
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::function;
+using std::multiplies;
+using std::string;
+using std::vector;
 
 /*
  * This function returns a vector of all the prime factors of an integer n.

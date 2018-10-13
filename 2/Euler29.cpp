@@ -18,6 +18,8 @@
 
 #include "../helper.hpp"
 
+using std::set;
+
 int solve29() {
   set<double> results;
 

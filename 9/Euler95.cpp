@@ -28,6 +28,9 @@
 
 #include "../helper.hpp"
 
+using std::numeric_limits;
+using std::vector;
+
 uint32_t solve95() {
   const uint32_t limit = 1000000;
   uint32_t result = 0;

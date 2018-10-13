@@ -27,6 +27,10 @@
 
 #include "../helper.hpp"
 
+using std::greater;
+using std::priority_queue;
+using std::stringstream;
+
 #define SIZE 80
 
 struct Node {

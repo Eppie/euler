@@ -22,6 +22,8 @@
 
 #include "../helper.hpp"
 
+using std::to_string;
+
 int solve40() {
   int result = 1;
   string s;

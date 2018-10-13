@@ -25,6 +25,8 @@
 
 #include "../helper.hpp"
 
+using std::numeric_limits;
+
 namespace euler110 {
 static auto primes = sieve( 50 );
 uint32_t countDivisors( vector<uint32_t> primeFactorCounts ) {

@@ -22,6 +22,9 @@
 
 #include "../helper.hpp"
 
+using std::set;
+using std::vector;
+
 namespace euler42 {
 int wordValue( string word ) {
   int result = 0;

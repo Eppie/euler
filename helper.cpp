@@ -17,6 +17,12 @@
 
 #include "helper.hpp"
 
+using std::cerr;
+using std::fill_n;
+using std::ifstream;
+using std::invalid_argument;
+using std::max;
+
 /*
  * This function returns a vector of all the prime factors of an integer n.
  * Example: n = 1000 --> 2 * 2 * 2 * 5 * 5 * 5 == 8 * 125 == 1000

@@ -26,6 +26,9 @@
 
 #include "../helper.hpp"
 
+using std::min;
+using std::stringstream;
+
 #define SIZE 80
 
 int solve82() {

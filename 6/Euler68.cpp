@@ -19,6 +19,9 @@
 
 #include "../helper.hpp"
 
+using std::next_permutation;
+using std::to_string;
+
 uint64_t solve68() {
   uint64_t result = 0;
 

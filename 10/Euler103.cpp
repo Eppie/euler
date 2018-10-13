@@ -35,6 +35,9 @@
 
 #define N 7
 
+using std::accumulate;
+using std::sort;
+
 namespace euler103 {
 void makeSubsetSums( const int64_t *a, int *b ) {
   int sum;

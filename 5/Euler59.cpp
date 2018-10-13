@@ -32,6 +32,12 @@
 
 #include "../helper.hpp"
 
+using std::abs;
+using std::cerr;
+using std::ifstream;
+using std::invalid_argument;
+using std::vector;
+
 // Percentage frequencies of characters a-z and space in a large corpus of English text.
 // The idea is to compare the frequency of these characters in the decrypted message,
 // and the message that is the least different is probably the correct decryption.

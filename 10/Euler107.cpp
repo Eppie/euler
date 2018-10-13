@@ -19,6 +19,14 @@
 
 #include "../helper.hpp"
 
+using std::make_pair;
+using std::map;
+using std::pair;
+using std::priority_queue;
+using std::set;
+using std::stringstream;
+using std::swap;
+
 namespace euler107 {
 map<pair<uint32_t, uint32_t>, uint32_t> network;
 set<uint32_t> nodes;

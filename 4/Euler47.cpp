@@ -29,6 +29,9 @@
 
 #include "../helper.hpp"
 
+using std::set;
+using std::vector;
+
 int solve47() {
   // factorCount will store the counts of distinct factors for the previous four i's.
   // We will index it by i % 4, essentially treating it as a rotating array.

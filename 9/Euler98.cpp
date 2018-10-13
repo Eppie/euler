@@ -25,6 +25,10 @@
 
 #include "../helper.hpp"
 
+using std::map;
+using std::max;
+using std::stringstream;
+
 namespace euler98 {
 uint32_t solve( string a, string b, vector<uint32_t> &squares ) {
   uint32_t result = 0;

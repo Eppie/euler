@@ -21,6 +21,8 @@
 
 #include "../helper.hpp"
 
+using std::min;
+
 int solve91() {
   uint32_t n = 50;
   uint32_t t = 0;

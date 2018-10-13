@@ -18,6 +18,8 @@
 
 #include "../helper.hpp"
 
+using std::max;
+
 int solve11() {
   int best = 0;
   vector<vector<int>> g( 20 );

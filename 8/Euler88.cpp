@@ -33,6 +33,9 @@
 
 #define KMAX 12001
 
+using std::accumulate;
+using std::vector;
+
 vector<int> n( KMAX, 2 * KMAX );
 
 namespace euler88 {

@@ -21,6 +21,10 @@
 
 #include "../helper.hpp"
 
+using std::accumulate;
+using std::set;
+using std::vector;
+
 int solve32() {
   set<int> products;
 

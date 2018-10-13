@@ -24,6 +24,9 @@
 
 #include "../helper.hpp"
 
+using std::unordered_set;
+using std::vector;
+
 namespace euler45 {
 uint64_t genTri( uint64_t n ) {
   return figurateNumber( 3, n );

@@ -25,6 +25,8 @@
 
 #include "../helper.hpp"
 
+using std::ifstream;
+
 namespace euler102 {
 int32_t area( int32_t x1, int32_t y1, int32_t x2, int32_t y2, int32_t x3, int32_t y3 ) {
   return abs( ( x1 - x3 ) * ( y2 - y1 ) - ( x1 - x2 ) * ( y3 - y1 ) );

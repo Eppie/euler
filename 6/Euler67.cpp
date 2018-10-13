@@ -28,6 +28,10 @@
 
 #include "../helper.hpp"
 
+using std::ifstream;
+using std::stringstream;
+using std::vector;
+
 int solve67() {
   vector<vector<int>> rows;
   ifstream input( "6/triangle.txt" );

@@ -18,6 +18,14 @@
 #include "main.hpp"
 #include "helper.hpp"
 
+using std::cerr;
+using std::fixed;
+using std::locale;
+using std::stringstream;
+using std::chrono::duration_cast;
+using std::chrono::high_resolution_clock;
+using std::chrono::microseconds;
+
 int main( int argc, char *argv[] ) {
   if( argc < 2 ) {
     cerr << "Usage: " << argv[0] << " <Problem #>" << endl;
@@ -26,7 +34,7 @@ int main( int argc, char *argv[] ) {
 
   auto x = atoi( argv[1] );
 
-  auto begin = chrono::high_resolution_clock::now();
+  auto begin = high_resolution_clock::now();
 
   switch( x ) {
     case 1:
@@ -517,15 +525,23 @@ int main( int argc, char *argv[] ) {
       cout << solve122() << endl;
       break;
 
+    case 123:
+      cout << solve123() << endl;
+      break;
+
+    //case 124:
+      //cout << solve124() << endl;
+      //break;
+
     default:
       cout << "Oops, didn't solve that one yet!" << endl;
       break;
   }
 
-  auto end = chrono::high_resolution_clock::now();
+  auto end = high_resolution_clock::now();
   stringstream ss;
   ss.imbue( locale( "" ) );
-  ss << fixed << chrono::duration_cast<chrono::microseconds>( end - begin ).count() << "μs";
+  ss << fixed << duration_cast<microseconds>( end - begin ).count() << "μs";
   cout << ss.str() << endl;
 
   return 0;

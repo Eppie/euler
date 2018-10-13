@@ -50,6 +50,11 @@
 
 #include "../helper.hpp"
 
+using std::cerr;
+using std::ifstream;
+using std::invalid_argument;
+using std::stringstream;
+
 namespace euler54 {
 /*
  * Count how many of each card appears in the hand

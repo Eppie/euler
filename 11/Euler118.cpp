@@ -20,6 +20,9 @@
  */
 
 #include "../helper.hpp"
+
+using std::next_permutation;
+
 namespace euler118 {
 
 uint8_t perm[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};

@@ -27,6 +27,9 @@
 
 #include "../helper.hpp"
 
+using std::stringstream;
+using std::vector;
+
 namespace euler105 {
 vector<uint32_t> makeSubsetSums( vector<uint32_t> a ) {
   int sum;

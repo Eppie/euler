@@ -23,6 +23,8 @@
 
 #include "../helper.hpp"
 
+using std::max;
+
 int solve38() {
   int result = 0;
 

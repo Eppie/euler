@@ -23,6 +23,9 @@
 
 #include "../helper.hpp"
 
+using std::to_string;
+using std::vector;
+
 uint64_t solve49() {
   vector<int> perms;
   auto primes = sieve( 10000 );

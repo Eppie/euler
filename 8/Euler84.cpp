@@ -30,6 +30,9 @@
 
 #include "../helper.hpp"
 
+using std::make_pair;
+using std::map;
+
 int solve84() {
   uint32_t rolls = 500000;
   uint32_t num_squares = 40;
