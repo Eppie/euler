@@ -96,7 +96,18 @@ bool isPalindrome( string s );
  * @param int b
  * @return bool
  */
-bool isPalindrome( uint64_t x, int b );
+template <int b>
+bool isPalindrome( uint64_t x ) {
+  uint64_t reversed = 0;
+  int k = x;
+
+  while( k > 0 ) {
+    reversed = b * reversed + k % b;
+    k /= b;
+  }
+
+  return x == reversed;
+}
 
 /*
  * Return the sum of all numbers in a vector.

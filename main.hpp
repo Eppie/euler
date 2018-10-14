@@ -142,3 +142,4 @@ uint32_t solve121();
 uint32_t solve122();
 uint32_t solve123();
 uint32_t solve124();
+uint32_t solve125();

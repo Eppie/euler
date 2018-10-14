@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 36
  *
- *        Version:  1.0
+ *        Version:  1.1
  *        Created:  3/14/2016 11:46:13 PM
  *       Revision:  none
  *       Compiler:  g++
@@ -23,7 +23,7 @@ int solve36() {
   int result = 0;
 
   for( int i = 0; i < 1e6; i++ ) {
-    if( isPalindrome( i, 10 ) && isPalindrome( i, 2 ) ) {
+    if( isPalindrome<10>( i ) && isPalindrome<2>( i ) ) {
       result += i;
     }
   }

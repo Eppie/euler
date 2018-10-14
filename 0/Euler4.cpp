@@ -5,7 +5,7 @@
  *
  *    Description:  Solution to Project Euler, Problem 4
  *
- *        Version:  1.1
+ *        Version:  1.2
  *        Created:  07/29/2015 10:51:45 AM
  *       Revision:  none
  *       Compiler:  g++
@@ -28,7 +28,7 @@ uint32_t solve4() {
     for( uint32_t j = 999; j >= 100; --j ) {
       test = i * j;
 
-      if( isPalindrome( test, 10 ) ) {
+      if( isPalindrome<10>( test ) ) {
         result = test > result ? test : result;
       }
     }
