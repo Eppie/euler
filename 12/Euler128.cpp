@@ -59,5 +59,5 @@ uint64_t solve128() {
       ++count;
     }
   }
-     return 3 * n * n - 3 * n + 2;
+  return 3 * n * n - 3 * n + 2;
 }
