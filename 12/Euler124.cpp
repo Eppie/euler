@@ -73,14 +73,14 @@ uint32_t rad( uint32_t n ) {
 uint32_t solve124() {
   vector<uint64_t> v;
 
-  for( int n = 1; n <= 100000; ++n ) {
+  for( uint32_t n = 1; n <= 100000; ++n ) {
     uint64_t rn = euler124::rad( n );
     // Store rn in the upper 32 bits, and n in the lower 32 bits
-    v.push_back( ( rn << 32 ) | n );
+    v.push_back( ( rn << 32U ) | n );
   }
 
   nth_element( v.begin(), v.begin() + 10000, v.end() );
 
   // Mask off n (lower 32 bits) and return
-  return v[9999] & ( ( 1ULL << 32 ) - 1 );
+  return v[9999] & ( ( 1ULL << 32U ) - 1 );
 }
