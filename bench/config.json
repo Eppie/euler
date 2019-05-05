@@ -1,0 +1,9 @@
+[
+  {
+    "name":"clang",
+    "engine":"internal",
+    "engine_args":["-std=c++17"],
+    "use_precompiled_headers":true,
+    "preprocessor_mode":false
+  }
+]

@@ -1,7 +1,7 @@
-#include "omp.h"
 #include <cstdio>
 #include <cstdlib>
 #include <vector>
+#include <cstdint>
 
 using std::vector;
 
@@ -58,7 +58,6 @@ bool is_SPRP( uint32_t n, uint32_t a ) {
 }
 
 int main() {
-  omp_set_num_threads( 8 );
   sieveOfE();
 #pragma omp parallel for
   for( uint32_t i = 3; i < 4294967295; i += 2 ) {

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
 
-#define TABLE_SIZE 224
+#define TABLE_SIZE 256
 
 uint16_t hash( uint32_t n ) {
   long long t = n;
