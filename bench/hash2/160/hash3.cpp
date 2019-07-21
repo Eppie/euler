@@ -96,7 +96,8 @@ int main() {
           }
           if( i > bestIndex ) {
             bestIndex = i;
-            fprintf( stderr, "New best: %u / %u, with base %u, for hash value %u, swapCounter = %u\n", bestIndex, v, base, f, swapCounter );
+            fprintf( stderr, "New best: %u / %u, with base %u, for hash value %u, swapCounter = %u\n", bestIndex, v,
+                     base, f, swapCounter );
           } else if( base % 1000000 == 0 ) {
             fprintf( stderr, "At base %u for hash value %u, swapCounter = %u\n", base, f, swapCounter );
           }
@@ -105,7 +106,8 @@ int main() {
       }
       if( isGood ) {
         ++numDone;
-        fprintf( stderr, "------------Base %d is good for hash value %d! swapCounter = %u. (%d/%d)\n", base, f, swapCounter, numDone, TABLE_SIZE );
+        fprintf( stderr, "------------Base %d is good for hash value %d! swapCounter = %u. (%d/%d)\n", base, f,
+                 swapCounter, numDone, TABLE_SIZE );
         printf( "%d, %d\n", base, f );
         break;
       } else {

@@ -18,7 +18,8 @@ int main() {
     files[i] = fopen( fname, "a" );
   }
   for( uint64_t i = 3; i <= ( 1ULL << 32 ) - 1; i += 2 ) {
-    if( i % 3 != 0 && i % 5 != 0 && i % 7 != 0 && i % 11 != 0 && i % 13 != 0 && i % 17 != 0 && i % 19 != 0 && i % 23 != 0 ) {
+    if( i % 3 != 0 && i % 5 != 0 && i % 7 != 0 && i % 11 != 0 && i % 13 != 0 && i % 17 != 0 && i % 19 != 0
+        && i % 23 != 0 ) {
       uint16_t h = hash( static_cast<uint32_t>( i ) );
       fprintf( files[h], "%llu\n", i );
     }

@@ -36,11 +36,11 @@ int main() {
   for( uint32_t i = 0; i < TABLE_SIZE; ++i ) {
     char fname[100];
     sprintf( fname, "%hu.txt", i );
-    FILE* f = fopen( fname, "a" );
+    FILE *f = fopen( fname, "a" );
     for( uint32_t j = 0; j < positions[i]; ++j ) {
       fprintf( f, "%u\n", a[i][j] );
     }
-    fclose(f);
+    fclose( f );
     delete[] a[i];
   }
 

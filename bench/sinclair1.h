@@ -179,7 +179,7 @@ ullint powmod2( ullint i, ullint j, ullint k ) {
   return r;
 }
 
-//Function: void mpz_powm_ui (mpz_t rop, const mpz_t base, unsigned long int exp, const mpz_t mod)
+// Function: void mpz_powm_ui (mpz_t rop, const mpz_t base, unsigned long int exp, const mpz_t mod)
 
 ullint powmod( ullint i, ullint j, ullint k ) {
   ullint result;
@@ -189,7 +189,7 @@ ullint powmod( ullint i, ullint j, ullint k ) {
   mpz_init_set_ui( x, i );
   mpz_init_set_ui( y, j );
   mpz_init_set_ui( z, k );
-  mpz_powm_ui(y, x, j, z);
+  mpz_powm_ui( y, x, j, z );
   result = mpz_get_ui( y );
   return result;
 }

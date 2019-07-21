@@ -91,7 +91,7 @@ int main() {
         printf( "%d, %d\n", base, f );
       } else {
         isGood = true;
-        fprintf(stderr, "Base %d was bad for hash %d\n", base, f);
+        fprintf( stderr, "Base %d was bad for hash %d\n", base, f );
       }
       ++base;
       if( base > 65536 ) {

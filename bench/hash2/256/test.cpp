@@ -24,7 +24,7 @@ int main( /*int argc,*/ /*char **argv*/ ) {
     auto [base, hash] = h;
     for( auto &&value: hash ) {
       counts[value]++;
-//    printf("%d, %d\n", base, value);
+      //    printf("%d, %d\n", base, value);
     }
     count = 0;
     for( int i = 0; i < 256; ++i ) {
@@ -32,9 +32,9 @@ int main( /*int argc,*/ /*char **argv*/ ) {
     }
     if( count < prev_count ) {
       result.push_back( base );
-      printf("Added: %d\n", base);
+      printf( "Added: %d\n", base );
     } else {
-      printf("Skipped: %d\n", base);
+      printf( "Skipped: %d\n", base );
     }
     prev_count = count;
   }

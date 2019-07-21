@@ -10,10 +10,10 @@ using std::atoi;
 
 uint16_t hash( uint32_t n ) {
   long long t = n;
-  printf("%" PRId64 "\n", t);
-  printf("%" PRId64 "\n", (t >> 16));
-  printf("%" PRId64 "\n", (t >> 16) ^ t);
-  printf("%" PRId64 "\n", (( ( t >> 16 ) ^ t ) * 0x45d9f3b) % 512);
+  printf( "%" PRId64 "\n", t );
+  printf( "%" PRId64 "\n", ( t >> 16 ) );
+  printf( "%" PRId64 "\n", ( t >> 16 ) ^ t );
+  printf( "%" PRId64 "\n", ( ( ( t >> 16 ) ^ t ) * 0x45d9f3b ) % 512 );
   t = ( ( t >> 16 ) ^ t ) * 0x45d9f3b; // 0x3335b369
   return t % 512;
 }
@@ -24,7 +24,7 @@ int main( int argc, char **argv ) {
   uint64_t result = 0;
   for( uint32_t i = 0; i < LIMIT; ++i ) {
     values[i] = hash( i + a );
-    printf("%" PRId64 "\n", values[i]);
+    printf( "%" PRId64 "\n", values[i] );
   }
   for( uint32_t i = 0; i < LIMIT; ++i ) {
     result += values[i];

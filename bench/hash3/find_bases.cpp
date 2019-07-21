@@ -91,7 +91,7 @@ int main() {
         if( isPrimeE( v ) != prp( v, base ) ) {
           isGood = false;
           if( i > swapCounter ) {
-    //        printf( "%u\n", v );
+            //        printf( "%u\n", v );
             uint32_t tmp = values[swapCounter];
             values[swapCounter] = v;
             values[i] = tmp;

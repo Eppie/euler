@@ -9,13 +9,13 @@
 #include "FJ32_256.cc"
 #include "FJ64_16k.cc"
 //#include "FJ64_262K.cc"
+#include "AE32_1024.cpp"
 #include "AE32_128.cpp"
 #include "AE32_144.cpp"
+#include "AE32_1536.cpp"
 #include "AE32_176.cpp"
 #include "AE32_256.cpp"
 #include "AE32_512.cpp"
-#include "AE32_1536.cpp"
-#include "AE32_1024.cpp"
 #include "AE32_768.cpp"
 #include "sinclair1.h"
 #include "sprp64.h"
@@ -175,7 +175,9 @@ auto test( function<bool( inType )> f ) {
   for( inType i = 1; i < TESTS; i += 2 ) {
     bool actual = f( i );
     bool expected = isPrimeE( i );
-    if( actual != expected) { cout << i << endl; }
+    if( actual != expected ) {
+      cout << i << endl;
+    }
   }
   auto end = high_resolution_clock::now();
   auto ns = static_cast<double>( duration_cast<nanoseconds>( end - begin ).count() );
@@ -187,36 +189,36 @@ auto test( function<bool( inType )> f ) {
 int main() {
   sieveOfE();
 
-  printf("AE32_768: ");
+  printf( "AE32_768: " );
   test<uint32_t>( AE32_768 ); // 101.51
-  printf("AE32_1024: ");
+  printf( "AE32_1024: " );
   test<uint32_t>( AE32_1024 ); // 101.51
-  printf("AE32_1536: ");
+  printf( "AE32_1536: " );
   test<uint32_t>( AE32_1536 ); // 112.371
-  printf("AE32_512: ");
+  printf( "AE32_512: " );
   test<uint32_t>( AE32_512 ); // 118.257
-  printf("AE32_256: ");
+  printf( "AE32_256: " );
   test<uint32_t>( AE32_256 ); // 124.499
-  printf("AE32_176: ");
+  printf( "AE32_176: " );
   test<uint32_t>( AE32_176 ); // 100.701
-  printf("AE32_144: ");
+  printf( "AE32_144: " );
   test<uint32_t>( AE32_144 ); // 114.318
-  printf("AE32_128: ");
+  printf( "AE32_128: " );
   test<uint32_t>( AE32_128 ); // 97.8173
 
-  printf("worley: ");
-  test<uint32_t>( worley );   // 144.364
+  printf( "worley: " );
+  test<uint32_t>( worley ); // 144.364
   // test<uint64_t>( isPrime1e15 ); // 1139.02
   // test<uint64_t>( isPrimeSuperNaive ); // 1161.64
   // test<uint64_t>( isPrimeNaive ); // 412.839
-  printf("efficient_mr64: ");
+  printf( "efficient_mr64: " );
   test<uint64_t>( efficient_mr64 ); // 229.948
-  printf("FJ32_256: ");
-  test<uint32_t>( FJ32_256 );       // 140.656
-  printf("FJ32_1024: ");
-  test<uint32_t>( FJ32_1024 );      // 136.591
-  printf("FJ64_16k: ");
-  test<uint64_t>( FJ64_16k );       // 240.321
+  printf( "FJ32_256: " );
+  test<uint32_t>( FJ32_256 ); // 140.656
+  printf( "FJ32_1024: " );
+  test<uint32_t>( FJ32_1024 ); // 136.591
+  printf( "FJ64_16k: " );
+  test<uint64_t>( FJ64_16k ); // 240.321
   // test<uint64_t>( FJ64_262K ); // 451.489
   // test<uint32_t>( isPrime ); // 234.412
   // test<uint32_t>( isPrimeE ); // 3.79158

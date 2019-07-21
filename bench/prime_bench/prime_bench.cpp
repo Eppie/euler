@@ -1,7 +1,7 @@
+#include "../AE32_144.cpp"
 #include "../AE32_176.cpp"
 #include "../AE32_256.cpp"
 #include "../AE32_512.cpp"
-#include "../AE32_144.cpp"
 #include "FJ32_1024.cc"
 #include "FJ32_224.cc"
 #include "FJ32_256.cc"

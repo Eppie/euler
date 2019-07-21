@@ -85,7 +85,7 @@ int main() {
       } else if( v >= 3000000000 ) {
         fprintf( stderr, "Base: %d, Hash: %d, highest num: %d\n", base, f, v );
       }
-      fclose(fin);
+      fclose( fin );
     }
   }
   return 0;

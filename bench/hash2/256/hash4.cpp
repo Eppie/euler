@@ -81,7 +81,7 @@ int main() {
       if( isGood ) {
         printf( "%d, %d\n", base, f );
       }
-      fclose(fin);
+      fclose( fin );
     }
   }
   return 0;
