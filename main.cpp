@@ -577,6 +577,18 @@ int main( int argc, char *argv[] ) {
       cout << solve135() << endl;
       break;
 
+    case 136:
+      cout << solve136() << endl;
+      break;
+
+    case 137:
+      cout << solve137() << endl;
+      break;
+
+    case 142:
+      cout << solve142() << endl;
+      break;
+
     default:
       cout << "Oops, didn't solve that one yet!" << endl;
       break;

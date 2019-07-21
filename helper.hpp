@@ -1,3 +1,6 @@
+#ifndef HELPER_HPP
+#define HELPER_HPP
+
 /*
  * =====================================================================================
  *
@@ -14,8 +17,6 @@
  *
  * =====================================================================================
  */
-
-#pragma once
 
 #include "is_container.hpp"
 #include "memoizer.hpp"
@@ -73,7 +74,7 @@ vector<uint64_t> sieve( uint64_t n );
  * @param uint64_t n The number to perform the primality test on.
  * @return bool Whether or not the number is prime.
  */
-bool isPrime( uint64_t n );
+auto isPrime( uint64_t n ) -> bool;
 
 /*
  * Return true if the given number is probably prime.
@@ -81,14 +82,14 @@ bool isPrime( uint64_t n );
  * @param uint64_t n The number to perform the probabilistic primality test on.
  * @return bool Whether or not n is prime.
  */
-bool isProbablyPrime( uint64_t n );
+auto isProbablyPrime( uint64_t n ) -> bool;
 
 /*
  * Returns true if s is a palindrome.
  * @param string s
  * @return bool
  */
-bool isPalindrome( string s );
+auto isPalindrome( string s ) -> bool;
 
 /*
  * Returns true if x is a palindrome in base b.
@@ -97,7 +98,7 @@ bool isPalindrome( string s );
  * @return bool
  */
 template <int b>
-bool isPalindrome( uint64_t x ) {
+auto isPalindrome( uint64_t x ) -> bool {
   uint64_t reversed = 0;
   int k = x;
 
@@ -116,7 +117,7 @@ bool isPalindrome( uint64_t x ) {
  * @return T
  */
 template <typename T>
-T sum( vector<T> input ) {
+auto sum( vector<T> input ) -> T {
   return accumulate( input.begin(), input.end(), static_cast<T>( 0 ) );
 }
 
@@ -127,7 +128,7 @@ T sum( vector<T> input ) {
  * @return T
  */
 template <typename T>
-T product( vector<T> input ) {
+auto product( vector<T> input ) -> T {
   return accumulate( input.begin(), input.end(), static_cast<T>( 1 ), multiplies<>() );
 }
 
@@ -141,7 +142,7 @@ T product( vector<T> input ) {
  * @return T
  */
 template <typename T>
-T productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, int steps ) {
+auto productInDirection( vector<vector<T>> grid, int x0, int y0, int dx, int dy, int steps ) -> T {
   if( !( 0 <= y0 && y0 < static_cast<int>( grid.size() ) && 0 <= y0 + ( steps - 1 ) * dy
          && y0 + ( steps - 1 ) * dy < static_cast<int>( grid.size() ) && 0 <= x0
          && x0 < static_cast<int>( grid[y0].size() ) && 0 <= x0 + ( steps - 1 ) * dx
@@ -190,14 +191,14 @@ function<outType( inType )> memoize( function<outType( inType )> inFunc ) {
  * @param uint64_t y
  * @return uint64_t
  */
-uint64_t gcd( uint64_t x, uint64_t y );
+auto gcd( uint64_t x, uint64_t y ) -> uint64_t;
 
 /*
  * Calculates the factorial of a number ( e.g. 5! == 120 )
  * @param unsigned n
  * @return uint64_t
  */
-uint64_t factorial( uint64_t n );
+auto factorial( uint64_t n ) -> uint64_t;
 
 /*
  * This is a memoized implementation of the recursive formula for n choose k.
@@ -205,14 +206,14 @@ uint64_t factorial( uint64_t n );
  * @param const uint64_t k
  * @return uint64_t
  */
-uint64_t choose( const uint64_t &n, const uint64_t &k );
+auto choose( const uint64_t &n, const uint64_t &k ) -> uint64_t;
 
 /*
  * Calculates the path through a triangle array with the largest sum.
  * @param vector<vector<int> > rows
  * @return int
  */
-int maxSumPath( vector<vector<int>> rows );
+auto maxSumPath( vector<vector<int>> rows ) -> int;
 
 /*
  * Print out an iterable with separator of your choice, \n by default.
@@ -243,7 +244,7 @@ vector<string> loadDataFromFile( string filename, char delimiter = ',' );
  * @return char* The type of var.
  */
 template <typename T>
-char *getType( T var ) {
+auto getType( T var ) -> char * {
   return abi::__cxa_demangle( typeid( var ).name(), nullptr, nullptr, nullptr );
 }
 
@@ -256,7 +257,7 @@ char *getType( T var ) {
  * @return bool
  */
 template <typename Predicate, typename Container>
-bool all( Predicate p, const Container &xs ) {
+auto all( Predicate p, const Container &xs ) -> bool {
   return all_of( begin( xs ), end( xs ), p );
 }
 
@@ -269,7 +270,7 @@ bool all( Predicate p, const Container &xs ) {
  * @return bool
  */
 template <typename Predicate, typename Container>
-bool any( Predicate p, const Container &xs ) {
+auto any( Predicate p, const Container &xs ) -> bool {
   return any_of( begin( xs ), end( xs ), p );
 }
 
@@ -304,45 +305,45 @@ typename enable_if<is_container<T>::value, bool>::type isPandigital( T values ) 
     }
   }
 
-  return result == ( 1 << 9 ) - 1 && digitCount == 9;
+  return static_cast<int>( result == ( 1 << 9 ) - 1 && digitCount == 9 );
 }
 
 /*
  * TODO
  */
-bool isPandigital( uint64_t val );
+auto isPandigital( uint64_t val ) -> bool;
 
 /*
  * See: http://graphics.stanford.edu/~seander/bithacks.html#IntegerLog10Obvious
  */
-unsigned int numDigits( uint64_t v );
+auto numDigits( uint64_t v ) -> unsigned int;
 
 /*
  * TODO
  */
-uint64_t powMod( uint64_t base, uint64_t exponent, uint64_t modulus );
+auto powMod( uint64_t base, uint64_t exponent, uint64_t modulus ) -> uint64_t;
 
 /*
  * Generate the nth pentagonal number. Given by the formula Pn = n(3n-1)/2
  */
-uint64_t genPent( uint64_t n );
+auto genPent( uint64_t n ) -> uint64_t;
 
 /*
  * TODO
  */
-uint64_t figurateNumber( uint64_t r, uint64_t n );
+auto figurateNumber( uint64_t r, uint64_t n ) -> uint64_t;
 
 /*
  * TODO
  */
-mpz_class digitalSum( mpz_class x );
-uint32_t digitalSum( uint64_t x );
+auto digitalSum( mpz_class x ) -> mpz_class;
+auto digitalSum( uint64_t x ) -> uint32_t;
 
 /*
  * xorshift* algorithm
  * See here: http://vigna.di.unimi.it/ftp/papers/xorshift.pdf
  */
-uint64_t random_int();
+auto random_int() -> uint64_t;
 
 /*
  * TODO
@@ -372,26 +373,22 @@ vector<vector<T>> combinations( vector<T> n, int r ) {
  * Safely compare two floats
  */
 template <typename T, typename U>
-bool floatCompare( T a, U b ) {
+auto floatCompare( T a, U b ) -> bool {
   static double epsilon = 0.000000001;
 
-  if( abs( a - b ) < epsilon ) {
-    return true;
-  } else {
-    return false;
-  }
+  return static_cast<bool>( abs( a - b ) < epsilon );
 }
 
-uint64_t mulMod( uint64_t a, uint64_t b, uint64_t modulus );
+auto mulMod( uint64_t a, uint64_t b, uint64_t modulus ) -> uint64_t;
 
-double logBaseN( uint64_t x, uint64_t n );
+auto logBaseN( uint64_t x, uint64_t n ) -> double;
 
 namespace functional {
 /*
  * TODO
  */
 template <typename Collection, typename unop>
-Collection map( Collection c, unop op ) {
+auto map( Collection c, unop op ) -> Collection {
   transform( c.begin(), c.end(), c.begin(), op );
   return c;
 }
@@ -422,3 +419,7 @@ auto fill_count = memo::memoize<uint64_t( int, int )>( []( auto &fill_count_inte
 
   return result;
 } );
+
+auto isSquare( uint64_t n ) -> bool;
+auto fib( uint64_t n ) -> uint64_t;
+#endif

@@ -514,3 +514,34 @@ uint64_t random_int() {
 double logBaseN( uint64_t x, uint64_t n ) {
   return log( x ) / log( n );
 }
+
+auto isSquare( uint64_t n ) -> bool {
+  uint64_t h = n & 0xF;
+  if( h > 9 ) {
+    return false;
+  }
+
+  if( h != 2 && h != 3 && h != 5 && h != 6 && h != 7 && h != 8 ) {
+    int t = ( int ) floor( sqrt( ( double ) n ) + 0.5 );
+    return t * t == n;
+  }
+  return false;
+}
+
+auto fib( uint64_t n ) -> uint64_t {
+  if( n == 1 ) {
+    return 1;
+  }
+  if( n == 2 ) {
+    return 1;
+  }
+  uint64_t f1 = 1;
+  uint64_t f2 = 1;
+  uint64_t f3 = 0;
+  for( uint64_t i = 3; i <= n; ++i ) {
+    f3 = f1 + f2;
+    f1 = f2;
+    f2 = f3;
+  }
+  return f3;
+}
